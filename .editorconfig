@@ -1,0 +1,39 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# Markdown & MDX
+[*.{md,mdx}]
+trim_trailing_whitespace = false
+max_line_length = off
+
+# JavaScript / TypeScript
+[*.{js,jsx,ts,tsx}]
+indent_size = 4
+
+# JSON / YAML (Docusaurus config, sidebars, versioned docs, etc.)
+[*.{json,yml,yaml}]
+indent_size = 2
+
+# CSS / SCSS
+[*.{css,scss}]
+indent_size = 4
+
+# Shell scripts
+[*.sh]
+indent_style = space
+indent_size = 2
+
+# Makefiles must use tabs
+[Makefile]
+indent_style = tab
+
+# GitHub workflows
+[.github/workflows/*.yml]
+indent_size = 2
