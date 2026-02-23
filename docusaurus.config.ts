@@ -34,7 +34,7 @@ const config: Config = {
                 docs: {
                     sidebarPath: "./sidebars.ts",
                     routeBasePath: "/",
-                    editUrl: "https://github.com/vacs-project/vacs-dataset.github.io/tree/main/",
+                    editUrl: "https://github.com/vacs-project/vacs-project.github.io/tree/main/",
                     lastVersion: 'current',
                     versions: {
                         current: {
