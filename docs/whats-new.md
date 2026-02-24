@@ -64,4 +64,4 @@ v2.0.0 introduces breaking changes that affect how clients communicate with the 
 
 Your client will automatically prompt you to update and will refuse to connect until you do. Head over to the [Updating](/getting-started/updating) guide for instructions on how to get the latest version of vacs.
 
-Your local settings and [Configuration](/configuration) will be preserved during the update and will (mostly) continue to work as expected. However, the previous `stations.toml` and the associated custom stations configuration have been removed in favour of our new, reworked [interface](/interface). Refer to our [Clients page](/interface/phone/clients) for details on the latest UI and how to configure it.
+Your local settings and [Configuration](/configuration) will be preserved during the update and will (mostly) continue to work as expected. However, the previous `stations.toml` and the associated custom stations configuration have been removed in favour of our new, reworked [interface](/interface/overview). Refer to our [Clients page](/interface/phone/clients) for details on the latest UI and how to configure it.
