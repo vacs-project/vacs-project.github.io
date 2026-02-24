@@ -24,14 +24,14 @@ vacs is a **coordination tool**, not a replacement for the existing VATSIM radio
 
 ## Getting started
 
-If you're new to vacs, head over to the [Installation](./getting-started/installation) guide to get up and running in no time.
+If you're new to vacs, head over to the [Installation](/getting-started/installation) guide to get up and running in no time.
 
-If you have already installed vacs and want to learn how to use it or need a refresher, check the [Interface overview](./interface/overview) or jump straight to [Making a call](./using-vacs/making-a-call).
+If you have already installed vacs and want to learn how to use it or need a refresher, check the [Interface overview](/interface/overview) or jump straight to [Making a call](/using-vacs/making-a-call).
 
 ## Getting help
 
 If something isn't working as expected or you have any questions, the best places to go are:
 
-- The [Troubleshooting](./troubleshooting) section of this documentation, which covers common issues and their solutions.
+- The [Troubleshooting](/troubleshooting) section of this documentation, which covers common issues and their solutions.
 - The [vacs Discord server](https://discord.gg/yu2nyCKU3R) for real-time help from the community and developers.
 - The [GitHub issue tracker](https://github.com/vacs-project/vacs/issues) for reporting bugs or requesting features.
