@@ -24,7 +24,7 @@ const config: Config = {
 
     i18n: {
         defaultLocale: "en",
-        locales: ["en", "de"],
+        locales: ["en"],
     },
 
     presets: [
@@ -34,13 +34,14 @@ const config: Config = {
                 docs: {
                     sidebarPath: "./sidebars.ts",
                     routeBasePath: "/",
-                    editUrl: "https://github.com/vacs-project/vacs-project.github.io/tree/main/",
-                    lastVersion: 'current',
+                    editUrl:
+                        "https://github.com/vacs-project/vacs-project.github.io/tree/main/",
+                    lastVersion: "current",
                     versions: {
                         current: {
-                            label: '2.0.0'
-                        }
-                    }
+                            label: "2.0.0",
+                        },
+                    },
                 },
                 blog: false,
                 theme: {
