@@ -7,11 +7,13 @@ sidebar_label: What's New
 
 [v2.0.0](https://github.com/vacs-project/vacs/releases/tag/v2.0.0) is a major release with a ground-up rework of both how calls work and how the interface looks.
 
+## Changes
+
 You can find a complete list of changes in the [v2.0.0 release notes](https://github.com/vacs-project/vacs/releases/tag/v2.0.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes and additions.
 
 ---
 
-## Station-based calling
+### Station-based calling
 
 The biggest change in v2.0.0 is how you initiate calls.
 
@@ -25,7 +27,7 @@ This brings the coordination workflow much closer to real-life equivalents, wher
 
 ---
 
-## Redesigned interface
+### Redesigned interface
 
 In order to properly support station-based calling, we've redesigned our interface from ground up. Depending on your VATSIM connection, vacs will now automatically choose the most suitable layout for you, as defined by your FIR's responsible staff.
 
@@ -36,7 +38,7 @@ Two main layouts are currently supported:
 
 ---
 
-## Call sounds
+### Call sounds
 
 v2.0.0 adds subtle audio cues when calls successfully establish or end. No more watching the connection status indicator to know when your call has been answered - you'll know when to start talking right away.
 
@@ -44,7 +46,7 @@ These sounds can be toggled on or off individually on [Call](/interface/settings
 
 ---
 
-## Priority calls
+### Priority calls
 
 You can now mark calls as "priority" when coordination is urgent. Priority calls are visually distinct on the receiving end and will trigger a different, more attention-grabbing sound to ensure they don't go unnoticed.
 
@@ -52,7 +54,7 @@ Priority calls can be disabled locally on the [Call](/interface/settings#priorit
 
 ---
 
-## Window zoom hotkeys
+### Window zoom hotkeys
 
 You can now adjust the zoom level of the vacs window using the well-known `Ctrl +` and `Ctrl -` keyboard shortcuts. This is especially useful if you've resized the window and would like to ensure best readability and layouting. `Ctrl 0` will reset the zoom level to default.
 
