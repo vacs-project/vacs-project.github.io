@@ -11,6 +11,8 @@ Before installing VACS, verify that your system meets the requirements described
 
 Follow the steps below to download and install the latest version.
 
+---
+
 ## Windows
 ### Downloading vacs
 To install vacs on Windows, follow the instructions below:
@@ -46,6 +48,8 @@ Once you have downloaded the Installer, the installation process is straight-for
 You can update VACS later using the built-in updater. See the [Updating](/getting-started/updating) section for details.
 :::
 
+---
+
 ## Linux
 ### Downloading vacs
 To install vacs on Linux, follow the instructions below:
@@ -77,6 +81,8 @@ In Progress.
 :::tip
 If you don’t see your file, click **Show all assets** to display the complete list.
 :::
+
+---
 
 ## macOS
 ### Downloading vacs
