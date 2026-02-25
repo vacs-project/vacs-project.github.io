@@ -6,7 +6,7 @@ sidebar_position: 2
 vacs is available for **Windows, Linux and macOS**. 
 
 :::info
-Before installing VACS, verify that your system meets the requirements described in the [Requirements](/getting-started/requirements) section.
+Before installing vacs, verify that your system meets the requirements described in the [Requirements](/getting-started/requirements) section.
 :::
 
 Follow the steps below to download and install the latest version.
@@ -78,8 +78,8 @@ If you don’t see your file, click **Show all assets** to display the complete 
 ### Installing vacs
 In Progress.
 
-:::tip
-If you don’t see your file, click **Show all assets** to display the complete list.
+:::info
+You can update VACS later using the built-in updater. See the [Updating](/getting-started/updating) section for details.
 :::
 
 ---
@@ -112,6 +112,6 @@ If you don’t see your file, click **Show all assets** to display the complete 
 ### Installing vacs
 In Progress.
 
-:::tip
-If you don’t see your file, click **Show all assets** to display the complete list.
+:::info
+You can update VACS later using the built-in updater. See the [Updating](/getting-started/updating) section for details.
 :::
