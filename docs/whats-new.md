@@ -42,7 +42,7 @@ Two main layouts are currently supported:
 
 v2.0.0 adds subtle audio cues when calls successfully establish or end. No more watching the connection status indicator to know when your call has been answered - you'll know when to start talking right away.
 
-These sounds can be toggled on or off individually on [Call](/settings/misc) subpage of the Settings page.
+These sounds can be toggled on or off individually on [Call](/settings/misc) subpage of the [Settings](/settings/overview) page.
 
 ---
 
@@ -50,7 +50,7 @@ These sounds can be toggled on or off individually on [Call](/settings/misc) sub
 
 You can now mark calls as "priority" when coordination is urgent. Priority calls are visually distinct on the receiving end and will trigger a different, more attention-grabbing sound to ensure they don't go unnoticed.
 
-Priority calls can be disabled locally on the [Call](/settings/misc) subpage of the Settings page. All received priority calls will be treated as normal ones when this setting is disabled.
+Priority calls can be disabled locally on the [Call](/settings/misc) subpage of the [Settings](/settings/overview) page. All received priority calls will be treated as normal ones when this setting is disabled.
 
 ---
 
