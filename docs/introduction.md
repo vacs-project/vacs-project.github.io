@@ -18,7 +18,7 @@ vacs aims to solve this deficit by providing a purpose-built tool that works out
 - **Works everywhere** — vacs runs on Windows, Linux and macOS, and integrates with popular radio clients such as [TrackAudio](https://github.com/pierr3/TrackAudio/) or [Audio for VATSIM](https://audio.vatsim.net/).
 - **UI inspired by real-life** — our interface takes inspiration from real-world ground-to-ground air traffic control coordination panels, so if you've seen the real thing, you'll feel right at home.
 
-## What vacs is not
+## What vacs is _not_
 
 vacs is a **coordination tool**, not a replacement for the existing VATSIM radio system. It is also not intended to completely replace your current communication setup, but rather to complement it by providing a dedicated channel for coordination with neighbouring units.
 
