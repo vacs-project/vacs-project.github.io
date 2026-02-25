@@ -56,7 +56,7 @@ To install vacs on Linux, follow the instructions below:
 - Visit the [GitHub Releases page](https://github.com/MorpheusXAUT/vacs/releases) of vacs.
 - To download the latest stable version of vacs, find the release marked **Latest**.
 - If not already done, expand the **Assets** Tab.
-- Download the correct installer for your system. For **Linux**, this file has the ending `x86_64.rpm` or `_amd64.deb`.
+- Download the correct installer for your system. For **Linux**, this file has the ending `x86_64.rpm` (Linux rpm) or `_amd64.deb` (Linux deb).
 
 :::tip
 If you don’t see your file, click **Show all assets** to display the complete list.
@@ -90,7 +90,7 @@ To install vacs on macOS, follow the instructions below:
 - Visit the [GitHub Releases page](https://github.com/MorpheusXAUT/vacs/releases) of vacs.
 - To download the latest stable version of vacs, find the release marked **Latest**.
 - If not already done, expand the **Assets** Tab.
-- Download the correct installer for your system. For **macOS**, this file has the ending `_x64.dmg`.
+- Download the correct installer for your system. For **macOS**, this file has the ending `_x64.dmg` (Apple Intel) or `_aarch64.dmg` (Apple Silicon).
 
 :::tip
 If you don’t see your file, click **Show all assets** to display the complete list.
