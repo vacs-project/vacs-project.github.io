@@ -50,7 +50,7 @@ Once you have downloaded the Installer, the installation process is straight-for
 - Launch vacs after the installation completes.
 
 :::info
-You can update VACS later using the built-in updater. See the [Updating](/getting-started/updating) section for details.
+You can update vacs later using the built-in updater. See the [Updating](/getting-started/updating) section for details.
 :::
 
 ---
@@ -87,7 +87,7 @@ style={{
 In Progress.
 
 :::info
-You can update VACS later using the built-in updater. See the [Updating](/getting-started/updating) section for details.
+You can update vacs later using the built-in updater. See the [Updating](/getting-started/updating) section for details.
 :::
 
 ---
@@ -123,6 +123,17 @@ style={{
 
 In Progress.
 
+:::warning macOS Code Signing Notice
+
+Our macOS releases are currently not code signed and may therefore be automatically flagged as **"corrupted"** by macOS.
+
+To run the application, remove it from quarantine by executing the following command in the Terminal Application:
+
+```bash
+sudo xattr -rd com.apple.quarantine /Applications/vacs.app
+```
+:::
+
 :::info
-You can update VACS later using the built-in updater. See the [Updating](/getting-started/updating) section for details.
+You can update vacs later using the built-in updater. See the [Updating](/getting-started/updating) section for details.
 :::
