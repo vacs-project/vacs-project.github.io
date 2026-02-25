@@ -42,7 +42,7 @@ Two main layouts are currently supported:
 
 v2.0.0 adds subtle audio cues when calls successfully establish or end. No more watching the connection status indicator to know when your call has been answered - you'll know when to start talking right away.
 
-These sounds can be toggled on or off individually on [Call](/interface/settings#call-sounds) subpage of the [Settings](/interface/settings) page.
+These sounds can be toggled on or off individually on [Call](/settings/misc) subpage of the Settings page.
 
 ---
 
@@ -50,7 +50,7 @@ These sounds can be toggled on or off individually on [Call](/interface/settings
 
 You can now mark calls as "priority" when coordination is urgent. Priority calls are visually distinct on the receiving end and will trigger a different, more attention-grabbing sound to ensure they don't go unnoticed.
 
-Priority calls can be disabled locally on the [Call](/interface/settings#priority-calls) subpage of the [Settings](/interface/settings) page. All received priority calls will be treated as normal ones when this setting is disabled.
+Priority calls can be disabled locally on the [Call](/settings/misc) subpage of the Settings page. All received priority calls will be treated as normal ones when this setting is disabled.
 
 ---
 
@@ -66,4 +66,4 @@ v2.0.0 introduces breaking changes that affect how clients communicate with the 
 
 Your client will automatically prompt you to update and will refuse to connect until you do. Head over to the [Updating](/getting-started/updating) guide for instructions on how to get the latest version of vacs.
 
-Your local settings and [Configuration](/configuration) will be preserved during the update and will (mostly) continue to work as expected. However, the previous `stations.toml` and the associated custom stations configuration have been removed in favour of our new, reworked [interface](/interface/overview). Refer to our [Clients page](/interface/phone/clients) for details on the latest UI and how to configure it.
+Your local settings and [Configuration](/advanced/configuration) will be preserved during the update and will (mostly) continue to work as expected. However, the previous `stations.toml` and the associated custom stations configuration have been removed in favour of our new, reworked [interface](/interface/overview). Refer to our [Clients page](/interface/phone/clients) for details on the latest UI and how to configure it.

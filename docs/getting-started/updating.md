@@ -26,7 +26,7 @@ style={{
   }}
 />
 
-Clicking the update notification will take you to the [Settings](/interface/settings) page, where you can start the update process. It will also automatically open the changelog for the new version so you can see what's changed and decide whether you want to update right away or continue using the current version.
+Clicking the update notification will take you to the [Settings](/settings/misc) page, where you can start the update process. It will also automatically open the changelog for the new version so you can see what's changed and decide whether you want to update right away or continue using the current version.
 
 Clicking the current version will take you to the release notes of the currently installed version, letting you easily review the changes introduced since your last update.
 
