@@ -6,24 +6,27 @@ sidebar_position: 2
 
 The **Audio Settings** allows you to configure input and output devices as well as adjust important volume levels used during operation.
 
-It can be accessed directly from the main Settings page of the VACS application.
+It can be accessed directly from the main Settings page of the vacs application.
 
 The available options are divided into two sections:
+
 - The Volume Controls,
 - The Audio Device Configuration.
 
 ---
+
 ## Audio Device Configuration
+
 Under the **Devices** section of the **settings page**, you can configure:
 
-- **Audio Backend** (by default WASPI)
+- **Audio Backend** (by default `WASPI` for Windows, `ALSA` for Linux and `CoreAudio` for macOS)
 - **Headset / Output Device**
 - **Microphone / Input Deivce**
 
 <img
-  src="/img/settings/AudioDevices.png"
-  alt="Audio Settings Overview"
-  style={{
+src="/img/settings/AudioDevices.png"
+alt="Audio Settings Overview"
+style={{
     width: "50%",
     display: "block",
     margin: "1.5rem auto",
@@ -37,11 +40,12 @@ Select the correct devices, before continuing with the setup of vacs.
 ---
 
 ## Volume Controls
+
 vacs provides several adjustable **volume sliders** visible on the **settings page**:
 <img
-  src="/img/settings/VolumeControls.png"
-  alt="Audio Settings Overview"
-  style={{
+src="/img/settings/VolumeControls.png"
+alt="Audio Settings Overview"
+style={{
     width: "50%",
     display: "block",
     margin: "1.5rem auto",
@@ -53,35 +57,39 @@ vacs provides several adjustable **volume sliders** visible on the **settings pa
 ### Call Audio
 
 #### Output Volume
-The **Output** slider controls the playback volume of incoming vacs calls. 
 
-By clicking onto the square button, a test-sound is played, which can help you in setting the output volume correctly.
+The **Output** slider controls the playback volume of incoming vacs calls.
+
+By clicking onto/releasing the square button, a test-sound is played, which can help you in setting the output volume correctly.
 
 #### Input Volume
+
 The **Input** slider controls your microphone transmission level.
 
 A vertical level meter next to the slider displays your live input level:
 
-- Green → Normal operating range  
-- Yellow → High level  
+- Green → Normal operating range
+- Yellow → High level
 - Red → Clipping (too loud)
 
 Ensure your microphone does not consistently reach the red zone, as this may cause audio distortion.
 
 :::info Input Level Meter Activation
-The input level meter becomes active only when the input slider is selected (indicated by a blue border).
+The input level meter can be toggled on and off by clicking it. By default, it is active (indicated by a blue border) when you open the settings page and should automatically display your audio input.
 
-If no level is displayed, click the input slider to activate monitoring.
+If you do not see the level meter move as you speak, make sure you have the correct microphone selected and try toggling the meter off and on again to reset it.
 :::
 
 ### Touch Panel Audio
 
 #### Click Volume
-Controls the volume of interface click sounds when interacting with the touch panel.
+
+Controls the volume of (button) click sounds when interacting with the user interface.
 
 #### Chime Volume
-Adjusts the volume of the chime played when receiving an incoming call.
+
+Adjusts the volume of the chime played when receiving an incoming call. This setting controls both regular and [Priority](/using-vacs/making-a-call#priority-calls) call chimes.
 
 :::tip Test Before Use
-Press the small square button next to the volume slider to play a preview sound and verify the selected volume level.
+Press the volume slider to play the call sound and verify the selected volume level.
 :::

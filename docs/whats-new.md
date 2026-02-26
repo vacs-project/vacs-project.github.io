@@ -48,7 +48,8 @@ These sounds can be toggled on or off individually on [Call](/settings/misc) sub
 
 ### Priority calls
 
-You can now mark calls as "priority" when coordination is urgent. Priority calls are visually distinct on the receiving end and will trigger a different, more attention-grabbing sound to ensure they don't go unnoticed.
+You can now mark calls as "priority" when coordination is urgent. Priority calls are visually distinct on the receiving end and will trigger a different, more attention-grabbing sound to ensure they don't go unnoticed.  
+More details on how to make a priority call can be found in the [Making a call](/using-vacs/making-a-call#priority-calls) section of the documentation.
 
 Priority calls can be disabled locally on the [Call](/settings/misc) subpage of the [Settings](/settings/overview) page. All received priority calls will be treated as normal ones when this setting is disabled.
 
