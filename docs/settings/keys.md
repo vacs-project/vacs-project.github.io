@@ -11,7 +11,7 @@ The **Hotkeys Config** Menu allows you to assign keyboard shortcuts for common a
 The **Hotkeys Config** Menu can be accessed from the settings page, by clicking the **Hotkeys** button.
 
 <img
-  src="/img/settings/hotkeys.png"
+  src="/img/settings/Hotkeys.png"
   alt="VACS Settings Page"
   style={{
     width: "80%",
