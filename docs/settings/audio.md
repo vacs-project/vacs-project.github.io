@@ -3,3 +3,85 @@ sidebar_position: 2
 ---
 
 # Audio Settings
+
+The **Audio Settings** allows you to configure input and output devices as well as adjust important volume levels used during operation.
+
+It can be accessed directly from the main Settings page of the VACS application.
+
+The available options are divided into two sections:
+- The Volume Controls,
+- The Audio Device Configuration.
+
+---
+## Audio Device Configuration
+Under the **Devices** section of the **settings page**, you can configure:
+
+- **Audio Backend** (by default WASPI)
+- **Headset / Output Device**
+- **Microphone / Input Deivce**
+
+<img
+  src="/img/settings/AudioDevices.png"
+  alt="Audio Settings Overview"
+  style={{
+    width: "50%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
+
+Select the correct devices, before continuing with the setup of vacs.
+
+---
+
+## Volume Controls
+vacs provides several adjustable **volume sliders** visible on the **settings page**:
+<img
+  src="/img/settings/VolumeControls.png"
+  alt="Audio Settings Overview"
+  style={{
+    width: "50%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
+
+### Call Audio
+
+#### Output Volume
+The **Output** slider controls the playback volume of incoming vacs calls. 
+
+By clicking onto the square button, a test-sound is played, which can help you in setting the output volume correctly.
+
+#### Input Volume
+The **Input** slider controls your microphone transmission level.
+
+A vertical level meter next to the slider displays your live input level:
+
+- Green → Normal operating range  
+- Yellow → High level  
+- Red → Clipping (too loud)
+
+Ensure your microphone does not consistently reach the red zone, as this may cause audio distortion.
+
+:::info Input Level Meter Activation
+The input level meter becomes active only when the input slider is selected (indicated by a blue border).
+
+If no level is displayed, click the input slider to activate monitoring.
+:::
+
+### Touch Panel Audio
+
+#### Click Volume
+Controls the volume of interface click sounds when interacting with the touch panel.
+
+#### Chime Volume
+Adjusts the volume of the chime played when receiving an incoming call.
+
+:::tip Test Before Use
+Press the small square button next to the volume slider to play a preview sound and verify the selected volume level.
+:::
