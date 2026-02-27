@@ -87,13 +87,37 @@ If you decide to use **Voice Activation** no key-binding in the **Mode Part** (t
 
 The **Radio Integration** (lower part) of the **Transmit Config** dialog can be ignored.
 
+<img
+src="/img/settings/VoiceActivation.png"
+alt="vacs Settings Page"
+style={{
+    width: "80%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
+
 ### Push-to-talk/Push-to-mute
-If you decide to use **Push-to-talk** or **Push-to-mute**, the relevant key has to be assigned in the **Mode Part** (top part) of the **Transmit Config** dialog. You can assign a key, by clicking into the field next to your selected transmission mode, and then pressing your desired button-assignment once.
+If you decide to use **Push-to-talk** or **Push-to-mute**, the relevant key has to be assigned in the **Mode Part** (top part) of the **Transmit Config** dialog. You can assign a key, by clicking into the field next to your selected transmission mode, and then pressing your desired button-assignment once. A key binding can be cleared by clicking the **✕** button next to the assignment field.
 
 The **Radio Integration** (lower part) of the **Transmit Config** dialog can be ignored.
 
+<img
+src="/img/settings/PTTPTM.png"
+alt="vacs Settings Page"
+style={{
+    width: "80%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
+
 ### Radio Integration
-If you decide to use the **Radio Integration** option, you have to assign a push-to-talk key in the **Mode Part** (top part) of the **Transmit Config** dialog. You can assign a key, by clicking into the field next to your selected transmission mode, and then pressing your desired button-assignment once. This key will then act both as your Push-to-talk key on the Radio Frequency, and as your Push-to-talk key for coordination, if in a call, as described above.
+If you decide to use the **Radio Integration** option, you have to assign a push-to-talk key in the **Mode Part** (top part) of the **Transmit Config** dialog. You can assign a key, by clicking into the field next to your selected transmission mode, and then pressing your desired button-assignment once. This key will then act both as your Push-to-talk key on the Radio Frequency, and as your Push-to-talk key for coordination, if in a call, as described above. A key binding can be cleared by clicking the **✕** button next to the assignment field.
 
 :::warning Avoid Double PTT Assignment
 When using **Radio Integration**, the configured transmit key in vacs must **not** be assigned as Push-to-Talk in your radio/audio client (e.g., TrackAudio).
@@ -104,9 +128,34 @@ Assigning the same key in both applications can cause transmission conflicts, un
 If you decide to use the **Radio Integration** option, the bottom part of the **Transmit Config** dialog, labelled **Radio Integration** also has to be configured correctly. This configuration is dependant on your choice of audio client:
 - If you are using the **Track Audio** client select the corresponding option in the drop-down dialog of the **Radio Integration** part of the **Transmit Config** window. In normal cases, this suffices.
     - In this case, no distinct push-to-talk key has to be assigned in the Track Audio client. To avoid conflicts, we recommend to remove all push-to-talk key assignments in your Track Audio client.
+    
+<img
+src="/img/settings/RadioTA.png"
+alt="vacs Settings Page"
+style={{
+    width: "80%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>    
+
 - If you are using the **Audio for VATSIM** standalone client select the corresponding action in the drop-down dialog of the **Radio Integration** part of the **Transmit Config** window. 
     - Using this option is slightly more complicated. A pseudo-push-to-talk[^pseudo] key has to be assigned in the relevant field next to the drop-down-dialog, in which you selected your chosen client. Choose a key, which you do not use frequently while controlling. 
     - Set this pseudo-push-to-talk key as your push-to-talk key in the Audio for VATSIM standalone client.
+    
+<img
+src="/img/settings/RadioAFV.png"
+alt="vacs Settings Page"
+style={{
+    width: "80%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
 
 :::warning vacs must be running for Radio Integration
 When **Radio Integration** mode is selected, vacs must be running during every controlling session.
