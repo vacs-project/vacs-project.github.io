@@ -80,3 +80,20 @@ TrackAudio provides reliable radio transmission handling and seamless integratio
 ---
 
 ## Configuration of Transmit Modes
+Depending on your chosen Transmission Mode, different settings are nessecary in the **Transmit Config** window. 
+
+### Voice Activation
+If you decide to use **Voice Activation** no key-binding in the **Mode Part** (top part) of the **Transmit Config** dialog can be set.
+
+The **Radio Integration** (lower part) of the **Transmit Config** dialog can be ignored.
+
+### Push-to-talk/Push-to-mute
+If you decide to use **Push-to-talk** or **Push-to-mute**, the relevant key has to be assigned in the **Mode Part** (top part) of the **Transmit Config** dialog. You can assign a key, by clicking into the field next to your selected transmission mode, and then pressing your desired button-assignment once.
+
+The **Radio Integration** (lower part) of the **Transmit Config** dialog can be ignored.
+
+### Radio Integration
+
+
+
+
