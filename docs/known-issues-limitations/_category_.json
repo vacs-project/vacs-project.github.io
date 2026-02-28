@@ -1,6 +1,7 @@
 {
   "label": "Known Issues & Limitations",
   "position": 9,
+  "collapsed": true,
   "link": {
     "type": "doc",
     "id": "known-issues-limitations/index"
