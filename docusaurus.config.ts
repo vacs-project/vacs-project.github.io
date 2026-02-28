@@ -1,6 +1,6 @@
-import { themes as prismThemes } from "prism-react-renderer";
-import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
+import type { Config } from "@docusaurus/types";
+import { themes as prismThemes } from "prism-react-renderer";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -51,6 +51,18 @@ const config: Config = {
         ],
     ],
 
+    themes: [
+        [
+            require.resolve("@easyops-cn/docusaurus-search-local"),
+            /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+            {
+                hashed: true,
+                docsRouteBasePath: "/",
+                indexBlog: false,
+                highlightSearchTermsOnTargetPage: true,
+            },
+        ],
+    ],
     themeConfig: {
         colorMode: {
             respectPrefersColorScheme: true,
@@ -70,6 +82,10 @@ const config: Config = {
                     href: "https://vacs.network",
                     label: "Project page",
                     position: "left",
+                },
+                {
+                    type: "search",
+                    position: "right",
                 },
                 {
                     type: "localeDropdown",
