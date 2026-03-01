@@ -21,9 +21,20 @@ Previously, you would select a specific **client** (a VATSIM controller connecte
 
 In v2.0.0, you now call a **station** instead. Select the ATC station you want to reach (e.g., "TWR LOWL", "N1 ACC", "DEL LOWW"), and vacs will automatically route your call to the correct controller currently in charge of that station. Top-down coverage and sector inheritance typical to VATSIM are automatically handled for you, ensuring your call always reaches the right person. If a station is covered by multiple controllers (e.g., during a coordinator/mentoring session), they will all receive the call and can choose to answer it.
 
-Additionally, you'll now be able to select the station you are calling from. This provides more context to the recipient of your call as it'll indicate the region they should expect to coordinate with you on. Check out [Making a call](/using-vacs/making-a-call#call-source) for more details on how to select a call source.
-
 This brings the coordination workflow much closer to real-life equivalents, where you dial a position rather than a specific person.
+
+<img src="/img/tabbed/tabbed_call_source.png" alt="vacs Call Source Selection" className="screenshot" style={{ width: "80%" }} />
+<img src="/img/tabbed/tabbed_active_call.png" alt="vacs Call Source Selection" className="screenshot" style={{ width: "80%" }} />
+
+1. Button which does not reference a station (disabled button with grey text)
+2. Station which is online and callable (enabled button with black text)
+3. Button referencing a station not online on vacs (disabled button with black text)
+4. Temporary call source (enabled button with grey text and peach background color)
+5. Default call source (enabled button with grey text and honey background color)
+6. Station currently controlled by your position (enabled button with grey text)
+7. Target station of incoming or accepted call (enabled button with grey text and sage background color)
+
+Additionally, you'll now be able to select the station you are calling from. This provides more context to the recipient of your call as it'll indicate the region they should expect to coordinate with you on. Clicking a station currently controlled by yourself sets it as a temporary call source. Your next call will originate from this station before resetting automatically. Clicking the same key again sets it as the default source, which will not reset after a call. Clicking it again unsets it. Both a temporary and default source may be selected at the same time. In this case, the temporary source will be used for the next call before unsetting itself and reverting to the default.
 
 ---
 
@@ -34,7 +45,14 @@ In order to properly support station-based calling, we've redesigned our interfa
 Two main layouts are currently supported:
 
 - **GEO layout**: stations are arranged geographically, giving you a spatial overview of your neighbouring units and making it fast and intuitive to find the station you want to call. You can find a more detailed description of the GEO layout in the [GEO documentation](/interface/phone/geo).
+
+<img src="/img/geo/geo.png" alt="vacs Geo Layout" className="screenshot" style={{ width: "80%" }} />
+
+<img src="/img/geo/geo_page.png" alt="vacs Geo Page" className="screenshot" style={{ width: "80%" }} />
+
 - **Tabbed layout**: the interface is organised into tabs, allowing for stations to be grouped logically. More details can be found in the [Tabbed layout documentation](/interface/phone/tabbed).
+
+<img src="/img/tabbed/tabbed.png" alt="vacs Tabbed Layout" className="screenshot" style={{ width: "80%" }} />
 
 ---
 
@@ -51,6 +69,8 @@ These sounds can be toggled on or off individually on [Call](/settings/misc) sub
 You can now mark calls as "priority" when coordination is urgent. Priority calls are visually distinct on the receiving end and will trigger a different, more attention-grabbing sound to ensure they don't go unnoticed.  
 More details on how to make a priority call can be found in the [Making a call](/using-vacs/making-a-call#priority-calls) section of the documentation.
 
+<img src="/img/tabbed/tabbed_incoming_call_prio.gif" alt="vacs Incoming Priority Call" className="screenshot" style={{ width: "80%" }} />
+
 Priority calls can be disabled locally on the [Call](/settings/misc) subpage of the [Settings](/settings/overview) page. All received priority calls will be treated as normal ones when this setting is disabled.
 
 ---
@@ -58,6 +78,8 @@ Priority calls can be disabled locally on the [Call](/settings/misc) subpage of 
 ### Window zoom hotkeys
 
 You can now adjust the zoom level of the vacs window using the well-known `Ctrl +` and `Ctrl -` keyboard shortcuts. This is especially useful if you've resized the window and would like to ensure best readability and layouting. `Ctrl 0` will reset the zoom level to default.
+
+<img src="/img/zoom_controls.gif" alt="vacs Window Zoom" className="screenshot" style={{ width: "80%" }} />
 
 ---
 
