@@ -15,7 +15,7 @@ The update indicator appears in the top navigation bar, directly below the curre
 This informs you that a newer version is ready to be installed.
 
 <img
-src="/img/getting-started/Update1.png"
+src="/img/getting-started/update_available.png"
 alt="Update Available"
 style={{
     width: "80%",
@@ -40,7 +40,7 @@ To update vacs:
 - Locate the **Update & Restart** Button and click it.
 
 <img
-src="/img/getting-started/Update2.png"
+src="/img/getting-started/update_available_settings.png"
 alt="Start Update Process"
 style={{
     width: "80%",
