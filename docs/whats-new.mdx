@@ -5,11 +5,11 @@ sidebar_label: What's New
 
 # What's New in v2.0.0
 
-[v2.0.0](https://github.com/vacs-project/vacs/releases/tag/v2.0.0) is a major release with a ground-up rework of both how calls work and how the interface looks.
+[v2.0.0](https://github.com/vacs-project/vacs/releases/tag/v2.0.0) is a major release featuring a completely reworked calling system and a brand-new interface.
 
 ## Changes
 
-You can find a complete list of changes in the [v2.0.0 release notes](https://github.com/vacs-project/vacs/releases/tag/v2.0.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes and additions.
+A complete list of changes is available in the [v2.0.0 release notes](https://github.com/vacs-project/vacs/releases/tag/v2.0.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
 
 ---
 
@@ -17,40 +17,46 @@ You can find a complete list of changes in the [v2.0.0 release notes](https://gi
 
 The biggest change in v2.0.0 is how you initiate calls.
 
-Previously, you would select a specific **client** (a VATSIM controller connected to vacs) to call, meaning you would have to know which controller was responsible for a certain sector and find them in the list of connected clients. While already an improvement over the established workarounds of TeamSpeak and Discord, this was cumbersome to use and different from how real-life coordination works.
+Previously, you would select a specific **client** - a VATSIM controller connected to vacs - to call. This meant you had to know which controller was responsible for a certain sector and find them in the list of connected clients. While already an improvement over the TeamSpeak and Discord workarounds, this was still cumbersome and different from how real-life coordination works.
 
-In v2.0.0, you now call a **station** instead. Select the ATC station you want to reach (e.g., "TWR LOWL", "N1 ACC", "DEL LOWW"), and vacs will automatically route your call to the correct controller currently in charge of that station. Top-down coverage and sector inheritance typical to VATSIM are automatically handled for you, ensuring your call always reaches the right person. If a station is covered by multiple controllers (e.g., during a coordinator/mentoring session), they will all receive the call and can choose to answer it.
+In v2.0.0, you now call a **station** instead. Simply select the ATC station you want to reach (e.g., "TWR LOWL", "N1 ACC", "DEL LOWW"), and vacs will automatically route your call to the controller currently in charge of that station. Top-down coverage and sector inheritance typical to VATSIM are handled automatically, ensuring your call always reaches the right person. If a station is covered by multiple controllers (e.g., during a coordinator/mentoring session), they will all receive the call and can choose to answer it.
 
-This brings the coordination workflow much closer to real-life equivalents, where you dial a position rather than a specific person.
+This brings coordination much closer to its real-life equivalent - you dial a position rather than a specific person.
 
 <img src="/img/tabbed/tabbed_call_source.png" alt="vacs Call Source Selection" className="screenshot" style={{ width: "80%" }} />
 <img src="/img/tabbed/tabbed_active_call.png" alt="vacs Call Source Selection" className="screenshot" style={{ width: "80%" }} />
 
-1. Button which does not reference a station (disabled button with grey text)
-2. Station which is online and callable (enabled button with black text)
-3. Button referencing a station not online on vacs (disabled button with black text)
+1. Button that does not reference a station (disabled button with grey text)
+2. Station that is online and callable (enabled button with black text)
+3. Button referencing a station not currently online on vacs (disabled button with black text)
 4. Temporary call source (enabled button with grey text and peach background color)
 5. Default call source (enabled button with grey text and honey background color)
 6. Station currently controlled by your position (enabled button with grey text)
 7. Target station of incoming or accepted call (enabled button with grey text and sage background color)
 
-Additionally, you'll now be able to select the station you are calling from. This provides more context to the recipient of your call as it'll indicate the region they should expect to coordinate with you on. Clicking a station currently controlled by yourself sets it as a temporary call source. Your next call will originate from this station before resetting automatically. Clicking the same key again sets it as the default source, which will not reset after a call. Clicking it again unsets it. Both a temporary and default source may be selected at the same time. In this case, the temporary source will be used for the next call before unsetting itself and reverting to the default.
+Additionally, you can now select the station you are calling **from**. This gives the recipient more context, indicating which region they should expect to coordinate with you on.
+
+- **Single click** on a station you control sets it as a **temporary call source**. Your next call will originate from this station, then reset automatically.
+- **Double click** (clicking the same key again) sets it as the **default source**, which persists across calls.
+- **Clicking again** unsets it.
+
+You can have both a temporary and a default source selected at the same time. The temporary source takes priority for the next call and then reverts to the default.
 
 ---
 
 ### Redesigned interface
 
-In order to properly support station-based calling, we've redesigned our interface from ground up. Depending on your VATSIM connection, vacs will now automatically choose the most suitable layout for you, as defined by your FIR's responsible staff.
+To properly support station-based calling, the interface has been redesigned from the ground up. Depending on your VATSIM connection, vacs will automatically select the most suitable layout for you, as defined by your FIR's responsible staff.
 
 Two main layouts are currently supported:
 
-- **GEO layout**: stations are arranged geographically, giving you a spatial overview of your neighbouring units and making it fast and intuitive to find the station you want to call. You can find a more detailed description of the GEO layout in the [GEO documentation](/interface/phone/geo).
+- **GEO layout**: stations are arranged geographically, giving you a spatial overview of neighbouring units and making it quick and intuitive to find the station you want to call. See the [GEO layout documentation](/interface/phone/geo) for more details.
 
 <img src="/img/geo/geo.png" alt="vacs Geo Layout" className="screenshot" style={{ width: "80%" }} />
 
 <img src="/img/geo/geo_page.png" alt="vacs Geo Page" className="screenshot" style={{ width: "80%" }} />
 
-- **Tabbed layout**: the interface is organised into tabs, allowing for stations to be grouped logically. More details can be found in the [Tabbed layout documentation](/interface/phone/tabbed).
+- **Tabbed layout**: stations are organised into named tabs, allowing them to be grouped logically. See the [Tabbed layout documentation](/interface/phone/tabbed) for more details.
 
 <img src="/img/tabbed/tabbed.png" alt="vacs Tabbed Layout" className="screenshot" style={{ width: "80%" }} />
 
@@ -58,26 +64,26 @@ Two main layouts are currently supported:
 
 ### Call sounds
 
-v2.0.0 adds subtle audio cues when calls successfully establish or end. No more watching the connection status indicator to know when your call has been answered - you'll know when to start talking right away.
+v2.0.0 adds subtle audio cues when a call connects or ends. No more watching the connection status indicator to know when your call has been answered - you'll hear it right away.
 
-These sounds can be toggled on or off individually on [Call](/settings/misc) subpage of the [Settings](/settings/overview) page.
+These sounds can be toggled individually on the [Call](/settings/call) subpage of the [Settings](/settings/overview) page.
 
 ---
 
 ### Priority calls
 
-You can now mark calls as "priority" when coordination is urgent. Priority calls are visually distinct on the receiving end and will trigger a different, more attention-grabbing sound to ensure they don't go unnoticed.  
-More details on how to make a priority call can be found in the [Making a call](/using-vacs/making-a-call#priority-calls) section of the documentation.
+You can now mark calls as **priority** when coordination is urgent. Priority calls appear visually distinct on the receiving end and trigger a more attention-grabbing ringtone to ensure they don't go unnoticed.  
+See the [Making a call](/using-vacs/making-a-call#priority-calls) section for details on how to initiate a priority call.
 
 <img src="/img/tabbed/tabbed_incoming_call_prio.gif" alt="vacs Incoming Priority Call" className="screenshot" style={{ width: "80%" }} />
 
-Priority calls can be disabled locally on the [Call](/settings/misc) subpage of the [Settings](/settings/overview) page. All received priority calls will be treated as normal ones when this setting is disabled.
+Priority calls can be disabled locally on the [Call](/settings/call) subpage of the [Settings](/settings/overview) page. When disabled, all incoming priority calls will be treated as normal calls.
 
 ---
 
 ### Window zoom hotkeys
 
-You can now adjust the zoom level of the vacs window using the well-known `Ctrl +` and `Ctrl -` keyboard shortcuts. This is especially useful if you've resized the window and would like to ensure best readability and layouting. `Ctrl 0` will reset the zoom level to default.
+You can now adjust the zoom level of the vacs window using the familiar `Ctrl +` and `Ctrl -` keyboard shortcuts. This is especially useful if you've resized the window and want to ensure the best readability and layout. `Ctrl 0` resets the zoom level to its default.
 
 <img src="/img/zoom_controls.gif" alt="vacs Window Zoom" className="screenshot" style={{ width: "80%" }} />
 
@@ -87,6 +93,6 @@ You can now adjust the zoom level of the vacs window using the well-known `Ctrl 
 
 v2.0.0 introduces breaking changes that affect how clients communicate with the server. **You must update before you can connect** - older clients are not compatible with the v2.0.0 server.
 
-Your client will automatically prompt you to update and will refuse to connect until you do. Head over to the [Updating](/getting-started/updating) guide for instructions on how to get the latest version of vacs.
+Your client will automatically prompt you to update and will refuse to connect until you do. See the [Updating](/getting-started/updating) guide for instructions.
 
-Your local settings and [Configuration](/advanced/configuration) will be preserved during the update and will (mostly) continue to work as expected. However, the previous `stations.toml` and the associated custom stations configuration have been removed in favour of our new, reworked [interface](/interface/overview). Refer to our [Clients page](/interface/phone/clients) for details on the latest UI and how to configure it.
+Your local settings and [Configuration](/advanced/configuration) will be preserved during the update and will largely continue to work as expected. However, the previous `stations.toml` and its associated custom stations configuration have been removed in favour of the new [interface](/interface/overview). Refer to our [Clients page](/interface/phone/clients) for details on the latest UI and how to configure it.

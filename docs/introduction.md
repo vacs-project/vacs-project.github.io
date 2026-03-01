@@ -13,10 +13,10 @@ title: Introduction
 Whilst VATSIM provides a good radio communication system for controllers and pilots, there is no standardised way for controllers to communicate with each other. Ground-to-ground comms have traditionally relied on workarounds: shared TeamSpeak servers, Discord voice channels or VCS-like functionality built into radar clients.  
 vacs aims to solve this deficit by providing a purpose-built tool that works out of the box, is easy to use and usable by all controllers regardless of their remaining setup.
 
-- **Low latency, high quality** — voice is transmitted using the Opus codec over peer-to-peer WebRTC connections, meaning calls are crisp and clear with minimal delay, directly between you and the other controller without the need for a central server.
-- **No extra credentials** — you log in with your existing VATSIM account via [VATSIM Connect](https://vatsim.dev/services/connect/). vacs never sees your password, and you don't need to create yet another account in a new system.
-- **Works everywhere** — vacs runs on Windows, Linux and macOS, and integrates with popular radio clients such as [TrackAudio](https://github.com/pierr3/TrackAudio/) or [Audio for VATSIM](https://audio.vatsim.net/).
-- **UI inspired by real-life** — our interface takes inspiration from real-world ground-to-ground air traffic control coordination panels, so if you've seen the real thing, you'll feel right at home.
+- **Low latency, high quality** - voice is transmitted using the Opus codec over peer-to-peer WebRTC connections, meaning calls are crisp and clear with minimal delay, directly between you and the other controller without the need for a central server.
+- **No extra credentials** - you log in with your existing VATSIM account via [VATSIM Connect](https://vatsim.dev/services/connect/). vacs never sees your password, and you don't need to create yet another account in a new system.
+- **Works everywhere** - vacs runs on Windows, Linux and macOS, and integrates with popular radio clients such as [TrackAudio](https://github.com/pierr3/TrackAudio/) or [Audio for VATSIM](https://audio.vatsim.net/).
+- **UI inspired by real-life** - our interface takes inspiration from real-world ground-to-ground air traffic control coordination panels, so if you've seen the real thing, you'll feel right at home.
 
 ## What vacs is _not_
 
