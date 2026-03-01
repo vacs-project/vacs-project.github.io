@@ -67,6 +67,12 @@ const config: Config = {
         colorMode: {
             respectPrefersColorScheme: true,
         },
+        announcementBar: {
+            id: "wip",
+            content:
+                "🚧 This documentation is a work in progress. Some sections may be incomplete or missing. 🚧",
+            isCloseable: false,
+        },
         navbar: {
             title: "vacs",
             logo: {
