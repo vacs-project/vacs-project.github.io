@@ -6,6 +6,8 @@ sidebar_position: 4
 
 The **Hotkeys Config** Menu allows you to assign keyboard shortcuts for common actions in vacs. These key bindings are optional, as all relevant actions can also be performed using Touch/Mouse Inputs.
 
+---
+
 ## Opening Hotkeys Config
 
 The **Hotkeys Config** Menu can be accessed from the settings page, by clicking the **Hotkeys** button.
@@ -21,6 +23,8 @@ style={{
     boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
   }}
 />
+
+---
 
 ## Assigning a Key Binding
 
@@ -45,6 +49,8 @@ style={{
     boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
   }}
 />
+
+---
 
 ## Available Actions
 
