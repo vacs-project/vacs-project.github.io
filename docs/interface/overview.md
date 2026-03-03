@@ -45,7 +45,7 @@ Of these buttons, currently only the PRIO button is simulated.
 
 A PRIO Call indicates to the reciever of the call, that the caller considers this call to be urgent. It is highlighted with a yellow border in the recievers vacs, and uses a special sound, to gain attention.
 
-PRIO-Calls can be disabled, see [Call Settings](/docs/settings/call).
+PRIO-Calls can be disabled, see [Call Settings](/settings/call).
 
 --- 
 
