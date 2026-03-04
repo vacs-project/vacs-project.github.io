@@ -2,10 +2,6 @@
 sidebar_position: 1
 ---
 
-:::danger Work in Progress
-This page is currently under active development and may be incomplete or subject to change.
-:::
-
 # Overview
 This page provides a complete overview of the vacs interface, including layout structure, button groups, basic call handling and basic call source selection.
 
@@ -135,12 +131,14 @@ The Radio button indicates the current state of the [radio integration](/setting
 | Gray            | Black      | Disabled | Not connected                    | Radio integration is configured, but no connection to TrackAudio exists. *(In Audio for VATSIM this state usually does not occur.)*                                                      |
 | Gray            | Black      | Enabled  | Connected, no RX                 | A connection to the radio client exists, but no frequency is currently being received. *(In Audio for VATSIM this state usually does not occur.)*                                        |
 | Emerald         | Black      | Enabled  | Idle                             | At least one frequency is tuned and ready, but nobody is currently transmitting and you are not transmitting.                                                                            |
-| Cornflower Blue | Black      | Enabled  | Active transmission              | Either you or another controller is currently transmitting on the tuned frequency.                                                                                                       |
+| Cornflower Blue | Black      | Enabled  | Active transmission              | Either you or someone else (pilot, other station in general) is currently transmitting on the tuned frequency.                                                                                                       |
 | Red             | Black      | Enabled  | Error                            | A radio-related error has occurred.                                                                                                                                                      |
 
 
 #### CPL 
 This button is not implemented.
+
+_Remark: This button is only available if you are using the GEO-Page Layout._
 
 #### RADIO PRIO 
 This button allows you to prioritize Radio Calls while being in vacs-calls in certain transmit modes. For a more detailed explanation depending on your chosen transmit mode, please refer to [Transmit Modes](/settings/transmit).
@@ -150,8 +148,8 @@ The Phone button provides quick navigation back to the main phone interface and 
 
 | Button Behavior | Description |
 |-----------------|-------------|
-| Blinking | The Phone button blinks when a phone call is active. |
-| Idle | When no phone call is active, the button remains static. |
+| Grey | When no phone call is active, the button remains unchanged (grey). |
+| Solid green | When a phone call is active, the Phone button lights up continuously in green, matching the call display. |
 
 _On click behavior_
 
@@ -185,13 +183,11 @@ Clicking the **END** button performs two actions depending on the current interf
 | Inside a non-tabbed profile | The interface navigates directly to the top-level page. |
 | Already on the top level | The fallback profile remains displayed. |
 
+#### Tabs (Tabbed Layout)
 
+If you are using the Tabbed-Layout, the pre-configured tabs will be visible in the right part of the Bottom Control Bar.
 
 ---
-
-:::danger Moving
-Most probably to be moved into using-vacs section.
-:::
 
 ## Call States
 
@@ -202,7 +198,19 @@ When a station calls you:
 - The call can be accepted by clicking on one of the blinking green buttons.
 - Visual and audible feedback indicates, that the call has been established (sound + green indicator).
 
-In the shown example, the sector **ACC N1 EC** calls **APP-VB EC**.
+<img
+src="/img/interface/tabbed_incoming_call.gif"
+alt="vacs Settings Page"
+style={{
+    width: "80%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
+
+In the shown example, the sector **ACC N1 EC** (Caller) calls **APP-VB EC** (Recipient).
 
 ### Outgoing Call (No Call Source)
 
@@ -212,12 +220,59 @@ In the simplest terms initating a call in vacs (which is without selecting a spe
 - This corresponding button will be displayed in green with a grey border, until the recipient of the call has picked up. The button will then turn green without a grey border.
 - As no recipient was selected in this case, a generic sector identifier is displayed as call origin on the recipients end. Here this would be LOWW APP.
 
-In the shown example, the sector **ACC E1 EC** is being called without manually selecting a source.
+<img
+src="/img/interface/tabbed_outgoing_call.png"
+alt="vacs Settings Page"
+style={{
+    width: "80%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
+
+In the shown example, the sector **ACC E1 EC** (Recipient) is being called without manually selecting a source.
 
 ---
 
 ## Call Source Selection
+vacs allows selecting the originating station (call source) for outgoing calls. By using this, the recipient of your call, recieves a more precise description of the caller, rather than just a generic identifier of your position (e.g. APP-VB PLC instead of LOWW APP). 
 
+The selected call source is indicated in orange color on the direct access page:
 
+<img
+src="/img/interface/tabbed_call_source.png"
+alt="vacs Settings Page"
+style={{
+    width: "80%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
+
+There are two different types of call sources:
+- Fixed Call Source (indicated in dark orange, **APP VB-EC** in this screenshot).
+- Temporary Call Source (indicated in light orange, **APP VN-EC** in this screenshot).
+
+These will be discussed in the following subchapters.
+
+### Fixed Call Source
+The fixed call source (**APP VB-EC** in the screenshot above) is the default station used for outgoing calls.
+
+It remains active until manually changed.
+
+### Temporary Call Source
+A temporary call source (**APP VN-EC** in the screenshot above) can be selected for the next call only.
+
+After the call ends, vacs automatically reverts to the fixed call source, if available.
+
+:::tip Recommended Configuration
+It is recommended to configure a **fixed call source** representing the station you most frequently call from.
+
+This ensures that outgoing calls use the correct caller by default and avoids the need to manually select a call source for every call.
+:::
 
 
