@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# GEO
+# GEO Page Layout
 The **GEO Page** provides a **geographical overview of the surrounding ATC sectors** that can be called via vacs for your position.
 
 Instead of searching for individual stations in a tabbed layout, the GEO page allows controllers to quickly locate and call adjacent sectors based on their geographical layout and their categorization into different categories.
