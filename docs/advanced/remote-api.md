@@ -84,7 +84,7 @@ Dispatches a command to the desktop application. The server responds with a `res
 | `cmd`  | string | yes      | Command name in `snake_case`. See [Commands](#commands).                                                                                                               |
 | `args` | object | yes      | JSON object containing command arguments. Must be `{}` for commands that accept no arguments.                                                                          |
 
-**Timeout:** Commands that do not resolve within **10 seconds** produce an error response with `"title": "Timeout"`.
+**Timeout:** Commands that do not resolve within **10 seconds** produce an error response with `"type": "urn:vacs:error:remote:timeout"`.
 
 ### subscribe
 
@@ -151,27 +151,32 @@ Returned for every `invoke` message. Exactly one `response` is produced per `inv
   "id": "1",
   "ok": false,
   "error": {
+    "type": "urn:vacs:error:remote:desktop-only",
     "title": "Desktop only",
-    "message": "This operation is only available on the desktop application",
+    "detail": "This operation is only available on the desktop application",
     "isNonCritical": true
   }
 }
 ```
 
-| Field   | Type             | Description                                                                                                                              |
-| ------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`    | string           | Echoed from the originating `invoke` message.                                                                                            |
-| `ok`    | boolean          | `true` if the command completed successfully, `false` otherwise.                                                                         |
-| `data`  | any or absent    | Present when `ok` is `true`. Contains the command's return value. `null` for commands with no return value. Absent when `ok` is `false`. |
-| `error` | object or absent | Present when `ok` is `false`. Describes the failure. See [Error format](#error-format). Absent when `ok` is `true`.                      |
+| Field   | Type                                          | Description                                                                                                                                  |
+| ------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`    | string                                        | Echoed from the originating `invoke` message.                                                                                                |
+| `ok`    | boolean                                       | `true` if the command completed successfully, `false` otherwise.                                                                             |
+| `data`  | any or absent                                 | Present when `ok` is `true`. Contains the command's return value. `null` for commands with no return value. Absent when `ok` is `false`.     |
+| `error` | [`ProblemDetails`](#problemdetails) or absent | Present when `ok` is `false`. [RFC 7807](https://datatracker.ietf.org/doc/html/rfc7807)-compatible error object. Absent when `ok` is `true`. |
 
-#### Error format
+#### ProblemDetails
 
-| Field           | Type    | Description                                                                                              |
-| --------------- | ------- | -------------------------------------------------------------------------------------------------------- |
-| `title`         | string  | Error category identifier (e.g. `"Timeout"`, `"Desktop only"`, `"Invalid argument"`).                    |
-| `message`       | string  | Human-readable error description suitable for display.                                                   |
-| `isNonCritical` | boolean | `true` indicates an expected or recoverable condition; `false` indicates an unexpected internal failure. |
+Error responses use [RFC 7807 Problem Details](https://datatracker.ietf.org/doc/html/rfc7807). The `type` URI uniquely identifies the error category.
+
+| Field           | Type                                | Description                                                              |
+| --------------- | ----------------------------------- | ------------------------------------------------------------------------ |
+| `type`          | [`ProblemType`](#problemtype) (URI) | URI identifying the problem type.                                        |
+| `title`         | `string`                            | Short human-readable summary.                                            |
+| `detail`        | `string`                            | Longer human-readable explanation.                                       |
+| `isNonCritical` | `boolean`                           | `true` for expected/recoverable errors, `false` for unexpected failures. |
+| `timeoutMs`     | `number` &#124; absent              | Auto-dismiss timeout in milliseconds. Absent when not applicable.        |
 
 ### event
 
@@ -216,7 +221,7 @@ Commands that accept arguments expect them as a JSON object in the `args` field 
 Some commands are marked as **desktop only**[^desktop-only] and are unavailable over the remote API.
 :::
 
-[^desktop-only]: **Desktop only** - these commands are unavailable over the remote API. Unconditionally rejected with an error response containing `"title": "Desktop only"`.
+[^desktop-only]: **Desktop only** - these commands are unavailable over the remote API. Unconditionally rejected with a [`ProblemDetails`](#problemdetails) error response with `"type": "urn:vacs:error:remote:desktop-only"`.
 
 ### Application
 
@@ -385,6 +390,17 @@ Several identifier types appear throughout the API. All are serialized as plain 
 | `PositionId` | string         | Position callsign (e.g. `"LOVV_CTR"`).                                                                                                               |
 | `StationId`  | string         | Station identifier (e.g. `"LOVV_CTR"`).                                                                                                              |
 | `CallId`     | UUID string    | Unique call identifier ([UUIDv7](https://datatracker.ietf.org/doc/html/rfc9562#name-uuid-version-7), e.g. `"019cc8de-50f0-7624-a89c-61ba0b5cb784"`). |
+
+### ProblemType
+
+Well-known problem type URIs used in [`ProblemDetails`](#problemdetails) error responses.
+
+| URI                                      | Title            | Description                                               |
+| ---------------------------------------- | ---------------- | --------------------------------------------------------- |
+| `urn:vacs:error:remote:desktop-only`     | Desktop only     | The command is only available on the desktop application. |
+| `urn:vacs:error:remote:invalid-argument` | Invalid argument | One or more command arguments were invalid or missing.    |
+| `urn:vacs:error:remote:timeout`          | Timeout          | The command did not complete within the time limit.       |
+| `urn:vacs:error:remote:application`      | _(varies)_       | An application-level error originating from the backend.  |
 
 ### SessionStateSnapshot
 
@@ -891,12 +907,12 @@ Emitted with the `webrtc:call-error` event.
 
 ### FrontendError
 
-Emitted with the `error` event and also used in command error responses.
+Emitted with the `error` event.
 
 ```json
 {
   "title": "Connection failed",
-  "message": "Unable to reach the signaling server",
+  "detail": "Unable to reach the signaling server",
   "isNonCritical": true
 }
 ```
@@ -904,7 +920,7 @@ Emitted with the `error` event and also used in command error responses.
 | Field           | Type                   | Description                                                              |
 | --------------- | ---------------------- | ------------------------------------------------------------------------ |
 | `title`         | `string`               | Error category identifier.                                               |
-| `message`       | `string`               | Human-readable error description.                                        |
+| `detail`        | `string`               | Human-readable error description.                                        |
 | `isNonCritical` | `boolean`              | `true` for expected/recoverable errors, `false` for unexpected failures. |
 | `timeoutMs`     | `number` &#124; absent | Auto-dismiss timeout in milliseconds. Absent when not applicable.        |
 
