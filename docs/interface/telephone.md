@@ -3,11 +3,13 @@ sidebar_position: 5
 ---
 
 # Telephone Page
+
 The **Telephone Page** provides additional tools for managing telephone communication within vacs.
 
 Unlinke the **Direct Access Interfaces** (such as the GEO Page or Tabbed Layout), the Telephone Page offers a **directory, call history, dial pad and ignore list** for more flexible call management. The directory, for example, allows you to also call stations not configured on your Direct Access Interface.
 
 This Page allows controllers to:
+
 - browse all available stations
 - dial numbers (= VATSIM CIDs) manually
 - review recent calls
@@ -27,10 +29,10 @@ To open the Telephone Page:
 
 Available sections include:
 
-- **Dir.** — Telephone Directory  
-- **Call List** — Call history  
-- **Dial Pad** — Manual dialing interface  
-- **Ign.** — Ignore list management 
+- **Dir.** - Telephone Directory
+- **Call List** - Call history
+- **Dial Pad** - Manual dialing interface
+- **Ign.** - Ignore list management
 
 The **END button** can always be used to close the telephone interface and return to the previous page.
 
@@ -92,11 +94,11 @@ Each entry contains:
 
 Controllers can perform several actions:
 
-| Button | Function |
-|------|------|
-| **Call** | Call the selected entry |
-| **Delete List** | Clear the entire call list |
-| **Ignore CID** | Add the selected caller ID to the ignore list |
+| Button          | Function                                      |
+| --------------- | --------------------------------------------- |
+| **Call**        | Call the selected entry                       |
+| **Delete List** | Clear the entire call list                    |
+| **Ignore CID**  | Add the selected caller ID to the ignore list |
 
 ---
 
@@ -124,12 +126,12 @@ It includes:
 
 Available functions include:
 
-| Button | Function |
-|------|------|
-| **Call** | Initiates a call to the entered number |
-| **Clear All** | Deletes the entire entered number |
-| **←** | Deletes the last entered digit |
-| **Redial** | Calls the previously dialed number |
+| Button        | Function                               |
+| ------------- | -------------------------------------- |
+| **Call**      | Initiates a call to the entered number |
+| **Clear All** | Deletes the entire entered number      |
+| **←**         | Deletes the last entered digit         |
+| **Redial**    | Calls the previously dialed number     |
 
 The other available buttons (**IA** and **ATS MFC**) are currently not simulated.
 
@@ -158,10 +160,10 @@ When a caller ID is added to the ignore list:
 
 Controllers can manage the list using:
 
-| Button | Function |
-|------|------|
-| **Add** | Adds a new caller ID to the ignore list |
-| **Remove** | Removes the selected caller ID |
+| Button     | Function                                |
+| ---------- | --------------------------------------- |
+| **Add**    | Adds a new caller ID to the ignore list |
+| **Remove** | Removes the selected caller ID          |
 
 Caller IDs can also be added directly from the **Call List** using the **Ignore CID** button.
 
@@ -176,6 +178,3 @@ The telephone page is typically used for:
 - blocking **unwanted or irrelevant calls**
 
 The Telephone Page therefore complements the **Direct Access interfaces** by providing **more flexible telephone control tools**.
-
-
-
