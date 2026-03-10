@@ -16,7 +16,7 @@ Typically the connection becomes active after **150-200 milliseconds**.
 You can verify that the call is established in two ways:
 
 - The **green status indicator** in the top status bar  
-  (see [Top Status Bar](/overview#top-status-bar)).
+  (see [Top Status Bar](/interface/overview#top-status-bar)).
 
 - An **audible call start sound**, if enabled  
   (see [Play Call Start Sound](/settings/call#play-call-start-sound)).
