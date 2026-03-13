@@ -12,6 +12,12 @@ vacs exposes a WebSocket-based remote control API for programmatic interaction b
 
 This reference covers the wire format, available commands, subscribable events, and connection lifecycle. It is intended for developers building custom integrations, alternative frontends, or automation tooling against a running vacs instance.
 
+:::note
+While this API can be consumed by any external client, it is heavily geared towards the Tauri/Preact desktop frontend and mirrors the internal interactions used there. Some commands, events, and payload structures may reflect frontend-specific concerns that are not immediately relevant to third-party integrations.
+
+As of now, there are no guarantees of backward compatibility for this API. If you are building a third-party integration, please reach out to the developers to discuss your use case and ensure it can be supported in future releases.
+:::
+
 ## Connection
 
 ### Endpoint
@@ -35,7 +41,7 @@ The WebSocket endpoint does not perform any authentication or authorization. Acc
 
 :::warning Security
 Do not expose the remote server on untrusted networks. The connection is unencrypted (no TLS).  
-If you require additional security or must expose the server on a public network, place vacs behind a reverse proxy that provides TLS termination and authentication.
+If you require additional security or must expose the server on a public network, forward the port through a reverse proxy that provides TLS termination and authentication.
 :::
 
 ---
@@ -60,6 +66,10 @@ Every message is a JSON object with a `type` field that identifies the message k
 | `response` | Result of a preceding `invoke`                  |
 | `event`    | Forwarded event matching an active subscription |
 | `pong`     | Keepalive acknowledgement                       |
+
+:::info Field naming convention
+The wire protocol uses **`snake_case`** for command names (`audio_get_volumes`, `signaling_start_call`, etc.). However, command return values and event payloads use **`camelCase`** for their fields (e.g. `callId`, `positionId`, `clientPageSettings`). This is intentional - the payload schema matches the format used by the default Preact frontend.
+:::
 
 ---
 
@@ -186,7 +196,7 @@ Emitted when the desktop application produces an event matching an active subscr
 {
   "type": "event",
   "name": "signaling:client-list",
-  "payload": [{ "cid": "1234567", "callsign": "LOVV_CTR" }]
+  "payload": [{ "id": "1234567", "displayName": "LOVV_CTR", "frequency": "133.800", "positionId": "LOVV_CTR" }]
 }
 ```
 
@@ -238,7 +248,7 @@ Some commands are marked as **desktop only**[^desktop-only] and are unavailable 
 | `app_reset_window_size` [^desktop-only]             | -                                         | -                                           | Reset window to default size.                                                    |
 | `app_get_call_config`                               | -                                         | [`CallConfig`](#callconfig)                 | Get the current call configuration.                                              |
 | `app_set_call_config`                               | `callConfig`: [`CallConfig`](#callconfig) | `null`                                      | Update call configuration.                                                       |
-| `app_load_test_profile`                             | `path`: string?                           | `string` \| `null`                          | Load or reload a test profile. Over remote, `path` must be `null` (reload only). |
+| `app_load_test_profile`                             | `path`: string?                           | `string` \| `null`                          | Load or reload a test profile. Over remote, `path` must be provided - `null` opens a file dialog (desktop only). |
 | `app_unload_test_profile`                           | -                                         | `null`                                      | Unload the active test profile.                                                  |
 | `app_get_client_page_settings`                      | -                                         | [`ClientPageSettings`](#clientpagesettings) | Get client page settings.                                                        |
 | `app_set_selected_client_page_config`               | `configName`: string?                     | `null`                                      | Set the active client page config.                                               |
@@ -263,7 +273,7 @@ Some commands are marked as **desktop only**[^desktop-only] and are unavailable 
 
 | Command               | Args | Returns | Description                                                                   |
 | --------------------- | ---- | ------- | ----------------------------------------------------------------------------- |
-| `auth_open_oauth_url` | -    | `null`  | Start the VATSIM OAuth flow. Opens the authorization URL on the desktop host. |
+| `auth_open_oauth_url` [^desktop-only] | -    | -       | Start the VATSIM OAuth flow. Opens the authorization URL on the desktop host. |
 | `auth_check_session`  | -    | `null`  | Check the current session validity.                                           |
 | `auth_logout`         | -    | `null`  | Log out the current user.                                                     |
 
@@ -1012,33 +1022,28 @@ Signal client readiness and retrieve the current application state:
   }
 ```
 
+See [`SessionStateSnapshot`](#sessionstatesnapshot) for the full schema.
+
 ### 3. Authenticate
 
-Verify whether a valid session exists. If not, initiate the VATSIM OAuth flow:
+Check whether a valid session already exists:
 
 ```json
 → { "type": "invoke", "id": "3", "cmd": "auth_check_session", "args": {} }
 ← { "type": "response", "id": "3", "ok": true, "data": { ... } }
 ```
 
-If the session is invalid or expired, initiate authentication:
+If no `auth:authenticated` event follows, the user must authenticate on the desktop host first (`auth_open_oauth_url` is desktop-only). Once the OAuth flow completes on the desktop, the server emits:
 
 ```json
-→ { "type": "invoke", "id": "4", "cmd": "auth_open_oauth_url", "args": {} }
-← { "type": "response", "id": "4", "ok": true, "data": "https://auth.vatsim.net/..." }
-```
-
-The user completes the OAuth flow externally. Upon successful authentication, the server emits:
-
-```json
-← { "type": "event", "name": "auth:authenticated", "payload": { ... } }
+← { "type": "event", "name": "auth:authenticated", "payload": "1234567" }
 ```
 
 ### 4. Connect and call
 
 ```json
-→ { "type": "invoke", "id": "5", "cmd": "signaling_connect", "args": { "positionId": "LOVV_CTR" } }
-← { "type": "response", "id": "5", "ok": true, "data": null }
+→ { "type": "invoke", "id": "4", "cmd": "signaling_connect", "args": { "positionId": "LOVV_CTR" } }
+← { "type": "response", "id": "4", "ok": true, "data": null }
 
 ← { "type": "event", "name": "signaling:connected", "payload": { ... } }
 ← { "type": "event", "name": "signaling:station-list", "payload": [ ... ] }
@@ -1048,9 +1053,9 @@ The user completes the OAuth flow externally. Upon successful authentication, th
 Initiate a call to another client:
 
 ```json
-→ { "type": "invoke", "id": "6", "cmd": "signaling_start_call", "args": { "target": "1234569", "source": "LOVV_N1", "prio": false } }
-← { "type": "response", "id": "6", "ok": true, "data": null }
-← { "type": "event", "name": "webrtc:call-connected", "payload": { ... } }
+→ { "type": "invoke", "id": "5", "cmd": "signaling_start_call", "args": { "target": "1234569", "source": "LOVV_N1", "prio": false } }
+← { "type": "response", "id": "5", "ok": true, "data": "019cc8de-50f0-7624-a89c-61ba0b5cb784" }
+← { "type": "event", "name": "webrtc:call-connected", "payload": "019cc8de-50f0-7624-a89c-61ba0b5cb784" }
 ```
 
 ### 5. Keepalive
@@ -1072,5 +1077,5 @@ Alternatively, send a WebSocket Ping frame - the server replies with a Pong fram
 - **Concurrency:** Multiple `invoke` requests may be in flight simultaneously. Clients must use distinct `id` values to correlate responses.
 - **Event buffering:** The server maintains an internal per-connection event buffer of 256 messages. If a client cannot consume events at the rate they are produced, older events are dropped and a warning is logged server-side.
 - **Desktop-only commands:** Commands marked as desktop-only are unconditionally rejected over the remote API. Clients should inspect `remote_get_session_state` → `capabilities` to determine platform support before invoking platform-dependent commands.
-- **Field naming:** The wire protocol uses `snake_case` for message-level field names. The session state snapshot object uses `camelCase` as it's also consumed by the default Preact frontend.
+- **Field naming:** Command names use `snake_case` (`audio_get_volumes`, `signaling_start_call`), while command return values and event payloads use `camelCase` (`callId`, `positionId`). This is intentional - the payload schema matches the format used by the default Preact frontend.
 - **Static assets:** The HTTP server that hosts the WebSocket endpoint also serves the vacs SPA at the root path (`/`). Unresolved paths fall back to `index.html` to support client-side routing.
