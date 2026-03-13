@@ -3,15 +3,50 @@ sidebar_position: 2
 sidebar_label: What's New
 ---
 
-# What's New in v2.0.0
+# What's New
+
+## v2.1.0
+
+[v2.1.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.1.0) adds remote control support, new integration options for third-party developers, and several quality-of-life improvements.
+
+A complete list of changes is available in the [v2.1.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.1.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
+
+### Remote control
+
+The headline feature of v2.1.0: you can now **control vacs from a browser on any device**. Open the remote control URL on a tablet, a second monitor, or even your phone, and you get the full vacs interface - make and receive calls, change your settings and interact with the application - all without touching the main window.
+
+This is especially useful if you don't want to use your primary screen for coordination and want a dedicated panel on a separate screen or tablet. See the [Remote Access](/using-vacs/remote-access) guide to get started.
+
+Additionally, v2.1.0 exposes a **WebSocket-based remote control API** that third-party tools and developers can use to interact with vacs programmatically. A detailed spec of the [Remote Control API](/advanced/remote-api) is available for developers.
+
+---
+
+### Station assignment on GEO page buttons
+
+Users of our GEO layout will be happy to know that buttons on the main page can now be directly assigned to stations, allowing for quick calls right from the geographic, customized layout. This gives FIR dataset maintainers additional flexibility in creating intuitive, custom call interfaces for their controllers.
+
+---
+
+### Token-based authentication for third-party clients
+
+Developers can now authenticate against the vacs signaling server using **VATSIM OAuth Access Tokens**, enabling fully custom third-party clients that integrate with the vacs backend without needing to run the vacs desktop application locally. This opens the door for community-built tools and alternative interfaces.
+
+---
+
+### Bug fixes
+
+- **Automatic session recovery on connection loss** - If your internet connection drops briefly, vacs now automatically terminates the old session and reconnects cleanly. Previously, a flakey connection could result in an "already logged in" error that required manual intervention.
+- **Fixed station handoffs** - When a controller changes position or goes offline, all other controllers should now see consistent updates to station coverage. No more relogs required for others to correctly appear as online or offline on vacs.
+- **Consistent phone button state during calls** - Fixed an issue where a phone button could blink in an inconsistent state when an outgoing and incoming call overlapped. Outgoing call state now correctly takes priority.
+- **Duplicate clients after VATSIM sync** - Fixed a bug where clients could appear multiple times on the [client page](/interface/phone/clients) if they changed position of primary frequency.
+
+---
+
+## v2.0.0
 
 [v2.0.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.0.0) is a major release featuring a completely reworked calling system and a brand-new interface.
 
-## Changes
-
 A complete list of changes is available in the [v2.0.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.0.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
-
----
 
 ### Station-based calling
 
@@ -89,7 +124,7 @@ You can now adjust the zoom level of the vacs window using the familiar `Ctrl +`
 
 ---
 
-## Migrating from v1.x
+## Migrating from v1.x to v2.0.0
 
 v2.0.0 introduces breaking changes that affect how clients communicate with the server. **You must update before you can connect** - older clients are not compatible with the v2.0.0 server.
 
