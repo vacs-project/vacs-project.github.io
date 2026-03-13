@@ -8,12 +8,19 @@ vacs includes a built-in remote access feature that lets you use the full vacs i
 
 This can be useful if you want to keep your primary screen free for your radar client while operating vacs from a secondary device.
 
+:::tip Quick Start
+
+1. Enable remote access in settings (see [Enabling remote access](#enabling-remote-access))
+2. Open `http://<your-pc-ip>:9600` in a browser on any device on the same network
+
+:::
+
 ## How it works
 
 When remote access is enabled, vacs starts a small web server alongside the desktop application. This server:
 
 - Serves the same vacs frontend you see in the desktop application, accessible from any modern web browser.
-- Opens a WebSocket connection between the browser and the desktop application, so all actions taken in the browser are executed on the desktop - audio, calls, signaling, and settings all stay in sync.
+- Maintains a WebSocket connection between the browser and the desktop application, so all actions taken in the browser are executed on the desktop - audio, calls, signaling, and settings all stay in sync.
 
 The remote client is a full mirror of the desktop interface. You can make and receive calls, manage settings, and monitor your session just as you would on the desktop.
 
@@ -25,41 +32,23 @@ Your remote device's microphone and speakers are not used for calls and no sound
 
 ## Enabling remote access
 
-Remote access is disabled by default. To enable it, you need to edit the vacs configuration file.
+Remote access is disabled by default. To enable it, head to the [Settings page](/settings) and enable the **Remote Access** option.
 
-1. Open the vacs configuration directory. You can do this from the Settings page by clicking **Open Config**, or navigate to it manually:
-   - **Windows:** `%APPDATA%\app.vacs.vacs-client\`
-   - **Linux:** `~/.config/app.vacs.vacs-client/`
-   - **macOS:** `~/Library/Application Support/app.vacs.vacs-client/`
+That's it - vacs will start the remote access server on port **9600**, accepting connections from any device on the network by default.
 
-2. Open (or create) the file `config.toml` in that directory and add:
+### Changing the listen address or port
 
-```toml
-[remote]
-enabled = true
-```
+You can change the listen address on the [Settings page](/settings) using the address input field. The format is `IP:PORT`, using `0.0.0.0:9600` as the default.
 
-3. Save the file and restart vacs.
-
-That's it - vacs will start the remote access server on port **9600** by default.
-
-### Changing the port
-
-If port 9600 is already in use or you'd like to use a different one, you can specify the full listen address:
-
-```toml
-[remote]
-enabled = true
-listen_addr = "0.0.0.0:8080"
-```
-
-The `0.0.0.0` address means vacs will accept connections from any device on the network. If you'd like to restrict it to only the local machine, use `127.0.0.1` instead.
+- To **change the port**, replace the number after the colon. For example, `0.0.0.0:8080` will listen on port 8080 instead of 9600.
+- To **restrict access to only the local machine**, change the IP part to `127.0.0.1` (e.g. `127.0.0.1:9600`). This prevents other devices on the network from connecting.
+- The default address `0.0.0.0:9600` means vacs accepts connections from any device on the network on port 9600.
 
 ## Connecting from a browser
 
 Once vacs is running with remote access enabled:
 
-1. Find the IP address of the machine running vacs on your local network (e.g. `192.168.1.69`).
+1. Find the IP address of the machine running vacs on your local network (e.g. `192.168.1.69`).[^find-ip]
 2. Open a browser on your other device and navigate to:
 
 ```
@@ -72,10 +61,16 @@ The vacs interface will load in your browser. You can start using it immediately
 Bookmark the URL on your secondary device for quick access in future sessions.
 :::
 
+[^find-ip]: **Finding your local IP address:**
+
+    - **Windows:** Open **Settings > Network & internet** and select your active connection (Wi-Fi or Ethernet) to see your IPv4 address. Alternatively, open a terminal and run `ipconfig`, looking for the `IPv4 Address` of your active network adapter.
+    - **macOS:** Open **System Settings > Network**, select your active connection, and look for the IP address. Alternatively, open Terminal and run `ipconfig getifaddr en0`.
+    - **Linux:** Open your desktop's **Network** or **Wi-Fi** settings to find the IP address. Alternatively, open a terminal and run `ip addr` or `hostname -I`.
+
 ## Limitations
 
 - **Audio stays on the desktop** - The remote client controls the desktop application, but all audio input and output happens on the machine running vacs. You cannot use the remote device's microphone or speakers.
-- **Desktop-only actions** - A few operations are only available on the desktop client, such as quitting the application, toggling fullscreen/always-on-top, opening file dialogs, and opening system shortcut settings. These will show an informational error if attempted from a remote client.
+- **Desktop-only actions** - A few operations are only available on the desktop client, such as quitting the application, toggling fullscreen/always-on-top, opening file dialogs, initiating the VATSIM login flow, and opening system shortcut settings. These will show an informational error if attempted from a remote client.
 - **No built-in authentication** - The remote access server does not require a password. Anyone on the same network who knows the address can connect. Only enable remote access on networks you trust.
 - **Single desktop instance** - Multiple browser clients can connect simultaneously, but they all control the same desktop application. Actions taken by one remote client are visible to all others.
 
@@ -87,7 +82,7 @@ The remote access server has no authentication or encryption. Do **not** expose 
 
 ### The browser cannot connect
 
-- Make sure vacs is running and remote access is enabled in `config.toml`.
+- Make sure vacs is running and remote access is enabled in the settings. You should see a "Remote control server listening on" message in the logs.
 - Verify that you're using the correct IP address and port.
 - Check that your firewall allows incoming connections on the configured port (default: 9600).
 - On Linux, ensure the port is not blocked by `iptables`, `ufw`, or a similar firewall.
