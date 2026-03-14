@@ -68,7 +68,7 @@ By using vacs, you acknowledge and agree that:
 - You use the software and connect to the Official Servers **entirely at your own risk**.
 - The core maintainers are **volunteers** who maintain this project in their free time and are not obligated to provide support, updates, or fixes.
 - The software may contain bugs, errors, or security vulnerabilities. While we strive for quality, we cannot guarantee that the software is free of defects.
-- **Audio communications** are peer-to-peer. Your IP address may be visible to other call participants. See our [Privacy & Data Handling Policy](/legal/privacy-policy#34-ip-addresses) for details.
+- **Audio communications** are peer-to-peer. Your IP address may be visible to other call participants. See our [Privacy & Data Handling Policy](/legal/privacy-policy#33-ip-addresses) for details.
 
 ---
 
