@@ -54,7 +54,7 @@ We have not appointed a Data Protection Officer (DPO) under Article 37 GDPR, as 
 
 ## 3. Data We Process
 
-We follow the principle of **data minimisation** (Article 5(1)(c) GDPR). We only process personal data that is strictly necessary for the operation of the service. We do **not** collect names, email addresses, physical addresses, payment information, or any other personal identifiers beyond what is described below.
+We follow the principle of **data minimisation** (Article 5(1)(c) GDPR). We only process personal data that is strictly necessary for the operation of the service. We do **not** collect names, email addresses, physical addresses, payment information, or any other personal identifiers beyond what is described below. We do **not** process any special categories of personal data within the meaning of Article 9 GDPR (e.g., health data, biometric data, racial or ethnic origin, political opinions, or religious beliefs).
 
 ### 3.1 VATSIM Certificate Identification (CID)
 
@@ -72,18 +72,7 @@ When you authenticate, a server-side session is created and stored in **Redis** 
 - **Duration:** Sessions expire automatically after **7 days** of inactivity.
 - **Cookie:** A signed, HTTP-only session cookie is set in the Client to maintain your authenticated session. See [Section 9 (Cookies)](#9-cookies) for details.
 
-### 3.3 Connection and Signaling Data
-
-While you are connected to the Server, the following data is processed **in memory**:
-
-- Your **CID**
-- Your **display name** (ATC callsign, e.g., "LOVV_CTR")
-- Your **frequency** and **position identifier** (derived from the VATSIM datafeed and vacs dataset, not personal data)
-- **WebSocket connection metadata** (connection timestamps, message types)
-
-This data exists only while you are connected and is cleared when you disconnect.
-
-### 3.4 IP Addresses
+### 3.3 IP Addresses
 
 Your **IP address** is processed in the following contexts:
 
@@ -98,46 +87,11 @@ Your **IP address** is processed in the following contexts:
 Due to the nature of **WebRTC** peer-to-peer technology, your IP address may be visible to the other participant(s) in a call. This is an inherent property of direct peer-to-peer communication and cannot be prevented by vacs. When a TURN relay is used (as a fallback when all other direct connection attempts fail), audio traffic is relayed through the TURN server, which may reduce direct IP exposure between peers, but your IP address is then visible to the TURN server operator (by default, Cloudflare).
 :::
 
-### 3.5 Server Log Files
-
-The Server produces structured log files that may contain:
-
-- Timestamps
-- CIDs of connecting or disconnecting users
-- IP addresses
-- Authentication events (success/failure, without credentials)
-- Error messages and debugging information
-- WebSocket and signaling events
-
-Log files are used exclusively for **service operation, debugging, and security purposes**. They are **automatically purged after 14 days**. Log files are stored only on the Server infrastructure and are accessible only to core maintainers with server access.
-
-### 3.6 Aggregated Metrics
-
-The Server collects **aggregated, anonymous operational metrics** via Prometheus, such as:
-
-- Total number of connected clients
-- Number of login attempts (success/failure counts)
-- Call counts and durations (as statistical distributions)
-- Message throughput
-
-These metrics contain **no personal data** - they are purely numerical counters and histograms. They are used for service monitoring and capacity planning.
-
-### 3.7 Audio Data
+### 3.4 Audio Data
 
 **vacs does not record, store, or transmit audio through the Server.** All voice communication is **direct peer-to-peer** between call participants using WebRTC. Audio data never passes through the vacs signaling server. No audio recordings are made at any point.
 
 When a direct peer-to-peer connection cannot be established, audio traffic may be **relayed through a TURN server** (by default, Cloudflare's Realtime TURN Service). In this case, the audio data passes through the TURN server encrypted in transit but is not recorded or stored. See [Section 7.2](#72-cloudflare-turn-service) for details.
-
-### 3.8 Client-Side Data
-
-The vacs desktop application stores the following data **locally on your device**:
-
-- **Application settings:** Audio device preferences, window layout, keybindings, visual preferences, and other configuration options
-- **Ignored clients list:** CIDs of users you have chosen to ignore (stored locally, never sent to the Server)
-
-This data is stored in your operating system's standard application configuration directory and is **never transmitted** to the Server or any third party. You have full control over this data and can delete it at any time by removing the application's configuration files.
-
-No authentication tokens or credentials are persisted to disk by the Client.
 
 ---
 
@@ -145,27 +99,16 @@ No authentication tokens or credentials are persisted to disk by the Client.
 
 Under Article 6(1) GDPR, every processing activity requires a legal basis. The following table summarizes the legal bases we rely on:
 
-| Processing Activity                     | Legal Basis                            | Justification                                                                                                                                                                                              |
-| --------------------------------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| VATSIM CID (authentication and session) | **Consent** (Art. 6(1)(a))             | You actively choose to log in to vacs with your VATSIM account. By initiating the OAuth login flow, you consent to the processing of your CID for the purpose of using the service.                        |
-| IP addresses in server logs             | **Legitimate interest** (Art. 6(1)(f)) | Necessary for server security, abuse prevention, and debugging. Our interest in maintaining a secure and operational service outweighs the minimal intrusion, especially given the 14-day retention limit. |
-| Session data (Redis)                    | **Legitimate interest** (Art. 6(1)(f)) | Technically necessary to maintain your authenticated session. Without session data, the service cannot function.                                                                                           |
-| Signaling data (in-memory)              | **Legitimate interest** (Art. 6(1)(f)) | Necessary for routing calls and maintaining the real-time connection list. This data exists only during your active connection.                                                                            |
-| IP visibility via WebRTC                | **Legitimate interest** (Art. 6(1)(f)) | Inherent to the peer-to-peer technology that enables low-latency voice communication, which is the core purpose of the service.                                                                            |
-| Cloudflare TURN relay                   | **Legitimate interest** (Art. 6(1)(f)) | Provides fallback connectivity when direct peer-to-peer connections are not possible. Users may opt out by configuring alternative STUN/TURN servers (see [Section 7.2](#72-cloudflare-turn-service)).     |
-| Aggregated metrics                      | **Legitimate interest** (Art. 6(1)(f)) | Anonymous, aggregated data for service monitoring. No personal data is included.                                                                                                                           |
-| Session cookie                          | **Legitimate interest** (Art. 6(1)(f)) | Strictly necessary for session management. Exempt from consent requirements under the ePrivacy Directive (see [Section 9](#9-cookies)).                                                                    |
+| Processing Activity                     | Legal Basis                             | Justification                                                                                                                                                                                                                                |
+| --------------------------------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| VATSIM CID (authentication and session) | **Contract performance** (Art. 6(1)(b)) | Processing your CID is necessary to provide the service you have requested by logging in and accepting the [Terms of Use](/legal/disclaimer). Your CID is the sole identifier used for authentication, call routing, and session management. |
+| Session data (Redis)                    | **Contract performance** (Art. 6(1)(b)) | Technically necessary to maintain your authenticated session. Without session data, the service cannot function.                                                                                                                             |
+| Session cookie                          | **Contract performance** (Art. 6(1)(b)) | Strictly necessary for session management. Exempt from consent requirements under the ePrivacy Directive (see [Section 9](#9-cookies)).                                                                                                      |
+| IP addresses in server logs             | **Legitimate interest** (Art. 6(1)(f))  | Necessary for server security, abuse prevention, and debugging. Our interest in maintaining a secure and operational service outweighs the minimal intrusion, especially given the 14-day retention limit.                                   |
+| IP visibility via WebRTC                | **Contract performance** (Art. 6(1)(b)) | Inherent to the peer-to-peer technology that enables low-latency voice communication, which is the core purpose of the service.                                                                                                              |
+| Cloudflare TURN relay                   | **Contract performance** (Art. 6(1)(b)) | Provides fallback connectivity when direct peer-to-peer connections are not possible. Users may opt out by configuring alternative STUN/TURN servers (see [Section 7.2](#72-cloudflare-turn-service)).                                       |
 
-### 4.1 Withdrawal of Consent
-
-Where processing is based on consent (specifically, your VATSIM CID), you may withdraw your consent at any time by:
-
-- **Logging out** of the vacs application, which terminates your session immediately
-- **Not logging in again**, which prevents any further processing of your CID
-
-Withdrawal of consent does not affect the lawfulness of processing carried out before the withdrawal. Please note that withdrawing consent means you will no longer be able to use the vacs service, as authentication is required for its operation.
-
-### 4.2 Legitimate Interest Balancing
+### 4.1 Legitimate Interest Balancing
 
 Where we rely on legitimate interest, we have conducted a balancing assessment as required by Article 6(1)(f) GDPR:
 
@@ -181,13 +124,11 @@ We believe our legitimate interests do not override your fundamental rights and 
 
 We adhere to the principle of **storage limitation** (Article 5(1)(e) GDPR). Personal data is kept only for as long as necessary for the purposes for which it was collected.
 
-| Data Category                                              | Retention Period                                                      |
-| ---------------------------------------------------------- | --------------------------------------------------------------------- |
-| Server log files (containing CIDs and IP addresses)        | **14 days**, then automatically purged                                |
-| Redis session data                                         | **7 days** of inactivity, then automatically expired                  |
-| In-memory signaling data (CID, callsign, connection state) | **Duration of connection only** - cleared immediately upon disconnect |
-| Aggregated metrics                                         | **14 days**, then automatically purged                                |
-| Client-side settings                                       | Until you delete them manually                                        |
+| Data Category                                       | Retention Period                                     |
+| --------------------------------------------------- | ---------------------------------------------------- |
+| Server log files (containing CIDs and IP addresses) | **14 days**, then automatically purged               |
+| Redis session data                                  | **7 days** of inactivity, then automatically expired |
+| Audio data (WebRTC peer-to-peer and TURN relay)     | Not stored at all; transient in-flight only          |
 
 We do **not** maintain a persistent user database. There is no long-term storage of user accounts, profiles, or usage history.
 
@@ -295,7 +236,7 @@ Cloudflare's data processing is governed by:
 
 ### 7.3 Hetzner (Server Hosting)
 
-The Official Servers are hosted in **Hetzner** data centers located in **Germany**. Hetzner acts as a data processor. Hetzner's data processing is governed by:
+The Official Servers are hosted in **Hetzner** data centers located in **Nuremberg, Germany**. Hetzner acts as a data processor. Hetzner's data processing is governed by:
 
 - [Hetzner Data Privacy Policy](https://www.hetzner.com/legal/privacy-policy/)
 
@@ -311,11 +252,11 @@ We do not have access to any visitor data collected by GitHub Pages. GitHub's da
 
 ## 8. International Data Transfers
 
-The Official Servers are located in **Germany** (European Union). For users within the European Economic Area (EEA), your data remains within the EU during server-side processing.
+The Official Servers are located in **Nuremberg, Germany** (European Union). For users within the European Economic Area (EEA), your data remains within the EU during server-side processing.
 
 ### 8.1 Cloudflare
 
-Cloudflare, Inc. is headquartered in the United States but operates a global network, including infrastructure within the EU. When the Cloudflare TURN service is used, your data may be processed in locations outside the EEA. Cloudflare provides appropriate safeguards for international data transfers, including **Standard Contractual Clauses (SCCs)** pursuant to Article 46(2)(c) GDPR. You may opt out of Cloudflare processing by configuring alternative STUN/TURN servers as described in [Section 7.2](#72-cloudflare-turn-service).
+Cloudflare, Inc. is headquartered in the United States but operates a global network, including infrastructure within the EU. When the Cloudflare TURN service is used, your data may be processed in locations outside the EEA. Cloudflare is bound by the **Data Privacy Framework (DPF)** for international data transfers. You may opt out of Cloudflare processing by configuring alternative STUN/TURN servers as described in [Section 7.2](#72-cloudflare-turn-service).
 
 ### 8.2 WebRTC Peer-to-Peer
 
@@ -333,7 +274,7 @@ When you authenticate via VATSIM Connect, you interact directly with VATSIM's se
 
 ### 8.4 GitHub Pages
 
-GitHub, Inc. is headquartered in the United States. When you visit [docs.vacs.network](https://docs.vacs.network), your request may be served from GitHub's global infrastructure, which may include servers outside the EEA. GitHub relies on **Standard Contractual Clauses (SCCs)** and other mechanisms as described in their privacy statement to provide appropriate safeguards for international data transfers.
+GitHub, Inc. is headquartered in the United States. When you visit [docs.vacs.network](https://docs.vacs.network), your request may be served from GitHub's global infrastructure, which may include servers outside the EEA. GitHub is bound by the **Data Privacy Framework (DPF)** and other mechanisms as described in their privacy statement to provide appropriate safeguards for international data transfers.
 
 ---
 
@@ -436,12 +377,9 @@ In accordance with Article 5 GDPR, we adhere to the following principles in all 
 
 | Principle                                  | How We Comply                                                                                                                                                   |
 | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Lawfulness, fairness, and transparency** | We process data based on consent and legitimate interest, treat users fairly, and fully disclose our practices in this Policy and through our open-source code. |
+| **Lawfulness, fairness, and transparency** | We process data based on performance of a contract and legitimate interest, treat users fairly, and fully disclose our practices in this Policy and through our open-source code. |
 | **Purpose limitation**                     | Data is collected only for the specific purposes outlined in this Policy (service operation, security, debugging).                                              |
-| **Data minimisation**                      | We collect only the absolute minimum data necessary: a CID for identification and IP addresses for connectivity and security.                                   |
 | **Accuracy**                               | CIDs are sourced directly from VATSIM's authoritative system. Log data is generated automatically and is accurate by nature.                                    |
-| **Storage limitation**                     | Strict, automated retention limits: 14 days for logs and metrics, 7 days for sessions, connection-duration only for in-memory data.                             |
-| **Integrity and confidentiality**          | TLS encryption, signed cookies, encrypted peer-to-peer audio, access-controlled server infrastructure, and no persistent personal data storage.                 |
 | **Accountability**                         | This Policy documents our compliance. Our open-source codebase provides full transparency. We respond to all data subject requests.                             |
 
 ---
