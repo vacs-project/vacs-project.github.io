@@ -20,7 +20,7 @@ These terms apply to the vacs desktop application, the official vacs signaling s
 
 vacs is designed **exclusively for use within the VATSIM flight simulation network**. It is a tool for coordinating virtual air traffic control operations in a simulated environment.
 
-vacs must **not** be used for real-world air traffic control, real aviation operations, or any safety-critical purpose. The software has not been certified or validated for real-world aviation use and is not suitable for any such application. The core maintainers accept no responsibility for any use of vacs outside its intended simulation context.
+vacs must **not** be used for real-world air traffic control, real aviation operations, or any safety-critical purpose. The software has not been certified or validated for real-world aviation use and is not suitable for any such application. The [core maintainers](https://github.com/orgs/vacs-project/teams/core-maintainers) accept no responsibility for any use of vacs outside its intended simulation context.
 
 ---
 
@@ -36,7 +36,7 @@ This is consistent with the terms of the [MIT License](https://github.com/vacs-p
 
 ## 4. No Guarantee of Availability or Uptime
 
-The core maintainers operate Official Servers as a convenience to the community. However:
+The [core maintainers](https://github.com/orgs/vacs-project/teams/core-maintainers) operate Official Servers as a convenience to the community. However:
 
 - We make **no guarantees** regarding the availability, uptime, or reliability of the Official Servers or any related services.
 - The service may be **interrupted, suspended, or discontinued** at any time, temporarily or permanently, with or without notice, for any reason, including but not limited to maintenance, technical issues, or resource constraints.
@@ -49,7 +49,7 @@ As vacs is designed to be self-hostable, you are free to operate your own server
 
 ## 5. Limitation of Liability
 
-To the fullest extent permitted by applicable law, the core maintainers, contributors, and anyone involved in the creation, production, or delivery of vacs shall **not be liable** for any direct, indirect, incidental, special, consequential, or exemplary damages, including but not limited to:
+To the fullest extent permitted by applicable law, the [core maintainers](https://github.com/orgs/vacs-project/teams/core-maintainers), contributors, and anyone involved in the creation, production, or delivery of vacs shall **not be liable** for any direct, indirect, incidental, special, consequential, or exemplary damages, including but not limited to:
 
 - Loss of data or service interruptions
 - Inability to use the software or service
@@ -66,7 +66,7 @@ This limitation applies whether the alleged liability is based on contract, tort
 By using vacs, you acknowledge and agree that:
 
 - You use the software and connect to the Official Servers **entirely at your own risk**.
-- The core maintainers are **volunteers** who maintain this project in their free time and are not obligated to provide support, updates, or fixes.
+- The [core maintainers](https://github.com/orgs/vacs-project/teams/core-maintainers) are **volunteers** who maintain this project in their free time and are not obligated to provide support, updates, or fixes.
 - The software may contain bugs, errors, or security vulnerabilities. While we strive for quality, we cannot guarantee that the software is free of defects.
 - **Audio communications** are peer-to-peer. Your IP address may be visible to other call participants. See our [Privacy & Data Handling Policy](/legal/privacy-policy#33-ip-addresses) for details.
 
@@ -77,7 +77,7 @@ By using vacs, you acknowledge and agree that:
 When using the Official Servers, you agree not to:
 
 - Attempt to exploit, probe, or test vulnerabilities in the server infrastructure or other users' systems
-- Use automated tools, bots, or scripts to access the service without prior authorization from the core maintainers
+- Use automated tools, bots, or scripts to access the service without prior authorization from the [core maintainers](https://github.com/orgs/vacs-project/teams/core-maintainers)
 - Deliberately disrupt, degrade, or interfere with the service or the experience of other users
 - Impersonate other users or misrepresent your identity beyond the standard use of ATC callsigns
 - Use the service for any purpose unrelated to VATSIM ATC coordination
@@ -89,7 +89,7 @@ We reserve the right to determine, in our sole judgment, what constitutes unacce
 
 ## 8. Right to Terminate Access
 
-The core maintainers reserve the right, at their sole discretion, to **deny, suspend, or revoke** any user's access to the Official Servers at any time, with or without notice, for any reason, including but not limited to:
+The [core maintainers](https://github.com/orgs/vacs-project/teams/core-maintainers) reserve the right, at their sole discretion, to **deny, suspend, or revoke** any user's access to the Official Servers at any time, with or without notice, for any reason, including but not limited to:
 
 - Violation of these terms or the acceptable use provisions in [Section 7](#7-acceptable-use)
 - Conduct that is harmful to other users, the service, or the project

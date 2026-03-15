@@ -12,7 +12,7 @@ title: Privacy & Data Handling Policy
 
 This Privacy & Data Handling Policy ("Policy") describes how the **vacs** (VATSIM ATC Communication System) project collects, processes, stores, and protects personal data when you use our software, services, and website.
 
-vacs is a free, open-source, cross-platform ground-to-ground voice coordination tool designed for air traffic controllers on the [VATSIM](https://vatsim.net) flight simulation network. The project is developed and maintained by a team of volunteer core maintainers. vacs is **not** a commercial product and is provided free of charge to all users. There is no legal entity behind the project; it is a personal open-source project.
+vacs is a free, open-source, cross-platform ground-to-ground voice coordination tool designed for air traffic controllers on the [VATSIM](https://vatsim.net) flight simulation network. The project is developed and maintained by a team of volunteer [core maintainers](https://github.com/orgs/vacs-project/teams/core-maintainers). vacs is **not** a commercial product and is provided free of charge to all users. There is no legal entity behind the project; it is a personal open-source project.
 
 This Policy is written in accordance with:
 
@@ -26,12 +26,12 @@ We are committed to transparency and to protecting your privacy. Because vacs is
 This Policy applies to:
 
 - The **vacs desktop application** (the "Client"), available for Windows, macOS, and Linux
-- The **official vacs signaling servers** operated by the core maintainers (collectively, the "Official Servers"; individually, a "Server"): the production instance at `vacs.network` and the development instance at `dev.vacs.network`
+- The **official vacs signaling servers** operated by the [core maintainers](https://github.com/orgs/vacs-project/teams/core-maintainers) (collectively, the "Official Servers"; individually, a "Server"): the production instance at `vacs.network` and the development instance at `dev.vacs.network`
 - The **vacs project website** at [vacs.network](https://vacs.network) and its subdomains, including the documentation at [docs.vacs.network](https://docs.vacs.network)
 
 ### 1.2 What This Policy Does Not Cover
 
-- **Self-hosted server instances.** vacs is designed to allow anyone to host their own signaling server. If you connect to a third-party or self-hosted vacs server, the operator of that server is solely responsible for their own data handling practices. This Policy covers only the Official Servers operated by the core maintainers.
+- **Self-hosted server instances.** vacs is designed to allow anyone to host their own signaling server. If you connect to a third-party or self-hosted vacs server, the operator of that server is solely responsible for their own data handling practices. This Policy covers only the Official Servers operated by the [core maintainers](https://github.com/orgs/vacs-project/teams/core-maintainers).
 - **Third-party services.** This Policy does not govern the data practices of VATSIM, Cloudflare, or any other third party. Where relevant, we link to their respective privacy policies.
 - **The vacs dataset repository.** The [vacs-data](https://github.com/vacs-project/vacs-data) repository contains only publicly available virtual air traffic control station and position definitions. It does not contain any personal data.
 
@@ -42,7 +42,7 @@ This Policy applies to:
 The data controller for processing activities described in this Policy is:
 
 **Nick Müller**  
-on behalf of the vacs project core maintainers
+on behalf of the vacs project [core maintainers](https://github.com/orgs/vacs-project/teams/core-maintainers)
 
 Contact for privacy inquiries: [privacy@vacs.network](mailto:privacy@vacs.network)
 
@@ -309,7 +309,7 @@ We implement appropriate technical and organizational measures to protect your p
 
 ### 10.2 Organizational Measures
 
-- **Access control:** Server access is restricted to core maintainers with a legitimate operational need.
+- **Access control:** Server access is restricted to [core maintainers](https://github.com/orgs/vacs-project/teams/core-maintainers) with a legitimate operational need.
 - **Infrastructure security:** Servers are hosted in Hetzner data centers in Germany, which comply with ISO 27001 and other security standards.
 - **Dependency management:** We use automated tools (Dependabot, cargo-deny) to monitor and update dependencies for known security vulnerabilities.
 
@@ -338,7 +338,7 @@ vacs is designed to be self-hostable. Anyone may operate their own vacs signalin
 - We have **no control over and accept no responsibility for** the data practices of third-party server operators.
 - We encourage self-hosted server operators to publish their own privacy policies and to comply with applicable data protection regulations.
 
-The vacs Client allows users to configure which server they connect to. If you are unsure which server you are connected to, check your application settings. By default, you will automatically be connected to the Official Servers operated by the core maintainers, which are covered by this Policy.
+The vacs Client allows users to configure which server they connect to. If you are unsure which server you are connected to, check your application settings. By default, you will automatically be connected to the Official Servers operated by the [core maintainers](https://github.com/orgs/vacs-project/teams/core-maintainers), which are covered by this Policy.
 
 ---
 
