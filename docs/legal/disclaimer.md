@@ -5,8 +5,8 @@ title: Disclaimer & Terms of Use
 
 # Disclaimer & Terms of Use
 
-**Effective date:** March 13, 2026  
-**Last updated:** March 13, 2026
+**Effective date:** March 15, 2026  
+**Last updated:** March 15, 2026
 
 ## 1. Nature of the Project
 
@@ -145,4 +145,5 @@ These terms are governed by **Austrian law**. The courts of **Austria** have jur
 For any questions about these terms:
 
 **Email:** [privacy@vacs.network](mailto:privacy@vacs.network)  
+**PGP:** [`EE04 BCFE 87C9 57F1 03D4 6E98 BC2C 78DA 902B 1B2C`](https://keys.openpgp.org/search?q=EE04BCFE87C957F103D46E98BC2C78DA902B1B2C)  
 **GitHub:** [github.com/vacs-project/vacs](https://github.com/vacs-project/vacs)

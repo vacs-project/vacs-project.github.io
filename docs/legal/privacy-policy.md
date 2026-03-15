@@ -5,8 +5,8 @@ title: Privacy & Data Handling Policy
 
 # Privacy & Data Handling Policy
 
-**Effective date:** March 13, 2026  
-**Last updated:** March 13, 2026
+**Effective date:** March 15, 2026  
+**Last updated:** March 15, 2026
 
 ## 1. Introduction and Scope
 
@@ -44,7 +44,8 @@ The data controller for processing activities described in this Policy is:
 **Nick Müller**  
 on behalf of the vacs project [core maintainers](https://github.com/orgs/vacs-project/teams/core-maintainers)
 
-Contact for privacy inquiries: [privacy@vacs.network](mailto:privacy@vacs.network)
+Contact for privacy inquiries: [privacy@vacs.network](mailto:privacy@vacs.network)  
+PGP: [`EE04 BCFE 87C9 57F1 03D4 6E98 BC2C 78DA 902B 1B2C`](https://keys.openpgp.org/search?q=EE04BCFE87C957F103D46E98BC2C78DA902B1B2C)
 
 As a personal open-source project without a legal entity, the data controller is a natural person within the meaning of Article 4(7) GDPR. We are based in **Austria** and subject to the GDPR and the Austrian DSG.
 
@@ -389,6 +390,7 @@ In accordance with Article 5 GDPR, we adhere to the following principles in all 
 For any questions, concerns, or requests related to this Policy or our data handling practices:
 
 **Email:** [privacy@vacs.network](mailto:privacy@vacs.network)  
+**PGP:** [`EE04 BCFE 87C9 57F1 03D4 6E98 BC2C 78DA 902B 1B2C`](https://keys.openpgp.org/search?q=EE04BCFE87C957F103D46E98BC2C78DA902B1B2C)  
 **GitHub:** [github.com/vacs-project/vacs](https://github.com/vacs-project/vacs)
 
 We will respond to all privacy-related inquiries within **one month** of receipt, as required by Article 12(3) GDPR. If the request is complex, we may extend the response period by a further two months, in which case we will inform you of the extension within the initial one-month period.
