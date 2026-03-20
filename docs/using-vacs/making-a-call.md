@@ -59,7 +59,7 @@ style={{
 
 A successful connection is indicated by:
 
-- the **green connection indicator** in the top status bar  
+- the **green connection indicator** in the top status bar
 - optionally an **audible sound**, if enabled
 
 See [Top Status Bar](/interface/overview#top-status-bar) for more information about the status indicator.
@@ -67,6 +67,7 @@ See [Top Status Bar](/interface/overview#top-status-bar) for more information ab
 There may be a **short delay (approximately 150–200 ms)** before audio transmission becomes active while the call connection is established.
 
 ---
+
 ## Selecting a Call Source
 
 If you are covering multiple sectors simultaneously (as is often the case), vacs allows you to choose which **sector appears as the caller**.
@@ -92,11 +93,15 @@ The **call source** determines which **sector name** is shown to the recieving c
 
 :::note Recommended Practice
 
-It is recommended to select a **fixed call source** at the beginning of your session.  
+It is recommended to select a **fixed call source** at the beginning of your session.
 
 If necessary, you can temporarily change the call source for individual calls by selecting a different sector as **temporary call source** before initiating the call.
 
 If **no call source is explicitly selected**, vacs will use a **default identifier** for your station when placing calls. This identifier will be visible to the receiving controller instead of a specific sector.
+
+:::tip Automatic Default Call Source
+vacs can automatically set your default call source based on the position you are logged in with. This means you will typically not need to manually select a call source at the start of your session if your FIR's dataset is configured accordingly. If needed, this can be disabled in the [Call Settings](/settings/call).
+:::
 
 :::
 

@@ -21,6 +21,14 @@ Additionally, v2.1.0 exposes a **WebSocket-based remote control API** that third
 
 ---
 
+### Automatic default call source
+
+When connecting to a position, vacs can now **automatically set your default call source** based on the position you are logged in with. This is configured in the dataset by your vACC and means you no longer need to manually select a call source at the beginning of each session in most cases.
+
+If the automatic selection doesn't match your preference, you can still override it at any time by manually [selecting a different call source](/using-vacs/making-a-call#selecting-a-call-source). The feature can also be disabled entirely in the [Call Settings](/settings/call).
+
+---
+
 ### Station assignment on GEO page buttons
 
 Users of our GEO layout will be happy to know that buttons on the main page can now be directly assigned to stations, allowing for quick calls right from the geographic, customized layout. This gives FIR dataset maintainers additional flexibility in creating intuitive, custom call interfaces for their controllers.
@@ -30,6 +38,14 @@ Users of our GEO layout will be happy to know that buttons on the main page can 
 ### Token-based authentication for third-party clients
 
 Developers can now authenticate against the vacs signaling server using **VATSIM OAuth Access Tokens**, enabling fully custom third-party clients that integrate with the vacs backend without needing to run the vacs desktop application locally. This opens the door for community-built tools and alternative interfaces.
+
+---
+
+### Other improvements
+
+- **Clock now shows seconds** - The clock in the top status bar now displays seconds for more precise time tracking. A "zen mode" option is also available to show the date instead of seconds, reducing visual updates.
+- **Sorted telephone directory** - The [Telephone Directory](/interface/telephone#telephone-directory) is now sorted by position ID, making it easier to find specific stations.
+- **Persisted zoom level** - Your window zoom level is now saved and restored across restarts. Previously, adjusting the zoom with `Ctrl +` / `Ctrl -` would reset when you closed and reopened vacs.
 
 ---
 
@@ -108,7 +124,7 @@ These sounds can be toggled individually on the [Call](/settings/call) subpage o
 ### Priority calls
 
 You can now mark calls as **priority** when coordination is urgent. Priority calls appear visually distinct on the receiving end and trigger a more attention-grabbing ringtone to ensure they don't go unnoticed.  
-See the [Making a call](/using-vacs/making-a-call#priority-calls) section for details on how to initiate a priority call.
+See the [Making a call](/using-vacs/making-a-call#prio-calls) section for details on how to initiate a priority call.
 
 <img src="/img/tabbed/tabbed_incoming_call_prio.gif" alt="vacs Incoming Priority Call" className="screenshot" style={{ width: "80%" }} />
 
