@@ -65,7 +65,7 @@ Controllers can:
 - select a station from the list
 - initiate a call using the **Call** button
 
-The directory is populated automatically based on **conected clients**.
+The directory is populated automatically based on **connected clients** and sorted by **position ID**.
 
 ---
 
