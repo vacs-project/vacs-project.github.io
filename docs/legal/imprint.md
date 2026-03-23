@@ -10,7 +10,7 @@ Information obligation pursuant to Section 25 of the Austrian Media Act (_Medien
 ## Website Operator
 
 **Nick Müller**  
-on behalf of the vacs project [core maintainers](https://github.com/orgs/vacs-project/teams/core-maintainers)
+on behalf of the vacs project [core maintainers](https://github.com/vacs-project/vacs#core-maintainers)
 
 **Email:** [privacy@vacs.network](mailto:privacy@vacs.network)  
 **PGP:** [`EE04 BCFE 87C9 57F1 03D4 6E98 BC2C 78DA 902B 1B2C`](https://keys.openpgp.org/search?q=EE04BCFE87C957F103D46E98BC2C78DA902B1B2C)  
