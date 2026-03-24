@@ -5,7 +5,7 @@ sidebar_position: 2
 # Remote Control API
 
 :::info
-This page documents the technical details of the vacs remote control WebSocket API. If you're just looking to use vacs from a browser or different device, see [Remote Access](/using-vacs/remote-access) instead.
+This page documents the technical details of the vacs remote control WebSocket API. If you're just looking to use vacs from a browser or different device, see [Remote Control](/using-vacs/remote-control) instead.
 :::
 
 vacs exposes a WebSocket-based remote control API for programmatic interaction by external clients. The built-in browser frontend communicates through the same API - there is no separate internal protocol.
@@ -26,7 +26,7 @@ As of now, there are no guarantees of backward compatibility for this API. If yo
 ws://<host>:<port>/ws
 ```
 
-The default port is **9600**. The remote server must be explicitly enabled in the vacs configuration - see [Remote Access - Enabling remote access](/using-vacs/remote-access#enabling-remote-access).
+The default port is **9600**. The remote control server must be explicitly enabled in the vacs configuration - see [Remote Control - Enabling remote control](/using-vacs/remote-control#enabling-remote-control).
 
 ### Transport
 

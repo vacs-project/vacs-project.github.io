@@ -15,7 +15,7 @@ A complete list of changes is available in the [v2.1.0 release notes](https://gi
 
 The headline feature of v2.1.0: you can now **control vacs from a browser on any device**. Open the remote control URL on a tablet, a second monitor, or even your phone, and you get the full vacs interface - make and receive calls, change your settings and interact with the application - all without touching the main window.
 
-This is especially useful if you don't want to use your primary screen for coordination and want a dedicated panel on a separate screen or tablet. See the [Remote Access](/using-vacs/remote-access) guide to get started.
+This is especially useful if you don't want to use your primary screen for coordination and want a dedicated panel on a separate screen or tablet. See the [Remote Control](/using-vacs/remote-control) guide to get started.
 
 Additionally, v2.1.0 exposes a **WebSocket-based remote control API** that third-party tools and developers can use to interact with vacs programmatically. A detailed spec of the [Remote Control API](/advanced/remote-api) is available for developers.
 
@@ -43,7 +43,7 @@ Developers can now authenticate against the vacs signaling server using **VATSIM
 
 ### Other improvements
 
-- **Clock now shows seconds** - The clock in the top status bar now displays seconds for more precise time tracking. A "zen mode" option is also available to show the date instead of seconds, reducing visual updates.
+- **Clock now shows seconds** - The clock in the top status bar now displays seconds for more precise time tracking. Clicking the clock toggles between realtime updates (every second), a "zen" mode that only updates every 10 seconds, and the previous current day display.
 - **Sorted telephone directory** - The [Telephone Directory](/interface/telephone#telephone-directory) is now sorted by position ID, making it easier to find specific stations.
 - **Persisted zoom level** - Your window zoom level is now saved and restored across restarts. Previously, adjusting the zoom with `Ctrl +` / `Ctrl -` would reset when you closed and reopened vacs.
 

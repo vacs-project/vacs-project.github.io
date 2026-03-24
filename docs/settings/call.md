@@ -39,11 +39,6 @@ When enabled, priority calls are accepted.
 
 Priority calls can be distinguished from normal calls by a yellow border visible in the call-sequence, as well as a special sound.  They can be initiated by clicking the **PRIO** button before commencing a call.
 
-### Automatic default call source
-When enabled, vacs automatically sets your default call source based on the position you are logged in with. The first matching station defined in the dataset by your vACC and currently controlled by you is selected. You can still override this manually at any time.
-
-If disabled, no default call source is set automatically and you will need to select one yourself.
-
 ### Play call start sound
 When enabled, a notification sound is played when a call is successfully initiaed. This provide audible confirmation that the call has been successfully established.
 
@@ -57,3 +52,8 @@ If **Play Call Start Sound** is enabled, this state change is also confirmed aud
 
 ### Play call end sound
 When enabled, a notification sound is played when a call ends. This confirms that the call has been terminated.
+
+### Automatic default call source
+When enabled, vacs automatically sets your default call source based on the position you are logged in with. The first matching station defined in the dataset by your vACC and currently controlled by you is selected. You can still override this manually at any time.
+
+If disabled, no default call source is set automatically and you will need to select one yourself.

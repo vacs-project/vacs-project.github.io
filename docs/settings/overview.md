@@ -17,12 +17,12 @@ From here, you can adjust audio devices, volume levels, transmit behavior, key b
 src="/img/settings/overview.png"
 alt="vacs Settings Page"
 style={{
-    width: "80%",
-    display: "block",
-    margin: "1.5rem auto",
-    borderRadius: "8px",
-    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
-  }}
+      width: "80%",
+      display: "block",
+      margin: "1.5rem auto",
+      borderRadius: "8px",
+      boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+    }}
 />
 
 The Settings interface can be accessed via the button marked in yellow in the screenshot above.
@@ -53,7 +53,20 @@ Configure:
 
 ---
 
-### Key Bindings
+### Transmit Modes
+
+Define how vacs handles the transmission behavior:
+
+- Voice Activation
+- Push-to-talk
+- Push-to-mute
+- Radio Integration
+
+→ See [Transmit Modes](/settings/transmit)
+
+---
+
+### Hotkeys
 
 Customize:
 
@@ -66,16 +79,26 @@ Customize:
 
 ---
 
-### Transmit Modes
+### Call Settings
 
-Define how vacs handles the transmission behavior:
+Defines various call related behaviour and preferences, such as:
 
-- Voice Activation
-- Push-to-talk
-- Push-to-mute
-- Radio Integration
+- Visual highlights for incoming calls
+- Priority calls
+- Automatic default call source selection based on current position
+- Call sounds
 
-→ See [Transmit Modes](/settings/transmit)
+→ See [Call Settings](/settings/call)
+
+---
+
+### Advanced Settings
+
+Allows you to configure more advanced application behavior:
+
+- Remote control (see [Remote Control](/using-vacs/remote-control))
+
+→ See [Advanced Settings](/settings/advanced)
 
 ---
 
