@@ -104,7 +104,7 @@ In the figure above, examples are:
 
 Depending on the type of button (refer to Interface/Overview/Direct Access Page), clicking a button will initiate different actions.
 
-The available stations and layout are defined by your vACC dataset.
+The available stations, layout, and optional **custom background colors** for individual buttons are defined by your vACC dataset.
 
 ---
 

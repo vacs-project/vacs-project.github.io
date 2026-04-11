@@ -46,6 +46,7 @@ Configure:
 - Audio backend
 - Headset / output device
 - Microphone / input device
+- Speaker / notification device (optional, for ringtone and UI sounds)
 - Output and input volume levels
 - Notification (chime) and click sounds
 

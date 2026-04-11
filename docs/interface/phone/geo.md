@@ -146,7 +146,8 @@ This dataset specifies:
 - Which sectors appear on the GEO page
 - How they are grouped geographically
 - Which stations can be called from each page
+- Optional **custom background colors** for individual buttons, allowing visual grouping or highlighting of specific stations
 
-As a result, the layout may differ depending on the FIR or vACC configuration, or even the provieded configuration of the exact position you are staffing.
+As a result, the layout may differ depending on the FIR or vACC configuration, or even the provided configuration of the exact position you are staffing.
 
 If you are interested in contributing, reach out to us on our [vacs Discord server](https://discord.gg/yu2nyCKU3R).

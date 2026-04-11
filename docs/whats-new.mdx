@@ -5,6 +5,40 @@ sidebar_label: What's New
 
 # What's New
 
+## v2.2.0
+
+[v2.2.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.2.0) brings custom button colors, a dedicated speaker output for ringtones and UI sounds, improved list scrolling, and more reliable audio device handling.
+
+A complete list of changes is available in the [v2.2.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.2.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
+
+### Custom button colors
+
+Station buttons on both the [GEO](/interface/phone/geo) and [Tabbed](/interface/phone/tabbed) layouts can now display **custom background colors**. Dataset maintainers for your FIR can assign colors from a curated palette to individual buttons, making it easier to visually group or distinguish stations at a glance.
+
+---
+
+### Separate speaker device for ringtones and UI sounds
+
+You can now select a **separate audio output device** for ringtones/chimes and UI click sounds, allowing you to separate coordination audio from notifications.
+
+The new speaker device can be configured in the [Audio Settings](/settings/audio). If no separate speaker device is selected, all sounds will continue to play through your main headset output as before.
+
+---
+
+### Improved list scrolling
+
+Scrollable lists throughout vacs, such as the [Telephone Directory](/interface/telephone#telephone-directory) and the call history, now feature significantly improved scrolling. Holding a scroll button triggers **continuous scrolling** instead of requiring repeated clicks, and a visible **scrollbar** shows your current position within the list. You can also **drag the scrollbar** to quickly navigate through long lists.
+
+---
+
+### Improved audio device handling
+
+Audio device selection is now more reliable across application restarts. vacs now identifies devices by a **unique device ID** rather than just the device name, which prevents issues when multiple devices share similar names or when devices are reconnected in a different order. On Linux, ALSA device detection has also been improved to avoid issues with exclusive audio devices.
+
+Your existing device selections will be migrated automatically.
+
+---
+
 ## v2.1.0
 
 [v2.1.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.1.0) adds remote control support, new integration options for third-party developers, and several quality-of-life improvements.
