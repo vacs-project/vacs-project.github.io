@@ -42,7 +42,7 @@ Priority calls can be distinguished from normal calls by a yellow border visible
 ### Play call start sound
 When enabled, a notification sound is played when a call is successfully initiaed. This provide audible confirmation that the call has been successfully established.
 
-:::info Call Establishment Delay
+:::info[Call Establishment Delay]
 When initiating or receiving a call, there is a short delay of approximately **50–200 milliseconds** before the call is fully established.
 
 This delay is visually indicated by the **orange circle** in the top-left corner, which turns **green** once the connection is active.

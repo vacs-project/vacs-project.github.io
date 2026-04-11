@@ -29,7 +29,7 @@ The Settings interface can be accessed via the button marked in yellow in the sc
 
 It is divided into logical sections that group related configuration options.
 
-:::tip Best Practice
+:::tip[Best Practice]
 It is recommended to configure audio devices and key bindings before starting operational use of vacs to avoid communication issues during live sessions.
 :::
 

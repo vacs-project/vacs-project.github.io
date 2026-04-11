@@ -69,7 +69,7 @@ This mode integrates vacs with external radio communication software (e.g., Trac
 
 This allows you to seamlessly communicate on the radio frequency and coordinate on vacs using only one button assignment.
 
-:::tip Recommended Radio Client
+:::tip[Recommended Radio Client]
 For **Radio Integration**, the use of **[TrackAudio](https://github.com/pierr3/TrackAudio)** is recommended.
 
 TrackAudio provides reliable radio transmission handling and seamless integration with vacs.
@@ -119,7 +119,7 @@ style={{
 ### Radio Integration
 If you decide to use the **Radio Integration** option, you have to assign a push-to-talk key in the **Mode Part** (top part) of the **Transmit Config** dialog. You can assign a key, by clicking into the field next to your selected transmission mode, and then pressing your desired button-assignment once. This key will then act both as your Push-to-talk key on the Radio Frequency, and as your Push-to-talk key for coordination, if in a call, as described above. A key binding can be cleared by clicking the **✕** button next to the assignment field.
 
-:::warning Avoid Double PTT Assignment
+:::warning[Avoid Double PTT Assignment]
 When using **Radio Integration**, the configured transmit key in vacs must **not** be assigned as Push-to-Talk in your radio/audio client (e.g., TrackAudio).
 
 Assigning the same key in both applications can cause transmission conflicts, unintended behavior.
@@ -157,7 +157,7 @@ style={{
   }}
 />
 
-:::warning vacs must be running for Radio Integration
+:::warning[vacs must be running for Radio Integration]
 When **Radio Integration** mode is selected, vacs must be running during every controlling session.
 
 If vacs is not running, no radio transmissions will be triggered, and communication on radio frequencies will not be possible.

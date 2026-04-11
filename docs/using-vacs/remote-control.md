@@ -8,7 +8,7 @@ vacs includes a built-in remote control feature that lets you use the full vacs 
 
 This can be useful if you want to keep your primary screen free for your radar client while operating vacs from a secondary device.
 
-:::tip Quick Start
+:::tip[Quick Start]
 
 1. Enable remote control in settings (see [Enabling remote control](#enabling-remote-control))
 2. Open `http://<your-local-ip>:9600` in a browser on any device on the same network
@@ -74,7 +74,7 @@ Bookmark the URL on your secondary device for quick access in future sessions.
 - **No built-in authentication** - The remote control server does not require a password. Anyone on the same network who knows the address can connect. Only enable remote control on networks you trust.
 - **Single desktop instance** - Multiple browser clients can connect simultaneously, but they all control the same desktop application. Actions taken by one remote client are visible to all others.
 
-:::warning Security
+:::warning[Security]
 The remote control server has no authentication or encryption. Do **not** expose it to the public internet. Only use it on private, trusted networks (e.g. your home network or a VPN).
 :::
 

@@ -91,7 +91,7 @@ The call source can be selected on the relevant Direct Access Page. The sectors,
 
 The **call source** determines which **sector name** is shown to the recieving controller of your call. It is particularly useful, as the recipient of your call can directly identify, which precisely sector is calling.
 
-:::note Recommended Practice
+:::note[Recommended Practice]
 
 It is recommended to select a **fixed call source** at the beginning of your session.
 
@@ -99,7 +99,7 @@ If necessary, you can temporarily change the call source for individual calls by
 
 If **no call source is explicitly selected**, vacs will use a **default identifier** for your station when placing calls. This identifier will be visible to the receiving controller instead of a specific sector.
 
-:::tip Automatic Default Call Source
+:::tip[Automatic Default Call Source]
 vacs can automatically set your default call source based on the position you are logged in with. This means you will typically not need to manually select a call source at the start of your session if your FIR's dataset is configured accordingly. If needed, this can be disabled in the [Call Settings](/settings/call).
 :::
 

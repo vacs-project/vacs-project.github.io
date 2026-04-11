@@ -39,7 +39,7 @@ The default port is **9600**. The remote control server must be explicitly enabl
 
 The WebSocket endpoint does not perform any authentication or authorization. Access control is the responsibility of the network environment.
 
-:::warning Security
+:::warning[Security]
 Do not expose the remote server on untrusted networks. The connection is unencrypted (no TLS).  
 If you require additional security or must expose the server on a public network, forward the port through a reverse proxy that provides TLS termination and authentication.
 :::
@@ -67,7 +67,7 @@ Every message is a JSON object with a `type` field that identifies the message k
 | `event`    | Forwarded event matching an active subscription |
 | `pong`     | Keepalive acknowledgement                       |
 
-:::info Field naming convention
+:::info[Field naming convention]
 The wire protocol uses **`snake_case`** for command names (`audio_get_volumes`, `signaling_start_call`, etc.). However, command return values and event payloads use **`camelCase`** for their fields (e.g. `callId`, `positionId`, `clientPageSettings`). This is intentional - the payload schema matches the format used by the default Preact frontend.
 :::
 
@@ -215,7 +215,7 @@ Keepalive acknowledgement in response to a `ping`. Contains no additional fields
 }
 ```
 
-:::tip WebSocket-level Ping/Pong
+:::tip[WebSocket-level Ping/Pong]
 In addition to the application-level `ping`/`pong` messages above, the server also responds to **WebSocket protocol-level Ping frames** ([RFC 6455 §5.5.2](https://datatracker.ietf.org/doc/html/rfc6455#section-5.5.2)) with a matching Pong frame. Most WebSocket client libraries handle this transparently. Either mechanism can be used for keepalive.
 :::
 
@@ -287,7 +287,7 @@ Some commands are marked as **desktop only**[^desktop-only] and are unavailable 
 | `keybinds_set_binding`                                    | `code`: string?, `keybind`: [`Keybind`](#keybind)     | `null`                              | Set a specific keybind.                                |
 | `keybinds_get_radio_config`                               | -                                                     | [`RadioConfig`](#radioconfig)       | Get radio integration configuration.                   |
 | `keybinds_set_radio_config`                               | `radioConfig`: [`RadioConfig`](#radioconfig)          | `null`                              | Update radio integration configuration.                |
-| `keybinds_get_radio_state`                                | -                                                     | [`RadioState`](#radiostate-1)       | Get current radio state.                               |
+| `keybinds_get_radio_state`                                | -                                                     | [`RadioState`](#radiostate)       | Get current radio state.                               |
 | `keybinds_get_external_binding`                           | `keybind`: [`Keybind`](#keybind)                      | `string` \| `null`                  | Get the external (system-level) binding for a keybind. |
 | `keybinds_open_system_shortcuts_settings` [^desktop-only] | -                                                     | -                                   | Open the OS shortcut settings.                         |
 | `keybinds_reconnect_radio`                                | -                                                     | `null`                              | Reconnect the radio integration.                       |
@@ -380,7 +380,7 @@ Subscribe to events to receive real-time updates. Event names use a `domain:name
 | Event             | Payload                           | Description                                                                                |
 | ----------------- | --------------------------------- | ------------------------------------------------------------------------------------------ |
 | `error`           | [`FrontendError`](#frontenderror) | A general application error.                                                               |
-| `radio:state`     | [`RadioState`](#radiostate-1)     | Radio integration state changed.                                                           |
+| `radio:state`     | [`RadioState`](#radiostate)     | Radio integration state changed.                                                           |
 | `store:sync`      | `object`                          | A store state synchronization broadcast. Contains `{ "store": <string>, "state": <any> }`. |
 | `update:progress` | `number`                          | Application update download progress (0–100).                                              |
 
@@ -719,7 +719,7 @@ Returned by `keybinds_get_radio_config`. Accepted by `keybinds_set_radio_config`
 "AudioForVatsim" | "TrackAudio"
 ```
 
-### RadioState {#radiostate-1}
+### RadioState
 
 Returned by `keybinds_get_radio_state` and emitted with the `radio:state` event.
 

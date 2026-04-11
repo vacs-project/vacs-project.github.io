@@ -23,7 +23,7 @@ Since vacs authenticates through [VATSIM Connect](https://vatsim.dev/services/co
 - Required system libraries are automatically installed by your package manager when you install vacs via the provided .deb or .rpm packages
 - An ALSA-compatible audio backend is required. This is usually automatically satisfied if you're running PulseAudio or Pipewire, which most modern Linux desktops use by default. The suggested audio packages are also included as dependencies for our packages
 
-:::note Wayland users
+:::note[Wayland users]
 If you're running a Wayland-based desktop (common on recent GNOME and KDE setups), there are some known issues and limitations. See the [Wayland](/known-issues-limitations/wayland) section of the [Known Issues & Limitations](/known-issues-limitations) page for details.  
 X11 support is currently limited.
 :::
@@ -34,7 +34,7 @@ X11 support is currently limited.
 - Both Intel and Apple Silicon Macs are supported
 - On first launch, macOS will ask you to grant microphone access, input monitoring, and accessibility permissions. All three are required for vacs to fully function
 
-:::warning macOS security notice
+:::warning[macOS security notice]
 Current vacs releases are not code-signed with an Apple certificate, so macOS will flag the app as "corrupted" when you try to open it for the first time. See [Installation](/getting-started/installation#macos) for instructions on how to bypass this warning and open the app successfully.
 :::
 

@@ -123,7 +123,7 @@ style={{
 
 In Progress.
 
-:::warning macOS Code Signing Notice
+:::warning[macOS Code Signing Notice]
 
 Our macOS releases are currently not code signed and may therefore be automatically flagged as **"corrupted"** by macOS.
 

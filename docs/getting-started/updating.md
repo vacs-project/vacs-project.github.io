@@ -57,7 +57,7 @@ vacs will then automatically:
 - install the update,
 - restart and launch the updated application.
 
-:::tip Best Practice
+:::tip[Best Practice]
 It is always recommended to keep vacs up to date to ensure:
 
 - bug fixes,
@@ -65,7 +65,7 @@ It is always recommended to keep vacs up to date to ensure:
 - access to new features.
   :::
 
-:::warning Version 1.x No Longer Supported
+:::warning[Version 1.x No Longer Supported]
 vacs version 1.x is no longer supported.
 
 Users running v1 will have to update to the latest available version before continuing to use vacs. This is due to significant changes in the underlying protocol and call routing made in v2.0.0. You can find more details about these changes in the [What's New](/whats-new) page.

@@ -73,7 +73,7 @@ PRIO-Calls can be disabled, see [Call Settings](/settings/call).
 
 ### Direct Access Page
 
-:::info Terminology Definition
+:::info[Terminology Definition]
 
 For clarity within this documentation, the following terms are used:
 
