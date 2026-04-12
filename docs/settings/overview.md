@@ -43,7 +43,6 @@ The following subsections provide detailed explanations of each configuration ar
 
 Configure:
 
-- Audio backend
 - Headset / output device
 - Microphone / input device
 - Speaker / notification device (optional, for ringtone and UI sounds)
@@ -98,6 +97,7 @@ Defines various call related behaviour and preferences, such as:
 Allows you to configure more advanced application behavior:
 
 - Remote control (see [Remote Control](/using-vacs/remote-control))
+- Audio backend
 
 → See [Advanced Settings](/settings/advanced)
 

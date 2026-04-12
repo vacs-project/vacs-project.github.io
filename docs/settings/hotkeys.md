@@ -13,7 +13,7 @@ The **Hotkeys Config** Menu allows you to assign keyboard shortcuts for common a
 The **Hotkeys Config** Menu can be accessed from the settings page, by clicking the **Hotkeys** button.
 
 <img
-src="/img/settings/Hotkeys.png"
+src="/img/settings/HotkeysConfig.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -39,7 +39,7 @@ Click the **✕** button on the right side of the row to remove the assigned key
 :::
 
 <img
-src="/img/settings/KeyBindings.png"
+src="/img/settings/HotkeysConfigPage.png"
 alt="vacs Settings Page"
 style={{
     width: "45%",

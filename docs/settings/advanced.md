@@ -13,6 +13,20 @@ The **Advanced Settings** Menu allows you to change various settings that are no
 The **Advanced Settings** Menu can be accessed from the settings page, by clicking the **Advanced** button.
 
 <img
+src="/img/settings/AdvancedConfig.png"
+alt="vacs Settings Page"
+style={{
+    width: "80%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
+
+---
+
+<img
 src="/img/settings/AdvancedConfigPage.png"
 alt="vacs Settings Page"
 style={{
@@ -41,3 +55,7 @@ The IP and port vacs should listen on for incoming remote control connections. B
 For sake of convenience, you can also just specify the IP (without port) and vacs will use the default port 9600.
 
 See [Changing the listen address and port](/using-vacs/remote-control#changing-the-listen-address-or-port) for more details and examples.
+
+## Audio backend
+
+The **Audio Backend** section allows you to configure the audio backend (by default WASAPI for Windows, ALSA for Linux and CoreAudio for macOS) used by vacs. This setting was moved from the main settings page into the advanced settings menu.
