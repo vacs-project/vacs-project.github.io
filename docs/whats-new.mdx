@@ -5,6 +5,45 @@ sidebar_label: What's New
 
 # What's New
 
+## v2.3.0
+
+[v2.3.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.3.0) introduces TrackAudio radio integration, call status tracking in the history list, and several stability fixes.
+
+A complete list of changes is available in the [v2.3.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.3.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
+
+### TrackAudio radio integration
+
+vacs now includes a dedicated **[Radio page](/interface/radio)** that connects to [TrackAudio](https://github.com/pierr3/TrackAudio) and lets you manage your radio stack without leaving the vacs window. From the Radio page you can see all currently tuned frequencies, toggle receive and transmit on individual frequencies, and manage your station list - all in one place.
+
+The Radio page is only available when TrackAudio is running and connected. If you are using Audio for VATSIM (AFV) directly, the page remains inactive.
+
+---
+
+### Login confirmation page
+
+After completing VATSIM Connect login in the browser, you are now shown a clear **confirmation page** confirming that login was successful, instead of a blank screen.
+
+---
+
+### Call status in the call history
+
+The call history list now shows the **outcome of each call** at a glance. Each entry is marked as accepted, rejected, or not answered.
+
+---
+
+### Bug fixes
+
+- **DA keys not callable until reconnect** - Fixed a server-side issue where station coverage was not correctly updated when a controller changed position, causing neighboring controllers to see your DA keys as inactive until a reconnect. This was a persistent issue that continued to affect some setups after v2.1.0.
+- **Empty stations list when connecting early** - Connecting before the VATSIM datafeed had registered your own frequency no longer results in an empty initial stations list, further improving the online state of other controllers around you.
+- **"Use default call sources" not applied on first startup** - The automatic default call sources setting now correctly takes effect when connecting for the very first time after a fresh install.
+- **DA subpage buttons missing color** - Buttons on DA key subpages now correctly display their assigned background color.
+- **UI freezes on Linux (Wayland)** - Fixed random interface freezes when running vacs under a Wayland compositor.
+- **Missing call sounds after reconnect** - Call start and end sounds now play correctly when a reconnect happens during an active call.
+- **Audio device fallback** - Fixed an issue where the playback device fallback logic could select the wrong output when the primary device became unavailable.
+- **Call display not updating on remote control** - Fixed the active call display on the remote control not clearing correctly when a call ended with an error.
+
+---
+
 ## v2.2.0
 
 [v2.2.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.2.0) brings custom button colors, a dedicated speaker output for ringtones and UI sounds, improved list scrolling, and more reliable audio device handling.
