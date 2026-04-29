@@ -1,9 +1,5 @@
 {
   "label": "Phone",
   "position": 2,
-  "collapsed": true,
-  "link": {
-    "type": "doc",
-    "id": "interface/phone/index"
-  }
+  "collapsed": true
 }

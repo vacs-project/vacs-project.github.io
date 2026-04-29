@@ -87,7 +87,8 @@ style={{
 
 Each entry contains:
 
-- **Call direction** (IN or OUT)
+- **Call direction and state** (green = incoming; blue = outgoing)
+  - If the state contains a red x, the call did not establish
 - **Time of the call**
 - **Name of the station**
 - **Telephone number**(= VATSIM CID)
