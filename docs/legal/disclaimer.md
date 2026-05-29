@@ -6,13 +6,13 @@ title: Disclaimer & Terms of Use
 # Disclaimer & Terms of Use
 
 **Effective date:** March 15, 2026  
-**Last updated:** March 23, 2026
+**Last updated:** May 29, 2026
 
 ## 1. Nature of the Project
 
 **vacs** (VATSIM ATC Communication System) is a free, open-source software project maintained by a team of volunteer contributors. It is a personal project with no legal entity, commercial backing, or organizational support behind it. vacs is not affiliated with, endorsed by, or officially connected to VATSIM or any other organization.
 
-These terms apply to the vacs desktop application, the official vacs signaling servers (the "Official Servers", production at `vacs.network` and development at `dev.vacs.network`), the vacs project website at [vacs.network](https://vacs.network) and its subdomains (including [docs.vacs.network](https://docs.vacs.network)).
+These terms apply to the vacs desktop application, the official vacs servers (the "Official Servers", production signaling at `vacs.network`, development signaling at `dev.vacs.network`, and STUN/TURN at `stun.vacs.network` and `turn.vacs.network`), the vacs project website at [vacs.network](https://vacs.network) and its subdomains (including [docs.vacs.network](https://docs.vacs.network)).
 
 ---
 
@@ -65,7 +65,7 @@ This limitation applies whether the alleged liability is based on contract, tort
 
 By using vacs, you acknowledge and agree that:
 
-- You use the software and connect to the Official Servers **entirely at your own risk**.
+- You use the software and connect to the Official Servers or any related services **entirely at your own risk**.
 - The [core maintainers](https://github.com/vacs-project/vacs#core-maintainers) are **volunteers** who maintain this project in their free time and are not obligated to provide support, updates, or fixes.
 - The software may contain bugs, errors, or security vulnerabilities. While we strive for quality, we cannot guarantee that the software is free of defects.
 - **Audio communications** are peer-to-peer. Your IP address may be visible to other call participants. See our [Privacy & Data Handling Policy](/legal/privacy-policy#33-ip-addresses) for details.
@@ -89,20 +89,20 @@ We reserve the right to determine, in our sole judgment, what constitutes unacce
 
 ## 8. Right to Terminate Access
 
-The [core maintainers](https://github.com/vacs-project/vacs#core-maintainers) reserve the right, at their sole discretion, to **deny, suspend, or revoke** any user's access to the Official Servers at any time, with or without notice, for any reason, including but not limited to:
+The [core maintainers](https://github.com/vacs-project/vacs#core-maintainers) reserve the right, at their sole discretion, to **deny, suspend, or revoke** any user's access to the Official Servers or any related services at any time, with or without notice, for any reason, including but not limited to:
 
 - Violation of these terms or the acceptable use provisions in [Section 7](#7-acceptable-use)
 - Conduct that is harmful to other users, the service, or the project
 - Requests from VATSIM or legal authorities
 - Technical or operational necessity
 
-No right of access to the Official Servers is guaranteed. As vacs is self-hostable, affected users may operate their own server instances.
+No right of access to the Official Servers or any related services is guaranteed. As vacs is self-hostable, affected users may operate their own server instances.
 
 ---
 
 ## 9. Third-Party Services
 
-vacs relies on third-party services (VATSIM Connect, Cloudflare TURN) that are outside our control. We are not responsible for the availability, performance, or conduct of these services. Changes to third-party services may affect the functionality of vacs, and we cannot guarantee uninterrupted compatibility.
+vacs relies on VATSIM Connect for authentication, which is a third-party service outside our control. We are not responsible for the availability, performance, or conduct of VATSIM Connect. Changes to VATSIM Connect may affect the functionality of vacs, and we cannot guarantee uninterrupted compatibility.
 
 ---
 

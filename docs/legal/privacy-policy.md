@@ -6,7 +6,7 @@ title: Privacy & Data Handling Policy
 # Privacy & Data Handling Policy
 
 **Effective date:** March 15, 2026  
-**Last updated:** March 23, 2026
+**Last updated:** May 29, 2026
 
 ## 1. Introduction and Scope
 
@@ -26,13 +26,13 @@ We are committed to transparency and to protecting your privacy. Because vacs is
 This Policy applies to:
 
 - The **vacs desktop application** (the "Client"), available for Windows, macOS, and Linux
-- The **official vacs signaling servers** operated by the [core maintainers](https://github.com/vacs-project/vacs#core-maintainers) (collectively, the "Official Servers"; individually, a "Server"): the production instance at `vacs.network` and the development instance at `dev.vacs.network`
+- The **official vacs servers** operated by the [core maintainers](https://github.com/vacs-project/vacs#core-maintainers) (collectively, the "Official Servers"; individually, a "Server"): the production signaling instance at `vacs.network`, the development signaling instance at `dev.vacs.network`, and the STUN/TURN servers at `stun.vacs.network` and `turn.vacs.network`
 - The **vacs project website** at [vacs.network](https://vacs.network) and its subdomains, including the documentation at [docs.vacs.network](https://docs.vacs.network)
 
 ### 1.2 What This Policy Does Not Cover
 
 - **Self-hosted server instances.** vacs is designed to allow anyone to host their own signaling server. If you connect to a third-party or self-hosted vacs server, the operator of that server is solely responsible for their own data handling practices. This Policy covers only the Official Servers operated by the [core maintainers](https://github.com/vacs-project/vacs#core-maintainers).
-- **Third-party services.** This Policy does not govern the data practices of VATSIM, Cloudflare, or any other third party. Where relevant, we link to their respective privacy policies.
+- **Third-party services.** This Policy does not govern the data practices of VATSIM, Hetzner, GitHub, or any other third party. Where relevant, we link to their respective privacy policies.
 - **The vacs dataset repository.** The [vacs-data](https://github.com/vacs-project/vacs-data) repository contains only publicly available virtual air traffic control station and position definitions. It does not contain any personal data.
 
 ---
@@ -77,22 +77,24 @@ When you authenticate, a server-side session is created and stored in **Redis** 
 
 Your **IP address** is processed in the following contexts:
 
-| Context               | Purpose                                           | Retention                                                                                 |
-| --------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| Server access logs    | Service operation, debugging, abuse prevention    | 14 days                                                                                   |
-| WebSocket connections | Maintaining your real-time connection             | In-memory only (duration of connection)                                                   |
-| Cloudflare TURN relay | NAT traversal for WebRTC audio calls              | Subject to [Cloudflare's privacy policy](https://www.cloudflare.com/en-gb/privacypolicy/) |
-| WebRTC peer-to-peer   | Direct audio connection between call participants | Not stored (transient, in-flight only)                                                    |
+| Context               | Purpose                                           | Retention                                  |
+| --------------------- | ------------------------------------------------- | ------------------------------------------ |
+| Server access logs    | Service operation, debugging, abuse prevention    | 14 days                                    |
+| WebSocket connections | Maintaining your real-time connection             | In-memory only (duration of connection)    |
+| coturn TURN relay     | NAT traversal for WebRTC audio calls              | In-memory only (duration of relay session) |
+| WebRTC peer-to-peer   | Direct audio connection between call participants | Not stored (transient, in-flight only)     |
 
 :::warning[Important: IP Visibility in Peer-to-Peer Calls]
-Due to the nature of **WebRTC** peer-to-peer technology, your IP address may be visible to the other participant(s) in a call. This is an inherent property of direct peer-to-peer communication and cannot be prevented by vacs. When a TURN relay is used (as a fallback when all other direct connection attempts fail), audio traffic is relayed through the TURN server, which may reduce direct IP exposure between peers, but your IP address is then visible to the TURN server operator (by default, Cloudflare).
+Due to the nature of **WebRTC** peer-to-peer technology, your IP address may be visible to the other participant(s) in a call. This is an inherent property of direct peer-to-peer communication and cannot be prevented by vacs. When a TURN relay is used (as a fallback when all other direct connection attempts fail), audio traffic is relayed through our TURN server, which may reduce direct IP exposure between peers. The TURN server is operated by the vacs core maintainers on Hetzner infrastructure we control - your IP address is not exposed to any third party as a result of TURN relay usage.
+
+If you prefer to use different STUN/TURN servers, you may configure custom ones in the vacs WebRTC config file.
 :::
 
 ### 3.4 Audio Data
 
 **vacs does not record, store, or transmit audio through the Server.** All voice communication is **direct peer-to-peer** between call participants using WebRTC. Audio data never passes through the vacs signaling server. No audio recordings are made at any point.
 
-When a direct peer-to-peer connection cannot be established, audio traffic may be **relayed through a TURN server** (by default, Cloudflare's Realtime TURN Service). In this case, the audio data passes through the TURN server encrypted in transit but is not recorded or stored. See [Section 7.2](#72-cloudflare-turn-service) for details.
+When a direct peer-to-peer connection cannot be established, audio traffic may be **relayed through a TURN server** operated by the vacs core maintainers (a self-hosted [coturn](https://github.com/coturn/coturn) instance running on Hetzner infrastructure). In this case, the audio data passes through the TURN server encrypted in transit but is not recorded or stored.
 
 ---
 
@@ -107,7 +109,7 @@ Under Article 6(1) GDPR, every processing activity requires a legal basis. The f
 | Session cookie                          | **Contract performance** (Art. 6(1)(b)) | Strictly necessary for session management. Exempt from consent requirements under the ePrivacy Directive (see [Section 9](#9-cookies)).                                                                                                      |
 | IP addresses in server logs             | **Legitimate interest** (Art. 6(1)(f))  | Necessary for server security, abuse prevention, and debugging. Our interest in maintaining a secure and operational service outweighs the minimal intrusion, especially given the 14-day retention limit.                                   |
 | IP visibility via WebRTC                | **Contract performance** (Art. 6(1)(b)) | Inherent to the peer-to-peer technology that enables low-latency voice communication, which is the core purpose of the service.                                                                                                              |
-| Cloudflare TURN relay                   | **Contract performance** (Art. 6(1)(b)) | Provides fallback connectivity when direct peer-to-peer connections are not possible. Users may opt out by configuring alternative STUN/TURN servers (see [Section 7.2](#72-cloudflare-turn-service)).                                       |
+| Self-hosted TURN relay                  | **Contract performance** (Art. 6(1)(b)) | Provides fallback connectivity when direct peer-to-peer connections are not possible. The TURN server is operated by the vacs core maintainers on infrastructure we control; no data is shared with any third party as a result of TURN relay usage.       |
 
 ### 4.1 Legitimate Interest Balancing
 
@@ -219,29 +221,13 @@ VATSIM is an independent third party. Their processing of your data is governed 
 
 - [VATSIM Privacy and Data Handling Policy](https://vatsim.net/docs/policy/data-protection-and-handling-policy)
 
-### 7.2 Cloudflare TURN Service
+### 7.2 Hetzner (Server Hosting)
 
-By default, vacs uses **Cloudflare's Realtime TURN Service** to provide NAT traversal capabilities for WebRTC audio calls. TURN (Traversal Using Relays around NAT) servers relay audio traffic when a direct peer-to-peer connection cannot be established.
-
-When the Cloudflare TURN service is used:
-
-- Your **IP address** is visible to Cloudflare
-- **Audio data** may be relayed through Cloudflare's infrastructure (encrypted in transit)
-- Cloudflare may process this data in accordance with their own privacy practices
-
-Cloudflare's data processing is governed by:
-
-- [Cloudflare Privacy Policy](https://www.cloudflare.com/en-gb/privacypolicy/)
-
-**You may opt out of using Cloudflare's TURN service** by configuring alternative STUN/TURN servers in the vacs application settings. If you do so, no data will be sent to Cloudflare. See the [configuration documentation](/advanced/configuration) for details.
-
-### 7.3 Hetzner (Server Hosting)
-
-The Official Servers are hosted in **Hetzner** data centers located in **Nuremberg, Germany**. Hetzner acts as a data processor. Hetzner's data processing is governed by:
+The Official Servers and the TURN server are hosted in **Hetzner** data centers located in **Nuremberg, Germany**. Hetzner acts as a data processor. Hetzner's data processing is governed by:
 
 - [Hetzner Data Privacy Policy](https://www.hetzner.com/legal/privacy-policy/)
 
-### 7.4 GitHub Pages (Documentation Hosting)
+### 7.3 GitHub Pages (Documentation Hosting)
 
 The documentation website at [docs.vacs.network](https://docs.vacs.network) is hosted on **GitHub Pages**, a static site hosting service provided by GitHub, Inc. (a subsidiary of Microsoft Corporation). When you visit the documentation website, GitHub may process your **IP address** and standard HTTP request metadata (such as your browser's user agent string) as part of serving the pages.
 
@@ -253,13 +239,9 @@ We do not have access to any visitor data collected by GitHub Pages. GitHub's da
 
 ## 8. International Data Transfers
 
-The Official Servers are located in **Nuremberg, Germany** (European Union). For users within the European Economic Area (EEA), your data remains within the EU during server-side processing.
+The Official Servers and the TURN server are located in **Nuremberg, Germany** (European Union), all operated on Hetzner infrastructure. For users within the European Economic Area (EEA), your data remains within the EU during all server-side processing, including any TURN relay sessions.
 
-### 8.1 Cloudflare
-
-Cloudflare, Inc. is headquartered in the United States but operates a global network, including infrastructure within the EU. When the Cloudflare TURN service is used, your data may be processed in locations outside the EEA. Cloudflare is bound by the **Data Privacy Framework (DPF)** for international data transfers. You may opt out of Cloudflare processing by configuring alternative STUN/TURN servers as described in [Section 7.2](#72-cloudflare-turn-service).
-
-### 8.2 WebRTC Peer-to-Peer
+### 8.1 WebRTC Peer-to-Peer
 
 Due to the peer-to-peer nature of WebRTC, audio data and IP addresses are exchanged **directly between call participants**. If you are calling a controller located in a different country, your audio data and IP address are transferred directly to that participant's device. These transfers are:
 
@@ -269,11 +251,11 @@ Due to the peer-to-peer nature of WebRTC, audio data and IP addresses are exchan
 
 As the vacs project cannot control where individual users are located, we cannot guarantee that peer-to-peer audio transfers will remain within any particular jurisdiction. By using vacs, you acknowledge that your audio data and IP address may be transferred to other users in countries outside the EEA that may not offer an equivalent level of data protection.
 
-### 8.3 VATSIM
+### 8.2 VATSIM
 
 When you authenticate via VATSIM Connect, you interact directly with VATSIM's servers, which may be located outside the EEA. This interaction is governed by VATSIM's own privacy policy and is not a data transfer initiated by vacs.
 
-### 8.4 GitHub Pages
+### 8.3 GitHub Pages
 
 GitHub, Inc. is headquartered in the United States. When you visit [docs.vacs.network](https://docs.vacs.network), your request may be served from GitHub's global infrastructure, which may include servers outside the EEA. GitHub is bound by the **Data Privacy Framework (DPF)** and other mechanisms as described in their privacy statement to provide appropriate safeguards for international data transfers.
 
