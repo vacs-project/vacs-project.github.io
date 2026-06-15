@@ -59,3 +59,9 @@ See [Changing the listen address and port](/using-vacs/remote-control#changing-t
 ## Audio backend
 
 The **Audio Backend** section allows you to configure the audio backend (by default WASAPI for Windows, ALSA for Linux and CoreAudio for macOS) used by vacs. This setting was moved from the main settings page into the advanced settings menu.
+
+## Playback
+
+### Enable radio playback
+
+When checked, vacs will record incoming TrackAudio radio transmissions and make them available for playback. Disabling this setting stops all future recordings and deletes all existing (non-exported) recordings.

@@ -5,6 +5,37 @@ sidebar_label: What's New
 
 # What's New
 
+## v2.4.0
+
+[v2.4.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.4.0) introduces radio transmission playback for TrackAudio, letting you replay recent radio communications directly in vacs.
+
+A complete list of changes is available in the [v2.4.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.4.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
+
+### Radio transmission playback
+
+vacs now lets you **replay recent TrackAudio radio transmissions** directly from the playback page. Once enabled in the [Advanced Settings](/settings/advanced), vacs records incoming radio transmissions while TrackAudio is running and connected. You can then play them back at any time using the full set of playback controls — play/pause, skip, rewind, and continuous playback mode.
+
+// TODO SCREENSHOT
+
+Exported recordings are saved to `%LOCALAPPDATA%\app.vacs.vacs-client\playback\saved` on Windows and `$XDG_DATA_HOME/app.vacs.vacs-client/playback/saved` (or `$HOME/.local/share/app.vacs.vacs-client/playback/saved`) on Linux.
+
+:::note
+Playback functionality is only available on Windows and Linux systems using PipeWire. macOS is not yet supported.
+:::
+
+---
+
+### Bug fixes
+
+- **Custom button border color contrast** - Custom button border colors now have improved contrast, making button states easier to distinguish visually.
+- **Volume preview on wrong device** - Fixed an issue where the volume preview sound played through the incorrect audio output device.
+- **Page navigation on menu open/close** - Fixed unintended page navigation triggered when opening or closing menus.
+- **Decimal values in GEO_PAGE_CONTAINER_SIZE** - The `GEO_PAGE_CONTAINER_SIZE` configuration parameter now correctly accepts decimal values.
+- **ATIS callsign support** - The radio page callsign validation now correctly recognizes callsigns with an ATIS suffix.
+- **Incorrect app data path on Windows** - Fixed an issue where vacs resolved application data to the roaming profile directory instead of the local app data directory on Windows.
+
+---
+
 ## v2.3.0
 
 [v2.3.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.3.0) introduces TrackAudio radio integration, call status tracking in the history list, and several stability fixes.
