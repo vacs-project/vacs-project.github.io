@@ -18,3 +18,11 @@ updates:
     rebase-strategy: auto
     versioning-strategy: increase
     labels: ["dependencies"]
+    groups:
+      docusaurus:
+        patterns:
+          - "@docusaurus/*"
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
