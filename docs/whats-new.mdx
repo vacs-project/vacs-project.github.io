@@ -13,14 +13,15 @@ A complete list of changes is available in the [v2.4.0 release notes](https://gi
 
 ### Radio transmission playback
 
-vacs now lets you **replay recent TrackAudio radio transmissions** directly from the playback page. Once enabled in the [Advanced Settings](/settings/advanced), vacs records incoming radio transmissions while TrackAudio is running and connected. You can then play them back at any time using the full set of playback controls — play/pause, skip, rewind, and continuous playback mode.
+vacs now lets you **replay recent TrackAudio radio transmissions** directly from the [Playback page](/interface/playback). Once enabled in the [Advanced Settings](/settings/advanced), vacs records incoming radio transmissions while TrackAudio is running and connected. You can then play them back at any time using the full set of playback controls — play/pause, skip, rewind, and continuous playback mode.
 
-// TODO SCREENSHOT
+<img src="/img/playback/playback_controls.gif" alt="Playback Controls Demo" className="screenshot" style={{ width: "80%" }} />
+
 
 Exported recordings are saved to `%LOCALAPPDATA%\app.vacs.vacs-client\playback\saved` on Windows and `$XDG_DATA_HOME/app.vacs.vacs-client/playback/saved` (or `$HOME/.local/share/app.vacs.vacs-client/playback/saved`) on Linux.
 
 :::note
-Playback functionality is only available on Windows and Linux systems using PipeWire. macOS is not yet supported.
+Playback functionality is only available on Windows and Linux systems using PipeWire. macOS is not supported.
 :::
 
 ---
