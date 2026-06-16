@@ -7,7 +7,7 @@ sidebar_label: What's New
 
 ## v2.4.0
 
-[v2.4.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.4.0) introduces radio transmission playback for TrackAudio, letting you replay recent radio communications directly in vacs.
+[v2.4.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.4.0) introduces radio transmission playback for TrackAudio, a fast couple mode for faster frequency coupling, and several bug fixes.
 
 A complete list of changes is available in the [v2.4.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.4.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
 
@@ -22,6 +22,14 @@ Exported recordings are saved to `%LOCALAPPDATA%\app.vacs.vacs-client\playback\s
 :::note
 Playback functionality is only available on Windows and Linux systems using PipeWire. macOS is not yet supported.
 :::
+
+---
+
+### Fast CPL
+
+The CPL button now supports a **Fast CPL** mode, configurable in the [Advanced Settings](/settings/advanced). Clicking **FAST CPL** immediately couples all TX-enabled frequencies at once, without entering Couple Mode first. The button label changes from **CPL** to **FAST CPL** when this mode is active.
+
+In addition, the default **Original** mode gains a new shortcut: **double-clicking CPL** while outside Couple Mode now also couples all TX-enabled frequencies at once.
 
 ---
 

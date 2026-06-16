@@ -65,3 +65,10 @@ The **Audio Backend** section allows you to configure the audio backend (by defa
 ### Enable radio playback
 
 When checked, vacs will record incoming TrackAudio radio transmissions and make them available for playback. Disabling this setting stops all future recordings and deletes all existing (non-exported) recordings.
+
+## Couple Mode
+
+Controls how the **CPL** button behaves when coupling frequencies.
+
+- **Original** — Click **CPL** to enter Couple Mode, then click an individual frequency to couple it. Click **CPL** again to exit Couple Mode. Double-clicking **CPL** while outside Couple Mode couples all TX-enabled frequencies at once.
+- **Fast** — Click **FAST CPL** to immediately couple all TX-enabled frequencies at once, without entering Couple Mode. The button label changes from **CPL** to **FAST CPL** to reflect this behavior.

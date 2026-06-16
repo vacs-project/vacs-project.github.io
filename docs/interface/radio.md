@@ -129,18 +129,13 @@ The headset and speaker devices playing the radio transmissions are **separate**
 
 ## Cross Coupling
 
-Cross coupling one or more frequencies can be achieved by clicking the **CPL** button and then clicking the desired frequency objects.
-When your done, click the **CPL** button again to finish the process.
+Two coupling modes are available, configurable in the [Advanced Settings](/settings/advanced).
 
-:::note
-Do not click the Rx, Tx or speaker button, but the left side of the frequency object.
-
-Cross coupling automatically enables Tx and Rx.
-:::
+**Original mode** — Click **CPL** to enter Couple Mode, then click the desired frequency objects one by one. Click **CPL** again to exit Couple Mode. You can also **double-click CPL** outside of Couple Mode to immediately couple all TX-enabled frequencies at once.
 
 <img
-src="/img/radio/radio_cross_couple.gif"
-alt="Frequency Cross Couple"
+src="/img/radio/radio_cross_couple_original.gif"
+alt="Frequency Cross Couple (Original mode)"
 style={{
     width: "80%",
     display: "block",
@@ -149,6 +144,30 @@ style={{
     boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
   }}
 />
+
+:::note
+In Original mode, do not click the Rx, Tx or speaker button when selecting frequencies to couple — click the left side of the frequency object instead.
+
+Cross coupling automatically enables Tx and Rx.
+:::
+
+---
+
+**Fast mode** — Click **FAST CPL** to immediately couple all TX-enabled frequencies at once, without entering Couple Mode. The button label changes from **CPL** to **FAST CPL** when this mode is active. To uncouple an individual frequency in Fast mode, toggle its **TX** off.
+
+<img
+src="/img/radio/radio_cross_couple_fast.gif"
+alt="Frequency Cross Couple (Original mode)"
+style={{
+    width: "80%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
+
+---
 
 A cross coupled frequency is indicated by two arrows next to the speaker.
 
