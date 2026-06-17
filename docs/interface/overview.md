@@ -136,9 +136,10 @@ The Radio button indicates the current state of the [radio integration](/setting
 
 
 #### CPL 
-This button is not implemented.
 
-_Remark: This button is only available if you are using the GEO-Page Layout._
+The CPL button is used to [cross couple](/interface/radio#cross-coupling) radio frequencies. See the [Radio page documentation](/interface/radio#cross-coupling) for a full explanation of how coupling works and the available modes.
+
+The functionality is only available if TrackAudio radio integration is used and a connection to TrackAudio is established.
 
 #### RADIO PRIO 
 This button allows you to prioritize Radio Calls while being in vacs-calls in certain transmit modes. For a more detailed explanation depending on your chosen transmit mode, please refer to [Transmit Modes](/settings/transmit).
