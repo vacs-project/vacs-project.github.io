@@ -5,7 +5,11 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: monthly
+      interval: weekly
+      day: monday
+      time: "06:00" # UTC
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 10
     rebase-strategy: auto
     labels: ["dependencies"]
@@ -13,7 +17,11 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: monthly
+      interval: weekly
+      day: monday
+      time: "06:00" # UTC
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 10
     rebase-strategy: auto
     versioning-strategy: increase
