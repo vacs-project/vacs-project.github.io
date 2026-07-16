@@ -3,9 +3,15 @@ sidebar_position: 3
 ---
 
 # Transmit Modes
-The **Transmit Config** section defines how your microphone behaves during calls and, depending on the selected mode, during radio transmissions.
+The **Transmit Config** section defines how your microphone behaves during calls, and independently, how vacs interacts with your radio client.
 
-Each transmission mode determines when your microphone is active and how it reacts to the assigned hotkey.
+As of **vacs 2.5.0**, these are two fully independent settings:
+- **Call Mic Mode** controls only how your microphone behaves during a vacs call.
+- **Radio Integration** configures only how vacs controls to your radio client (TrackAudio or Audio for VATSIM).
+
+:::info[What changed in 2.5.0]
+Previously, "Radio Integration" was one of the options in the **Call Mode** dropdown, meaning you had to give up Voice Activation or Push-to-Mute to use a radio integration. This is no longer the case: **Radio Integration is now always available**, no matter which Call Mic Mode you use. See [How Call Mic Mode and Radio Integration interact](#how-call-mic-mode-and-radio-integration-interact) below for the combined behavior, some of which is not entirely obvious.
+:::
 
 ---
 
@@ -15,19 +21,31 @@ The **Transmit Config** can be accessed from the settings page, by clicking the 
 <img
 src="/img/settings/TransmitConfig.png"
 alt="vacs Settings Page"
+class="screenshot"
 style={{
     width: "80%",
-    display: "block",
-    margin: "1.5rem auto",
-    borderRadius: "8px",
-    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
+
+The **Transmit Config** dialog is split into two independent parts:
+- **CALL MODE** (top) - your Call Mic Mode.
+- **RADIO INTEGRATION** (bottom) - your radio client integration, always enabled regardless of the Call Mic Mode chosen above.
+
+<img
+src="/img/settings/Transmit-VoiceActivation-None.png"
+alt="Transmit Config dialog showing Voice activation as Call Mic Mode and None as Radio Integration"
+class="screenshot"
+style={{
+    width: "80%",
   }}
 />
 
 ---
 
-## Available Modes
-There are multiple transmission modes available in vacs, allowing you, to facilitate different hardware constellations.
+## Call Mic Mode
+The **CALL MODE** dropdown (top part of the dialog) only affects your microphone during a vacs call. It no longer includes a radio-related option - radio behavior is fully configured separately, in [Radio Integration](#radio-integration).
+
+There are three Call Mic Modes:
 
 ### Voice Activation
 **Behavior during calls:**
@@ -42,126 +60,121 @@ Voice activation may transmit unintended background noise if your microphone isn
 While filtering of background noises is performed using this mode, the corresponding input-gate is very low, accordingly, background noises can be transmitted. Therefore, consider your microphone to be **permanently unmuted**.
 :::
 
+No key-binding is available or required in the **CALL MODE** part of the dialog for this mode.
 
 ### Push-to-Talk (PTT)
 **Behavior during calls:**
 - The microphone is **muted by default**.
 - Press and hold the assigned key to unmute your microphone and to speak.
 
-Audio is transmitted only while the corresponding key is pressed.
+Audio is transmitted only while the corresponding key is pressed. Assign a key by clicking into the field next to the mode dropdown and pressing your desired key once. Clear a binding with the **✕** button.
 
 ### Push-to-Mute
 **Behavior during calls:**
 - The microphone is **unmuted by default**.
 - Press and hold the assigned key to mute.
 
-This mode allows continuous transmission while providing the ability to temporarily mute when necessary.
+This mode allows continuous transmission while providing the ability to temporarily mute when necessary. Assign a key the same way as for Push-to-Talk.
 
-### Radio Integration
-This mode integrates vacs with external radio communication software (e.g., TrackAudio, Audio for VATSIM standalone client).
+:::tip[RADIO PRIO always affects your call mic]
+Regardless of whether a radio is configured, the **RADIO PRIO** button always acts on your call microphone according to the mode above: it mutes directly in Voice Activation, and it acts as a mute-lock in Push-to-Talk/Push-to-Mute (your key stops unmuting the mic while RADIO PRIO is on). This is true even with Radio Integration set to **None**.
 
-**Behavior:**
-- When **not in a call**:
-    - Press and hold the assigned key to transmit on the radio.
-- During a **call** (as soon as the connection is established)[^establish]:
-    - The assigned key behaves like a Push-to-Talk key within vacs, and does not transmit on the radio frequency.
-    - Toggling **RADIO PRIO** forces transmission on the radio frequency during a call.
-
-This allows you to seamlessly communicate on the radio frequency and coordinate on vacs using only one button assignment.
-
-:::tip[Recommended Radio Client]
-For **Radio Integration**, the use of **[TrackAudio](https://github.com/pierr3/TrackAudio)** is recommended.
-
-TrackAudio provides reliable radio transmission handling and seamless integration with vacs.
+RADIO PRIO also **never persists across calls** - it is automatically reset to off every time you leave a call.
 :::
-
-[^establish]: A call is considered to be established, as soon as the green circle in the top left corner (see Interface/Overview) is visible and/or the corresponding sound has been played.
 
 ---
 
-## Configuration of Transmit Modes
-Depending on your chosen Transmission Mode, different settings are nessecary in the **Transmit Config** window. 
+## Radio Integration
+The **RADIO INTEGRATION** dropdown (bottom part of the dialog) is now always enabled, independent of the Call Mic Mode chosen above. This is the main change in 2.5.0: you can use Voice Activation or Push-to-Mute for calls *and* still integrate with your radio client, which was not possible before.
 
-### Voice Activation
-If you decide to use **Voice Activation** no key-binding in the **Mode Part** (top part) of the **Transmit Config** dialog can be set.
+There are three options:
 
-The **Radio Integration** (lower part) of the **Transmit Config** dialog can be ignored.
+- **None**: No radio integration is configured. You can use vacs completely on its own.
+- **TrackAudio**: vacs can connect to your TrackAudio client to trigger transmissions, manage radio & frequency state and play back radio transmissions.
+- **Audio for VATSIM**: vacs simulates a key press for you to trigger a radio transmission in AFV. The radio page and playback recording are not available.
+
+:::warning[Audio for VATSIM is not available on Linux]
+The **Audio for VATSIM** integration relies on simulating a key press into the standalone AFV client, which is not supported on Linux. On Linux, only **None** and **TrackAudio** are available.
+:::
+
+### The Radio PTT key field
+Next to the Radio Integration dropdown is a key-capture field for your **Radio PTT** - the key that triggers a radio transmission. Its behavior depends on your **Call Mic Mode**:
+
+| Call Mic Mode | Radio PTT key field | Behavior |
+|---|---|---|
+| Voice Activation | Enabled, **must be set explicitly** | Shows **"Not bound"** until you assign a key. There is no call key to fall back to, so a key must be captured here for the radio integration to work. |
+| Push-to-Talk | Enabled, **optional** | Leave it empty to reuse your call PTT key - the field then shows that key in **light grey** as a placeholder. Capture a different key to make the radio operate independently of the call key. |
+| Push-to-Mute | **Disabled**, forced to the call key | Always shows (and uses) the same key as your call Push-to-Mute key. A distinct PTM for calls vs. radio is not supported, so the capture field is locked. |
 
 <img
-src="/img/settings/VoiceActivation.png"
-alt="vacs Settings Page"
+src="/img/settings/Transmit-VoiceActivation-TrackAudio.png"
+alt="Transmit Config dialog showing Voice activation as Call Mic Mode and TrackAudio as Radio Integration with an unbound radio key"
+class="screenshot"
 style={{
     width: "80%",
-    display: "block",
-    margin: "1.5rem auto",
-    borderRadius: "8px",
-    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
   }}
 />
 
-### Push-to-talk/Push-to-mute
-If you decide to use **Push-to-talk** or **Push-to-mute**, the relevant key has to be assigned in the **Mode Part** (top part) of the **Transmit Config** dialog. You can assign a key, by clicking into the field next to your selected transmission mode, and then pressing your desired button-assignment once. A key binding can be cleared by clicking the **✕** button next to the assignment field.
-
-The **Radio Integration** (lower part) of the **Transmit Config** dialog can be ignored.
-
 <img
-src="/img/settings/PTTPTM.png"
-alt="vacs Settings Page"
+src="/img/settings/Transmit-SamePTT-TrackAudio.png"
+alt="Transmit Config dialog showing Push-to-talk with key ControlLeft as Call Mic Mode and TrackAudio as Radio Integration, radio key field showing ControlLeft in light grey"
+class="screenshot"
 style={{
     width: "80%",
-    display: "block",
-    margin: "1.5rem auto",
-    borderRadius: "8px",
-    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
   }}
 />
 
-### Radio Integration
-If you decide to use the **Radio Integration** option, you have to assign a push-to-talk key in the **Mode Part** (top part) of the **Transmit Config** dialog. You can assign a key, by clicking into the field next to your selected transmission mode, and then pressing your desired button-assignment once. This key will then act both as your Push-to-talk key on the Radio Frequency, and as your Push-to-talk key for coordination, if in a call, as described above. A key binding can be cleared by clicking the **✕** button next to the assignment field.
+<img
+src="/img/settings/Transmit-DifferentPTT-TrackAudio.png"
+alt="Transmit Config dialog showing Push-to-talk with key ControlLeft as Call Mic Mode and TrackAudio as Radio Integration, radio key field explicitly bound to AltRight"
+class="screenshot"
+style={{
+    width: "80%",
+  }}
+/>
+
+<img
+src="/img/settings/Transmit-PTM-TrackAudio.png"
+alt="Transmit Config dialog showing Push-to-mute with key AltRight as Call Mic Mode and TrackAudio as Radio Integration, radio key field disabled and forced to AltRight"
+class="screenshot"
+style={{
+    width: "80%",
+  }}
+/>
 
 :::warning[Avoid Double PTT Assignment]
-When using **Radio Integration**, the configured transmit key in vacs must **not** be assigned as Push-to-Talk in your radio/audio client (e.g., TrackAudio).
-
-Assigning the same key in both applications can cause transmission conflicts, unintended behavior.
+The Radio PTT key (whether inherited from your call key or explicitly bound) must **not** also be assigned as Push-to-Talk in your radio/audio client (e.g., TrackAudio). Assigning the same key in both applications can cause transmission conflicts and unintended behavior.
 :::
 
-If you decide to use the **Radio Integration** option, the bottom part of the **Transmit Config** dialog, labelled **Radio Integration** also has to be configured correctly. This configuration is dependant on your choice of audio client:
-- If you are using the **Track Audio** client select the corresponding option in the drop-down dialog of the **Radio Integration** part of the **Transmit Config** window. In normal cases, this suffices.
-    - In this case, no distinct push-to-talk key has to be assigned in the Track Audio client. To avoid conflicts, we recommend to remove all push-to-talk key assignments in your Track Audio client.
-    
-<img
-src="/img/settings/RadioTA.png"
-alt="vacs Settings Page"
-style={{
-    width: "80%",
-    display: "block",
-    margin: "1.5rem auto",
-    borderRadius: "8px",
-    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
-  }}
-/>    
+### Setting up TrackAudio
+Select **TrackAudio** in the Radio Integration dropdown and configure your Radio PTT key as described above. No push-to-talk key needs to be assigned in the TrackAudio client itself - to avoid conflicts, we recommend removing all push-to-talk key assignments there.
 
-- If you are using the **Audio for VATSIM** standalone client select the corresponding action in the drop-down dialog of the **Radio Integration** part of the **Transmit Config** window. 
-    - Using this option is slightly more complicated. A pseudo-push-to-talk[^pseudo] key has to be assigned in the relevant field next to the drop-down-dialog, in which you selected your chosen client. Choose a key, which you do not use frequently while controlling. 
-    - Set this pseudo-push-to-talk key as your push-to-talk key in the Audio for VATSIM standalone client.
-    
-<img
-src="/img/settings/RadioAFV.png"
-alt="vacs Settings Page"
-style={{
-    width: "80%",
-    display: "block",
-    margin: "1.5rem auto",
-    borderRadius: "8px",
-    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
-  }}
-/>
+Connection status to TrackAudio is shown by the color of the endpoint indicator dot next to the **Endpoint** field, and by the color of the **Radio** status button shown in the explanatory text: green (idle, ready to receive), blue (receiving or transmitting), red (error/not connected), or grey (radio not ready).
+
+### Setting up Audio for VATSIM
+Select **Audio for VATSIM** in the Radio Integration dropdown. This option is slightly more involved: assign a pseudo-push-to-talk[^pseudo] key in the emit key field - choose a key you don't use frequently while controlling - and then set that **same** key as your push-to-talk key inside the Audio for VATSIM standalone client.
 
 :::warning[vacs must be running for Radio Integration]
-When **Radio Integration** mode is selected, vacs must be running during every controlling session.
-
-If vacs is not running, no radio transmissions will be triggered, and communication on radio frequencies will not be possible.
+Whenever a Radio Integration (TrackAudio or Audio for VATSIM) is selected, vacs must be running during every controlling session. If vacs is not running, no radio transmissions will be triggered, and communication on radio frequencies will not be possible.
 :::
 
-[^pseudo]: If the cases the activation of your main-push-to-talk key should trigger a transmission on the radio frequency, this button is (virtually) pressed by vacs, and thus, by it being set as PTT in the Audio for VATSIM standalone client, a transmission on the radio frequency is triggered.
+[^pseudo]: In cases where activating your radio PTT key should trigger a transmission on the radio frequency, this key is (virtually) pressed by vacs, and thus, by it being set as PTT in the Audio for VATSIM standalone client, a transmission on the radio frequency is triggered.
 
+---
+
+## How Call Mic Mode and Radio Integration interact
+Because the two settings are now independent, the same Radio Integration behaves differently depending on your Call Mic Mode - and in a couple of cases the result is not what you'd intuitively expect. The table below summarizes every combination when a Radio Integration (TrackAudio or Audio for VATSIM) is configured. If Radio Integration is **None**, only the Call Mic Mode column applies and RADIO PRIO behaves exactly as described in [Call Mic Mode](#call-mic-mode).
+
+| Call Mic Mode | Radio key | Outside a call | In a call - RADIO PRIO off | In a call - RADIO PRIO on |
+|---|---|---|---|---|
+| Voice Activation | explicit (required) | Radio key transmits on the radio. | Call mic stays open (VAD). The radio key **independently** transmits on the radio at the same time - it has no effect on your call mic. | Call mic is hard-muted. The radio key still transmits on the radio, independently of the mute. |
+| Push-to-Talk | shown in light grey (not explicitly bound) | Key transmits on the radio. | Key acts as your **call** PTT only; it does not touch the radio. | Key acts as your **radio** PTT only; the call mic stays muted the whole time. This reproduces the pre-2.5.0 "Radio Integration" call mode: one key, role switched by RADIO PRIO. |
+| Push-to-Talk | different from call key | Radio key transmits on the radio; call key has no effect (no call active). | Both keys work fully independently: call key for the call, radio key for the radio, at the same time if needed. | RADIO PRIO becomes a **mute-lock** on the call mic only - your call key stops unmuting it. The radio key is unaffected and keeps working normally. |
+| Push-to-Mute | forced = call key (locked) | Key transmits on the radio. | Pressing the key **mutes your call mic and transmits on the radio at the same time** - so the radio transmission is not heard in the call, because your mic is muted for as long as you hold the key. Releasing unmutes the call mic and stops the radio transmission. | The key keeps transmitting on the radio on every press, but the call mic **stays muted until you toggle RADIO PRIO off again** (releasing the key no longer unmutes it). |
+
+:::tip[Non-obvious behaviors to keep in mind]
+- **Voice Activation + radio**: your call mic is never muted by pressing the radio key. If your radio audio is audible near your microphone, it can leak into the call while your mic is open and if you transmit on frequency, your voice will be heard too - mute manually with RADIO PRIO if that matters.
+- **Push-to-Talk with the same key**: RADIO PRIO is what decides whether the key talks to the call or to the radio. Forgetting to toggle it is the most common cause of "I pressed PTT but nothing happened on frequency" (or vice versa).
+- **Push-to-Mute + radio**: this is the only mode where a single key press always does two things at once (mute state + radio transmission). Turning RADIO PRIO on effectively locks you muted in the call, even after releasing the key, until you turn it back off.
+- **RADIO PRIO does not persist across calls.** It always resets to off when a call ends, so you'll need to re-enable it (or re-check its state) at the start of each new call if you rely on it.
+:::
