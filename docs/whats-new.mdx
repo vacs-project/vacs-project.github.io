@@ -38,6 +38,7 @@ Only **RX** (received) transmissions are recorded, and support is limited: since
 ### Bug fixes
 
 - **Radio prio incorrectly set when ending a call while holding PTT** - Fixed an issue where ending a call while holding your PTT key, then starting a new call without releasing it, could incorrectly engage RADIO PRIO even though the key was originally pressed only for the call.
+- **Desktop state overwritten on remote connect** - Fixed an issue where the remote store sync could incorrectly overwrite the desktop state when a client connected.
 
 ---
 
