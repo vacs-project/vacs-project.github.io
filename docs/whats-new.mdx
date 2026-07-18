@@ -7,7 +7,7 @@ sidebar_label: What's New
 
 ## v2.5.0
 
-[v2.5.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.5.0) decouples radio integration from your call microphone mode, letting you combine any [Call Mic Mode](/settings/transmit#call-mic-mode) with any [Radio Integration](/settings/transmit#radio-integration).
+[v2.5.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.5.0) decouples radio integration from your call microphone mode, letting you combine any [Call Mic Mode](/settings/transmit#call-mic-mode) with any [Radio Integration](/settings/transmit#radio-integration), and extends radio transmission playback to Audio for VATSIM.
 
 A complete list of changes is available in the [v2.5.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.5.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
 
@@ -22,6 +22,22 @@ The **Transmit Config** dialog has been reworked to lift this restriction. The t
 The behavior of the radio PTT key and the **RADIO PRIO** button now depends on the combination of Call Mic Mode and Radio Integration you choose. See the [Transmit Modes](/settings/transmit#how-call-mic-mode-and-radio-integration-interact) documentation for a full breakdown of every combination.
 
 Your existing configuration is automatically migrated to the new format on update. This should carry your previous setup over correctly, but given the scope of this change, we recommend **checking your Transmit Config** after updating to make sure it still reflects the setup you expect.
+
+---
+
+### AudioForVatsim radio playback
+
+[Radio transmission playback](/interface/playback), introduced in v2.4.0 for TrackAudio, is now also available when using the **Audio for VATSIM** radio integration. Enable it the same way, in the [Advanced Settings](/settings/advanced#playback).
+
+:::note
+Only **RX** (received) transmissions are recorded, and support is limited: since AFV does not expose per-transmission metadata, recorded clips won't show a callsign or frequency. AudioForVatsim playback recording is also only available on **Windows**.
+:::
+
+---
+
+### Bug fixes
+
+- **Radio prio incorrectly set when ending a call while holding PTT** - Fixed an issue where ending a call while holding your PTT key, then starting a new call without releasing it, could incorrectly engage RADIO PRIO even though the key was originally pressed only for the call.
 
 ---
 

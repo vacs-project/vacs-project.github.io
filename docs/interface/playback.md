@@ -4,12 +4,14 @@ sidebar_position: 4
 
 # Playback Page
 
-The **Playback page** lets you review recent radio transmissions received while connected. It is opened by pressing the **PLAY BACK** button in the top function button row. Playback is only available when using the [TrackAudio](/settings/transmit#radio-integration-1) radio integration.
+The **Playback page** lets you review recent radio transmissions received while connected. It is opened by pressing the **PLAY BACK** button in the top function button row. Playback is only available when using the [TrackAudio](/settings/transmit#radio-integration) or [Audio for VATSIM](/settings/transmit#radio-integration) radio integration.
 
 :::note
-The Playback page must be enabled in the [Advanced Settings](/settings/advanced#playback) before use. Recording is only supported on Windows and Linux systems using PipeWire. macOS is not supported.
+The Playback page must be enabled in the [Advanced Settings](/settings/advanced#playback) before use. Recording via TrackAudio is supported on Windows and Linux systems using PipeWire; recording via Audio for VATSIM is supported on Windows only. macOS is not supported for either integration.
 
 Currently only received (Rx) radio transmissions are recorded; Tx recording will be supported in a future release. Phone calls are never recorded.
+
+Recordings made via Audio for VATSIM are limited: since AFV does not expose per-transmission metadata, these clips won't show a callsign or frequency (see the recording list below).
 :::
 
 <img
@@ -30,7 +32,7 @@ The recording list shows all captured transmissions in reverse chronological ord
 - Whether the transmission was received (**Rx**) or transmitted (**Tx**), supported in the future
 - The **time** of the transmission
 - The **duration** in seconds
-- The **callsign(s) and frequency** — if multiple callsigns were transmitting during a clip they are separated by pipes (e.g. `AUA123|AUA88\122.125`)
+- The **callsign(s) and frequency** — if multiple callsigns were transmitting during a clip they are separated by pipes (e.g. `AUA123|AUA88\122.125`). Clips recorded via Audio for VATSIM show `<UNKNOWN>` instead, since callsign and frequency information isn't available for that integration.
 
 Clicking an entry selects it for playback, export or deletion.
 
