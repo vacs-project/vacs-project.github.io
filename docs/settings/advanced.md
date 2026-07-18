@@ -64,7 +64,7 @@ The **Audio Backend** section allows you to configure the audio backend (by defa
 
 ### Enable radio playback
 
-When checked, vacs will record incoming TrackAudio radio transmissions and make them available for playback. Disabling this setting stops all future recordings and deletes all existing (non-exported) recordings.
+When checked, vacs will record incoming radio transmissions - via TrackAudio or Audio for VATSIM, depending on your [Radio Integration](/settings/transmit#radio-integration) - and make them available for playback. Disabling this setting stops all future recordings and deletes all existing (non-exported) recordings.
 
 ## Couple Mode
 
