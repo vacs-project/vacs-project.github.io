@@ -123,11 +123,11 @@ style={{
 />
 
 #### Radio 
-The Radio button indicates the current state of the [radio integration](/settings/transmit) and allows reconnecting when necessary. The button color and state reflect the current radio status.
+The Radio button indicates the current state of the [Radio Integration](/settings/transmit#radio-integration) and allows reconnecting when necessary. The button color and state reflect the current radio status.
 
 | Button Color    | Text Color | Enabled  | State                            | Description                                                                                                                                                                              |
 | --------------- | ---------- | -------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Gray            | Gray       | Disabled | Radio Integration not configured | Radio integration is not configured. This occurs when another transmit mode is selected or when the required radio key configuration is missing (e.g., no second key configured in AfV). |
+| Gray            | Gray       | Disabled | Radio Integration not configured | Radio Integration is set to **None**, or the required Radio PTT key is missing (e.g., no key captured for Voice Activation, or no pseudo-PTT key configured for Audio for VATSIM). |
 | Gray            | Black      | Disabled | Not connected                    | Radio integration is configured, but no connection to TrackAudio exists. *(In Audio for VATSIM this state usually does not occur.)*                                                      |
 | Gray            | Black      | Enabled  | Connected, no RX                 | A connection to the radio client exists, but no frequency is currently being received. *(In Audio for VATSIM this state usually does not occur.)*                                        |
 | Emerald         | Black      | Enabled  | Idle                             | At least one frequency is tuned and ready, but nobody is currently transmitting and you are not transmitting.                                                                            |
@@ -142,7 +142,7 @@ The CPL button is used to [cross couple](/interface/radio#cross-coupling) radio 
 The functionality is only available if TrackAudio radio integration is used and a connection to TrackAudio is established.
 
 #### RADIO PRIO 
-This button allows you to prioritize Radio Calls while being in vacs-calls in certain transmit modes. For a more detailed explanation depending on your chosen transmit mode, please refer to [Transmit Modes](/settings/transmit).
+This button always affects your call microphone according to your chosen [Call Mic Mode](/settings/transmit#call-mic-mode), and additionally couples with your [Radio Integration](/settings/transmit#radio-integration) if one is configured. For a full breakdown of every combination, please refer to [Transmit Modes](/settings/transmit#how-call-mic-mode-and-radio-integration-interact).
 
 #### Phone
 The Phone button provides quick navigation back to the main phone interface and indicates active phone communication.
