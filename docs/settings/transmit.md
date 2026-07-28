@@ -101,8 +101,8 @@ There are three options:
 - **TrackAudio**: vacs can connect to your TrackAudio client to trigger transmissions, manage radio & frequency state and play back radio transmissions.
 - **Audio for VATSIM**: vacs simulates a key press for you to trigger a radio transmission in AFV. The [radio page](/interface/radio) is not available. [Radio transmission playback](/interface/playback) is supported, but limited without callsign or frequency info, and only on Windows.
 
-:::warning[Audio for VATSIM is not available on Linux]
-The **Audio for VATSIM** integration relies on simulating a key press into the standalone AFV client, which is not supported on Linux. On Linux, only **None** and **TrackAudio** are available.
+:::warning[Audio for VATSIM is not available on Wayland]
+The **Audio for VATSIM** integration relies on simulating a key press into the standalone AFV client, which is not possible on Wayland-based Linux desktops. There, only **None** and **TrackAudio** are available. On X11 desktops, Audio for VATSIM works normally.
 :::
 
 ### The Radio PTT key field

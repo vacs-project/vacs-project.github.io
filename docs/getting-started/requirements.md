@@ -25,7 +25,7 @@ Since vacs authenticates through [VATSIM Connect](https://vatsim.dev/services/co
 
 :::note[Wayland users]
 If you're running a Wayland-based desktop (common on recent GNOME and KDE setups), there are some known issues and limitations. See the [Wayland](/known-issues-limitations/wayland) section of the [Known Issues & Limitations](/known-issues-limitations) page for details.  
-X11 support is currently limited.
+X11 desktops are fully supported, including global hotkeys and the Audio for VATSIM radio integration.
 :::
 
 ### macOS
