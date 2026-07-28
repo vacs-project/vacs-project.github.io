@@ -5,6 +5,24 @@ sidebar_label: What's New
 
 # What's New
 
+## v2.5.1
+
+[v2.5.1](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.5.1) is a patch release that fixes vacs failing to start on some Windows systems and makes vacs recover on its own when your default audio device changes.
+
+A complete list of changes is available in the [v2.5.1 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.5.1) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
+
+### Bug fixes
+
+- **vacs not starting on Windows** - Fixed vacs failing to start when your audio device reports more than two channels, which affected setups using SteelSeries Sonar and similar virtual audio devices. This only affected v2.5.0.
+- **Audio stopping after a device change** - Changing your default audio device in Windows no longer leaves vacs without audio. The affected audio stream is now rebuilt automatically, including when the default device changes several times in quick succession. Previously this could show an error and require a restart of vacs.
+- **Speaker problems ending calls** - A problem with your separate [speaker device](/settings/audio) no longer ends an active call. Only your main output device failing does.
+
+:::note
+Changing your **output device** in Windows settings while a call is active still ends that call. This is why vacs does not let you change audio devices in the settings during a call. If your system default output device changes on its own mid-call, for example because you unplug a headset, the call ends and you will need to place it again.
+:::
+
+---
+
 ## v2.5.0
 
 [v2.5.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.5.0) decouples radio integration from your call microphone mode, letting you combine any [Call Mic Mode](/settings/transmit#call-mic-mode) with any [Radio Integration](/settings/transmit#radio-integration), and extends radio transmission playback to Audio for VATSIM.
