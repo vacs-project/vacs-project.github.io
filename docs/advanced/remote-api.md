@@ -96,6 +96,8 @@ Dispatches a command to the desktop application. The server responds with a `res
 
 **Timeout:** Commands that do not resolve within **10 seconds** produce an error response with `"type": "urn:vacs:error:remote:timeout"`.
 
+**Unknown commands:** An unrecognized `cmd` value fails to parse and produces an error response with `"type": "urn:vacs:error:remote:invalid-message"`, correlated by the `id` field so the pending request is always settled.
+
 ### subscribe
 
 Registers a subscription for the specified event. Once subscribed, the server forwards all matching `event` messages to this connection.
@@ -111,7 +113,7 @@ Registers a subscription for the specified event. Once subscribed, the server fo
 | ------- | ------ | -------- | -------------------------------------------------- |
 | `event` | string | yes      | Event name to subscribe to. See [Events](#events). |
 
-No `response` is sent. Unrecognized event names are silently ignored.
+No `response` is sent. Unrecognized event names are dropped without any reply - the subscription simply never fires.
 
 ### unsubscribe
 
@@ -253,6 +255,11 @@ Some commands are marked as **desktop only**[^desktop-only] and are unavailable 
 | `app_get_client_page_settings`                      | -                                         | [`ClientPageSettings`](#clientpagesettings) | Get client page settings.                                                        |
 | `app_set_selected_client_page_config`               | `configName`: string?                     | `null`                                      | Set the active client page config.                                               |
 | `app_load_extra_client_page_config` [^desktop-only] | -                                         | -                                           | Load extra client page config from a file.                                       |
+| `app_get_version`                                   | -                                         | `string`                                    | Get the running application version.                                             |
+| `app_get_clock_mode`                                | -                                         | [`ClockMode`](#clockmode)                   | Get the clock display mode.                                                      |
+| `app_set_clock_mode`                                | `clockMode`: [`ClockMode`](#clockmode)    | `null`                                      | Set the clock display mode.                                                      |
+| `app_get_cpl_mode`                                  | -                                         | [`CplMode`](#cplmode)                       | Get the coupling mode.                                                           |
+| `app_set_cpl_mode`                                  | `cplMode`: [`CplMode`](#cplmode)          | `null`                                      | Set the coupling mode.                                                           |
 
 ### Audio
 
@@ -279,25 +286,72 @@ Some commands are marked as **desktop only**[^desktop-only] and are unavailable 
 
 ### Keybinds
 
-| Command                                                   | Args                                                  | Returns                             | Description                                            |
-| --------------------------------------------------------- | ----------------------------------------------------- | ----------------------------------- | ------------------------------------------------------ |
-| `keybinds_get_transmit_config`                            | -                                                     | [`TransmitConfig`](#transmitconfig) | Get transmit configuration (mode, PTT keys, etc.).     |
-| `keybinds_set_transmit_config`                            | `transmitConfig`: [`TransmitConfig`](#transmitconfig) | `null`                              | Update transmit configuration.                         |
-| `keybinds_get_keybinds_config`                            | -                                                     | [`KeybindsConfig`](#keybindsconfig) | Get keybind configuration.                             |
-| `keybinds_set_binding`                                    | `code`: string?, `keybind`: [`Keybind`](#keybind)     | `null`                              | Set a specific keybind.                                |
-| `keybinds_get_radio_config`                               | -                                                     | [`RadioConfig`](#radioconfig)       | Get radio integration configuration.                   |
-| `keybinds_set_radio_config`                               | `radioConfig`: [`RadioConfig`](#radioconfig)          | `null`                              | Update radio integration configuration.                |
-| `keybinds_get_radio_state`                                | -                                                     | [`RadioState`](#radiostate)       | Get current radio state.                               |
-| `keybinds_get_external_binding`                           | `keybind`: [`Keybind`](#keybind)                      | `string` \| `null`                  | Get the external (system-level) binding for a keybind. |
-| `keybinds_open_system_shortcuts_settings` [^desktop-only] | -                                                     | -                                   | Open the OS shortcut settings.                         |
-| `keybinds_reconnect_radio`                                | -                                                     | `null`                              | Reconnect the radio integration.                       |
+| Command                                                   | Args                                                             | Returns                                           | Description                                                                       |
+| --------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `keybinds_get_transmit_config`                            | -                                                                | [`TransmitConfig`](#transmitconfig)               | Get transmit configuration (mic mode, PTT bindings).                              |
+| `keybinds_set_transmit_config`                            | `transmitConfig`: [`TransmitConfig`](#transmitconfig)            | `null`                                            | Update transmit configuration.                                                    |
+| `keybinds_get_keybinds_config`                            | -                                                                | [`KeybindsConfig`](#keybindsconfig)               | Get keybind configuration.                                                        |
+| `keybinds_set_binding`                                    | `input`: [`InputBinding`](#inputbinding)?, `keybind`: [`Keybind`](#keybind) | `null`                                  | Bind an input to an action. Pass `input: null` to clear the binding.              |
+| `keybinds_get_external_binding`                           | `keybind`: [`Keybind`](#keybind)                                 | `string` \| `null`                                | Get the external (system-level) binding for a keybind.                            |
+| `keybinds_open_system_shortcuts_settings` [^desktop-only] | -                                                                | -                                                 | Open the OS shortcut settings.                                                    |
+| `keybinds_is_portal_shortcut_bound`                       | `keybind`: [`Keybind`](#keybind)                                 | `boolean`                                         | Whether the keybind is currently bound through the Linux global shortcuts portal. Always `false` on other platforms. |
+| `keybinds_capture_joystick_button`                        | `captureId`: string                                              | [`JoystickButton`](#joystickbutton) \| `null`     | Wait for the next joystick button press and return it. Returns `null` on timeout or cancellation. |
+| `keybinds_cancel_joystick_capture`                        | `captureId`: string                                              | `null`                                            | Cancel a pending capture. A no-op if a newer capture superseded it.               |
+| `keybinds_list_joystick_devices`                          | -                                                                | [`JoystickDeviceEntry[]`](#joystickdeviceentry)   | List connected joystick devices, plus ignored ones that are currently unplugged.  |
+| `keybinds_set_ignored_joysticks`                          | `devices`: [`JoystickDevice[]`](#joystickdevice)                 | `null`                                            | Replace the set of devices excluded from capture. Persisted by device GUID.       |
+
+:::warning
+The joystick commands require the `joystick` [capability](#capabilities). On a host without it they fail with an application error rather than returning an empty result.
+
+`keybinds_capture_joystick_button` waits up to **15 seconds** for a button press, which is longer than the **10 second** `invoke` timeout. If no button is pressed within 10 seconds, the capture is still running on the host when the timeout response arrives - cancel it explicitly with `keybinds_cancel_joystick_capture` using the same `captureId`.
+:::
+
+### Playback
+
+Recording and replay of radio traffic. Requires the `playback` [capability](#capabilities); commands that reach the recorder return empty results when no recorder is running.
+
+| Command                | Args                                                                                                                                        | Returns                       | Description                                                                          |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------ |
+| `playback_get_enabled` | -                                                                                                                                           | `boolean`                     | Whether playback recording is enabled.                                               |
+| `playback_set_enabled` | `enabled`: boolean                                                                                                                          | `null`                        | Enable or disable playback recording. Persisted to the client config.                |
+| `playback_list`        | -                                                                                                                                           | [`ClipMeta[]`](#clipmeta)     | List the recorded clips.                                                             |
+| `playback_delete`      | `id`: number                                                                                                                                | `boolean`                     | Delete a clip. Returns whether a clip was removed.                                   |
+| `playback_clear`       | -                                                                                                                                           | `null`                        | Delete all clips.                                                                    |
+| `playback_start`       | `id`: number, `deviceType`: [`PlaybackDeviceType`](#playbackdevicetype), `initialProgress`: number?, `startPaused`: boolean?                 | `null`                        | Start playing a clip. `initialProgress` is a fraction from 0.0 to 1.0.               |
+| `playback_pause`       | -                                                                                                                                           | `null`                        | Pause the playing clip.                                                              |
+| `playback_continue`    | -                                                                                                                                           | `null`                        | Resume the paused clip.                                                              |
+| `playback_stop`        | -                                                                                                                                           | `null`                        | Stop playback and release the audio source.                                          |
+| `playback_seek`        | `millis`: number                                                                                                                            | `null`                        | Seek within the playing clip. Negative values rewind.                                |
+| `playback_export`      | `id`: number                                                                                                                                | `string`                      | Copy a clip to the saved directory, exempting it from eviction. Returns the destination path and opens the folder on the desktop host. |
+
+### Radio
+
+Radio integration control. These commands were previously part of the `keybinds` domain (`keybinds_get_radio_config`, `keybinds_set_radio_config`, `keybinds_get_radio_state`, `keybinds_reconnect_radio`) and have moved to the `radio` prefix.
+
+| Command                   | Args                                                                                  | Returns                             | Description                                                                     |
+| ------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------- | ------------------------------------------------------------------------------- |
+| `radio_get_config`        | -                                                                                     | [`RadioConfig`](#radioconfig)       | Get radio integration configuration.                                            |
+| `radio_set_config`        | `radioConfig`: [`RadioConfig`](#radioconfig)                                          | `null`                              | Update radio integration configuration. Restarts the integration and recorder.  |
+| `radio_get_state`         | -                                                                                     | [`RadioState`](#radiostate)         | Get current radio state.                                                        |
+| `radio_reconnect`         | -                                                                                     | `null`                              | Reconnect the radio integration.                                                |
+| `radio_get_stations`      | -                                                                                     | [`RadioStation[]`](#radiostation)   | List the frequencies currently tuned in the radio backend.                      |
+| `radio_add_station`       | `callsign`: string                                                                    | [`RadioStation`](#radiostation)     | Add a station by callsign.                                                      |
+| `radio_set_station_state` | `frequency`: number, `update`: [`StationStateUpdate`](#stationstateupdate)            | [`RadioStation`](#radiostation)     | Apply a partial state update to a tuned station.                                |
+| `radio_fast_couple`       | -                                                                                     | `null`                              | Trigger a fast cross-couple across the tuned stations.                          |
+
+:::note
+All `radio_*` commands except `radio_get_config` and `radio_get_state` require an active radio integration. Without one, they fail with an application error.
+:::
 
 ### Remote
 
-| Command                       | Args                          | Returns                                           | Description                                                   |
-| ----------------------------- | ----------------------------- | ------------------------------------------------- | ------------------------------------------------------------- |
-| `remote_broadcast_store_sync` | `store`: string, `state`: any | `null`                                            | Broadcast a state sync event to all connected remote clients. |
-| `remote_get_session_state`    | -                             | [`SessionStateSnapshot`](#session-state-snapshot) | Get a full snapshot of the current session.                   |
+| Command                       | Args                                              | Returns                                                 | Description                                                                          |
+| ----------------------------- | ------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `remote_broadcast_store_sync` | `store`: string, `state`: any, `sourceId`: string | `null`                                                  | Broadcast a state sync event to all connected remote clients. See [`store:sync`](#store-sync-events). |
+| `remote_request_store_sync`   | -                                                 | `null`                                                  | Ask every connected instance to re-broadcast its synced state.                       |
+| `remote_get_session_state`    | -                                                 | [`SessionStateSnapshot`](#session-state-snapshot)       | Get a full snapshot of the current session.                                          |
+| `remote_get_config`           | -                                                 | [`RemoteConfigWithStatus`](#remoteconfigwithstatus)     | Get the remote server configuration and its current status.                          |
+| `remote_is_enabled`           | -                                                 | `boolean`                                               | Whether the remote server is enabled in the configuration.                           |
 
 ### Signaling
 
@@ -330,7 +384,7 @@ Subscribe to events to receive real-time updates. Event names use a `domain:name
 | Event                          | Payload   | Description                                                                                              |
 | ------------------------------ | --------- | -------------------------------------------------------------------------------------------------------- |
 | `audio:implicit-radio-prio`    | `boolean` | Radio priority was implicitly changed (e.g. by an incoming priority call).                               |
-| `audio:input-level`            | `number`  | Input audio level sample (0.0–1.0). Emitted at a regular interval while the input level meter is active. |
+| `audio:input-level`            | `number`  | Input audio level sample (0.0 to 1.0). Emitted at a regular interval while the input level meter is active. |
 | `audio:radio-prio`             | `boolean` | Radio priority state changed.                                                                            |
 | `audio:stop-input-level-meter` | `null`    | The input level meter was stopped.                                                                       |
 
@@ -341,6 +395,23 @@ Subscribe to events to receive real-time updates. Event names use a `domain:name
 | `auth:authenticated`   | `string` | The user successfully authenticated. Payload is the VATSIM CID. |
 | `auth:error`           | `null`   | An authentication error occurred.                               |
 | `auth:unauthenticated` | `null`   | The user was logged out or the session expired.                 |
+
+### Playback Events
+
+| Event                      | Payload  | Description                                                                                                     |
+| -------------------------- | -------- | --------------------------------------------------------------------------------------------------------------- |
+| `playback:clips-modified`  | `null`   | The clip list changed (a recording finished, or clips were deleted). Re-fetch with `playback_list`.              |
+| `playback:progress`        | `number` | Playback position of the current clip as a fraction from 0.0 to 1.0. Emitted continuously while a clip plays.    |
+
+### Radio Events
+
+| Event                    | Payload                             | Description                                                              |
+| ------------------------ | ----------------------------------- | ------------------------------------------------------------------------ |
+| `radio:state`            | [`RadioState`](#radiostate)         | Radio integration state changed.                                         |
+| `radio:station-added`    | [`RadioStation`](#radiostation)     | A frequency was tuned in the radio backend.                              |
+| `radio:station-updated`  | [`RadioStation`](#radiostation)     | A tuned station's state changed (RX/TX/cross-couple/mute).               |
+| `radio:station-removed`  | `number`                            | A frequency was untuned. Payload is the frequency in Hz.                 |
+| `radio:stations-synced`  | [`RadioStation[]`](#radiostation)   | The full station list was replaced (replaces previous list).             |
 
 ### Signaling Events
 
@@ -365,7 +436,6 @@ Subscribe to events to receive real-time updates. Event names use a `domain:name
 | `signaling:station-changes`           | [`StationChange[]`](#stationchange)               | One or more stations changed.                                                        |
 | `signaling:station-list`              | [`StationInfo[]`](#stationinfo)                   | The full station list was updated (replaces previous list).                          |
 | `signaling:test-profile`              | `object`                                          | A test profile was loaded or unloaded.                                               |
-| `signaling:update-call-list`          | [`CallListUpdate`](#calllistupdate)               | The call list was updated.                                                           |
 
 ### WebRTC Events
 
@@ -375,14 +445,22 @@ Subscribe to events to receive real-time updates. Event names use a `domain:name
 | `webrtc:call-disconnected` | `string`                  | A voice call was disconnected. Payload is the CallId.                |
 | `webrtc:call-error`        | [`CallError`](#callerror) | A voice call encountered an error.                                   |
 
+### Store Sync Events
+
+The desktop frontend and every connected remote client mirror selected pieces of UI state to each other. These two events carry that mechanism; a third-party integration can ignore them, or use them to stay in step with the desktop UI.
+
+| Event               | Payload                             | Description                                                    |
+| ------------------- | ----------------------------------- | -------------------------------------------------------------- |
+| `store:sync`        | [`StoreSyncPayload`](#storesyncpayload) | A store slice was updated by one of the connected instances. |
+| `store:sync:request` | `null`                             | Every instance should re-broadcast its current synced state.   |
+
 ### Other Events
 
-| Event             | Payload                           | Description                                                                                |
-| ----------------- | --------------------------------- | ------------------------------------------------------------------------------------------ |
-| `error`           | [`FrontendError`](#frontenderror) | A general application error.                                                               |
-| `radio:state`     | [`RadioState`](#radiostate)     | Radio integration state changed.                                                           |
-| `store:sync`      | `object`                          | A store state synchronization broadcast. Contains `{ "store": <string>, "state": <any> }`. |
-| `update:progress` | `number`                          | Application update download progress (0–100).                                              |
+| Event             | Payload                                 | Description                                    |
+| ----------------- | --------------------------------------- | ---------------------------------------------- |
+| `error`           | [`FrontendError`](#frontenderror)       | A general application error.                   |
+| `remote:status`   | [`RemoteStatus`](#remotestatus)         | The remote server's listen state or connected client count changed. |
+| `update:progress` | `number`                                | Application update download progress (0 to 100). |
 
 ---
 
@@ -409,6 +487,7 @@ Well-known problem type URIs used in [`ProblemDetails`](#problemdetails) error r
 | ---------------------------------------- | ---------------- | --------------------------------------------------------- |
 | `urn:vacs:error:remote:desktop-only`     | Desktop only     | The command is only available on the desktop application. |
 | `urn:vacs:error:remote:invalid-argument` | Invalid argument | One or more command arguments were invalid or missing.    |
+| `urn:vacs:error:remote:invalid-message`  | Invalid message  | The message could not be parsed, or named an unknown command. |
 | `urn:vacs:error:remote:timeout`          | Timeout          | The command did not complete within the time limit.       |
 | `urn:vacs:error:remote:application`      | _(varies)_       | An application-level error originating from the backend.  |
 
@@ -420,6 +499,7 @@ Returned by [`remote_get_session_state`](#remote). Provides a complete snapshot 
 {
   "connectionState": "disconnected",
   "sessionInfo": null,
+  "defaultCallSources": [],
   "stations": [],
   "clients": [],
   "clientId": null,
@@ -427,7 +507,8 @@ Returned by [`remote_get_session_state`](#remote). Provides a complete snapshot 
     "highlightIncomingCallTarget": true,
     "enablePriorityCalls": true,
     "enableCallStartSound": true,
-    "enableCallEndSound": true
+    "enableCallEndSound": true,
+    "useDefaultCallSources": true
   },
   "clientPageSettings": {
     "selected": null,
@@ -437,6 +518,8 @@ Returned by [`remote_get_session_state`](#remote). Provides a complete snapshot 
     "alwaysOnTop": true,
     "keybindListener": true,
     "keybindEmitter": false,
+    "joystick": true,
+    "playback": true,
     "platform": "LinuxWayland"
   },
   "incomingCalls": [],
@@ -444,18 +527,19 @@ Returned by [`remote_get_session_state`](#remote). Provides a complete snapshot 
 }
 ```
 
-| Field                | Type                                        | Description                                   |
-| -------------------- | ------------------------------------------- | --------------------------------------------- |
-| `connectionState`    | [`ConnectionState`](#connectionstate)       | Signaling connection state.                   |
-| `sessionInfo`        | [`SessionInfo`](#sessioninfo) &#124; `null` | Current signaling session metadata.           |
-| `stations`           | [`StationInfo[]`](#stationinfo)             | Available stations in the current session.    |
-| `clients`            | [`ClientInfo[]`](#clientinfo)               | Other clients visible in the current session. |
-| `clientId`           | `string` &#124; `null`                      | The authenticated user's VATSIM CID.          |
-| `callConfig`         | [`CallConfig`](#callconfig)                 | Active call configuration.                    |
-| `clientPageSettings` | [`ClientPageSettings`](#clientpagesettings) | Active client page layout/settings.           |
-| `capabilities`       | [`Capabilities`](#capabilities)             | Platform capabilities of the desktop host.    |
-| `incomingCalls`      | [`CallInvite[]`](#callinvite)               | Pending incoming call invitations.            |
-| `outgoingCall`       | [`CallInvite`](#callinvite) &#124; `null`   | The pending outgoing call, if any.            |
+| Field                | Type                                        | Description                                                  |
+| -------------------- | ------------------------------------------- | ------------------------------------------------------------ |
+| `connectionState`    | [`ConnectionState`](#connectionstate)       | Signaling connection state.                                  |
+| `sessionInfo`        | [`SessionInfo`](#sessioninfo) &#124; `null` | Current signaling session metadata.                          |
+| `defaultCallSources` | `string[]`                                  | Station IDs configured as default call sources for the position. |
+| `stations`           | [`StationInfo[]`](#stationinfo)             | Available stations in the current session.                   |
+| `clients`            | [`ClientInfo[]`](#clientinfo)               | Other clients visible in the current session.                |
+| `clientId`           | `string` &#124; `null`                      | The authenticated user's VATSIM CID.                         |
+| `callConfig`         | [`CallConfig`](#callconfig)                 | Active call configuration.                                   |
+| `clientPageSettings` | [`ClientPageSettings`](#clientpagesettings) | Active client page layout/settings.                          |
+| `capabilities`       | [`Capabilities`](#capabilities)             | Platform capabilities of the desktop host.                   |
+| `incomingCalls`      | [`CallInvite[]`](#callinvite)               | Pending incoming call invitations.                           |
+| `outgoingCall`       | [`CallInvite`](#callinvite) &#124; `null`   | The pending outgoing call, if any.                           |
 
 ### Capabilities
 
@@ -466,16 +550,20 @@ Platform capability flags returned by `app_platform_capabilities` and included i
   "alwaysOnTop": true,
   "keybindListener": true,
   "keybindEmitter": false,
+  "joystick": true,
+  "playback": true,
   "platform": "LinuxWayland"
 }
 ```
 
-| Field             | Type                    | Description                                              |
-| ----------------- | ----------------------- | -------------------------------------------------------- |
-| `alwaysOnTop`     | `boolean`               | Whether the platform supports always-on-top window mode. |
-| `keybindListener` | `boolean`               | Whether the platform supports global keybind listening.  |
-| `keybindEmitter`  | `boolean`               | Whether the platform supports emitting key events.       |
-| `platform`        | [`Platform`](#platform) | The host platform identifier.                            |
+| Field             | Type                    | Description                                                                        |
+| ----------------- | ----------------------- | ---------------------------------------------------------------------------------- |
+| `alwaysOnTop`     | `boolean`               | Whether the platform supports always-on-top window mode.                           |
+| `keybindListener` | `boolean`               | Whether the platform supports global keybind listening.                            |
+| `keybindEmitter`  | `boolean`               | Whether the platform supports emitting key events.                                 |
+| `joystick`        | `boolean`               | Whether joystick and gamepad button bindings are supported.                        |
+| `playback`        | `boolean`               | Whether recording and replay of radio traffic is supported.                        |
+| `platform`        | [`Platform`](#platform) | The host platform identifier.                                                      |
 
 #### Platform
 
@@ -510,16 +598,18 @@ Returned by `app_get_call_config`. Accepted by `app_set_call_config`.
   "highlightIncomingCallTarget": true,
   "enablePriorityCalls": true,
   "enableCallStartSound": true,
-  "enableCallEndSound": true
+  "enableCallEndSound": true,
+  "useDefaultCallSources": true
 }
 ```
 
-| Field                         | Type      | Description                                               |
-| ----------------------------- | --------- | --------------------------------------------------------- |
-| `highlightIncomingCallTarget` | `boolean` | Highlight the caller in the client list on incoming call. |
-| `enablePriorityCalls`         | `boolean` | Allow sending and receiving priority calls.               |
-| `enableCallStartSound`        | `boolean` | Play a sound when a call connects.                        |
-| `enableCallEndSound`          | `boolean` | Play a sound when a call ends.                            |
+| Field                         | Type      | Description                                                                       |
+| ----------------------------- | --------- | --------------------------------------------------------------------------------- |
+| `highlightIncomingCallTarget` | `boolean` | Highlight the caller in the client list on incoming call.                         |
+| `enablePriorityCalls`         | `boolean` | Allow sending and receiving priority calls.                                       |
+| `enableCallStartSound`        | `boolean` | Play a sound when a call connects.                                                |
+| `enableCallEndSound`          | `boolean` | Play a sound when a call ends.                                                    |
+| `useDefaultCallSources`       | `boolean` | Place calls from the position's default source station instead of asking each time. |
 
 ### ClientPageSettings
 
@@ -645,25 +735,78 @@ Returned by `keybinds_get_transmit_config`. Accepted by `keybinds_set_transmit_c
 
 ```json
 {
-  "mode": "PushToTalk",
+  "callMicMode": "PushToTalk",
   "pushToTalk": "Space",
   "pushToMute": null,
-  "radioPushToTalk": null
+  "radioPushToTalk": {"device": "03000000...", "button": 4, "name": "Saitek Pro Flight Yoke"}
 }
 ```
 
-| Field             | Type                            | Description                      |
-| ----------------- | ------------------------------- | -------------------------------- |
-| `mode`            | [`TransmitMode`](#transmitmode) | Active transmit mode.            |
-| `pushToTalk`      | `string` &#124; `null`          | Key code for push-to-talk.       |
-| `pushToMute`      | `string` &#124; `null`          | Key code for push-to-mute.       |
-| `radioPushToTalk` | `string` &#124; `null`          | Key code for radio push-to-talk. |
+| Field             | Type                                        | Description                                       |
+| ----------------- | ------------------------------------------- | ------------------------------------------------- |
+| `callMicMode`     | [`CallMicMode`](#callmicmode)               | How the microphone is keyed during a call.        |
+| `pushToTalk`      | [`InputBinding`](#inputbinding) &#124; `null` | Binding for push-to-talk.                       |
+| `pushToMute`      | [`InputBinding`](#inputbinding) &#124; `null` | Binding for push-to-mute.                       |
+| `radioPushToTalk` | [`InputBinding`](#inputbinding) &#124; `null` | Binding for radio push-to-talk.                 |
 
-#### TransmitMode
+#### CallMicMode
 
 ```
-"VoiceActivation" | "PushToTalk" | "PushToMute" | "RadioIntegration"
+"VoiceActivation" | "PushToTalk" | "PushToMute"
 ```
+
+### InputBinding
+
+A physical input bound to an action. Either a **keyboard key code string** (a [`KeyboardEvent.code`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code) value, for example `"KeyA"` or `"Space"`) or a [`JoystickButton`](#joystickbutton) object.
+
+```json
+"KeyA"
+```
+
+```json
+{"device": "03000000adde0000efbe000000000000", "button": 4, "name": "Saitek Pro Flight Yoke"}
+```
+
+Distinguish the two by JSON type: a string is a keyboard key, an object is a joystick button.
+
+#### JoystickButton
+
+| Field    | Type                   | Description                                                                                       |
+| -------- | ---------------------- | ------------------------------------------------------------------------------------------------- |
+| `device` | `string`               | SDL joystick GUID as a hex string. Stable across reconnects and USB ports.                        |
+| `button` | `number`               | Raw button index in SDL joystick button numbering.                                                |
+| `name`   | `string` &#124; absent | Last-seen device name. Display only, and ignored when comparing bindings.                         |
+
+:::note
+Two physically identical devices share a GUID, so a binding made on one matches the other. Distinct products (yoke, throttle, pedals) always have distinct GUIDs.
+:::
+
+#### JoystickDevice
+
+Accepted by `keybinds_set_ignored_joysticks`.
+
+| Field    | Type                   | Description                                                     |
+| -------- | ---------------------- | --------------------------------------------------------------- |
+| `device` | `string`               | SDL joystick GUID as a hex string.                              |
+| `name`   | `string` &#124; absent | Last-seen device name, kept for display while unplugged.        |
+
+#### JoystickDeviceEntry
+
+Returned by `keybinds_list_joystick_devices`. A [`JoystickDevice`](#joystickdevice) with its presence and ignore state.
+
+```json
+{
+  "device": "03000000adde0000efbe000000000000",
+  "name": "Saitek Pro Flight Yoke",
+  "connected": true,
+  "ignored": false
+}
+```
+
+| Field       | Type      | Description                                                                                   |
+| ----------- | --------- | --------------------------------------------------------------------------------------------- |
+| `connected` | `boolean` | Whether the device is currently plugged in.                                                   |
+| `ignored`   | `boolean` | Whether presses from this device are excluded from capture. Existing bindings keep working.   |
 
 ### KeybindsConfig
 
@@ -677,23 +820,23 @@ Returned by `keybinds_get_keybinds_config`.
 }
 ```
 
-| Field             | Type                   | Description                              |
-| ----------------- | ---------------------- | ---------------------------------------- |
-| `acceptCall`      | `string` &#124; `null` | Key code for accepting an incoming call. |
-| `endCall`         | `string` &#124; `null` | Key code for ending the active call.     |
-| `toggleRadioPrio` | `string` &#124; `null` | Key code for toggling radio priority.    |
+| Field             | Type                                          | Description                             |
+| ----------------- | --------------------------------------------- | --------------------------------------- |
+| `acceptCall`      | [`InputBinding`](#inputbinding) &#124; `null` | Binding for accepting an incoming call. |
+| `endCall`         | [`InputBinding`](#inputbinding) &#124; `null` | Binding for ending the active call.     |
+| `toggleRadioPrio` | [`InputBinding`](#inputbinding) &#124; `null` | Binding for toggling radio priority.    |
 
 #### Keybind
 
-Used as the `keybind` argument for `keybinds_set_binding` and `keybinds_get_external_binding`:
+The action a binding applies to. Used as the `keybind` argument for `keybinds_set_binding`, `keybinds_get_external_binding` and `keybinds_is_portal_shortcut_bound`:
 
 ```
-"PushToTalk" | "PushToMute" | "RadioIntegration" | "AcceptCall" | "EndCall" | "ToggleRadioPrio"
+"PushToTalk" | "PushToMute" | "RadioPushToTalk" | "AcceptCall" | "EndCall" | "ToggleRadioPrio"
 ```
 
 ### RadioConfig
 
-Returned by `keybinds_get_radio_config`. Accepted by `keybinds_set_radio_config`.
+Returned by `radio_get_config`. Accepted by `radio_set_config`.
 
 ```json
 {
@@ -707,11 +850,11 @@ Returned by `keybinds_get_radio_config`. Accepted by `keybinds_set_radio_config`
 }
 ```
 
-| Field            | Type                                    | Description                                                                                     |
-| ---------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `integration`    | [`RadioIntegration`](#radiointegration) | Active radio integration backend.                                                               |
-| `audioForVatsim` | `object` &#124; `null`                  | AudioForVATSIM-specific configuration. Contains `emit` (key code, `string` &#124; `null`).      |
-| `trackAudio`     | `object` &#124; `null`                  | TrackAudio-specific configuration. Contains `endpoint` (WebSocket URL, `string` &#124; `null`). |
+| Field            | Type                                                    | Description                                                                                     |
+| ---------------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `integration`    | [`RadioIntegration`](#radiointegration) &#124; `null`   | Active radio integration backend. `null` disables the integration.                              |
+| `audioForVatsim` | `object` &#124; `null`                                  | AudioForVATSIM-specific configuration. Contains `emit` (key code, `string` &#124; `null`).      |
+| `trackAudio`     | `object` &#124; `null`                                  | TrackAudio-specific configuration. Contains `endpoint` (WebSocket URL, `string` &#124; `null`). |
 
 #### RadioIntegration
 
@@ -721,22 +864,181 @@ Returned by `keybinds_get_radio_config`. Accepted by `keybinds_set_radio_config`
 
 ### RadioState
 
-Returned by `keybinds_get_radio_state` and emitted with the `radio:state` event.
+Returned by `radio_get_state` and emitted with the `radio:state` event. Serialized as an object with the variant in `state` and, for `RxActive`, the receiving frequencies in `data`.
+
+```json
+{"state": "VoiceConnected"}
+```
+
+```json
+{"state": "RxActive", "data": [133800000, 121500000]}
+```
+
+| Field   | Type                   | Description                                                                        |
+| ------- | ---------------------- | ---------------------------------------------------------------------------------- |
+| `state` | `string`               | The state variant, see the table below.                                            |
+| `data`  | `number[]` &#124; absent | Frequencies in Hz currently being received. Present only for `RxActive`.         |
+
+| Value            | Description                                                            |
+| ---------------- | ---------------------------------------------------------------------- |
+| `NotConfigured`  | No radio integration is configured.                                    |
+| `Disconnected`   | Configured but not connected to the radio backend.                     |
+| `Connected`      | Connected to the radio backend, which has no VATSIM voice session.     |
+| `VoiceConnected` | The backend is connected to the VATSIM voice server.                   |
+| `RxIdle`         | Monitoring at least one frequency, nothing being received.             |
+| `RxActive`       | Actively receiving a transmission.                                     |
+| `TxActive`       | Actively transmitting. Takes priority over simultaneous reception.     |
+| `Error`          | The radio integration encountered a fatal error.                       |
+
+### RadioStation
+
+A frequency tuned in the radio backend. Returned by `radio_get_stations`, `radio_add_station` and `radio_set_station_state`, and emitted with the `radio:station-*` events.
+
+```json
+{
+  "callsign": "LOVV_CTR",
+  "frequency": 133800000,
+  "rx": true,
+  "tx": true,
+  "xc": false,
+  "xca": false,
+  "headset": true,
+  "output_muted": false,
+  "is_available": true
+}
+```
+
+| Field          | Type                   | Description                                                                        |
+| -------------- | ---------------------- | ---------------------------------------------------------------------------------- |
+| `callsign`     | `string` &#124; absent | Station callsign, when the backend reports one.                                    |
+| `frequency`    | `number`               | Frequency in Hz.                                                                   |
+| `rx`           | `boolean`              | Receive enabled.                                                                   |
+| `tx`           | `boolean`              | Transmit enabled.                                                                  |
+| `xc`           | `boolean`              | Cross-coupling computed by the backend. Read-only.                                 |
+| `xca`          | `boolean`              | Cross-couple across. The user-settable cross-coupling mode.                        |
+| `headset`      | `boolean`              | Routed to the headset rather than the speaker.                                     |
+| `output_muted` | `boolean`              | Output muted for this station.                                                     |
+| `is_available` | `boolean`              | Whether the station is currently available in the backend.                         |
+
+:::note
+`RadioStation` and [`StationStateUpdate`](#stationstateupdate) use `snake_case` for `output_muted` and `is_available`, unlike the rest of the API. These fields come straight from the radio backend's own schema.
+:::
+
+#### StationStateUpdate
+
+Accepted as the `update` argument of `radio_set_station_state`. Only the fields present are changed. `xc` is intentionally absent - it is computed by the backend and cannot be set.
+
+| Field          | Type      | Description                                    |
+| -------------- | --------- | ---------------------------------------------- |
+| `rx`           | `boolean` | Enable or disable receive.                     |
+| `tx`           | `boolean` | Enable or disable transmit.                    |
+| `xca`          | `boolean` | Enable or disable cross-couple across.         |
+| `headset`      | `boolean` | Route to the headset instead of the speaker.   |
+| `output_muted` | `boolean` | Mute or unmute this station's output.          |
+
+### ClipMeta
+
+A recorded clip, returned by `playback_list`.
+
+```json
+{
+  "id": 17,
+  "path": "/home/user/.local/share/network.vacs.client/playback/17.wav",
+  "callsigns": ["LOVV_CTR"],
+  "frequency": 133800000,
+  "startedAt": {"secs_since_epoch": 1753699200, "nanos_since_epoch": 0},
+  "endedAt": {"secs_since_epoch": 1753699214, "nanos_since_epoch": 500000000},
+  "durationMs": 14500
+}
+```
+
+| Field        | Type                   | Description                                                                       |
+| ------------ | ---------------------- | --------------------------------------------------------------------------------- |
+| `id`         | `number`               | Clip identifier, used by the other `playback_*` commands.                         |
+| `path`       | `string`               | Absolute path of the WAV file on the desktop host.                                |
+| `callsigns`  | `string[]`             | Callsigns heard in the clip.                                                      |
+| `frequency`  | `number` &#124; `null` | Frequency in Hz, when the clip came from a single frequency tap.                  |
+| `startedAt`  | `object`               | Recording start, as `{"secs_since_epoch": <number>, "nanos_since_epoch": <number>}`. |
+| `endedAt`    | `object`               | Recording end, same shape as `startedAt`.                                         |
+| `durationMs` | `number`               | Clip length in milliseconds.                                                      |
+
+#### PlaybackDeviceType
+
+Used as the `deviceType` argument for `playback_start`:
 
 ```
-"NotConfigured" | "Disconnected" | "Connected" | "VoiceConnected" | "RxIdle" | "RxActive" | "TxActive" | "Error"
+"Output" | "Speaker"
 ```
 
-| Value            | Description                                        |
-| ---------------- | -------------------------------------------------- |
-| `NotConfigured`  | No radio integration is configured.                |
-| `Disconnected`   | Configured but not connected to the radio backend. |
-| `Connected`      | Connected to the radio backend, no voice session.  |
-| `VoiceConnected` | Voice session established.                         |
-| `RxIdle`         | Receiving capable, no active reception.            |
-| `RxActive`       | Actively receiving audio.                          |
-| `TxActive`       | Actively transmitting audio.                       |
-| `Error`          | The radio integration encountered an error.        |
+### ClockMode
+
+Returned by `app_get_clock_mode`. Accepted by `app_set_clock_mode`.
+
+```
+"Realtime" | "Relaxed" | "Day"
+```
+
+### CplMode
+
+Returned by `app_get_cpl_mode`. Accepted by `app_set_cpl_mode`.
+
+```
+"Original" | "Fast"
+```
+
+### RemoteConfigWithStatus
+
+Returned by `remote_get_config`.
+
+```json
+{
+  "config": {
+    "enabled": true,
+    "listenAddr": "0.0.0.0:9600",
+    "serveFrontend": true
+  },
+  "status": {
+    "listening": true,
+    "connectedClients": 1
+  }
+}
+```
+
+| Field    | Type                            | Description                                        |
+| -------- | ------------------------------- | -------------------------------------------------- |
+| `config` | `object`                        | The configured remote server settings.             |
+| `status` | [`RemoteStatus`](#remotestatus) | The remote server's current runtime status.        |
+
+#### RemoteStatus
+
+Also emitted with the `remote:status` event.
+
+| Field              | Type      | Description                                       |
+| ------------------ | --------- | ------------------------------------------------- |
+| `listening`        | `boolean` | Whether the remote server is accepting connections. |
+| `connectedClients` | `number`  | Number of currently connected remote clients.     |
+
+### StoreSyncPayload
+
+Emitted with the `store:sync` event, and the argument shape of `remote_broadcast_store_sync`.
+
+```json
+{
+  "store": "settings",
+  "state": {"clockMode": "Realtime", "cplMode": "Original"},
+  "sourceId": "6f1c9a1e-6f3a-4a26-a5c7-1f0b8f9a2c31"
+}
+```
+
+| Field      | Type     | Description                                                                                      |
+| ---------- | -------- | ------------------------------------------------------------------------------------------------ |
+| `store`    | `string` | Which store slice changed: `stations`, `call`, `callList`, `settings`, `radio` or `playback`.     |
+| `state`    | `any`    | The slice's new value. Shape depends on `store`.                                                 |
+| `sourceId` | `string` | Opaque instance ID of the broadcaster. Ignore events carrying your own ID to avoid echo loops.   |
+
+:::warning
+The `state` shapes mirror the desktop frontend's internal stores and change without notice, even between patch releases. Treat them as opaque unless you are building a full replacement frontend.
+:::
 
 ### ConnectionState
 
@@ -953,22 +1255,6 @@ Emitted with the `signaling:add-incoming-to-call-list` event.
 | `callId` | `string`                    | The incoming call's identifier. |
 | `source` | [`CallSource`](#callsource) | The originator of the call.     |
 
-### CallListUpdate
-
-Emitted with the `signaling:update-call-list` event.
-
-```json
-{
-  "callId": "01916f6a-7b3c-7d4e-8f1a-2b3c4d5e6f70",
-  "clientId": "1234567"
-}
-```
-
-| Field      | Type                   | Description                                   |
-| ---------- | ---------------------- | --------------------------------------------- |
-| `callId`   | `string`               | The affected call's identifier.               |
-| `clientId` | `string` &#124; `null` | The client involved in the update, or `null`. |
-
 ---
 
 ## Example: Client Session Lifecycle
@@ -1010,6 +1296,7 @@ Signal client readiness and retrieve the current application state:
     "data": {
       "connectionState": "disconnected",
       "sessionInfo": null,
+      "defaultCallSources": [],
       "stations": [],
       "clients": [],
       "clientId": null,
