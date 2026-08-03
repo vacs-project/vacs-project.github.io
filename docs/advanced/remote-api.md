@@ -440,11 +440,15 @@ Subscribe to events to receive real-time updates. Event names use a `domain:name
 
 ### WebRTC Events
 
-| Event                      | Payload                   | Description                                                          |
-| -------------------------- | ------------------------- | -------------------------------------------------------------------- |
-| `webrtc:call-connected`    | `string`                  | A voice call was established (media flowing). Payload is the CallId. |
-| `webrtc:call-disconnected` | `string`                  | A voice call was disconnected. Payload is the CallId.                |
-| `webrtc:call-error`        | [`CallError`](#callerror) | A voice call encountered an error.                                   |
+| Event                       | Payload                   | Description                                                                                     |
+| --------------------------- | ------------------------- | ----------------------------------------------------------------------------------------------- |
+| `webrtc:call-connected`     | `string`                  | A voice call was established (media flowing). Payload is the CallId.                            |
+| `webrtc:call-degraded`      | `string`                  | A voice call is up but no incoming audio is arriving, and vacs cannot repair it. Payload is the CallId. |
+| `webrtc:call-disconnected`  | `string`                  | A voice call was disconnected. Payload is the CallId.                                           |
+| `webrtc:call-reconnecting`  | `string`                  | A voice call lost its incoming audio and is being re-established over a relay. Payload is the CallId. |
+| `webrtc:call-error`         | [`CallError`](#callerror) | A voice call encountered an error.                                                              |
+
+`webrtc:call-reconnecting` and `webrtc:call-degraded` describe the same underlying condition, a call that stopped receiving audio, and differ only in whether vacs can do something about it. The desktop UI treats `webrtc:call-reconnecting` exactly like `connecting` and `webrtc:call-degraded` as its own state. A reconnect attempt ends in either `webrtc:call-connected` or `webrtc:call-error`, so a client that only cares about the final result can ignore both events. Both events were added in **vacs 2.6.0**; older clients never emit them. See [One-way audio](/troubleshooting/audio#one-way-audio-you-cannot-hear-the-other-controller) for the behavior they report on.
 
 ### Store Sync Events
 
@@ -600,7 +604,8 @@ Returned by `app_get_call_config`. Accepted by `app_set_call_config`.
   "enablePriorityCalls": true,
   "enableCallStartSound": true,
   "enableCallEndSound": true,
-  "useDefaultCallSources": true
+  "useDefaultCallSources": true,
+  "forceRelay": false
 }
 ```
 
@@ -611,6 +616,7 @@ Returned by `app_get_call_config`. Accepted by `app_set_call_config`.
 | `enableCallStartSound`        | `boolean` | Play a sound when a call connects.                                                |
 | `enableCallEndSound`          | `boolean` | Play a sound when a call ends.                                                    |
 | `useDefaultCallSources`       | `boolean` | Place calls from the position's default source station instead of asking each time. |
+| `forceRelay`                  | `boolean` | Always route call audio through a relay server instead of trying a direct connection first. Defaults to `false`. |
 
 ### ClientPageSettings
 
