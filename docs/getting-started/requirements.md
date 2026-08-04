@@ -24,8 +24,11 @@ Since vacs authenticates through [VATSIM Connect](https://vatsim.dev/services/co
 - An ALSA-compatible audio backend is required. This is usually automatically satisfied if you're running PulseAudio or Pipewire, which most modern Linux desktops use by default. The suggested audio packages are also included as dependencies for our packages
 
 :::note[Wayland users]
-If you're running a Wayland-based desktop (common on recent GNOME and KDE setups), there are some known issues and limitations. See the [Wayland](/known-issues-limitations/wayland) section of the [Known Issues & Limitations](/known-issues-limitations) page for details.  
-X11 desktops are fully supported, including global hotkeys and the Audio for VATSIM radio integration.
+If you're running a Wayland-based desktop (common on recent GNOME and KDE setups), there are some known issues and limitations. See the [Wayland](/known-issues-limitations/wayland) section of the [Known Issues & Limitations](/known-issues-limitations) page for details.
+
+The most noticeable ones concern key bindings: on Wayland, keyboard shortcuts are managed by your desktop environment rather than by vacs, and the [Audio for VATSIM](/settings/transmit#radio-integration) radio integration cannot be used. See [Platform support](/settings/hotkeys#platform-support) for the full picture.
+
+X11 desktops are fully supported as of **vacs 2.6.0**, including global hotkeys and the Audio for VATSIM radio integration. Earlier versions did not support global key bindings on X11 at all.
 :::
 
 ### macOS

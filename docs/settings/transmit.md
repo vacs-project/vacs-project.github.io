@@ -73,6 +73,10 @@ No key-binding is available or required in the **CALL MIC MODE** part of the dia
 
 Audio is transmitted only while the corresponding key is pressed. Assign a key by clicking into the field next to the mode dropdown and pressing your desired key once. Clear a binding with the **✕** button.
 
+:::tip[Joystick and gamepad buttons]
+From **vacs 2.6.0**, you can press a button on a connected joystick, HOTAS throttle or handset instead of a key, and vacs binds that button. This works for every binding field in this dialog. See [Joystick and gamepad buttons](/settings/hotkeys#joystick-and-gamepad-buttons).
+:::
+
 ### Push-to-Mute
 **Behavior during calls:**
 - The microphone is **unmuted by default**.
@@ -102,7 +106,7 @@ There are three options:
 - **Audio for VATSIM**: vacs simulates a key press for you to trigger a radio transmission in AFV. The [radio page](/interface/radio) is not available. [Radio transmission playback](/interface/playback) is supported, but limited without callsign or frequency info, and only on Windows.
 
 :::warning[Audio for VATSIM is not available on Wayland]
-The **Audio for VATSIM** integration relies on simulating a key press into the standalone AFV client, which is not possible on Wayland-based Linux desktops. There, only **None** and **TrackAudio** are available. On X11 desktops, Audio for VATSIM works normally.
+The **Audio for VATSIM** integration relies on simulating a key press into the standalone AFV client, which is not possible on Wayland-based Linux desktops. There, only **None** and **TrackAudio** are available. On X11 desktops, Audio for VATSIM works normally as of **vacs 2.6.0**; before that it was unavailable on Linux entirely.
 :::
 
 ### The Radio PTT key field

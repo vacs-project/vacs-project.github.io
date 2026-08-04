@@ -74,6 +74,7 @@ Customize:
 - Transmit priorities
 - Call-related shortcuts
 - Other operational hotkeys
+- Joystick and gamepad buttons, and which devices to ignore while binding
 
 → See [Key Bindings](/settings/hotkeys)
 
@@ -87,6 +88,7 @@ Defines various call related behaviour and preferences, such as:
 - Priority calls
 - Automatic default call source selection based on current position
 - Call sounds
+- Always relaying call audio, for setups where a direct connection does not work
 
 → See [Call Settings](/settings/call)
 
