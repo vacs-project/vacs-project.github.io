@@ -160,5 +160,7 @@ Wayland does not allow an application to observe the keyboard while it is not fo
 
 Keys you assign, change or clear in your desktop settings take effect straight away, without restarting vacs.
 
+The first time vacs runs, your desktop asks whether to let it register these shortcuts. If you dismiss that dialog, none of them are registered and vacs hotkeys stay inactive, even after you assign keys in your desktop settings. Restart vacs to get the request again.
+
 Joystick buttons are not affected by this restriction and are captured directly in vacs. Binding a joystick button to an action **replaces** the desktop shortcut for that action, and removing the button restores it.
 :::
