@@ -119,7 +119,7 @@ Next to the Radio Integration dropdown is a key-capture field for your **Radio P
 | Push-to-Mute | **Disabled**, forced to the call key | Always shows (and uses) the same key as your call Push-to-Mute key. A distinct PTM for calls vs. radio is not supported, so the capture field is locked. |
 
 :::note[On Wayland, the key comes from your desktop settings]
-Keyboard keys are assigned in your desktop environment rather than captured in vacs, so "leave it empty" means leaving the **Radio Push-to-talk** system shortcut unassigned. Everything else in this table works the same way, and the field updates as soon as you change the shortcut. See [Platform support](/settings/hotkeys#platform-support) on the Hotkeys page.
+Keyboard keys are assigned in your desktop environment rather than captured in vacs, so "leave it empty" means leaving the **Radio Push-to-talk** system shortcut unassigned. Everything else in this table works the same way. If you change the shortcut while this dialog is open, reopen it to see the new key. See [Platform support](/settings/hotkeys#platform-support) on the Hotkeys page.
 :::
 
 With **Voice Activation**, there is no call key to fall back to, so the field starts unbound and shows **"Not bound"** until you assign one explicitly:
