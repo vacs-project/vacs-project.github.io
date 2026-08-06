@@ -340,7 +340,7 @@ Radio integration control. These commands were previously part of the `keybinds`
 | `radio_fast_couple`       | -                                                                                     | `null`                              | Trigger a fast cross-couple across the tuned stations.                          |
 
 :::note
-All `radio_*` commands except `radio_get_config` and `radio_get_state` require an active radio integration. Without one, they fail with an application error.
+All `radio_*` commands except `radio_get_config`, `radio_set_config` and `radio_get_state` require an active radio integration. Without one, they fail with an application error. `radio_set_config` is how an integration is enabled in the first place; it only requires the keybind listener capability.
 :::
 
 ### Remote
@@ -910,7 +910,7 @@ A frequency tuned in the radio backend. Returned by `radio_get_stations`, `radio
 
 | Field          | Type                   | Description                                                                        |
 | -------------- | ---------------------- | ---------------------------------------------------------------------------------- |
-| `callsign`     | `string` &#124; absent | Station callsign, when the backend reports one.                                    |
+| `callsign`     | `string` &#124; `null` | Station callsign, when the backend reports one; `null` otherwise.                  |
 | `frequency`    | `number`               | Frequency in Hz.                                                                   |
 | `rx`           | `boolean`              | Receive enabled.                                                                   |
 | `tx`           | `boolean`              | Transmit enabled.                                                                  |
