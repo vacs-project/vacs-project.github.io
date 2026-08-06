@@ -158,5 +158,7 @@ Global bindings, meaning bindings that work while another application is focused
 :::note[Linux with Wayland]
 Wayland does not allow an application to observe the keyboard while it is not focused. vacs therefore registers its actions as **system shortcuts** with your desktop environment, and you assign the actual keys there. The binding field shows the key your desktop has assigned in grey and cannot be edited in vacs; the **System Shortcuts** button next to **Joystick Devices** opens your desktop's shortcut settings.
 
+Keys you assign, change or clear in your desktop settings take effect straight away, without restarting vacs.
+
 Joystick buttons are not affected by this restriction and are captured directly in vacs. Binding a joystick button to an action **replaces** the desktop shortcut for that action, and removing the button restores it.
 :::
