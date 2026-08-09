@@ -197,8 +197,17 @@ tell you.
 Click the red button to reconnect. This re-establishes the link to TrackAudio and clears vacs's
 transmission state, so it is also the right first step if PTT feels stuck.
 
-{/* TODO(screenshot): /img/radio/radio_button_error.png - the radio button in its red error state
-    in the main window header, at the same crop and scale as the other button screenshots. */}
+<img
+src="/img/radio/radio_button_error.png"
+alt="The radio button in its error state"
+style={{
+    width: "12.5rem",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
 
 ### PTT no longer transmits, and only reconnecting TrackAudio helps
 

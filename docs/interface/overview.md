@@ -134,7 +134,7 @@ The Radio button indicates the current state of the [Radio Integration](/setting
 | Gray            | Black      | Enabled  | Connected, no RX                 | A connection to the radio client exists, but no frequency is currently being received. *(In Audio for VATSIM this state usually does not occur.)*                                        |
 | Emerald         | Black      | Enabled  | Idle                             | At least one frequency is tuned and ready, but nobody is currently transmitting and you are not transmitting.                                                                            |
 | Cornflower Blue | Black      | Enabled  | Active transmission              | Either you or someone else (pilot, other station in general) is currently transmitting on the tuned frequency.                                                                                                       |
-| Red             | Black      | Enabled  | Error                            | A radio-related error has occurred.                                                                                                                                                      |
+| Red             | Black      | Enabled  | Error                            | The connection to TrackAudio was lost, or several transmit attempts in a row got no response from it. Click the button to reconnect, see [Troubleshooting](/interface/radio#troubleshooting). |
 
 
 #### CPL 
