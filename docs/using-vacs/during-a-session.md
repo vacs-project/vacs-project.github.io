@@ -103,9 +103,9 @@ These settings are explained in:
 
 During high workload situations, radio communication often remain the highest priority.
 
-Depending on your selected [Transmit Mode](/settings/transmit), the **RADIO PRIO** button has a different function.
+What the **RADIO PRIO** button does depends on your [Call Mic Mode and Radio Integration](/settings/transmit#how-call-mic-mode-and-radio-integration-interact).
 
-If you are using the Radio Integration transmit mode, you can prioritize Radio communications while being in an active call. Accordingly, instead of transmitting in the active vacs call, you will transmit on the frequency using your selected Push-to-Talk.
+With a radio integration configured, it lets you prioritize radio communication while a call is active: instead of transmitting into the vacs call, your push-to-talk transmits on frequency. Your call microphone is muted for as long as RADIO PRIO is on, whichever Call Mic Mode you use, and it resets to off when you leave the call.
 
 --- 
 

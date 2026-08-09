@@ -185,7 +185,7 @@ When **RADIO PRIO** is enabled during an active call:
 - Radio transmissions always take priority.
 - Phone tramission are temporarily suppressed.
 
-Otherwise, during an active call using the Radio Integration Transmit Mode, your push-to-talk is used to transmit in the active call.
+Otherwise, while a call is active, your push-to-talk transmits into the call rather than on frequency.
 
 ---
 
