@@ -164,3 +164,17 @@ The first time vacs runs, your desktop asks whether to let it register these sho
 
 Joystick buttons are not affected by this restriction and are captured directly in vacs. Binding a joystick button to an action **replaces** the desktop shortcut for that action, and removing the button restores it.
 :::
+
+This is what the Hotkeys Config looks like on a Wayland session: the keys come from the desktop environment and are shown in grey, and the **System Shortcuts** button sits next to **Joystick Devices**.
+
+<img
+src="/img/settings/HotkeysConfigPage-wayland.png"
+alt="vacs Hotkeys Config on Wayland, with desktop-managed keys and the System Shortcuts button"
+style={{
+    width: "45%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
