@@ -32,17 +32,17 @@ style={{
 
 To bind a key to an action:
 
-- Simply press the field showing **Not bound** or the relevant key binding next to the desired action.
+- Simply press the field showing **Not bound** or the relevant key binding next to the desired action **(1)**.
 - Press the key (or key combination) you want to assign, or press a button on a connected joystick.
 - The field will update to display the selected binding.
 
 :::info[Clearing a Key Binding]
-Click the **✕** button on the right side of the row to remove the assigned key binding.
+Click the **✕** button on the right side of the row **(2)** to remove the assigned key binding.
 :::
 
 <img
 src="/img/settings/HotkeysConfigPage.png"
-alt="vacs Settings Page"
+alt="vacs Hotkeys Config, with the binding field and its clear button marked"
 style={{
     width: "45%",
     display: "block",
@@ -100,10 +100,17 @@ Binding a button works exactly like binding a key:
 
 Only **buttons** can be bound. Axes, hats and triggers that report as an axis (common for gamepad triggers) cannot be used as a binding.
 
-{/* TODO(screenshot): /img/settings/HotkeysConfigPage-joystick.png - Settings > Hotkeys Config with
-    one action bound to a joystick button, so the field reads something like "Button 3 (VPC
-    Throttle)" instead of a key name, and the "Joystick Devices" button visible in the dialog
-    header. */}
+<img
+src="/img/settings/HotkeysConfigPage-joystick.png"
+alt="vacs Hotkeys Config with an action bound to a joystick button"
+style={{
+    width: "45%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
 
 :::note[How devices are recognized]
 vacs identifies a device by a hardware identifier rather than by the order it was plugged in, so your bindings survive unplugging the device, rebooting, and moving it to a different USB port.
@@ -117,8 +124,17 @@ Some devices, in particular flight sim throttles and button boxes, have **latche
 
 The **Joystick Devices** button in the header of the Hotkeys Config and Transmit Config dialogs opens a list of your devices where you can tick the ones vacs should **ignore while capturing**.
 
-{/* TODO(screenshot): /img/settings/JoystickDevices.png - The Joystick Devices dialog listing at
-    least two connected devices, one of them ticked as ignored. */}
+<img
+src="/img/settings/JoystickDevices.png"
+alt="The Joystick Devices dialog with one device ignored"
+style={{
+    width: "45%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
 
 The list contains every currently connected device, plus previously ignored devices that are unplugged right now, so their entry does not silently disappear.
 

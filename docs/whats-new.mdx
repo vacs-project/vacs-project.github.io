@@ -19,10 +19,7 @@ To bind one, click a binding field as usual and press a button on your device in
 
 This means a HOTAS throttle, a yoke, a button box or a handset can drive your calls directly, without mapping the device to a keyboard key through third party software first.
 
-{/* TODO(screenshot): /img/settings/HotkeysConfigPage-joystick.png - Settings > Hotkeys Config with
-    one action bound to a joystick button, so the field reads something like "Button 3 (VPC
-    Throttle)" instead of a key name, and the "Joystick Devices" button visible in the dialog
-    header. */}
+<img src="/img/settings/HotkeysConfigPage-joystick.png" alt="vacs Hotkeys Config with an action bound to a joystick button" className="screenshot" style={{ width: "45%" }} />
 
 Bindings are tied to the device itself rather than to the port it is plugged into, so they survive unplugging the device, a reboot, or moving it to a different USB port.
 
@@ -40,9 +37,7 @@ vacs now detects this. When a connected call stops receiving audio for a few sec
 
 Both controllers need to be on v2.6.0 or later for this to work. If the other side is on an older version, or if the call is already relayed and audio still is not arriving, vacs marks the call as **degraded** instead: the status indicator stays orange and a muted speaker icon appears on the affected call in the call sequence, so you can tell the difference between a quiet colleague and a broken call.
 
-{/* TODO(screenshot): /img/troubleshooting/degraded-call.png - The call sequence with one active
-    call showing the muted speaker icon in the top-left corner of the call button, and the top
-    status bar indicator orange rather than green. */}
+<img src="/img/troubleshooting/degraded-call.png" alt="A degraded call, with the muted speaker icon in the call sequence" className="screenshot" style={{ width: "80%" }} />
 
 There is also a new **Always relay calls** option in the [Call Settings](/settings/call#always-relay-calls), off by default. It skips the direct connection entirely and relays every call from the start. Only turn it on if you regularly have trouble hearing other controllers and cannot turn the VPN off or exclude vacs from it, since relaying adds a small amount of latency.
 
