@@ -21,6 +21,7 @@ Since vacs authenticates through [VATSIM Connect](https://vatsim.dev/services/co
 
 - Ubuntu 22.04+, Fedora 40+, or a similar modern distribution is recommended (64-bit)
 - Required system libraries are automatically installed by your package manager when you install vacs via the provided .deb or .rpm packages
+- If your distribution supports neither, an AppImage is also provided. It bundles the libraries vacs needs, so it runs on most distributions without installing anything, at the cost of a noticeably larger download. See [Installation](/getting-started/installation#linux)
 - An ALSA-compatible audio backend is required. This is usually automatically satisfied if you're running PulseAudio or Pipewire, which most modern Linux desktops use by default. The suggested audio packages are also included as dependencies for our packages
 
 :::note[Wayland users]
