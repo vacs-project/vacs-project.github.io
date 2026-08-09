@@ -26,12 +26,20 @@ If the other controller is on an older version, or if the call is already being 
 
 A degraded call is one that is still connected but is not delivering audio to you. vacs shows this in two places:
 
-- the status indicator in the top-left corner stays **orange** instead of turning green
-- a **muted speaker icon** appears in the top-left corner of the call in the call sequence
+1. the status indicator in the top-left corner stays **orange** instead of turning green
+2. a **muted speaker icon** appears in the top-left corner of the call in the call sequence
 
-{/* TODO(screenshot): /img/troubleshooting/degraded-call.png - The call sequence with one active
-    call showing the muted speaker icon in the top-left corner of the call button, and the top
-    status bar indicator orange rather than green. */}
+<img
+src="/img/troubleshooting/degraded-call-annotated.png"
+alt="A degraded call, with the muted speaker icon in the call sequence and the status indicator orange"
+style={{
+    width: "80%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
 
 If you see this, tell the other controller on another channel and place the call again. If it keeps happening, work through the steps below.
 

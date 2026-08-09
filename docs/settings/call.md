@@ -24,10 +24,6 @@ style={{
   }}
 />
 
-{/* TODO(screenshot): /img/settings/CallConfig.png - Settings > Call Config, showing the full list
-    of options including the new "Always relay calls" entry at the bottom. Supersedes the current
-    /img/settings/CallConfig.png, which predates that option and can be deleted. */}
-
 The Call Config page will display the available options, which can be enabled or disabled by the checkbox next to the options. All of them are enabled by default, except **Always relay calls**.
 
 ---
