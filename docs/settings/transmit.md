@@ -118,6 +118,22 @@ Next to the Radio Integration dropdown is a key-capture field for your **Radio P
 | Push-to-Talk | Enabled, **optional** | Leave it empty to reuse your call PTT key - the field then shows that key in **light grey** as a placeholder. Capture a different key to make the radio operate independently of the call key. |
 | Push-to-Mute | **Disabled**, forced to the call key | Always shows (and uses) the same key as your call Push-to-Mute key. A distinct PTM for calls vs. radio is not supported, so the capture field is locked. |
 
+:::note[On Wayland, the key comes from your desktop settings]
+Keyboard keys are assigned in your desktop environment rather than captured in vacs, so "leave it empty" means leaving the **Radio Push-to-talk** system shortcut unassigned. Everything else in this table works the same way. If you change the shortcut while this dialog is open, reopen it to see the new key. See [Platform support](/settings/hotkeys#platform-support) on the Hotkeys page.
+
+<img
+src="/img/settings/Transmit-DifferentPTT-TrackAudio-wayland.png"
+alt="vacs Transmit Config on Wayland, with desktop-managed keys and the System Shortcuts button"
+style={{
+    width: "80%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
+:::
+
 With **Voice Activation**, there is no call key to fall back to, so the field starts unbound and shows **"Not bound"** until you assign one explicitly:
 
 <img

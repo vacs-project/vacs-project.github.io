@@ -62,6 +62,10 @@ Wayland sessions are unchanged: keyboard shortcuts are still managed by your des
 
 - **Silently broken radio transmissions** - The radio button now turns red when your transmissions repeatedly fail to reach TrackAudio, instead of everything looking normal while your Radio PTT does nothing. Clicking it reconnects to TrackAudio and clears the transmission state. See [Troubleshooting](/interface/radio#troubleshooting) on the radio page.
 - **Radio page freezing** - A burst of activity from TrackAudio no longer leaves the frequency and transmission indicators on the [radio page](/interface/radio) stuck on old values until vacs is restarted.
+- **Radio left transmitting after a settings change** - Changing your [Transmit](/settings/transmit) or [Hotkeys](/settings/hotkeys) settings while holding your Radio PTT key no longer leaves the radio transmitting, with no key left to release it.
+- **Dead hotkeys on KDE Plasma 6.7.4** - Every vacs shortcut stopped working on Wayland after updating to Plasma 6.7.4, and reassigning the keys or restarting vacs did not bring them back. vacs now registers its shortcuts with your desktop on every start, so they work again without downgrading.
+- **Key changes needing a restart** - On Wayland, assigning or clearing the **Radio Push-to-talk** shortcut in your desktop settings now takes effect immediately instead of at the next start of vacs.
+- **Radio PTT ignored on GNOME** - On GNOME, a Radio PTT shortcut was ignored and the radio always followed your call PTT key. It now works as documented in the [Transmit Config](/settings/transmit#the-radio-ptt-key-field).
 
 ---
 
