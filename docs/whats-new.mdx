@@ -5,6 +5,59 @@ sidebar_label: What's New
 
 # What's New
 
+## v2.6.0
+
+[v2.6.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.6.0) lets you use joystick and gamepad buttons for every key binding, repairs calls on its own when your audio stops arriving, and brings full key binding support to Linux systems running X11.
+
+A complete list of changes is available in the [v2.6.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.6.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
+
+### Joystick and gamepad buttons as key bindings
+
+Every binding field in vacs now accepts a **joystick or gamepad button** as well as a keyboard key. That covers Push-to-Talk, Push-to-Mute and the Radio PTT key in the [Transmit Config](/settings/transmit), and accepting calls, ending calls and toggling RADIO PRIO in the [Hotkeys Config](/settings/hotkeys).
+
+To bind one, click a binding field as usual and press a button on your device instead of a key. The field then shows the button and the device it belongs to, for example **Button 3 (VPC Throttle)**. Nothing needs to be installed or configured first, and devices can be plugged in while vacs is running.
+
+This means a HOTAS throttle, a yoke, a button box or a handset can drive your calls directly, without mapping the device to a keyboard key through third party software first.
+
+<img src="/img/settings/HotkeysConfigPage-joystick.png" alt="vacs Hotkeys Config with an action bound to a joystick button" className="screenshot" style={{ width: "45%" }} />
+
+Bindings are tied to the device itself rather than to the port it is plugged into, so they survive unplugging the device, a reboot, or moving it to a different USB port.
+
+:::tip[Devices that block binding]
+Throttles and button boxes often have latched switches that report as permanently pressed. Such a device instantly wins any binding you try to make, and you would never get to press the button you actually wanted. The new **Joystick Devices** dialog, reachable from the Hotkeys Config and Transmit Config dialogs, lets you exclude those devices from binding capture while keeping any bindings you already made on them. See [Joystick Devices](/settings/hotkeys#joystick-devices).
+:::
+
+---
+
+### Calls repair themselves when audio stops arriving
+
+Call audio in vacs travels directly between the two controllers rather than through our servers, which keeps latency low. Some VPNs, notably Cloudflare WARP and Tailscale, break that path in one direction only: the other controller hears you, you hear nothing.
+
+vacs now detects this. When a connected call stops receiving audio for a few seconds, it re-establishes the call through one of our relay servers, which works even when the direct path does not. The call stays up while this happens; you notice a short gap and the status indicator briefly turning orange.
+
+Both controllers need to be on v2.6.0 or later for this to work. If the other side is on an older version, or if the call is already relayed and audio still is not arriving, vacs marks the call as **degraded** instead: the status indicator stays orange and a muted speaker icon appears on the affected call in the call sequence, so you can tell the difference between a quiet colleague and a broken call.
+
+<img src="/img/troubleshooting/degraded-call.png" alt="A degraded call, with the muted speaker icon in the call sequence" className="screenshot" style={{ width: "80%" }} />
+
+There is also a new **Always relay calls** option in the [Call Settings](/settings/call#always-relay-calls), off by default. It skips the direct connection entirely and relays every call from the start. Only turn it on if you regularly have trouble hearing other controllers and cannot turn the VPN off or exclude vacs from it, since relaying adds a small amount of latency.
+
+See [One-way audio](/troubleshooting/audio#one-way-audio-you-cannot-hear-the-other-controller) for the full picture, including what the relay servers are and what happens to audio passing through them.
+
+---
+
+### Full key binding support on Linux with X11
+
+Linux systems running an **X11** session previously had no global key bindings at all, which meant Push-to-Talk and the call hotkeys did not work outside the vacs window. X11 sessions are now on par with Windows and macOS:
+
+- Keyboard keys can be bound in vacs and work while another application is focused.
+- The **Audio for VATSIM** radio integration is available, since vacs can now trigger the transmission key in the AFV client. Previously this integration could not be used anywhere on Linux.
+
+Nothing needs to be installed or granted for this, it works out of the box on an X11 session.
+
+Wayland sessions are unchanged: keyboard shortcuts are still managed by your desktop environment and Audio for VATSIM remains unavailable there, because Wayland does not permit either. Joystick buttons, however, work on Wayland too, and binding one replaces the desktop-managed shortcut for that action. See [Platform support](/settings/hotkeys#platform-support) for the complete breakdown.
+
+---
+
 ## v2.5.1
 
 [v2.5.1](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.5.1) is a patch release that fixes vacs failing to start on some Windows systems and makes vacs recover on its own when your default audio device changes.
