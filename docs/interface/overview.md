@@ -21,10 +21,12 @@ The top bar displays:
 
 The small status indicator in the top-left corner shows call state:
 - 🟢 Green → Ready / Connected
-- 🟠 Orange → Connecting
+- 🟠 Orange → Connecting, reconnecting, or connected without incoming audio
 - ⚫ Gray → Idle / Not connected
 
 This can also be supplemented by an audible indication. For futher information, see [Call Settings](/settings/call).
+
+If the indicator stays orange on a call that is otherwise established, the call is not delivering audio to you. A muted speaker icon on the call in the call sequence marks which call is affected. See [One-way audio](/troubleshooting/audio#one-way-audio-you-cannot-hear-the-other-controller).
 
 <img
 src="/img/interface/topbar.png"
