@@ -58,6 +58,13 @@ Wayland sessions are unchanged: keyboard shortcuts are still managed by your des
 
 ---
 
+### Bug fixes
+
+- **Silently broken radio transmissions** - The radio button now turns red when your transmissions repeatedly fail to reach TrackAudio, instead of everything looking normal while your Radio PTT does nothing. Clicking it reconnects to TrackAudio and clears the transmission state. See [Troubleshooting](/interface/radio#troubleshooting) on the radio page.
+- **Radio page freezing** - A burst of activity from TrackAudio no longer leaves the frequency and transmission indicators on the [radio page](/interface/radio) stuck on old values until vacs is restarted.
+
+---
+
 ## v2.5.1
 
 [v2.5.1](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.5.1) is a patch release that fixes vacs failing to start on some Windows systems and makes vacs recover on its own when your default audio device changes.

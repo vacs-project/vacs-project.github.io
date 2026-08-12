@@ -182,3 +182,45 @@ style={{
     boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
   }}
 />
+
+---
+
+## Troubleshooting
+
+### The radio button turned red
+
+The radio button turns red when vacs has lost its connection to TrackAudio, or when several
+transmit attempts in a row got no response from TrackAudio. The second case is the important one:
+your radio PTT is pressing, but nothing is reaching TrackAudio, and nothing else on screen would
+tell you.
+
+Click the red button to reconnect. This re-establishes the link to TrackAudio and clears vacs's
+transmission state, so it is also the right first step if PTT feels stuck.
+
+<img
+src="/img/radio/radio_button_error.png"
+alt="The radio button in its error state"
+style={{
+    width: "12.5rem",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
+
+### PTT no longer transmits, and only reconnecting TrackAudio helps
+
+If your radio PTT stops transmitting after a while, the radio button stays its normal color, and
+the only thing that brings it back is disconnecting and reconnecting TrackAudio itself, then the
+problem is on the TrackAudio side rather than in vacs.
+
+In this situation TrackAudio does receive the key press from vacs and reports back that it has
+started transmitting, but no audio reaches the network. vacs has no way to see past that point, so
+it cannot detect or fix it. Reconnecting TrackAudio's voice connection clears it.
+
+:::tip
+If you hit this, it is worth reporting to the TrackAudio developers with a TrackAudio log covering
+the affected period. A vacs log alone can only show that vacs sent the transmission and TrackAudio
+acknowledged it.
+:::
