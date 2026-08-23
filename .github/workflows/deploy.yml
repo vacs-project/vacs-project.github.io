@@ -5,20 +5,33 @@ on:
     branches:
       - main
 
+permissions: {}
+
+# Never cancel an in-flight Pages deployment; queue pushes instead.
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: false
+
 jobs:
   build:
     name: Build docs
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          # Full history so Docusaurus can derive last-updated timestamps.
           fetch-depth: 0
           persist-credentials: false
 
+      # No npm cache restore here: caches are writable by ordinary CI runs, and a
+      # poisoned cache would end up inside the published site.
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: "lts/*"
-          cache: npm
+          package-manager-cache: false
 
       - name: Install dependencies
         run: npm ci
@@ -34,16 +47,17 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     permissions:
-      pages: write
-      id-token: write
+      pages: write # to publish the Pages deployment
+      id-token: write # to prove to Pages that the artifact comes from this workflow
 
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
