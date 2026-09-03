@@ -435,7 +435,7 @@ Subscribe to events to receive real-time updates. Event names use a `domain:name
 | `signaling:connected`                 | [`SessionInfo`](#sessioninfo)                     | Successfully connected to the signaling server.                                      |
 | `signaling:disconnected`              | `null`                                            | Disconnected from the signaling server.                                              |
 | `signaling:force-call-end`            | `string`                                          | A call was forcefully terminated (e.g. by the server). Payload is the CallId.        |
-| `signaling:outgoing-call-accepted`    | [`CallAccept`](#callaccept)                       | An outgoing call was accepted by the remote party.                                   |
+| `signaling:outgoing-call`             | [`OutgoingCall`](#outgoingcall)                   | This client sent a call invite. Emitted before the invoking command returns, so it always precedes any answer to the invite. |
 | `signaling:reconnecting`              | `null`                                            | The signaling connection is being re-established.                                    |
 | `signaling:station-changes`           | [`StationChange[]`](#stationchange)               | One or more stations changed.                                                        |
 | `signaling:station-list`              | [`StationInfo[]`](#stationinfo)                   | The full station list was updated (replaces previous list).                          |
@@ -1163,6 +1163,30 @@ Represents an incoming or outgoing call invitation.
 | `target` | [`CallTarget`](#calltarget) | The intended recipient of the call. |
 | `prio`   | `boolean`                   | Whether this is a priority call.    |
 
+### OutgoingCall
+
+Emitted with `signaling:outgoing-call` when this client invites targets, either starting a new call or adding to the current one. Build the outgoing call display from this event rather than from the command's return value: the command reply and the server's answer travel on different channels, and an instant rejection can arrive first.
+
+```json
+{
+  "callId": "01916f6a-7b3c-7d4e-8f1a-2b3c4d5e6f70",
+  "source": {
+    "clientId": "7654321",
+    "positionId": "LOWW_APP",
+    "stationId": "LOWW_APP"
+  },
+  "targets": [{ "station": "LOWW_TWR" }],
+  "prio": false
+}
+```
+
+| Field     | Type                          | Description                                              |
+| --------- | ----------------------------- | -------------------------------------------------------- |
+| `callId`  | `string`                      | The call the targets were invited to (UUID).             |
+| `source`  | [`CallSource`](#callsource)   | This client as the caller.                               |
+| `targets` | [`CallTarget[]`](#calltarget) | The invited targets, in no particular order.             |
+| `prio`    | `boolean`                     | Whether the invite was sent as a priority call.          |
+
 ### CallSource
 
 ```json
@@ -1194,22 +1218,6 @@ An externally-tagged enum identifying the call recipient. Exactly one variant is
 ```json
 { "Station": "LOWW_APP" }
 ```
-
-### CallAccept
-
-Emitted with the `signaling:outgoing-call-accepted` event.
-
-```json
-{
-  "callId": "01916f6a-7b3c-7d4e-8f1a-2b3c4d5e6f70",
-  "acceptingClientId": "1234567"
-}
-```
-
-| Field               | Type     | Description                                      |
-| ------------------- | -------- | ------------------------------------------------ |
-| `callId`            | `string` | The accepted call's identifier.                  |
-| `acceptingClientId` | `string` | VATSIM CID of the client that accepted the call. |
 
 ### CallError
 
