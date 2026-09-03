@@ -1091,15 +1091,19 @@ Emitted with the `signaling:connected` event and included in the session state s
     "positionId": "LOVV_CTR"
   },
   "profile": {
-    "type": "Unchanged"
-  }
+    "type": "unchanged"
+  },
+  "defaultCallSources": ["LOVV_CTR"],
+  "maxConfSize": 8
 }
 ```
 
-| Field     | Type                        | Description                                                                                                                               |
-| --------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `client`  | [`ClientInfo`](#clientinfo) | The authenticated user's client entry.                                                                                                    |
-| `profile` | `object`                    | Profile state. `{ "type": "Unchanged" }` when the profile was not modified, or `{ "type": "Changed", "activeProfile": ... }` when it was. |
+| Field                | Type                        | Description                                                                                                                               |
+| -------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `client`             | [`ClientInfo`](#clientinfo) | The authenticated user's client entry.                                                                                                    |
+| `profile`            | `object`                    | Profile state. `{ "type": "unchanged" }` when the profile was not modified, or `{ "type": "changed", "activeProfile": ... }` when it was. |
+| `defaultCallSources` | `string[]`                  | Station IDs configured as default call sources for the position.                                                                          |
+| `maxConfSize`        | `number` (optional)         | Maximum number of parties in a conference the server allows. Absent when the server does not enforce one.                                |
 
 ### StationInfo
 
@@ -1208,15 +1212,15 @@ Emitted with `signaling:outgoing-call` when this client invites targets, either 
 An externally-tagged enum identifying the call recipient. Exactly one variant is present:
 
 ```json
-{ "Client": "1234567" }
+{ "client": "1234567" }
 ```
 
 ```json
-{ "Position": "LOWW_APP" }
+{ "position": "LOWW_APP" }
 ```
 
 ```json
-{ "Station": "LOWW_APP" }
+{ "station": "LOWW_APP" }
 ```
 
 ### CallError
