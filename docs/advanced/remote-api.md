@@ -1140,7 +1140,9 @@ Emitted with the `signaling:connected` event and included in the session state s
       }
     }
   },
-  "splitProfileWidth": 352
+  "splitProfileWidth": 352,
+  "defaultCallSources": ["LOVV_CTR"],
+  "maxConfSize": 8
 }
 ```
 
@@ -1149,6 +1151,8 @@ Emitted with the `signaling:connected` event and included in the session state s
 | `client`            | [`ClientInfo`](#clientinfo) | The authenticated user's client entry.                                                                                                    |
 | `profile`           | `object`                    | Profile state. `{ "type": "unchanged" }` when the profile was not modified, or `{ "type": "changed", "activeProfile": ... }` when it was. `activeProfile` is `{ "type": "specific", "profile": ... }` with a [`Profile`](#profile), or `{ "type": "custom" }` or `{ "type": "none" }`. |
 | `splitProfileWidth` | `number` &#124; absent      | Width in pixels stored for the phone side of the profile's mixed view, set through [`app_set_split_profile_width`](#application). Present only when a specific profile is active and a width has been stored for it. |
+| `defaultCallSources` | `string[]`                  | Station IDs configured as default call sources for the position.                                                                          |
+| `maxConfSize`        | `number` (optional)         | Maximum number of parties in a conference the server allows. Absent when the server does not enforce one.                                |
 
 ### Profile
 
@@ -1278,15 +1282,15 @@ Emitted with `signaling:outgoing-call` when this client invites targets, either 
 An externally-tagged enum identifying the call recipient. Exactly one variant is present:
 
 ```json
-{ "Client": "1234567" }
+{ "client": "1234567" }
 ```
 
 ```json
-{ "Position": "LOWW_APP" }
+{ "position": "LOWW_APP" }
 ```
 
 ```json
-{ "Station": "LOWW_APP" }
+{ "station": "LOWW_APP" }
 ```
 
 ### CallError
