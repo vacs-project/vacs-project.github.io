@@ -373,7 +373,9 @@ All `radio_*` commands except `radio_get_config`, `radio_set_config` and `radio_
 
 ## Session State Snapshot
 
-The `remote_get_session_state` command returns a complete snapshot of the current application state. This is the recommended mechanism for initializing a newly connected client. See [`SessionStateSnapshot`](#sessionstatesnapshot) in the Type Reference for the full schema and a JSON example.
+The `remote_get_session_state` command returns a snapshot of the current session: connection and authentication state, stations, clients, settings and platform capabilities. See [`SessionStateSnapshot`](#sessionstatesnapshot) in the Type Reference for the full schema and a JSON example.
+
+Call state is not part of the snapshot. It lives in the desktop frontend's stores, so a newly connected client bootstraps it in a second step: apply the snapshot, then send `remote_request_store_sync`. The desktop answers with one [`store:sync`](#store-sync-events) event per store slice, and the `call` slice of that re-broadcast carries the complete call state: the current call display, pending incoming calls and the conference state. The desktop client's own remote frontend follows exactly this sequence.
 
 ---
 
@@ -527,9 +529,7 @@ Returned by [`remote_get_session_state`](#remote). Provides a complete snapshot 
     "joystick": true,
     "playback": true,
     "platform": "LinuxWayland"
-  },
-  "incomingCalls": [],
-  "outgoingCall": null
+  }
 }
 ```
 
@@ -544,8 +544,8 @@ Returned by [`remote_get_session_state`](#remote). Provides a complete snapshot 
 | `callConfig`         | [`CallConfig`](#callconfig)                 | Active call configuration.                                   |
 | `clientPageSettings` | [`ClientPageSettings`](#clientpagesettings) | Active client page layout/settings.                          |
 | `capabilities`       | [`Capabilities`](#capabilities)             | Platform capabilities of the desktop host.                   |
-| `incomingCalls`      | [`CallInvite[]`](#callinvite)               | Pending incoming call invitations.                           |
-| `outgoingCall`       | [`CallInvite`](#callinvite) &#124; `null`   | The pending outgoing call, if any.                           |
+
+Call state is bootstrapped separately, see [Session State Snapshot](#session-state-snapshot).
 
 ### Capabilities
 
@@ -1044,6 +1044,8 @@ Emitted with the `store:sync` event, and the argument shape of `remote_broadcast
 | `state`    | `any`    | The slice's new value. Shape depends on `store`.                                                 |
 | `sourceId` | `string` | Opaque instance ID of the broadcaster. Ignore events carrying your own ID to avoid echo loops.   |
 
+In the `call` slice, a `null` field means "not carried by this sync": every instance derives that part from the signaling and WebRTC events itself. Live syncs send `null` for `incomingCalls`, and for `callDisplay` while a call is ringing or connected; `conferenceState` is always carried, since entering conference modify mode is a local action. Only the re-broadcast after `remote_request_store_sync` fills every field, so a newly connected client can bootstrap into a running call.
+
 :::warning
 The `state` shapes mirror the desktop frontend's internal stores and change without notice, even between patch releases. Treat them as opaque unless you are building a full replacement frontend.
 :::
@@ -1310,9 +1312,7 @@ Signal client readiness and retrieve the current application state:
       "clientId": null,
       "callConfig": { ... },
       "clientPageSettings": { ... },
-      "capabilities": { ... },
-      "incomingCalls": [],
-      "outgoingCall": null
+      "capabilities": { ... }
     }
   }
 ```
