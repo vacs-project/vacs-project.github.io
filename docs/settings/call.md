@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Call Settings
 
-The **Call Config** Menu allows you to change various call-related settings, customising how calls behave, with options for priority calls, visual highlights, and start/end sound effects.
+The **Call Config** Menu allows you to change various call-related settings, customising how calls behave, with options for priority calls, visual highlights, and sound effects.
 
 ---
 
@@ -52,6 +52,28 @@ If **Play Call Start Sound** is enabled, this state change is also confirmed aud
 
 ### Play call end sound
 When enabled, a notification sound is played when a call ends. This confirms that the call has been terminated.
+
+### Play participant joined sound
+Available from **vacs 3.0.0**.
+
+When enabled, a short sound is played when another controller joins a call you are already on. This only applies to [conference calls](/using-vacs/conference-calls): the first controller joining a call is its start, and is announced by the call start sound instead.
+
+<img
+  src="/img/settings/CallConfigPage.png"
+  alt="The Call Config page with the two participant sounds marked"
+  className="screenshot"
+  style={{ width: "45%" }}
+/>
+
+The two conference sounds are marked in the screenshot above:
+
+1. **Play participant joined sound**
+2. **Play participant left sound**
+
+### Play participant left sound
+Available from **vacs 3.0.0**.
+
+When enabled, a short sound is played when a controller leaves a call that carries on without them. When the last other controller leaves, the call is over and the call end sound is played instead.
 
 ### Automatic default call source
 When enabled, vacs automatically sets your default call source based on the position you are logged in with. The first matching station defined in the dataset by your vACC and currently controlled by you is selected. You can still override this manually at any time.
