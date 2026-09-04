@@ -28,6 +28,8 @@ This can also be supplemented by an audible indication. For futher information, 
 
 If the indicator stays orange on a call that is otherwise established, the call is not delivering audio to you. A muted speaker icon on the call in the call sequence marks which call is affected. See [One-way audio](/troubleshooting/audio#one-way-audio-you-cannot-hear-the-other-controller).
 
+In a [conference call](/using-vacs/conference-calls) the indicator reports the worst connection in the call, not the call as a whole. It is green only while every participant is connected, so a single participant whose connection has dropped turns it orange even though everyone else is fine. The call display shows the same thing with its icons, and a disconnected participant takes precedence over one that is merely not sending audio: you see the disconnected icon, not the muted speaker.
+
 <img
 src="/img/interface/topbar.png"
 alt="vacs Settings Page"

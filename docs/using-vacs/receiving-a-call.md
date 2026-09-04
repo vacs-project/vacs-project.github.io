@@ -131,6 +131,24 @@ style={{
 
 ---
 
+## Being invited into a Conference
+
+You can also be called into a coordination that already has more than two controllers in it, or one that grows into that while you are on it.
+
+An incoming invitation into a call that already has two or more parties in it is shown differently:
+
+- The **answer key** reads **CONF** instead of naming the caller. A conference is not one sector, so there is no single name to show.
+- Every sector in the call is highlighted, not just the caller. If a controller in the call is covering a sector on one of your Direct Access Pages, that key and the page it sits on light up.
+- This also happens when the caller has not selected a call source, in which case the caller itself cannot be highlighted but the other participants still are.
+
+Accept it exactly like any other call, by pressing the flashing answer key. Once you are in, you hear and are heard by everybody in the call.
+
+While the call runs, joining and leaving controllers are announced by their own short sounds, which can be turned off in the [Call Settings](/settings/call).
+
+For what you can and cannot do inside a conference, and who is allowed to add or remove participants, see [Conference calls](/using-vacs/conference-calls).
+
+---
+
 ## Speaking during a Call
 
 How audio transmission works during a call depends on your configured [**Transmit Mode**](/settings/transmit).

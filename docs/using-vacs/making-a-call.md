@@ -236,3 +236,9 @@ To terminate an active call:
 - Press the **END** button in the bottom control bar.
 
 This will immediately terminate the call and return the interface to its normal state.
+
+---
+
+## Adding Further Sectors
+
+An established call can be extended to further sectors, so that three or more controllers coordinate together. This is done with the **CONF** button and is described in [Conference calls](/using-vacs/conference-calls).
