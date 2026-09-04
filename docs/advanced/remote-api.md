@@ -68,7 +68,7 @@ Every message is a JSON object with a `type` field that identifies the message k
 | `pong`     | Keepalive acknowledgement                       |
 
 :::info[Field naming convention]
-The wire protocol uses **`snake_case`** for command names (`audio_get_volumes`, `signaling_start_call`, etc.). However, command return values and event payloads use **`camelCase`** for their fields (e.g. `callId`, `positionId`, `clientPageSettings`). This is intentional - the payload schema matches the format used by the default Preact frontend.
+The wire protocol uses **`snake_case`** for command names (`audio_get_volumes`, `signaling_invite_to_call`, etc.). However, command return values and event payloads use **`camelCase`** for their fields (e.g. `callId`, `positionId`, `clientPageSettings`). This is intentional - the payload schema matches the format used by the default Preact frontend.
 :::
 
 ---
@@ -357,17 +357,18 @@ All `radio_*` commands except `radio_get_config`, `radio_set_config` and `radio_
 
 ### Signaling
 
-| Command                           | Args                                                | Returns    | Description                                                             |
-| --------------------------------- | --------------------------------------------------- | ---------- | ----------------------------------------------------------------------- |
-| `signaling_connect`               | `positionId`: string                                | `null`     | Connect to the signaling server.                                        |
-| `signaling_disconnect`            | -                                                   | `null`     | Disconnect from the signaling server.                                   |
-| `signaling_terminate`             | -                                                   | `null`     | Terminate the signaling session.                                        |
-| `signaling_start_call`            | `target`: string, `source`: string, `prio`: boolean | `string`   | Start a call. Returns the call ID (UUID).                               |
-| `signaling_accept_call`           | `callId`: string                                    | `null`     | Accept an incoming call.                                                |
-| `signaling_end_call`              | `callId`: string                                    | `null`     | End an active or pending call.                                          |
-| `signaling_get_ignored_clients`   | -                                                   | `string[]` | Get the ignore list. Returns an array of CIDs.                          |
-| `signaling_add_ignored_client`    | `clientId`: string                                  | `boolean`  | Add a CID to the ignore list. Returns whether the CID was newly added.  |
-| `signaling_remove_ignored_client` | `clientId`: string                                  | `boolean`  | Remove a CID from the ignore list. Returns whether the CID was present. |
+| Command                           | Args                                                                                             | Returns    | Description                                                                                                                                          |
+| --------------------------------- | ------------------------------------------------------------------------------------------------ | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `signaling_connect`               | `positionId`: string                                                                             | `null`     | Connect to the signaling server.                                                                                                                     |
+| `signaling_disconnect`            | -                                                                                                | `null`     | Disconnect from the signaling server.                                                                                                                |
+| `signaling_terminate`             | -                                                                                                | `null`     | Terminate the signaling session.                                                                                                                     |
+| `signaling_invite_to_call`        | `targets`: [`CallTarget[]`](#calltarget), `source`: [`CallSource`](#callsource), `prio`: boolean | `string`   | Invite one or more targets. With no call in progress this starts one; with a call in progress it adds the targets to it. Returns the call ID (UUID). |
+| `signaling_drop_target`           | `callId`: string, `target`: [`CallTarget`](#calltarget)                                          | `null`     | Cancel a ringing invitation this client sent, or remove a joined participant from a conference.                                                      |
+| `signaling_accept_call`           | `callId`: string                                                                                 | `null`     | Accept an incoming call.                                                                                                                             |
+| `signaling_end_call`              | `callId`: string                                                                                 | `null`     | End an active or pending call. Leaves the call; if this client leads the conference, it ends for everyone.                                           |
+| `signaling_get_ignored_clients`   | -                                                                                                | `string[]` | Get the ignore list. Returns an array of CIDs.                                                                                                       |
+| `signaling_add_ignored_client`    | `clientId`: string                                                                               | `boolean`  | Add a CID to the ignore list. Returns whether the CID was newly added.                                                                               |
+| `signaling_remove_ignored_client` | `clientId`: string                                                                               | `boolean`  | Remove a CID from the ignore list. Returns whether the CID was present.                                                                              |
 
 ---
 
@@ -419,39 +420,42 @@ Subscribe to events to receive real-time updates. Event names use a `domain:name
 
 ### Signaling Events
 
-| Event                                 | Payload                                           | Description                                                                          |
-| ------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| `signaling:accept-incoming-call`      | `string`                                          | An incoming call was accepted. Payload is the CallId.                                |
-| `signaling:add-incoming-to-call-list` | [`IncomingCallListEntry`](#incomingcalllistentry) | A new incoming call was added to the pending list.                                   |
-| `signaling:ambiguous-position`        | `string[]`                                        | The selected position matched multiple entries. Payload is an array of position IDs. |
-| `signaling:call-end`                  | `string`                                          | A call ended. Payload is the CallId.                                                 |
-| `signaling:call-invite`               | [`CallInvite`](#callinvite)                       | A new call invitation was received.                                                  |
-| `signaling:call-reject`               | `string`                                          | A call was rejected by the remote party. Payload is the CallId.                      |
-| `signaling:client-connected`          | [`ClientInfo`](#clientinfo)                       | A client connected to the signaling server.                                          |
-| `signaling:client-disconnected`       | `string`                                          | A client disconnected from the signaling server. Payload is the CID.                 |
-| `signaling:client-list`               | [`ClientInfo[]`](#clientinfo)                     | The full client list was updated (replaces previous list).                           |
-| `signaling:client-not-found`          | `string`                                          | A client lookup failed. Payload is the CID.                                          |
-| `signaling:client-page-config`        | [`ClientPageSettings`](#clientpagesettings)       | The client page configuration was updated.                                           |
-| `signaling:connected`                 | [`SessionInfo`](#sessioninfo)                     | Successfully connected to the signaling server.                                      |
-| `signaling:disconnected`              | `null`                                            | Disconnected from the signaling server.                                              |
-| `signaling:force-call-end`            | `string`                                          | A call was forcefully terminated (e.g. by the server). Payload is the CallId.        |
+| Event                                 | Payload                                           | Description                                                                                                                  |
+| ------------------------------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `signaling:accept-incoming-call`      | `string`                                          | An incoming call was accepted. Payload is the CallId.                                                                        |
+| `signaling:add-incoming-to-call-list` | [`IncomingCallListEntry`](#incomingcalllistentry) | A new incoming call was added to the pending list.                                                                           |
+| `signaling:ambiguous-position`        | `string[]`                                        | The selected position matched multiple entries. Payload is an array of position IDs.                                         |
+| `signaling:call-end`                  | `string`                                          | A call ended. Payload is the CallId.                                                                                         |
+| `signaling:call-invitation`           | [`CallInvitation`](#callinvitation)               | This client was invited into a call, either a new one or one that is already running.                                        |
+| `signaling:call-reject`               | [`CallReject`](#callreject)                       | One or more invited targets rejected the call.                                                                               |
+| `signaling:call-update`               | [`CallUpdate`](#callupdate)                       | The roster of a call this client is part of changed: someone joined, left, was invited or stopped ringing.                   |
+| `signaling:client-connected`          | [`ClientInfo`](#clientinfo)                       | A client connected to the signaling server.                                                                                  |
+| `signaling:client-disconnected`       | `string`                                          | A client disconnected from the signaling server. Payload is the CID.                                                         |
+| `signaling:client-list`               | [`ClientInfo[]`](#clientinfo)                     | The full client list was updated (replaces previous list).                                                                   |
+| `signaling:client-not-found`          | `string`                                          | A client lookup failed. Payload is the CID.                                                                                  |
+| `signaling:client-page-config`        | [`ClientPageSettings`](#clientpagesettings)       | The client page configuration was updated.                                                                                   |
+| `signaling:connected`                 | [`SessionInfo`](#sessioninfo)                     | Successfully connected to the signaling server.                                                                              |
+| `signaling:disconnected`              | `null`                                            | Disconnected from the signaling server.                                                                                      |
+| `signaling:force-call-end`            | `string`                                          | A call was forcefully terminated (e.g. by the server). Payload is the CallId.                                                |
 | `signaling:outgoing-call`             | [`OutgoingCall`](#outgoingcall)                   | This client sent a call invite. Emitted before the invoking command returns, so it always precedes any answer to the invite. |
-| `signaling:reconnecting`              | `null`                                            | The signaling connection is being re-established.                                    |
-| `signaling:station-changes`           | [`StationChange[]`](#stationchange)               | One or more stations changed.                                                        |
-| `signaling:station-list`              | [`StationInfo[]`](#stationinfo)                   | The full station list was updated (replaces previous list).                          |
-| `signaling:test-profile`              | `object`                                          | A test profile was loaded or unloaded.                                               |
+| `signaling:reconnecting`              | `null`                                            | The signaling connection is being re-established.                                                                            |
+| `signaling:station-changes`           | [`StationChange[]`](#stationchange)               | One or more stations changed.                                                                                                |
+| `signaling:station-list`              | [`StationInfo[]`](#stationinfo)                   | The full station list was updated (replaces previous list).                                                                  |
+| `signaling:test-profile`              | `object`                                          | A test profile was loaded or unloaded.                                                                                       |
 
 ### WebRTC Events
 
-| Event                       | Payload                   | Description                                                                                     |
-| --------------------------- | ------------------------- | ----------------------------------------------------------------------------------------------- |
-| `webrtc:call-connected`     | `string`                  | A voice call was established (media flowing). Payload is the CallId.                            |
-| `webrtc:call-degraded`      | `string`                  | A voice call is up but no incoming audio is arriving, and vacs cannot repair it. Payload is the CallId. |
-| `webrtc:call-disconnected`  | `string`                  | A voice call was disconnected. Payload is the CallId.                                           |
-| `webrtc:call-reconnecting`  | `string`                  | A voice call lost its incoming audio and is being re-established over a relay. Payload is the CallId. |
-| `webrtc:call-error`         | [`CallError`](#callerror) | A voice call encountered an error.                                                              |
+| Event                      | Payload                             | Description                                                                           |
+| -------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------- |
+| `webrtc:call-connected`    | [`CallPeerUpdate`](#callpeerupdate) | A peer connection was established (media flowing).                                    |
+| `webrtc:call-degraded`     | [`CallPeerUpdate`](#callpeerupdate) | A peer connection is up but no incoming audio is arriving, and vacs cannot repair it. |
+| `webrtc:call-disconnected` | [`CallPeerUpdate`](#callpeerupdate) | A peer connection was disconnected.                                                   |
+| `webrtc:call-reconnecting` | [`CallPeerUpdate`](#callpeerupdate) | A peer connection lost its incoming audio and is being re-established over a relay.   |
+| `webrtc:call-error`        | [`CallError`](#callerror)           | A call, a peer or one or more targets encountered an error.                           |
 
-`webrtc:call-reconnecting` and `webrtc:call-degraded` describe the same underlying condition, a call that stopped receiving audio, and differ only in whether vacs can do something about it. The desktop UI treats `webrtc:call-reconnecting` exactly like `connecting` and `webrtc:call-degraded` as its own state. A reconnect attempt ends in either `webrtc:call-connected` or `webrtc:call-error`, so a client that only cares about the final result can ignore both events. Both events were added in **vacs 2.6.0**; older clients never emit them. See [One-way audio](/troubleshooting/audio#one-way-audio-you-cannot-hear-the-other-controller) for the behavior they report on.
+The four state events are per **peer connection**, not per call: each carries the call and the client on the other end of one leg. A call between two parties has one leg and therefore one event per state change; a conference has one leg per other participant, and each reports its own state. Track them per `peerId` and derive the call's overall state from the worst leg.
+
+`webrtc:call-reconnecting` and `webrtc:call-degraded` describe the same underlying condition, a leg that stopped receiving audio, and differ only in whether vacs can do something about it. The desktop UI treats `webrtc:call-reconnecting` exactly like `connecting` and `webrtc:call-degraded` as its own state. A reconnect attempt ends in either `webrtc:call-connected` or `webrtc:call-error`, so a client that only cares about the final result can ignore both events. Both events were added in **vacs 2.6.0**; older clients never emit them. Their per-peer payload arrived with **vacs 3.0.0**. See [One-way audio](/troubleshooting/audio#one-way-audio-you-cannot-hear-the-other-controller) for the behavior they report on.
 
 ### Store Sync Events
 
@@ -1143,9 +1147,9 @@ Contained in the `signaling:station-changes` event payload. Each entry is an ext
 { "Offline": { "stationId": "LOVV_CTR" } }
 ```
 
-### CallInvite
+### CallInvitation
 
-Represents an incoming or outgoing call invitation.
+Emitted with `signaling:call-invitation` when this client is invited into a call. The call may be a fresh one or a conference that is already running, in which case `joinedParticipants` is not empty.
 
 ```json
 {
@@ -1155,17 +1159,67 @@ Represents an incoming or outgoing call invitation.
     "positionId": "LOWW_APP",
     "stationId": "LOWW_APP"
   },
-  "target": { "Client": "1234567" },
+  "target": { "station": "LOVV_S1" },
+  "invitedTargets": [{ "station": "LOWG_APP" }],
+  "joinedParticipants": {
+    "7654321": { "client": "7654321" },
+    "1122334": { "station": "LOVV_N1" }
+  },
+  "conferenceLeader": "7654321",
   "prio": false
 }
 ```
 
-| Field    | Type                        | Description                         |
-| -------- | --------------------------- | ----------------------------------- |
-| `callId` | `string`                    | Unique call identifier (UUID).      |
-| `source` | [`CallSource`](#callsource) | The originator of the call.         |
-| `target` | [`CallTarget`](#calltarget) | The intended recipient of the call. |
-| `prio`   | `boolean`                   | Whether this is a priority call.    |
+| Field                | Type                                    | Description                                                                 |
+| -------------------- | --------------------------------------- | --------------------------------------------------------------------------- |
+| `callId`             | `string`                                | Unique call identifier (UUID).                                              |
+| `source`             | [`CallSource`](#callsource)             | The party that placed the call.                                             |
+| `target`             | [`CallTarget`](#calltarget)             | The identity this client is invited as. Never appears in `invitedTargets`.  |
+| `invitedTargets`     | [`CallTarget[]`](#calltarget)           | The other targets still ringing. Never contains this client's own `target`. |
+| `joinedParticipants` | [`CallParticipants`](#callparticipants) | Everyone who has already joined, keyed by CID.                              |
+| `conferenceLeader`   | `string` &#124; absent                  | CID of the conference leader. Absent while the call is not a conference.    |
+| `prio`               | `boolean`                               | Whether this is a priority call.                                            |
+
+### CallUpdate
+
+Emitted with `signaling:call-update` whenever the roster of a call this client is part of changes. It is authoritative: replace the stored roster with it rather than merging.
+
+```json
+{
+  "callId": "01916f6a-7b3c-7d4e-8f1a-2b3c4d5e6f70",
+  "invitedTargets": [{ "station": "LOWG_APP" }],
+  "joinedParticipants": {
+    "7654321": { "client": "7654321" },
+    "1122334": { "station": "LOVV_N1" }
+  },
+  "conferenceLeader": "7654321"
+}
+```
+
+| Field                | Type                                    | Description                                                                                                             |
+| -------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `callId`             | `string`                                | The call whose roster changed.                                                                                          |
+| `invitedTargets`     | [`CallTarget[]`](#calltarget)           | The targets still ringing. Never contains the recipient's own target.                                                   |
+| `joinedParticipants` | [`CallParticipants`](#callparticipants) | Everyone currently in the call, keyed by CID. Contains the recipient once it has joined.                                |
+| `conferenceLeader`   | `string` &#124; absent                  | CID of the conference leader. Absent for a two-party call, including a conference that shrank back to two participants. |
+
+An update with both lists empty means different things depending on where the recipient stands: a client that is still ringing may be the only party left being rung, and its invitation ends only with `signaling:call-end`; a caller that has not joined the call reads the same update as the call being over.
+
+### CallReject
+
+Emitted with `signaling:call-reject`.
+
+```json
+{
+  "callId": "01916f6a-7b3c-7d4e-8f1a-2b3c4d5e6f70",
+  "targets": [{ "station": "LOWG_APP" }]
+}
+```
+
+| Field     | Type                          | Description                                                                        |
+| --------- | ----------------------------- | ---------------------------------------------------------------------------------- |
+| `callId`  | `string`                      | The call the targets were invited to.                                              |
+| `targets` | [`CallTarget[]`](#calltarget) | The targets that rejected. The call itself may continue for the remaining parties. |
 
 ### OutgoingCall
 
@@ -1223,6 +1277,33 @@ An externally-tagged enum identifying the call recipient. Exactly one variant is
 { "station": "LOWW_APP" }
 ```
 
+### CallParticipants
+
+The clients that have joined a call, as an object keyed by CID. The value is the [`CallTarget`](#calltarget) that client joined as, which is how it is labeled in the UI.
+
+```json
+{
+  "7654321": { "client": "7654321" },
+  "1122334": { "station": "LOVV_N1" }
+}
+```
+
+### CallPeerUpdate
+
+Emitted with the four `webrtc:call-*` state events. One event per peer connection, so a conference produces one per other participant.
+
+```json
+{
+  "callId": "01916f6a-7b3c-7d4e-8f1a-2b3c4d5e6f70",
+  "peerId": "1122334"
+}
+```
+
+| Field    | Type     | Description                                     |
+| -------- | -------- | ----------------------------------------------- |
+| `callId` | `string` | The call the peer connection belongs to.        |
+| `peerId` | `string` | CID of the client on the other end of this leg. |
+
 ### CallError
 
 Emitted with the `webrtc:call-error` event.
@@ -1230,14 +1311,42 @@ Emitted with the `webrtc:call-error` event.
 ```json
 {
   "callId": "01916f6a-7b3c-7d4e-8f1a-2b3c4d5e6f70",
-  "reason": "Local connection failure"
+  "origin": { "type": "targets", "value": [{ "station": "LOWG_APP" }] },
+  "reason": "Remote Max conf size",
+  "callEnded": false
 }
 ```
 
-| Field    | Type     | Description                          |
-| -------- | -------- | ------------------------------------ |
-| `callId` | `string` | The call that experienced the error. |
-| `reason` | `string` | Human-readable error description.    |
+| Field       | Type                                  | Description                                                                                              |
+| ----------- | ------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `callId`    | `string`                              | The call that experienced the error.                                                                     |
+| `origin`    | [`CallErrorOrigin`](#callerrororigin) | What the error is about: the whole call, one participant, or one or more invited targets.                |
+| `reason`    | `string`                              | Human-readable error description, prefixed with `Local` or `Remote` depending on which side detected it. |
+| `callEnded` | `boolean`                             | `true` when the error also ends the call for this client, whatever the origin says.                      |
+
+An error whose origin names targets or a participant does not end the call: in a conference the other legs keep running, and the named target is simply out. Use `callEnded`, and the `signaling:call-end` event, to decide whether the call is over.
+
+### CallErrorOrigin
+
+An internally-tagged enum with the tag in `type` and the payload in `value`. Exactly one variant is present:
+
+```json
+{ "type": "call" }
+```
+
+```json
+{ "type": "client", "value": "1122334" }
+```
+
+```json
+{ "type": "targets", "value": [{ "station": "LOWG_APP" }] }
+```
+
+| Variant   | Payload                       | Meaning                                                             |
+| --------- | ----------------------------- | ------------------------------------------------------------------- |
+| `call`    | none                          | The error concerns the call as a whole.                             |
+| `client`  | `string`                      | CID of the joined participant the error concerns.                   |
+| `targets` | [`CallTarget[]`](#calltarget) | The invited targets the error concerns; they are no longer ringing. |
 
 ### FrontendError
 
@@ -1294,7 +1403,8 @@ Immediately after the WebSocket connection is established, register subscription
 → { "type": "subscribe", "event": "signaling:disconnected" }
 → { "type": "subscribe", "event": "signaling:client-list" }
 → { "type": "subscribe", "event": "signaling:station-list" }
-→ { "type": "subscribe", "event": "signaling:call-invite" }
+→ { "type": "subscribe", "event": "signaling:call-invitation" }
+→ { "type": "subscribe", "event": "signaling:call-update" }
 → { "type": "subscribe", "event": "signaling:call-end" }
 → { "type": "subscribe", "event": "webrtc:call-connected" }
 → { "type": "subscribe", "event": "webrtc:call-disconnected" }
@@ -1360,10 +1470,28 @@ If no `auth:authenticated` event follows, the user must authenticate on the desk
 Initiate a call to another client:
 
 ```json
-→ { "type": "invoke", "id": "5", "cmd": "signaling_start_call", "args": { "target": "1234569", "source": "LOVV_N1", "prio": false } }
+→ { "type": "invoke", "id": "5", "cmd": "signaling_invite_to_call", "args": { "targets": [{ "client": "1234569" }], "source": { "clientId": "1234567", "positionId": "LOVV_CTR", "stationId": "LOVV_N1" }, "prio": false } }
+← { "type": "event", "name": "signaling:outgoing-call", "payload": { "callId": "019cc8de-50f0-7624-a89c-61ba0b5cb784", "source": { ... }, "targets": [{ "client": "1234569" }], "prio": false } }
 ← { "type": "response", "id": "5", "ok": true, "data": "019cc8de-50f0-7624-a89c-61ba0b5cb784" }
-← { "type": "event", "name": "webrtc:call-connected", "payload": "019cc8de-50f0-7624-a89c-61ba0b5cb784" }
+← { "type": "event", "name": "signaling:call-update", "payload": { "callId": "019cc8de-50f0-7624-a89c-61ba0b5cb784", "invitedTargets": [], "joinedParticipants": { "1234567": { "station": "LOVV_N1" }, "1234569": { "client": "1234569" } } } }
+← { "type": "event", "name": "webrtc:call-connected", "payload": { "callId": "019cc8de-50f0-7624-a89c-61ba0b5cb784", "peerId": "1234569" } }
 ```
+
+Grow the same call into a conference by inviting a second target, then drop it again:
+
+```json
+→ { "type": "invoke", "id": "6", "cmd": "signaling_invite_to_call", "args": { "targets": [{ "station": "LOWG_APP" }], "source": { "clientId": "1234567", "positionId": "LOVV_CTR", "stationId": "LOVV_N1" }, "prio": false } }
+← { "type": "response", "id": "6", "ok": true, "data": "019cc8de-50f0-7624-a89c-61ba0b5cb784" }
+← { "type": "event", "name": "signaling:call-update", "payload": { "callId": "019cc8de-50f0-7624-a89c-61ba0b5cb784", "invitedTargets": [{ "station": "LOWG_APP" }], "joinedParticipants": { ... } } }
+← { "type": "event", "name": "signaling:call-update", "payload": { "callId": "019cc8de-50f0-7624-a89c-61ba0b5cb784", "invitedTargets": [], "joinedParticipants": { ... }, "conferenceLeader": "1234567" } }
+← { "type": "event", "name": "webrtc:call-connected", "payload": { "callId": "019cc8de-50f0-7624-a89c-61ba0b5cb784", "peerId": "7654321" } }
+
+→ { "type": "invoke", "id": "7", "cmd": "signaling_drop_target", "args": { "callId": "019cc8de-50f0-7624-a89c-61ba0b5cb784", "target": { "station": "LOWG_APP" } } }
+← { "type": "response", "id": "7", "ok": true, "data": null }
+← { "type": "event", "name": "signaling:call-update", "payload": { "callId": "019cc8de-50f0-7624-a89c-61ba0b5cb784", "invitedTargets": [], "joinedParticipants": { ... } } }
+```
+
+Only the conference leader may invite into a running conference or drop a joined participant. Leadership is assigned to whoever invited the participant whose join turned the call into a conference, it is carried in `conferenceLeader` on every invitation and update, and it never transfers: when the leader ends the call, it ends for everyone. `signaling_end_call` is how a non-leader leaves.
 
 ### 5. Keepalive
 
@@ -1384,5 +1512,5 @@ Alternatively, send a WebSocket Ping frame - the server replies with a Pong fram
 - **Concurrency:** Multiple `invoke` requests may be in flight simultaneously. Clients must use distinct `id` values to correlate responses.
 - **Event buffering:** The server maintains an internal per-connection event buffer of 256 messages. If a client cannot consume events at the rate they are produced, older events are dropped and a warning is logged server-side.
 - **Desktop-only commands:** Commands marked as desktop-only are unconditionally rejected over the remote API. Clients should inspect `remote_get_session_state` → `capabilities` to determine platform support before invoking platform-dependent commands.
-- **Field naming:** Command names use `snake_case` (`audio_get_volumes`, `signaling_start_call`), while command return values and event payloads use `camelCase` (`callId`, `positionId`). This is intentional - the payload schema matches the format used by the default Preact frontend.
+- **Field naming:** Command names use `snake_case` (`audio_get_volumes`, `signaling_invite_to_call`), while command return values and event payloads use `camelCase` (`callId`, `positionId`). This is intentional - the payload schema matches the format used by the default Preact frontend.
 - **Static assets:** The HTTP server that hosts the WebSocket endpoint also serves the vacs SPA at the root path (`/`). Unresolved paths fall back to `index.html` to support client-side routing.
