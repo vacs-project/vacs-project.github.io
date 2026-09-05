@@ -134,6 +134,15 @@ does not add itself to your application menu on its own. Tools such as
 [AppImageLauncher](https://github.com/TheAssassin/AppImageLauncher) can do that for you if you want
 a menu entry.
 
+:::note[Starting the AppImage on Wayland]
+On a Wayland desktop, vacs registers its push-to-talk and other global shortcuts with the desktop
+portal, and the portal has to know which application is asking. A packaged vacs is recognized by its
+menu entry. When you start the AppImage by double-clicking it in a file manager, vacs identifies
+itself to the portal instead, which requires `xdg-desktop-portal` 1.22 or newer. On an older system
+vacs starts normally, but its keyboard shortcuts do not work; start it from a terminal instead, or add
+a menu entry with one of the tools above and launch it from the menu.
+:::
+
 :::note
 Some minimal distributions do not ship FUSE, which AppImages use to mount themselves. If the
 AppImage refuses to start with a FUSE-related message, install your distribution's `fuse` package,
