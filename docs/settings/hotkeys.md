@@ -180,3 +180,17 @@ style={{
     boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
   }}
 />
+
+On a Wayland desktop without a global shortcuts portal, the page says so instead, and the fields only accept joystick buttons:
+
+<img
+src="/img/settings/HotkeysConfigPage-wayland-no-portal.png"
+alt="vacs Hotkeys Config on a Wayland desktop without a global shortcuts portal"
+style={{
+    width: "45%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
