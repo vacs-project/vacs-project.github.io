@@ -162,6 +162,8 @@ Keys you assign, change or clear in your desktop settings take effect straight a
 
 The first time vacs runs, your desktop asks whether to let it register these shortcuts. If you dismiss that dialog, none of them are registered and vacs hotkeys stay inactive, even after you assign keys in your desktop settings. Restart vacs to get the request again.
 
+Some desktops do not offer the global shortcuts portal at all, for example GNOME before version 47 and older Plasma releases. vacs still starts there and says so on the Hotkeys and Transmit pages, but keyboard shortcuts stay unavailable: the actions cannot be bound to keys, while joystick buttons and voice activation work as usual.
+
 Joystick buttons are not affected by this restriction and are captured directly in vacs. Binding a joystick button to an action **replaces** the desktop shortcut for that action, and removing the button restores it.
 :::
 
