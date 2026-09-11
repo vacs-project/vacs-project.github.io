@@ -5,6 +5,42 @@ sidebar_label: What's New
 
 # What's New
 
+## v2.7.0
+
+[v2.7.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.7.0) adds a **SAY AGAIN** key that replays the last radio transmission you received, ships vacs as an AppImage for Linux, and fixes vacs failing to start on Wayland desktops without a global shortcuts portal, such as Ubuntu 24.04.
+
+A complete list of changes is available in the [v2.7.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.7.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
+
+### SAY AGAIN
+
+The upper function key row has a new **SAY AGAIN** key, to the right of **PLAY BACK**. Pressing it replays the most recent radio transmission vacs recorded, from the start, without opening the Playback page. Press it again to stop the replay.
+
+<img src="/img/playback/say-again-button.png" alt="The upper function key row with the SAY AGAIN key" className="screenshot" style={{ width: "80%" }} />
+
+The key is available under the same conditions as the [Playback page](/interface/playback): a [radio integration](/settings/transmit#radio-integration) is configured, **Enable radio playback** is on in the [Advanced Settings](/settings/advanced#enable-radio-playback), and the radio is connected. It stays blue while the replay is playing and turns back when the clip ends. If the Playback page is open at the same time, it shows the replayed clip as the selected one, so the stop, pause and seek controls there apply to it.
+
+See [Say Again](/interface/playback#say-again) for the details.
+
+---
+
+### AppImage for Linux
+
+Besides the `.deb` and `.rpm` packages, every release now also comes as an **AppImage**: a single file that runs on most Linux distributions without installing anything. Make it executable and start it.
+
+Prefer the `.deb` or `.rpm` if one fits your distribution, since they are much smaller and put vacs in your application menu. The AppImage is for everything else. See [Installation](/getting-started/installation#linux) for the details, including a note on starting the AppImage on Wayland desktops.
+
+---
+
+### Bug fixes
+
+- **vacs not starting on Ubuntu 24.04 and other Wayland desktops without a shortcuts portal** - On Wayland desktops whose portal offers no global shortcuts, for example GNOME before version 47, vacs 2.6.0 refused to start with a "Failed to register keybinds" error. It now starts normally. Keyboard shortcuts are unavailable on such desktops, and the [Hotkeys](/settings/hotkeys#platform-support) and Transmit pages say so, while joystick buttons and voice activation work as usual.
+- **Browser login not reaching vacs on Linux** - After logging in through VATSIM Connect in the browser, the `vacs://` link the browser hands back was sometimes not delivered to a vacs installed from the `.deb` or `.rpm` package, for example with a Flatpak browser, and vacs stayed on the login page. The link is now passed through the desktop entry, so the login completes.
+- **Radio stations failing to add** - Adding a station on the [radio page](/interface/radio) could fail while TrackAudio was still looking it up. vacs now gives the lookup twice as long before giving up.
+- **Silent failures right after start** - An audio device error or a login link arriving in the first moments after starting vacs could reach a part of the app that was not ready yet and fail without any visible error. vacs now skips them until startup has finished.
+- **Playback selection jumping** - On the [Playback page](/interface/playback), a new recording arriving no longer shifts the highlight to a different clip than the one you selected.
+
+---
+
 ## v2.6.0
 
 [v2.6.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.6.0) lets you use joystick and gamepad buttons for every key binding, repairs calls on its own when your audio stops arriving, and brings full key binding support to Linux systems running X11.
