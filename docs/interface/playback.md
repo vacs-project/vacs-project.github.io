@@ -86,7 +86,14 @@ style={{
 
 **SAY AGAIN** is a button in the upper function button row, to the right of **PLAY BACK**. It replays the most recent recorded transmission immediately, so you can hear a readback again without opening the Playback page.
 
-{/* TODO(screenshot): /img/playback/say-again-button.png - the upper function button row with the SAY AGAIN button visible, radio connected, button in its idle cyan state. */}
+<img
+src="/img/playback/say-again-button.png"
+alt="The upper function button row with the SAY AGAIN button"
+class="screenshot"
+style={{
+    width: "80%"
+  }}
+/>
 
 Press **SAY AGAIN** to replay the newest recording from the start. The button stays blue for as long as it owns the replay, including while the clip is paused from the Playback page, and pressing it again stops the replay. If nothing has been recorded yet, pressing the button does nothing. A transmission that is still in progress is not replayed; only the newest finished recording is.
 
