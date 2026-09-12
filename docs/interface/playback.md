@@ -79,3 +79,28 @@ style={{
     width: "80%"
   }}
 />
+
+---
+
+## Say Again
+
+**SAY AGAIN** is a button in the upper function button row, to the right of **PLAY BACK**. It replays the most recent recorded transmission immediately, so you can hear a readback again without opening the Playback page.
+
+<img
+src="/img/playback/say-again-button.png"
+alt="The upper function button row with the SAY AGAIN button"
+class="screenshot"
+style={{
+    width: "80%"
+  }}
+/>
+
+Press **SAY AGAIN** to replay the newest recording from the start. The button stays blue for as long as it owns the replay, including while the clip is paused from the Playback page, and pressing it again stops the replay. If nothing has been recorded yet, pressing the button does nothing. A transmission that is still in progress is not replayed; only the newest finished recording is.
+
+The clip plays through the output that the headset/speaker toggle on the Playback page currently selects, the headset by default. If the Playback page is open, it shows that same clip as the selected one and reflects that it is playing, so the stop, pause and seek controls there apply to it. Closing the page does not stop a replay started with **SAY AGAIN**.
+
+The button is greyed out and cannot be pressed under the same conditions that make the Playback page show a notice: radio playback is not supported on your platform, no radio integration is configured, or **Enable radio playback** is off. While the radio is disconnected the button keeps its normal text but stays inactive until the connection is back. Losing the radio connection also stops a replay that is playing.
+
+:::note
+There is no keyboard shortcut for SAY AGAIN in this release; the button is the only way to trigger it.
+:::

@@ -50,10 +50,12 @@ The upper button row contains operational controls such aus:
 - **TRANS**
 - **DIV**
 - **PLAYBACK**
-- **PLC LSP on/off**
+- **SAY AGAIN**
 - **SPLIT**
 
-Of these buttons, currently only the PRIO button is simulated.
+Of these buttons, PRIO, PLAYBACK and SAY AGAIN are functional; the rest are not simulated yet.
+
+**SAY AGAIN** replays the most recent recorded radio transmission without leaving the page you are on. See [Say Again](/interface/playback#say-again) for what it does and when it is available.
 
 A PRIO Call indicates to the reciever of the call, that the caller considers this call to be urgent. It is highlighted with a yellow border in the recievers vacs, and uses a special sound, to gain attention.
 

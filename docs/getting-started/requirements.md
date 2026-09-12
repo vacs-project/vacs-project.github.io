@@ -21,12 +21,13 @@ Since vacs authenticates through [VATSIM Connect](https://vatsim.dev/services/co
 
 - Ubuntu 22.04+, Fedora 40+, or a similar modern distribution is recommended (64-bit)
 - Required system libraries are automatically installed by your package manager when you install vacs via the provided .deb or .rpm packages
+- If your distribution supports neither, an AppImage is also provided. It bundles the libraries vacs needs, so it runs on most distributions without installing anything, at the cost of a noticeably larger download. See [Installation](/getting-started/installation#linux)
 - An ALSA-compatible audio backend is required. This is usually automatically satisfied if you're running PulseAudio or Pipewire, which most modern Linux desktops use by default. The suggested audio packages are also included as dependencies for our packages
 
 :::note[Wayland users]
 If you're running a Wayland-based desktop (common on recent GNOME and KDE setups), there are some known issues and limitations. See the [Wayland](/known-issues-limitations/wayland) section of the [Known Issues & Limitations](/known-issues-limitations) page for details.
 
-The most noticeable ones concern key bindings: on Wayland, keyboard shortcuts are managed by your desktop environment rather than by vacs, and the [Audio for VATSIM](/settings/transmit#radio-integration) radio integration cannot be used. See [Platform support](/settings/hotkeys#platform-support) for the full picture.
+The most noticeable ones concern key bindings: on Wayland, keyboard shortcuts are managed by your desktop environment rather than by vacs, or are unavailable on desktops whose portal offers no global shortcuts, and the [Audio for VATSIM](/settings/transmit#radio-integration) radio integration cannot be used. See [Platform support](/settings/hotkeys#platform-support) for the full picture.
 
 X11 desktops are fully supported as of **vacs 2.6.0**, including global hotkeys and the Audio for VATSIM radio integration. Earlier versions did not support global key bindings on X11 at all.
 :::

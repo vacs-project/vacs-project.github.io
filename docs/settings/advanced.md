@@ -48,6 +48,8 @@ The **Remote Control** section allows you to enable and configure the [remote co
 
 When checked, the remote control feature is activated and vacs starts listening for incoming connections on the address and port configured below.
 
+vacs does not change your firewall. If other devices cannot connect, allow the port on the machine running vacs, see [Troubleshooting](/using-vacs/remote-control#the-browser-cannot-connect).
+
 ### Listen address
 
 The IP and port vacs should listen on for incoming remote control connections. By default, vacs listens on all available network interfaces on port 9600 (`0.0.0.0:9600`).
@@ -64,7 +66,7 @@ The **Audio Backend** section allows you to configure the audio backend (by defa
 
 ### Enable radio playback
 
-When checked, vacs will record incoming radio transmissions - via TrackAudio or Audio for VATSIM, depending on your [Radio Integration](/settings/transmit#radio-integration) - and make them available for playback. Disabling this setting stops all future recordings and deletes all existing (non-exported) recordings.
+When checked, vacs will record incoming radio transmissions - via TrackAudio or Audio for VATSIM, depending on your [Radio Integration](/settings/transmit#radio-integration) - and make them available for playback. Disabling this setting stops all future recordings, stops a replay that is playing, and deletes all existing (non-exported) recordings.
 
 ## Couple Mode
 
