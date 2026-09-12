@@ -149,10 +149,6 @@ AppImage refuses to start with a FUSE-related message, install your distribution
 or run it once with `./vacs_<version>_amd64.AppImage --appimage-extract-and-run`.
 :::
 
-{/* TODO(screenshot): /img/getting-started/Download_Linux.png - the GitHub release assets list,
-    now including the _amd64.AppImage asset alongside the .deb and .rpm, with all three
-    highlighted. The current image predates the AppImage and no longer shows every Linux option. */}
-
 :::info
 You can update vacs later using the built-in updater. See the [Updating](/getting-started/updating) section for details.
 :::
