@@ -1182,7 +1182,7 @@ Emitted with `signaling:call-invitation` when this client is invited into a call
 
 ### CallUpdate
 
-Emitted with `signaling:call-update` whenever the roster of a call this client is part of changes. It is authoritative: replace the stored roster with it rather than merging.
+Emitted with `signaling:call-update` when the roster of a call this client is part of changes. It carries the roster as the server holds it at the moment of delivery and is authoritative: replace the stored roster with it rather than merging. Consecutive events may carry an identical roster and not every intermediate change produces one, so apply them idempotently.
 
 ```json
 {
