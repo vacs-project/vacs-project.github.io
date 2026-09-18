@@ -4,12 +4,12 @@ sidebar_position: 3
 
 # Radio Page
 
-The **Radio page** integrates with [TrackAudio](https://github.com/pierr3/TrackAudio) and lets you manage your radio stack without leaving the vacs window. It is only available when TrackAudio is running and connected.
+The **Radio page** integrates with [TrackAudio](https://github.com/pierr3/TrackAudio) and lets you manage your radio stack without leaving the vacs window. It is available whenever the TrackAudio radio integration is selected, whether or not TrackAudio is currently connected.
 
 :::warning
 The Radio page is currently only available if the TrackAudio radio integration is selected in the transmit configuration. See [Transmit Modes](/settings/transmit) for more information.
 
-The page remains inactive if you use the Audio for Vatsim radio integration. 
+The page remains inactive if you use the Audio for Vatsim radio integration.
 :::
 
 <img
@@ -23,6 +23,25 @@ style={{
     boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
   }}
 />
+
+---
+
+## When TrackAudio is not connected
+
+You can open the Radio page even while vacs has no connection to TrackAudio. Instead of your radio stack, the page then shows one of two messages, with a **Retry** link below it:
+
+| Message | Meaning |
+|---------|---------|
+| No TrackAudio radio connection. | vacs is not connected to TrackAudio, for example because TrackAudio is not running yet. |
+| TrackAudio radio connection failed. | The connection was lost, or several transmit attempts in a row got no response. This is the same state that turns the Radio button red, see [Troubleshooting](#the-radio-button-turned-red). |
+
+Click **Retry** to attempt the connection again. Start TrackAudio and connect it to the network first, otherwise the attempt fails again and the same message stays on the page.
+
+{/* TODO(screenshot): /img/radio/radio_no_connection.png - The Radio page with the TrackAudio radio
+    integration selected and TrackAudio not running: centered message "No TrackAudio radio connection."
+    with the blue Retry link below it, main area otherwise empty. */}
+
+The **Radio** button in the bottom control bar stays available in this state as well: clicking it opens the Radio page and retries the connection at the same time. The button is only disabled in the "Radio Integration not configured" state, see [Radio](/interface/overview#radio).
 
 ---
 
