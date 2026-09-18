@@ -261,6 +261,7 @@ Some commands are marked as **desktop only**[^desktop-only] and are unavailable 
 | `app_set_clock_mode`                                | `clockMode`: [`ClockMode`](#clockmode)    | `null`                                      | Set the clock display mode.                                                      |
 | `app_get_cpl_mode`                                  | -                                         | [`CplMode`](#cplmode)                       | Get the coupling mode.                                                           |
 | `app_set_cpl_mode`                                  | `cplMode`: [`CplMode`](#cplmode)          | `null`                                      | Set the coupling mode.                                                           |
+| `app_set_split_profile_width`                       | `profileId`: string, `width`: number?     | `null`                                      | Store the width of the mixed view's phone side for a profile. Omit `width` or send `null` to reset it to the default. |
 
 ### Audio
 
@@ -430,7 +431,7 @@ Subscribe to events to receive real-time updates. Event names use a `domain:name
 | `signaling:client-list`               | [`ClientInfo[]`](#clientinfo)                     | The full client list was updated (replaces previous list).                           |
 | `signaling:client-not-found`          | `string`                                          | A client lookup failed. Payload is the CID.                                          |
 | `signaling:client-page-config`        | [`ClientPageSettings`](#clientpagesettings)       | The client page configuration was updated.                                           |
-| `signaling:connected`                 | [`SessionInfo`](#sessioninfo)                     | Successfully connected to the signaling server.                                      |
+| `signaling:connected`                 | [`SessionInfo`](#sessioninfo)                     | Successfully connected to the signaling server. The payload adds `splitProfileWidth` to the server's session info. |
 | `signaling:disconnected`              | `null`                                            | Disconnected from the signaling server.                                              |
 | `signaling:force-call-end`            | `string`                                          | A call was forcefully terminated (e.g. by the server). Payload is the CallId.        |
 | `signaling:outgoing-call-accepted`    | [`CallAccept`](#callaccept)                       | An outgoing call was accepted by the remote party.                                   |
@@ -1089,15 +1090,46 @@ Emitted with the `signaling:connected` event and included in the session state s
     "positionId": "LOVV_CTR"
   },
   "profile": {
-    "type": "Unchanged"
-  }
+    "type": "changed",
+    "activeProfile": {
+      "type": "specific",
+      "profile": {
+        "id": "LOVV",
+        "view": "split",
+        "tabbed": []
+      }
+    }
+  },
+  "splitProfileWidth": 352
 }
 ```
 
-| Field     | Type                        | Description                                                                                                                               |
-| --------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `client`  | [`ClientInfo`](#clientinfo) | The authenticated user's client entry.                                                                                                    |
-| `profile` | `object`                    | Profile state. `{ "type": "Unchanged" }` when the profile was not modified, or `{ "type": "Changed", "activeProfile": ... }` when it was. |
+| Field               | Type                        | Description                                                                                                                               |
+| ------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `client`            | [`ClientInfo`](#clientinfo) | The authenticated user's client entry.                                                                                                    |
+| `profile`           | `object`                    | Profile state. `{ "type": "unchanged" }` when the profile was not modified, or `{ "type": "changed", "activeProfile": ... }` when it was. `activeProfile` is `{ "type": "specific", "profile": ... }` with a [`Profile`](#profile), or `{ "type": "custom" }` or `{ "type": "none" }`. |
+| `splitProfileWidth` | `number` &#124; absent      | Width in pixels stored for the phone side of the profile's mixed view, set through [`app_set_split_profile_width`](#application). Present only when a specific profile is active and a width has been stored for it. |
+
+### Profile
+
+The layout the FIR's dataset defines for the session, carried inside [`SessionInfo`](#sessioninfo) and emitted by the `signaling:test-profile` event.
+
+```json
+{
+  "id": "LOVV",
+  "view": "split",
+  "tabbed": [{ "label": ["S"], "page": { "rows": 4, "keys": [] } }]
+}
+```
+
+| Field    | Type     | Description                                                                                                                                                       |
+| -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`     | `string` | Unique profile identifier, also the key used by [`app_set_split_profile_width`](#application).                                                                    |
+| `view`   | `string` | How the client arranges the radio and phone pages: `"page"` (default), `"split"` or `"cycle"`. Only `tabbed` profiles use a value other than `"page"`.             |
+| `tabbed` | `array`  | Present on tabbed profiles. One entry per tab, with a `label` of one to three lines and a `page` of direct access keys.                                            |
+| `geo`    | `object` | Present on geo profiles instead of `tabbed`. Container-based layout tree.                                                                                         |
+
+The full page and key structure is defined by the dataset, not by this API.
 
 ### StationInfo
 
