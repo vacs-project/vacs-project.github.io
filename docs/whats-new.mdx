@@ -7,7 +7,7 @@ sidebar_label: What's New
 
 ## v2.8.0
 
-[v2.8.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.8.0) lets a profile show the radio page and the phone page side by side, and opens the Radio page even while TrackAudio is not connected.
+[v2.8.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.8.0) lets a profile show the radio page and the phone page side by side, opens the Radio page even while TrackAudio is not connected, and lets you replace the built-in ring chimes with your own sound files.
 
 A complete list of changes is available in the [v2.8.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.8.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
 
@@ -30,6 +30,12 @@ Both views need the TrackAudio [Radio Integration](/settings/transmit#radio-inte
 ### Radio page without a connection
 
 The [Radio page](/interface/radio) no longer stays out of reach while TrackAudio is disconnected. It opens and tells you what is wrong, either "No TrackAudio radio connection." or "TrackAudio radio connection failed." after a lost connection, with a **Retry** link to try again. The **Radio** button in the bottom control bar is therefore no longer disabled while TrackAudio is not connected: clicking it opens the page and retries the connection in one go.
+
+---
+
+### Custom ring sounds
+
+The chime for incoming calls, and the more urgent one for priority calls, can now each be replaced with a WAV file of your own, for example the ringing tone you know from the real system at your unit. The new **Ring sounds** section at the bottom of the [Call Settings](/settings/call#ring-sounds) has a field per ring: click it to pick a file, which then plays once, or click the **X** next to it to go back to the built-in chime. Files can be up to 30 seconds long, and vacs levels them to the built-in chime so the Chime Volume slider keeps its meaning.
 
 ---
 

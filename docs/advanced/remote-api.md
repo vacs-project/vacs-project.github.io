@@ -273,6 +273,9 @@ Some commands are marked as **desktop only**[^desktop-only] and are unavailable 
 | `audio_set_device`              | `deviceType`: [`DeviceType`](#devicetype), `deviceName`: string | [`AudioDevices`](#audiodevices) | Set the active audio device. Returns updated device list.                          |
 | `audio_get_volumes`             | -                                                               | [`AudioVolumes`](#audiovolumes) | Get current volume levels.                                                         |
 | `audio_set_volume`              | `volumeType`: [`VolumeType`](#volumetype), `volume`: number     | `null`                          | Set a volume level.                                                                |
+| `audio_get_ring_sounds`         | -                                                               | [`RingSounds`](#ringsounds)     | Get the custom ring sound files, if any.                                           |
+| `audio_pick_ring_sound` [^desktop-only] | -                                                       | `string` \| `null`              | Open a native file dialog and return the chosen WAV path without applying it.     |
+| `audio_set_ring_sound`          | `ringType`: [`RingSoundType`](#ringsoundtype), `path`: string?  | [`RingSounds`](#ringsounds)     | Use the WAV file at `path` for that ring, or the built-in chime when `path` is `null`. Plays it once. |
 | `audio_play_ui_click`           | -                                                               | `null`                          | Play the UI click sound.                                                           |
 | `audio_start_input_level_meter` | -                                                               | `null`                          | Start input level monitoring. Subscribe to `audio:input-level` to receive updates. |
 | `audio_stop_input_level_meter`  | -                                                               | `null`                          | Stop input level monitoring.                                                       |
@@ -736,6 +739,39 @@ Used as the `deviceType` argument for `audio_get_devices` and `audio_set_device`
 
 ```
 "Input" | "Output"
+```
+
+### RingSounds
+
+Returned by `audio_get_ring_sounds` and `audio_set_ring_sound`. A field is absent when that ring uses the built-in chime.
+
+```json
+{
+  "ring": {"path": "C:\\Users\\me\\Sounds\\ring.wav", "available": true},
+  "priorityRing": {"path": "C:\\Users\\me\\Sounds\\urgent.wav", "available": false}
+}
+```
+
+| Field          | Type                      | Description                                  |
+| -------------- | ------------------------- | -------------------------------------------- |
+| `ring`         | [`RingSound`](#ringsound) | The custom sound for normal calls, if any.   |
+| `priorityRing` | [`RingSound`](#ringsound) | The custom sound for priority calls, if any. |
+
+#### RingSound
+
+| Field       | Type      | Description                                                                                          |
+| ----------- | --------- | ---------------------------------------------------------------------------------------------------- |
+| `path`      | `string`  | Absolute path of the WAV file on the desktop machine.                                                |
+| `available` | `boolean` | `false` when the file could not be loaded at startup, in which case the built-in chime plays instead. |
+
+`audio_set_ring_sound` fails, and keeps the previous sound, if the file is not readable as WAV, is shorter than 100 milliseconds, longer than 30 seconds, or silent. The path must be readable by the desktop client, not by the remote browser.
+
+#### RingSoundType
+
+Used as the `ringType` argument for `audio_set_ring_sound`:
+
+```
+"ring" | "priorityRing"
 ```
 
 ### TransmitConfig
