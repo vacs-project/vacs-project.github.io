@@ -101,6 +101,7 @@ The clip plays through the output that the headset/speaker toggle on the Playbac
 
 The button is greyed out and cannot be pressed under the same conditions that make the Playback page show a notice: radio playback is not supported on your platform, no radio integration is configured, or **Enable radio playback** is off. While the radio is disconnected the button keeps its normal text but stays inactive until the connection is back. Losing the radio connection also stops a replay that is playing.
 
-:::note
-There is no keyboard shortcut for SAY AGAIN in this release; the button is the only way to trigger it.
+:::tip[Key binding]
+From **vacs 2.8.0**, SAY AGAIN can also be bound to a key or a joystick button in the [Hotkeys Config](/settings/hotkeys#say-again). The binding behaves exactly like the button, including the second press that stops a running replay.
 :::
+

@@ -7,7 +7,7 @@ sidebar_label: What's New
 
 ## v2.8.0
 
-[v2.8.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.8.0) lets a profile show the radio page and the phone page side by side, opens the Radio page even while TrackAudio is not connected, and lets you replace the built-in ring chimes with your own sound files.
+[v2.8.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.8.0) lets a profile show the radio page and the phone page side by side, opens the Radio page even while TrackAudio is not connected, lets you replace the built-in ring chimes with your own sound files, and adds a key binding for SAY AGAIN.
 
 A complete list of changes is available in the [v2.8.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.8.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
 
@@ -36,6 +36,19 @@ The [Radio page](/interface/radio) no longer stays out of reach while TrackAudio
 ### Custom ring sounds
 
 The chime for incoming calls, and the more urgent one for priority calls, can now each be replaced with a WAV file of your own, for example the ringing tone you know from the real system at your unit. The new **Ring sounds** section at the bottom of the [Call Settings](/settings/call#ring-sounds) has a field per ring: click it to pick a file, which then plays once, or click the **X** next to it to go back to the built-in chime. Files can be up to 30 seconds long, and vacs levels them to the built-in chime so the Chime Volume slider keeps its meaning.
+
+---
+
+### A key for SAY AGAIN
+
+The **SAY AGAIN** button from 2.7.0 now has a binding of its own in the [Hotkeys Config](/settings/hotkeys#say-again), so you can replay the last radio transmission from a key or a joystick button without reaching for the mouse. A second press stops the replay, just like the button. On Wayland desktops the new shortcut appears in your desktop's shortcut settings next to the existing vacs actions: expect your desktop to ask once more whether vacs may register its shortcuts when you first start this version, and allow it, or every vacs hotkey stays inactive until the next start.
+
+---
+
+### Bug fixes
+
+- **Held hotkeys repeating their action** - On Windows and macOS, holding down a key bound to Accept first call, End active call or Toggle RADIO PRIO fired the action again on every key repeat, so a call could be accepted and ended in one long press. A held key now fires once.
+- **Hotkeys dead without a transmit key** - With Push-to-Talk or Push-to-Mute selected but no key assigned to it yet, the call control hotkeys did nothing until a transmit key existed. They now work on their own.
 
 ---
 

@@ -861,22 +861,24 @@ Returned by `keybinds_get_keybinds_config`.
 {
   "acceptCall": "KeyA",
   "endCall": "KeyE",
-  "toggleRadioPrio": null
+  "toggleRadioPrio": null,
+  "sayAgain": "F9"
 }
 ```
 
-| Field             | Type                                          | Description                             |
-| ----------------- | --------------------------------------------- | --------------------------------------- |
-| `acceptCall`      | [`InputBinding`](#inputbinding) &#124; `null` | Binding for accepting an incoming call. |
-| `endCall`         | [`InputBinding`](#inputbinding) &#124; `null` | Binding for ending the active call.     |
-| `toggleRadioPrio` | [`InputBinding`](#inputbinding) &#124; `null` | Binding for toggling radio priority.    |
+| Field             | Type                                          | Description                                                                   |
+| ----------------- | --------------------------------------------- | ----------------------------------------------------------------------------- |
+| `acceptCall`      | [`InputBinding`](#inputbinding) &#124; `null` | Binding for accepting an incoming call.                                       |
+| `endCall`         | [`InputBinding`](#inputbinding) &#124; `null` | Binding for ending the active call.                                           |
+| `toggleRadioPrio` | [`InputBinding`](#inputbinding) &#124; `null` | Binding for toggling radio priority.                                          |
+| `sayAgain`        | [`InputBinding`](#inputbinding) &#124; `null` | Binding for SAY AGAIN: replays the newest clip, or stops that replay. 2.8.0+. |
 
 #### Keybind
 
 The action a binding applies to. Used as the `keybind` argument for `keybinds_set_binding`, `keybinds_get_external_binding` and `keybinds_is_portal_shortcut_bound`:
 
 ```
-"PushToTalk" | "PushToMute" | "RadioPushToTalk" | "AcceptCall" | "EndCall" | "ToggleRadioPrio"
+"PushToTalk" | "PushToMute" | "RadioPushToTalk" | "AcceptCall" | "EndCall" | "ToggleRadioPrio" | "SayAgain"
 ```
 
 ### RadioConfig

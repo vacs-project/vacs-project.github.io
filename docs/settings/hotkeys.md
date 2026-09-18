@@ -80,6 +80,19 @@ The **RADIO PRIO** function is designed to operate together with the **Radio Int
 Its behavior and operational context are explained in detail in the **Interface / Overview** page.
 :::
 
+### SAY AGAIN
+
+Available from **vacs 2.8.0**.
+
+This action presses the [SAY AGAIN](/interface/playback#say-again) button: it replays the most recent recorded radio transmission, and pressing it again while that replay is running stops it. The key does nothing while the button is greyed out or inactive, for example without a radio integration, while **Enable radio playback** is off, or while the radio is disconnected.
+
+{/* TODO(screenshot): /img/settings/HotkeysConfigPage.png, /img/settings/HotkeysConfigPage-joystick.png,
+    /img/settings/HotkeysConfigPage-wayland.png and /img/settings/HotkeysConfigPage-wayland-no-portal.png -
+    re-capture all four Hotkeys Config screenshots on this page: the dialog now has a fourth row,
+    SAY AGAIN, below Toggle RADIO PRIO, in the same state each image showed before (bound field and
+    clear button marked; one action bound to a joystick button; Wayland with grey desktop-managed keys
+    and the System Shortcuts button; Wayland without a portal). */}
+
 ---
 
 ## Joystick and gamepad buttons
@@ -160,7 +173,7 @@ Wayland does not allow an application to observe the keyboard while it is not fo
 
 Keys you assign, change or clear in your desktop settings take effect straight away, without restarting vacs.
 
-The first time vacs runs, your desktop asks whether to let it register these shortcuts. If you dismiss that dialog, none of them are registered and vacs hotkeys stay inactive, even after you assign keys in your desktop settings. Restart vacs to get the request again.
+The first time vacs runs, your desktop asks whether to let it register these shortcuts. A vacs update that adds an action, such as **SAY AGAIN** in 2.8.0, asks again on its first start, and the new action then appears unassigned in your desktop's shortcut list. If you dismiss that dialog, none of them are registered and vacs hotkeys stay inactive, even after you assign keys in your desktop settings. Restart vacs to get the request again.
 
 Some desktops do not offer the global shortcuts portal at all, for example GNOME before version 47 and older Plasma releases. vacs still starts there and says so on the Hotkeys and Transmit pages, but keyboard shortcuts stay unavailable: the actions cannot be bound to keys, while joystick buttons and voice activation work as usual.
 
