@@ -82,10 +82,17 @@ Available from **vacs 2.8.0**.
 
 By default, an incoming call plays a short built-in chime, and a [priority call](/using-vacs/making-a-call#prio-calls) plays a more urgent one. The **Ring sounds** section at the bottom of the Call Config page lets you replace either of them with a sound file of your own, for example the ringing tone you are used to from the real system at your unit.
 
-{/* TODO(screenshot): /img/settings/CallConfigRingSounds.png - Settings > Call with the Ring sounds
-    section visible below the checkboxes: "Ring" field showing a chosen file name such as ring.wav
-    with the X next to it, "Priority ring" field showing "Built-in chime" with the X greyed out.
-    CallConfig.png above no longer shows the whole page and needs retaking too. */}
+<img
+src="/img/settings/CallConfigRingSounds.png"
+alt="The Ring sounds section of the Call Config with a custom ring sound selected"
+style={{
+    width: "45%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
 
 Each ring has a field that reads **Built-in chime** or the name of the chosen file, with an **X** next to it, the same controls as a [hotkey](/settings/hotkeys).
 

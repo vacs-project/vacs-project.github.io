@@ -37,9 +37,17 @@ You can open the Radio page even while vacs has no connection to TrackAudio. Ins
 
 Click **Retry** to attempt the connection again. Start TrackAudio and connect it to the network first, otherwise the attempt fails again and the same message stays on the page.
 
-{/* TODO(screenshot): /img/radio/radio_no_connection.png - The Radio page with the TrackAudio radio
-    integration selected and TrackAudio not running: centered message "No TrackAudio radio connection."
-    with the blue Retry link below it, main area otherwise empty. */}
+<img
+src="/img/radio/radio_no_connection.png"
+alt="The Radio page without a TrackAudio connection"
+style={{
+    width: "80%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
 
 The **Radio** button in the bottom control bar stays available in this state as well: clicking it opens the Radio page and retries the connection at the same time. The button is only disabled in the "Radio Integration not configured" state, see [Radio](/interface/overview#radio).
 

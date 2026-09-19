@@ -180,15 +180,31 @@ Both views require the TrackAudio [Radio Integration](/settings/transmit#radio-i
 | Phone | The phone page across the whole main area, as usual. |
 | Radio | The radio page on the left and the direct access keys of the phone page on the right. This is the mixed view. |
 
-{/* TODO(screenshot): /img/interface/split_view_mixed.png - Main area of a tabbed split-view profile
-    in the mixed view: radio page with two or three frequency objects on the left, direct access keys
-    on the right, the Radio tab active in the bottom control bar, and the pointer over the divider so
-    the gray drag bar is visible. */}
+<img
+src="/img/interface/split_view_mixed.png"
+alt="A split view profile in the mixed view, the radio page next to the direct access keys"
+style={{
+    width: "80%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
 
 **Cycle view** replaces the Radio and Phone buttons with a single **Page** button carrying three cells, **R**, **P** and **M**. Every click moves one step on: **R** for the radio page, **P** for the phone page, **M** for the mixed view. The cell of the page you are on is highlighted.
 
-{/* TODO(screenshot): /img/interface/page_cycle_button.png - The Page button in the bottom control bar
-    of a cycle-view profile, showing the R / P / M cells with M highlighted. */}
+<img
+src="/img/interface/page_cycle_button.png"
+alt="The Page button of a cycle view profile with the M cell highlighted"
+style={{
+    width: "6rem",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
 
 With either view, vacs opens the mixed view when the profile loads. Selecting the Radio tab, or stepping to **R** or **M**, also retries the TrackAudio connection if it is currently down.
 

@@ -86,13 +86,6 @@ Available from **vacs 2.8.0**.
 
 This action presses the [SAY AGAIN](/interface/playback#say-again) button: it replays the most recent recorded radio transmission, and pressing it again while that replay is running stops it. The key does nothing while the button is greyed out or inactive, for example without a radio integration, while **Enable radio playback** is off, or while the radio is disconnected.
 
-{/* TODO(screenshot): /img/settings/HotkeysConfigPage.png, /img/settings/HotkeysConfigPage-joystick.png,
-    /img/settings/HotkeysConfigPage-wayland.png and /img/settings/HotkeysConfigPage-wayland-no-portal.png -
-    re-capture all four Hotkeys Config screenshots on this page: the dialog now has a fourth row,
-    SAY AGAIN, below Toggle RADIO PRIO, in the same state each image showed before (bound field and
-    clear button marked; one action bound to a joystick button; Wayland with grey desktop-managed keys
-    and the System Shortcuts button; Wayland without a portal). */}
-
 ---
 
 ## Joystick and gamepad buttons
