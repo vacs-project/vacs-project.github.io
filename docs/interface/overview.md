@@ -167,7 +167,32 @@ Clicking the **Phone** button always navigates back toward the top level of the 
 | Inside a non-tabbed profile | The interface navigates directly to the top-level page. |
 | Already on the top level | The fallback profile is displayed. |
 
-#### Split and Cycle Views
+#### END 
+The END button is used to terminate calls and to exit menus, returning the interface toward the main level.
+
+| Button Behavior | Description |
+|-----------------|-------------|
+| Static | The END button does not change its appearance and does not indicate any state. |
+
+_On click behavior_
+
+Clicking the **END** button performs two actions depending on the current interface state.
+
+| Current Situation | Result |
+|-------------------|--------|
+| Active outgoing call | The outgoing call is cancelled. |
+| Active call | The call is terminated. |
+| Rejected / error call display | The call entry is cleared from the display. |
+| Inside any menu (e.g. settings page, sub-settings page, mission page, telephone directory) | The interface exits the current menu. |
+| Inside a tabbed profile | The interface navigates one page level upward within the tab structure. |
+| Inside a non-tabbed profile | The interface navigates directly to the top-level page. |
+| Already on the top level | The fallback profile remains displayed. |
+
+#### Tabs (Tabbed Layout)
+
+If you are using the Tabbed-Layout, the pre-configured tabs will be visible in the right part of the Bottom Control Bar.
+
+### Split and Cycle Views
 
 Most profiles show the radio page and the phone page one at a time, and you switch between them with the **Radio** and **Phone** buttons. A profile can instead ask for one of two views that let you keep both in sight. Which view you get is part of the profile your FIR publishes, so there is nothing to configure in vacs, and neither view has anything to do with the unimplemented **SPLIT** key in the upper function key row.
 
@@ -215,31 +240,6 @@ In the mixed view, the two pages are separated by a divider you can move. It sta
 Double-click the divider to put it back to the default width of four key columns. vacs remembers the width you set for each profile separately, including after a restart.
 
 In these profiles the direct access keys are slightly narrower than usual, so more of them fit next to the radio page. If a tab still has more key columns than fit, the page scrolls sideways.
-
-#### END 
-The END button is used to terminate calls and to exit menus, returning the interface toward the main level.
-
-| Button Behavior | Description |
-|-----------------|-------------|
-| Static | The END button does not change its appearance and does not indicate any state. |
-
-_On click behavior_
-
-Clicking the **END** button performs two actions depending on the current interface state.
-
-| Current Situation | Result |
-|-------------------|--------|
-| Active outgoing call | The outgoing call is cancelled. |
-| Active call | The call is terminated. |
-| Rejected / error call display | The call entry is cleared from the display. |
-| Inside any menu (e.g. settings page, sub-settings page, mission page, telephone directory) | The interface exits the current menu. |
-| Inside a tabbed profile | The interface navigates one page level upward within the tab structure. |
-| Inside a non-tabbed profile | The interface navigates directly to the top-level page. |
-| Already on the top level | The fallback profile remains displayed. |
-
-#### Tabs (Tabbed Layout)
-
-If you are using the Tabbed-Layout, the pre-configured tabs will be visible in the right part of the Bottom Control Bar.
 
 ---
 
