@@ -19,9 +19,10 @@ Since vacs authenticates through [VATSIM Connect](https://vatsim.dev/services/co
 
 ### Linux
 
-- Ubuntu 22.04+, Fedora 40+, or a similar modern distribution is recommended (64-bit)
+- Ubuntu 24.04 or newer, Fedora 40 or newer, Debian 13 or newer, or a comparable current distribution (64-bit x86_64)
+- All Linux packages, including the AppImage, are built on Ubuntu 24.04 and need a system C library (glibc) of version 2.39 or newer. Older releases such as Ubuntu 22.04 or Debian 12 cannot run vacs, whichever package you pick
 - Required system libraries are automatically installed by your package manager when you install vacs via the provided .deb or .rpm packages
-- If your distribution supports neither, an AppImage is also provided. It bundles the libraries vacs needs, so it runs on most distributions without installing anything, at the cost of a noticeably larger download. See [Installation](/getting-started/installation#linux)
+- If your distribution supports neither, an AppImage is also provided. It bundles the libraries vacs needs, so it runs on any distribution that meets the requirement above without installing anything, at the cost of a noticeably larger download. See [Installation](/getting-started/installation#linux)
 - An ALSA-compatible audio backend is required. This is usually automatically satisfied if you're running PulseAudio or Pipewire, which most modern Linux desktops use by default. The suggested audio packages are also included as dependencies for our packages
 
 :::note[Wayland users]
