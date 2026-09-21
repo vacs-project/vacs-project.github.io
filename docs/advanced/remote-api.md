@@ -261,6 +261,7 @@ Some commands are marked as **desktop only**[^desktop-only] and are unavailable 
 | `app_set_clock_mode`                                | `clockMode`: [`ClockMode`](#clockmode)    | `null`                                      | Set the clock display mode.                                                      |
 | `app_get_cpl_mode`                                  | -                                         | [`CplMode`](#cplmode)                       | Get the coupling mode.                                                           |
 | `app_set_cpl_mode`                                  | `cplMode`: [`CplMode`](#cplmode)          | `null`                                      | Set the coupling mode.                                                           |
+| `app_set_split_profile_width`                       | `profileId`: string, `width`: number?     | `null`                                      | Store the width of the mixed view's phone side for a profile. Omit `width` or send `null` to reset it to the default. |
 
 ### Audio
 
@@ -272,6 +273,9 @@ Some commands are marked as **desktop only**[^desktop-only] and are unavailable 
 | `audio_set_device`              | `deviceType`: [`DeviceType`](#devicetype), `deviceName`: string | [`AudioDevices`](#audiodevices) | Set the active audio device. Returns updated device list.                          |
 | `audio_get_volumes`             | -                                                               | [`AudioVolumes`](#audiovolumes) | Get current volume levels.                                                         |
 | `audio_set_volume`              | `volumeType`: [`VolumeType`](#volumetype), `volume`: number     | `null`                          | Set a volume level.                                                                |
+| `audio_get_ring_sounds`         | -                                                               | [`RingSounds`](#ringsounds)     | Get the custom ring sound files, if any.                                           |
+| `audio_pick_ring_sound` [^desktop-only] | -                                                       | `string` \| `null`              | Open a native file dialog and return the chosen WAV path without applying it.     |
+| `audio_set_ring_sound`          | `ringType`: [`RingSoundType`](#ringsoundtype), `path`: string?  | [`RingSounds`](#ringsounds)     | Use the WAV file at `path` for that ring, or the built-in chime when `path` is `null`. Plays it once. |
 | `audio_play_ui_click`           | -                                                               | `null`                          | Play the UI click sound.                                                           |
 | `audio_start_input_level_meter` | -                                                               | `null`                          | Start input level monitoring. Subscribe to `audio:input-level` to receive updates. |
 | `audio_stop_input_level_meter`  | -                                                               | `null`                          | Stop input level monitoring.                                                       |
@@ -430,7 +434,7 @@ Subscribe to events to receive real-time updates. Event names use a `domain:name
 | `signaling:client-list`               | [`ClientInfo[]`](#clientinfo)                     | The full client list was updated (replaces previous list).                           |
 | `signaling:client-not-found`          | `string`                                          | A client lookup failed. Payload is the CID.                                          |
 | `signaling:client-page-config`        | [`ClientPageSettings`](#clientpagesettings)       | The client page configuration was updated.                                           |
-| `signaling:connected`                 | [`SessionInfo`](#sessioninfo)                     | Successfully connected to the signaling server.                                      |
+| `signaling:connected`                 | [`SessionInfo`](#sessioninfo)                     | Successfully connected to the signaling server. The payload adds `splitProfileWidth` to the server's session info. |
 | `signaling:disconnected`              | `null`                                            | Disconnected from the signaling server.                                              |
 | `signaling:force-call-end`            | `string`                                          | A call was forcefully terminated (e.g. by the server). Payload is the CallId.        |
 | `signaling:outgoing-call-accepted`    | [`CallAccept`](#callaccept)                       | An outgoing call was accepted by the remote party.                                   |
@@ -737,6 +741,39 @@ Used as the `deviceType` argument for `audio_get_devices` and `audio_set_device`
 "Input" | "Output"
 ```
 
+### RingSounds
+
+Returned by `audio_get_ring_sounds` and `audio_set_ring_sound`. A field is absent when that ring uses the built-in chime.
+
+```json
+{
+  "ring": {"path": "C:\\Users\\me\\Sounds\\ring.wav", "available": true},
+  "priorityRing": {"path": "C:\\Users\\me\\Sounds\\urgent.wav", "available": false}
+}
+```
+
+| Field          | Type                      | Description                                  |
+| -------------- | ------------------------- | -------------------------------------------- |
+| `ring`         | [`RingSound`](#ringsound) | The custom sound for normal calls, if any.   |
+| `priorityRing` | [`RingSound`](#ringsound) | The custom sound for priority calls, if any. |
+
+#### RingSound
+
+| Field       | Type      | Description                                                                                          |
+| ----------- | --------- | ---------------------------------------------------------------------------------------------------- |
+| `path`      | `string`  | Absolute path of the WAV file on the desktop machine.                                                |
+| `available` | `boolean` | `false` when the file could not be loaded at startup, in which case the built-in chime plays instead. |
+
+`audio_set_ring_sound` fails, and keeps the previous sound, if the file is not readable as WAV, is shorter than 100 milliseconds, longer than 30 seconds, or silent. The path must be readable by the desktop client, not by the remote browser.
+
+#### RingSoundType
+
+Used as the `ringType` argument for `audio_set_ring_sound`:
+
+```
+"ring" | "priorityRing"
+```
+
 ### TransmitConfig
 
 Returned by `keybinds_get_transmit_config`. Accepted by `keybinds_set_transmit_config`.
@@ -824,22 +861,24 @@ Returned by `keybinds_get_keybinds_config`.
 {
   "acceptCall": "KeyA",
   "endCall": "KeyE",
-  "toggleRadioPrio": null
+  "toggleRadioPrio": null,
+  "sayAgain": "F9"
 }
 ```
 
-| Field             | Type                                          | Description                             |
-| ----------------- | --------------------------------------------- | --------------------------------------- |
-| `acceptCall`      | [`InputBinding`](#inputbinding) &#124; `null` | Binding for accepting an incoming call. |
-| `endCall`         | [`InputBinding`](#inputbinding) &#124; `null` | Binding for ending the active call.     |
-| `toggleRadioPrio` | [`InputBinding`](#inputbinding) &#124; `null` | Binding for toggling radio priority.    |
+| Field             | Type                                          | Description                                                                   |
+| ----------------- | --------------------------------------------- | ----------------------------------------------------------------------------- |
+| `acceptCall`      | [`InputBinding`](#inputbinding) &#124; `null` | Binding for accepting an incoming call.                                       |
+| `endCall`         | [`InputBinding`](#inputbinding) &#124; `null` | Binding for ending the active call.                                           |
+| `toggleRadioPrio` | [`InputBinding`](#inputbinding) &#124; `null` | Binding for toggling radio priority.                                          |
+| `sayAgain`        | [`InputBinding`](#inputbinding) &#124; `null` | Binding for SAY AGAIN: replays the newest clip, or stops that replay. 2.8.0+. |
 
 #### Keybind
 
 The action a binding applies to. Used as the `keybind` argument for `keybinds_set_binding`, `keybinds_get_external_binding` and `keybinds_is_portal_shortcut_bound`:
 
 ```
-"PushToTalk" | "PushToMute" | "RadioPushToTalk" | "AcceptCall" | "EndCall" | "ToggleRadioPrio"
+"PushToTalk" | "PushToMute" | "RadioPushToTalk" | "AcceptCall" | "EndCall" | "ToggleRadioPrio" | "SayAgain"
 ```
 
 ### RadioConfig
@@ -1089,15 +1128,46 @@ Emitted with the `signaling:connected` event and included in the session state s
     "positionId": "LOVV_CTR"
   },
   "profile": {
-    "type": "Unchanged"
-  }
+    "type": "changed",
+    "activeProfile": {
+      "type": "specific",
+      "profile": {
+        "id": "LOVV",
+        "view": "split",
+        "tabbed": []
+      }
+    }
+  },
+  "splitProfileWidth": 352
 }
 ```
 
-| Field     | Type                        | Description                                                                                                                               |
-| --------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `client`  | [`ClientInfo`](#clientinfo) | The authenticated user's client entry.                                                                                                    |
-| `profile` | `object`                    | Profile state. `{ "type": "Unchanged" }` when the profile was not modified, or `{ "type": "Changed", "activeProfile": ... }` when it was. |
+| Field               | Type                        | Description                                                                                                                               |
+| ------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `client`            | [`ClientInfo`](#clientinfo) | The authenticated user's client entry.                                                                                                    |
+| `profile`           | `object`                    | Profile state. `{ "type": "unchanged" }` when the profile was not modified, or `{ "type": "changed", "activeProfile": ... }` when it was. `activeProfile` is `{ "type": "specific", "profile": ... }` with a [`Profile`](#profile), or `{ "type": "custom" }` or `{ "type": "none" }`. |
+| `splitProfileWidth` | `number` &#124; absent      | Width in pixels stored for the phone side of the profile's mixed view, set through [`app_set_split_profile_width`](#application). Present only when a specific profile is active and a width has been stored for it. |
+
+### Profile
+
+The layout the FIR's dataset defines for the session, carried inside [`SessionInfo`](#sessioninfo) and emitted by the `signaling:test-profile` event.
+
+```json
+{
+  "id": "LOVV",
+  "view": "split",
+  "tabbed": [{ "label": ["S"], "page": { "rows": 4, "keys": [] } }]
+}
+```
+
+| Field    | Type     | Description                                                                                                                                                       |
+| -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`     | `string` | Unique profile identifier, also the key used by [`app_set_split_profile_width`](#application).                                                                    |
+| `view`   | `string` | How the client arranges the radio and phone pages: `"page"` (default), `"split"` or `"cycle"`. Only `tabbed` profiles use a value other than `"page"`.             |
+| `tabbed` | `array`  | Present on tabbed profiles. One entry per tab, with a `label` of one to three lines and a `page` of direct access keys.                                            |
+| `geo`    | `object` | Present on geo profiles instead of `tabbed`. Container-based layout tree.                                                                                         |
+
+The full page and key structure is defined by the dataset, not by this API.
 
 ### StationInfo
 

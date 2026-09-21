@@ -132,7 +132,7 @@ The Radio button indicates the current state of the [Radio Integration](/setting
 | Button Color    | Text Color | Enabled  | State                            | Description                                                                                                                                                                              |
 | --------------- | ---------- | -------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Gray            | Gray       | Disabled | Radio Integration not configured | Radio Integration is set to **None**, or the required Radio PTT key is missing (e.g., no key captured for Voice Activation, or no pseudo-PTT key configured for Audio for VATSIM). |
-| Gray            | Black      | Disabled | Not connected                    | Radio integration is configured, but no connection to TrackAudio exists. *(In Audio for VATSIM this state usually does not occur.)*                                                      |
+| Gray            | Black      | Enabled  | Not connected                    | Radio integration is configured, but no connection to TrackAudio exists. Click the button to retry the connection; with TrackAudio it also opens the [Radio page](/interface/radio), which then offers a Retry link. *(In Audio for VATSIM this state usually does not occur.)* |
 | Gray            | Black      | Enabled  | Connected, no RX                 | A connection to the radio client exists, but no frequency is currently being received. *(In Audio for VATSIM this state usually does not occur.)*                                        |
 | Emerald         | Black      | Enabled  | Idle                             | At least one frequency is tuned and ready, but nobody is currently transmitting and you are not transmitting.                                                                            |
 | Cornflower Blue | Black      | Enabled  | Active transmission              | Either you or someone else (pilot, other station in general) is currently transmitting on the tuned frequency.                                                                                                       |
@@ -191,6 +191,55 @@ Clicking the **END** button performs two actions depending on the current interf
 #### Tabs (Tabbed Layout)
 
 If you are using the Tabbed-Layout, the pre-configured tabs will be visible in the right part of the Bottom Control Bar.
+
+### Split and Cycle Views
+
+Most profiles show the radio page and the phone page one at a time, and you switch between them with the **Radio** and **Phone** buttons. A profile can instead ask for one of two views that let you keep both in sight. Which view you get is part of the profile your FIR publishes, so there is nothing to configure in vacs, and neither view has anything to do with the unimplemented **SPLIT** key in the upper function key row.
+
+Both views require the TrackAudio [Radio Integration](/settings/transmit#radio-integration) and a tabbed profile. With Audio for VATSIM, or without a radio integration, such a profile behaves like any other and keeps the Radio and Phone buttons.
+
+**Split view** replaces the Radio and Phone buttons with two tabs:
+
+| Tab | Shows |
+|-----|-------|
+| Phone | The phone page across the whole main area, as usual. |
+| Radio | The radio page on the left and the direct access keys of the phone page on the right. This is the mixed view. |
+
+<img
+src="/img/interface/split_view_mixed.png"
+alt="A split view profile in the mixed view, the radio page next to the direct access keys"
+style={{
+    width: "80%",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
+
+**Cycle view** replaces the Radio and Phone buttons with a single **Page** button carrying three cells, **R**, **P** and **M**. Every click moves one step on: **R** for the radio page, **P** for the phone page, **M** for the mixed view. The cell of the page you are on is highlighted.
+
+<img
+src="/img/interface/page_cycle_button.png"
+alt="The Page button of a cycle view profile with the M cell highlighted"
+style={{
+    width: "6rem",
+    display: "block",
+    margin: "1.5rem auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+  }}
+/>
+
+With either view, vacs opens the mixed view when the profile loads. Selecting the Radio tab, or stepping to **R** or **M**, also retries the TrackAudio connection if it is currently down.
+
+_The divider_
+
+In the mixed view, the two pages are separated by a divider you can move. It stays invisible until you point at the gap between the pages, where it shows up as a gray bar and the cursor changes to a left-right arrow. Drag it with the mouse or your finger to give the direct access keys more or less room; the radio page takes whatever is left. The keys can be narrowed down to a single column, and the radio page always keeps enough space for one frequency object.
+
+Double-click the divider to put it back to the default width of four key columns. vacs remembers the width you set for each profile separately, including after a restart.
+
+In these profiles the direct access keys are slightly narrower than usual, so more of them fit next to the radio page. If a tab still has more key columns than fit, the page scrolls sideways.
 
 ---
 
