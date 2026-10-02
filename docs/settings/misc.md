@@ -5,11 +5,11 @@ sidebar_position: 7
 # Miscellaneous Settings
 The **Miscellaneous** section contains general application controls and system-level functions that do not directly affect audio, calls, or transmission behavior.
 
-These options are located in the lower-right area of the **Settings** window.
+These options are located in the lower-right area of the **Settings** window. Open it with the settings button (1); the **Miscellaneous** section (2) sits below the devices, and the session control buttons (3) at the bottom right.
 
 <img
 src="/img/settings/misc.png"
-alt="vacs Settings Page"
+alt="vacs Settings Page with the settings button, the Miscellaneous section and the session control buttons numbered 1 to 3"
 style={{
     width: "80%",
     display: "block",
@@ -56,7 +56,7 @@ This is useful if:
 - the layout is no longer scaled properly for your setup.
 
 ### Session Control Buttons
-At the bottom-right of the settings dialog, three session control buttons are available. 
+At the bottom-right of the settings dialog (3 in the screenshot above), next to the button that closes the dialog, three session control buttons are available. 
 
 These affect your current connection state.
 

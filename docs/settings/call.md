@@ -10,11 +10,11 @@ The **Call Config** Menu allows you to change various call-related settings, cus
 
 ## Opening Call Config
 
-The **Call Config** Menu can be accessed from the settings page, by clicking the **Call** button.
+The **Call Config** Menu can be accessed from the settings page (1), by clicking the **Call** button (2).
 
 <img
 src="/img/settings/CallConfig.png"
-alt="vacs Settings Page"
+alt="vacs Settings Page with the settings button and the Call button numbered 1 and 2"
 style={{
     width: "80%",
     display: "block",
@@ -43,7 +43,7 @@ Priority calls can be distinguished from normal calls by a yellow border visible
 When enabled, a notification sound is played when a call is successfully initiaed. This provide audible confirmation that the call has been successfully established.
 
 :::info[Call Establishment Delay]
-When initiating or receiving a call, there is a short delay of approximately **50–200 milliseconds** before the call is fully established.
+When initiating or receiving a call, there is a short delay of approximately **50-200 milliseconds** before the call is fully established.
 
 This delay is visually indicated by the **orange circle** in the top-left corner, which turns **green** once the connection is active.
 

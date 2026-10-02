@@ -10,11 +10,11 @@ The **Advanced Settings** Menu allows you to change various settings that are no
 
 ## Opening Advanced Settings
 
-The **Advanced Settings** Menu can be accessed from the settings page, by clicking the **Advanced** button.
+The **Advanced Settings** Menu can be accessed from the settings page (1), by clicking the **Advanced** button (2).
 
 <img
 src="/img/settings/AdvancedConfig.png"
-alt="vacs Settings Page"
+alt="vacs Settings Page with the settings button and the Advanced button numbered 1 and 2"
 style={{
     width: "80%",
     display: "block",
@@ -28,7 +28,7 @@ style={{
 
 <img
 src="/img/settings/AdvancedConfigPage.png"
-alt="vacs Settings Page"
+alt="The Advanced settings dialog"
 style={{
     width: "40%",
     display: "block",
@@ -72,5 +72,5 @@ When checked, vacs will record incoming radio transmissions - via TrackAudio or 
 
 Controls how the **CPL** button behaves when coupling frequencies.
 
-- **Original** — Click **CPL** to enter Couple Mode, then click an individual frequency to couple it. Click **CPL** again to exit Couple Mode. Double-clicking **CPL** while outside Couple Mode couples all TX-enabled frequencies at once.
-- **Fast** — Click **FAST CPL** to immediately couple all TX-enabled frequencies at once, without entering Couple Mode. The button label changes from **CPL** to **FAST CPL** to reflect this behavior.
+- **Original**: Click **CPL** to enter Couple Mode, then click an individual frequency to couple it. Click **CPL** again to exit Couple Mode. Double-clicking **CPL** while outside Couple Mode couples all TX-enabled frequencies at once.
+- **Fast**: Click **FAST CPL** to immediately couple all TX-enabled frequencies at once, without entering Couple Mode. The button label changes from **CPL** to **FAST CPL** to reflect this behavior.

@@ -12,11 +12,11 @@ As of **vacs 2.6.0**, every binding field also accepts a **joystick or gamepad b
 
 ## Opening Hotkeys Config
 
-The **Hotkeys Config** Menu can be accessed from the settings page, by clicking the **Hotkeys** button.
+The **Hotkeys Config** Menu can be accessed from the settings page (1), by clicking the **Hotkeys** button (2).
 
 <img
 src="/img/settings/HotkeysConfig.png"
-alt="vacs Settings Page"
+alt="vacs Settings Page with the settings button and the Hotkeys button numbered 1 and 2"
 style={{
     width: "80%",
     display: "block",
@@ -37,7 +37,7 @@ To bind a key to an action:
 - The field will update to display the selected binding.
 
 :::info[Clearing a Key Binding]
-Click the **✕** button on the right side of the row **(2)** to remove the assigned key binding.
+Click the **X** button on the right side of the row **(2)** to remove the assigned key binding.
 :::
 
 <img
@@ -130,7 +130,7 @@ The flip side is that two **identical** devices (the same model twice) cannot be
 
 Some devices, in particular flight sim throttles and button boxes, have **latched switches** rather than momentary buttons, or report a resting position as a permanently pressed button. Such a device reports "pressed" without you touching anything, which means it instantly wins any binding capture you start and makes it impossible to bind anything else.
 
-The **Joystick Devices** button in the header of the Hotkeys Config and Transmit Config dialogs opens a list of your devices where you can tick the ones vacs should **ignore while capturing**.
+The **Joystick Devices** button in the bottom-left corner of the Hotkeys Config and Transmit Config dialogs opens a list of your devices where you can tick the ones vacs should **ignore while capturing**.
 
 <img
 src="/img/settings/JoystickDevices.png"

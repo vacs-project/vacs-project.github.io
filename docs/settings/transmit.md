@@ -16,11 +16,11 @@ Previously, "Radio Integration" was one of the options in the **Call Mic Mode** 
 ---
 
 ## Opening Transmit Config
-The **Transmit Config** can be accessed from the settings page, by clicking the **Transmit** button.
+The **Transmit Config** can be accessed from the settings page (1), by clicking the **Transmit** button (2).
 
 <img
 src="/img/settings/TransmitConfig.png"
-alt="vacs Settings Page"
+alt="vacs Settings Page with the settings button and the Transmit button numbered 1 and 2"
 class="screenshot"
 style={{
     width: "80%",

@@ -15,7 +15,7 @@ From here, you can adjust audio devices, volume levels, transmit behavior, key b
 
 <img
 src="/img/settings/overview.png"
-alt="vacs Settings Page"
+alt="vacs Settings Page, with the settings button marked 1"
 style={{
       width: "80%",
       display: "block",
@@ -25,7 +25,7 @@ style={{
     }}
 />
 
-The Settings interface can be accessed via the button marked in yellow in the screenshot above.
+The Settings interface can be accessed via the settings button (1) in the upper button row, marked in the screenshot above.
 
 It is divided into logical sections that group related configuration options.
 
@@ -110,7 +110,7 @@ Allows you to configure more advanced application behavior:
 Control additional application behavior:
 
 - Update checks
-  -Configuration files access
+- Configuration files access
 - Log access
 - Window behavior
 - Interface scaling
