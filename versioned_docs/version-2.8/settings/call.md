@@ -13,7 +13,7 @@ The **Call Config** Menu allows you to change various call-related settings, cus
 The **Call Config** Menu can be accessed from the settings page, by clicking the **Call** button.
 
 <img
-src="/img/settings/CallConfig.png"
+src="/img-2.8/settings/CallConfig.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -83,7 +83,7 @@ Available from **vacs 2.8.0**.
 By default, an incoming call plays a short built-in chime, and a [priority call](/using-vacs/making-a-call#prio-calls) plays a more urgent one. The **Ring sounds** section at the bottom of the Call Config page lets you replace either of them with a sound file of your own, for example the ringing tone you are used to from the real system at your unit.
 
 <img
-src="/img/settings/CallConfigRingSounds.png"
+src="/img-2.8/settings/CallConfigRingSounds.png"
 alt="The Ring sounds section of the Call Config with a custom ring sound selected"
 style={{
     width: "45%",

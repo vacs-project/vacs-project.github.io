@@ -13,7 +13,7 @@ The page remains inactive if you use the Audio for Vatsim radio integration.
 :::
 
 <img
-src="/img/radio/radio_overview.png"
+src="/img-2.8/radio/radio_overview.png"
 alt="Radio Page"
 style={{
     width: "80%",
@@ -38,7 +38,7 @@ You can open the Radio page even while vacs has no connection to TrackAudio. Ins
 Click **Retry** to attempt the connection again. Start TrackAudio and connect it to the network first, otherwise the attempt fails again and the same message stays on the page.
 
 <img
-src="/img/radio/radio_no_connection.png"
+src="/img-2.8/radio/radio_no_connection.png"
 alt="The Radio page without a TrackAudio connection"
 style={{
     width: "80%",
@@ -71,7 +71,7 @@ Removing a station is currently not supported due to a limitation of the TrackAu
 A frequency object represents a single station in its current state and controls its usage.
 
 <img
-src="/img/radio/radio_freqobj.png"
+src="/img-2.8/radio/radio_freqobj.png"
 alt="Frequency Object"
 style={{
     width: "10.5rem",
@@ -88,7 +88,7 @@ You can toggle receiving and transmitting by clicking either Rx or Tx. Clicking 
 
 <div style={{display: "flex", gap: "2rem", justifyContent: "center", alignItems: "center", marginBottom: "var(--ifm-leading)"}}>
 <img
-src="/img/radio/radio_freqobj_rx.png"
+src="/img-2.8/radio/radio_freqobj_rx.png"
 alt="Frequency Object Rx"
 style={{
     width: "10.5rem",
@@ -99,7 +99,7 @@ style={{
 />
 
 <img
-src="/img/radio/radio_freqobj_tx.png"
+src="/img-2.8/radio/radio_freqobj_tx.png"
 alt="Frequency Object Tx"
 style={{
     width: "10.5rem",
@@ -114,7 +114,7 @@ If you actively receive or transmit on that station, the respective button will 
 
 <div style={{display: "flex", gap: "2rem", justifyContent: "center", alignItems: "center", marginBottom: "var(--ifm-leading)"}}>
 <img
-src="/img/radio/radio_freqobj_rx_active.png"
+src="/img-2.8/radio/radio_freqobj_rx_active.png"
 alt="Frequency Object Rx Active"
 style={{
     width: "10.5rem",
@@ -125,7 +125,7 @@ style={{
 />
 
 <img
-src="/img/radio/radio_freqobj_tx_active.png"
+src="/img-2.8/radio/radio_freqobj_tx_active.png"
 alt="Frequency Object Tx Active"
 style={{
     width: "10.5rem",
@@ -139,7 +139,7 @@ style={{
 By clicking the speaker icon, audio output can be toggled to the speaker device configured in TrackAudio.
 
 <img
-src="/img/radio/radio_freqobj_speaker.png"
+src="/img-2.8/radio/radio_freqobj_speaker.png"
 alt="Frequency Object Speaker"
 style={{
     width: "10.5rem",
@@ -161,7 +161,7 @@ Two coupling modes are available, configurable in the [Advanced Settings](/setti
 **Original mode** — Click **CPL** to enter Couple Mode, then click the desired frequency objects one by one. Click **CPL** again to exit Couple Mode. You can also **double-click CPL** outside of Couple Mode to immediately couple all TX-enabled frequencies at once.
 
 <img
-src="/img/radio/radio_cross_couple_original.gif"
+src="/img-2.8/radio/radio_cross_couple_original.gif"
 alt="Frequency Cross Couple (Original mode)"
 style={{
     width: "80%",
@@ -183,7 +183,7 @@ Cross coupling automatically enables Tx and Rx.
 **Fast mode** — Click **FAST CPL** to immediately couple all TX-enabled frequencies at once, without entering Couple Mode. The button label changes from **CPL** to **FAST CPL** when this mode is active. To uncouple an individual frequency in Fast mode, toggle its **TX** off.
 
 <img
-src="/img/radio/radio_cross_couple_fast.gif"
+src="/img-2.8/radio/radio_cross_couple_fast.gif"
 alt="Frequency Cross Couple (Original mode)"
 style={{
     width: "80%",
@@ -199,7 +199,7 @@ style={{
 A cross coupled frequency is indicated by two arrows next to the speaker.
 
 <img
-src="/img/radio/radio_freqobj_cross_coupled.png"
+src="/img-2.8/radio/radio_freqobj_cross_coupled.png"
 alt="Frequency Object Speaker"
 style={{
     width: "10.5rem",
@@ -225,7 +225,7 @@ Click the red button to reconnect. This re-establishes the link to TrackAudio an
 transmission state, so it is also the right first step if PTT feels stuck.
 
 <img
-src="/img/radio/radio_button_error.png"
+src="/img-2.8/radio/radio_button_error.png"
 alt="The radio button in its error state"
 style={{
     width: "12.5rem",

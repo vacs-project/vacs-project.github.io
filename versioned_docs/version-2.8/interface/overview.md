@@ -29,7 +29,7 @@ This can also be supplemented by an audible indication. For futher information, 
 If the indicator stays orange on a call that is otherwise established, the call is not delivering audio to you. A muted speaker icon on the call in the call sequence marks which call is affected. See [One-way audio](/troubleshooting/audio#one-way-audio-you-cannot-hear-the-other-controller).
 
 <img
-src="/img/interface/topbar.png"
+src="/img-2.8/interface/topbar.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -60,7 +60,7 @@ Of these buttons, PRIO, PLAYBACK and SAY AGAIN are functional; the rest are not 
 A PRIO Call indicates to the reciever of the call, that the caller considers this call to be urgent. It is highlighted with a yellow border in the recievers vacs, and uses a special sound, to gain attention.
 
 <img
-src="/img/interface/tabbed_incoming_call_prio.gif"
+src="/img-2.8/interface/tabbed_incoming_call_prio.gif"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -97,7 +97,7 @@ Each title represents one station and my appear in different states:
 4. Station currently controlled by your position (enabled button with grey text).
 
 <img
-src="/img/interface/directaccesspage.png"
+src="/img-2.8/interface/directaccesspage.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -115,7 +115,7 @@ The direct access page is the primary interaction area for initiating and receiv
 The lower section contains further buttons, which are important during the useage of vacs.
 
 <img
-src="/img/interface/bottom.png"
+src="/img-2.8/interface/bottom.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -206,7 +206,7 @@ Both views require the TrackAudio [Radio Integration](/settings/transmit#radio-i
 | Radio | The radio page on the left and the direct access keys of the phone page on the right. This is the mixed view. |
 
 <img
-src="/img/interface/split_view_mixed.png"
+src="/img-2.8/interface/split_view_mixed.png"
 alt="A split view profile in the mixed view, the radio page next to the direct access keys"
 style={{
     width: "80%",
@@ -220,7 +220,7 @@ style={{
 **Cycle view** replaces the Radio and Phone buttons with a single **Page** button carrying three cells, **R**, **P** and **M**. Every click moves one step on: **R** for the radio page, **P** for the phone page, **M** for the mixed view. The cell of the page you are on is highlighted.
 
 <img
-src="/img/interface/page_cycle_button.png"
+src="/img-2.8/interface/page_cycle_button.png"
 alt="The Page button of a cycle view profile with the M cell highlighted"
 style={{
     width: "6rem",
@@ -253,7 +253,7 @@ When a station calls you:
 - Visual and audible feedback indicates, that the call has been established (sound + green indicator).
 
 <img
-src="/img/interface/tabbed_incoming_call.gif"
+src="/img-2.8/interface/tabbed_incoming_call.gif"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -275,7 +275,7 @@ In the simplest terms initating a call in vacs (which is without selecting a spe
 - As no recipient was selected in this case, a generic sector identifier is displayed as call origin on the recipients end. Here this would be LOWW APP.
 
 <img
-src="/img/interface/tabbed_outgoing_call.png"
+src="/img-2.8/interface/tabbed_outgoing_call.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -296,7 +296,7 @@ vacs allows selecting the originating station (call source) for outgoing calls. 
 The selected call source is indicated in orange color on the direct access page:
 
 <img
-src="/img/interface/tabbed_call_source.png"
+src="/img-2.8/interface/tabbed_call_source.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",

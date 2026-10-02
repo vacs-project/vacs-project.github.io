@@ -17,7 +17,7 @@ Note, that most of the content on this page has already been mentioned before. T
 At the beginning of a session, it is recommended to select a **fixed call source** (double click onto your relevant sector (active button with grey text), then turns dark orange) representing the sector from which you will primarily initiate calls.
 
 <img
-src="/img/using-vacs/tabbed_call_source.png"
+src="/img-2.8/using-vacs/tabbed_call_source.png"
 alt="Call Source"
 style={{
     width: "80%",
@@ -58,7 +58,7 @@ For detailed information, see:
 Incoming calls are indicated visually within the interface.
 
 <img
-src="/img/using-vacs/tabbed_incoming_call.gif"
+src="/img-2.8/using-vacs/tabbed_incoming_call.gif"
 alt="Incoming Call"
 style={{
     width: "80%",

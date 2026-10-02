@@ -32,7 +32,7 @@ Before starting a session, ensure that vacs is running **the most current versio
 If your version is outdated, an **update notification** will appear in the upper part of the interface.
 
 <img
-src="/img/using-vacs/update_not.png"
+src="/img-2.8/using-vacs/update_not.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -55,7 +55,7 @@ See [Updating VACS](/getting-started/updating) for detailed instructions.
 After launching vacs, the **login screen** will appear.
 
 <img
-src="/img/using-vacs/login.png"
+src="/img-2.8/using-vacs/login.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -77,7 +77,7 @@ style={{
 After logging in, vacs will display the **connection screen**.
 
 <img
-src="/img/using-vacs/connect.png"
+src="/img-2.8/using-vacs/connect.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -105,7 +105,7 @@ Depending on the dataset configuration, this may be:
 
 **Tabed Layout**
 <img
-src="/img/using-vacs/tabbed.png"
+src="/img-2.8/using-vacs/tabbed.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -118,7 +118,7 @@ style={{
 
 **GEO Layout**
 <img
-src="/img/using-vacs/geo.png"
+src="/img-2.8/using-vacs/geo.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",

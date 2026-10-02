@@ -20,7 +20,7 @@ To initiate a coordination call:
 If the button is active (clickable) and the text appears in black color, this sector is online on VATSIM & vacs, and is ready to recieve your call. vacs will initiate a call to the controller currently covering this sector.
 
 <img
-src="/img/using-vacs/tabbed_outgoing_call.png"
+src="/img-2.8/using-vacs/tabbed_outgoing_call.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -46,7 +46,7 @@ Once the receiving controller accepts the call, the connection will be establish
 After the recieving controller accepts the call, vacs establishes audio connection.
 
 <img
-src="/img/using-vacs/connection_indicator.png"
+src="/img-2.8/using-vacs/connection_indicator.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -73,7 +73,7 @@ There may be a **short delay (approximately 150–200 ms)** before audio transmi
 If you are covering multiple sectors simultaneously (as is often the case), vacs allows you to choose which **sector appears as the caller**.
 
 <img
-src="/img/using-vacs/tabbed_call_source.png"
+src="/img-2.8/using-vacs/tabbed_call_source.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -112,7 +112,7 @@ vacs can automatically set your default call source based on the position you ar
 A **PRIO call** indicates an urgent call.
 
 <img
-src="/img/using-vacs/prio_call.png"
+src="/img-2.8/using-vacs/prio_call.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -129,7 +129,7 @@ To place a PRIO call:
 2. Click the sector you want to call.
 
 <img
-src="/img/using-vacs/tabbed_outgoing_call_prio.gif"
+src="/img-2.8/using-vacs/tabbed_outgoing_call_prio.gif"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -169,7 +169,7 @@ Your chosen configuration determines how you speak during coordination calls.
 During calls, the **RADIO PRIO** button is also relevant, if you decide to use the **Radio Integration** [Transmit Mode](/settings/transmit). It allows you to prioritize **radio transmissions over coordination calls**.
 
 <img
-src="/img/using-vacs/radio_prio.png"
+src="/img-2.8/using-vacs/radio_prio.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -194,7 +194,7 @@ Otherwise, while a call is active, your push-to-talk transmits into the call rat
 In some situations, a call cannot be established.
 
 <img
-src="/img/using-vacs/call_error.gif"
+src="/img-2.8/using-vacs/call_error.gif"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -212,7 +212,7 @@ Common reasons include:
 - A technical issue occured during call establishment.
 
 <img
-src="/img/using-vacs/call_error_rejected.gif"
+src="/img-2.8/using-vacs/call_error_rejected.gif"
 alt="vacs Settings Page"
 style={{
     width: "80%",

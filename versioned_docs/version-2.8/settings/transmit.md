@@ -19,7 +19,7 @@ Previously, "Radio Integration" was one of the options in the **Call Mic Mode** 
 The **Transmit Config** can be accessed from the settings page, by clicking the **Transmit** button.
 
 <img
-src="/img/settings/TransmitConfig.png"
+src="/img-2.8/settings/TransmitConfig.png"
 alt="vacs Settings Page"
 class="screenshot"
 style={{
@@ -32,7 +32,7 @@ The **Transmit Config** dialog is split into two independent parts:
 - **RADIO INTEGRATION** (bottom) - your radio client integration, always enabled regardless of the Call Mic Mode chosen above.
 
 <img
-src="/img/settings/Transmit-VoiceActivation-None.png"
+src="/img-2.8/settings/Transmit-VoiceActivation-None.png"
 alt="Transmit Config dialog showing Voice activation as Call Mic Mode and None as Radio Integration"
 class="screenshot"
 style={{
@@ -122,7 +122,7 @@ Next to the Radio Integration dropdown is a key-capture field for your **Radio P
 Keyboard keys are assigned in your desktop environment rather than captured in vacs, so "leave it empty" means leaving the **Radio Push-to-talk** system shortcut unassigned. Everything else in this table works the same way. If you change the shortcut while this dialog is open, reopen it to see the new key. See [Platform support](/settings/hotkeys#platform-support) on the Hotkeys page.
 
 <img
-src="/img/settings/Transmit-DifferentPTT-TrackAudio-wayland.png"
+src="/img-2.8/settings/Transmit-DifferentPTT-TrackAudio-wayland.png"
 alt="vacs Transmit Config on Wayland, with desktop-managed keys and the System Shortcuts button"
 style={{
     width: "80%",
@@ -137,7 +137,7 @@ style={{
 With **Voice Activation**, there is no call key to fall back to, so the field starts unbound and shows **"Not bound"** until you assign one explicitly:
 
 <img
-src="/img/settings/Transmit-VoiceActivation-TrackAudio.png"
+src="/img-2.8/settings/Transmit-VoiceActivation-TrackAudio.png"
 alt="Transmit Config dialog showing Voice activation as Call Mic Mode and TrackAudio as Radio Integration with an unbound radio key"
 class="screenshot"
 style={{
@@ -148,7 +148,7 @@ style={{
 With **Push-to-Talk** and no radio key captured, the field falls back to your call PTT key, shown as a light grey placeholder:
 
 <img
-src="/img/settings/Transmit-SamePTT-TrackAudio.png"
+src="/img-2.8/settings/Transmit-SamePTT-TrackAudio.png"
 alt="Transmit Config dialog showing Push-to-talk with key ControlLeft as Call Mic Mode and TrackAudio as Radio Integration, radio key field showing ControlLeft in light grey"
 class="screenshot"
 style={{
@@ -159,7 +159,7 @@ style={{
 Capturing a distinct key instead makes the radio operate independently of your call PTT:
 
 <img
-src="/img/settings/Transmit-DifferentPTT-TrackAudio.png"
+src="/img-2.8/settings/Transmit-DifferentPTT-TrackAudio.png"
 alt="Transmit Config dialog showing Push-to-talk with key ControlLeft as Call Mic Mode and TrackAudio as Radio Integration, radio key field explicitly bound to AltRight"
 class="screenshot"
 style={{
@@ -170,7 +170,7 @@ style={{
 With **Push-to-Mute**, the field is locked to your call key and cannot be changed:
 
 <img
-src="/img/settings/Transmit-PTM-TrackAudio.png"
+src="/img-2.8/settings/Transmit-PTM-TrackAudio.png"
 alt="Transmit Config dialog showing Push-to-mute with key AltRight as Call Mic Mode and TrackAudio as Radio Integration, radio key field disabled and forced to AltRight"
 class="screenshot"
 style={{

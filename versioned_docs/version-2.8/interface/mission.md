@@ -43,7 +43,7 @@ This includes:
 If a Client Page Configuration Profile is available to you, it can be **loaded via the Mission Page**.
 
 <img
-src="/img/using-vacs/mission.png"
+src="/img-2.8/using-vacs/mission.png"
 alt="Mission Page"
 style={{
     width: "80%",
@@ -69,7 +69,7 @@ For a detailed technical reference, see:
 The Mission Page also allows loading **test profiles**.
 
 <img
-src="/img/using-vacs/mission_test_profile.png"
+src="/img-2.8/using-vacs/mission_test_profile.png"
 alt="Mission Page Test Profile"
 style={{
     width: "80%",

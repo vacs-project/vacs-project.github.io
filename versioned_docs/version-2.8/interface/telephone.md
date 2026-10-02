@@ -43,7 +43,7 @@ The **END button** can always be used to close the telephone interface and retur
 The **Telephone Directory** contains a list of available stations that can be called.
 
 <img
-src="/img/interface/telephone_dir.png"
+src="/img-2.8/interface/telephone_dir.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -74,7 +74,7 @@ The directory is populated automatically based on **connected clients** and sort
 The **Call List** displays the **recent call history**.
 
 <img
-src="/img/interface/telephone_call_list.png"
+src="/img-2.8/interface/telephone_call_list.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -108,7 +108,7 @@ Controllers can perform several actions:
 The **Dial Pad** alows manual dialing of telephone numbers (= VATSIM CID).
 
 <img
-src="/img/interface/telephone_dial_pad.png"
+src="/img-2.8/interface/telephone_dial_pad.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -143,7 +143,7 @@ The other available buttons (**IA** and **ATS MFC**) are currently not simulated
 The **Ignore List** contains telephone numbers (= VATSIM CIDs) that should **not trigger incoming calls**.
 
 <img
-src="/img/interface/telephone_ignore.png"
+src="/img-2.8/interface/telephone_ignore.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",

@@ -15,7 +15,7 @@ As of **vacs 2.6.0**, every binding field also accepts a **joystick or gamepad b
 The **Hotkeys Config** Menu can be accessed from the settings page, by clicking the **Hotkeys** button.
 
 <img
-src="/img/settings/HotkeysConfig.png"
+src="/img-2.8/settings/HotkeysConfig.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -41,7 +41,7 @@ Click the **✕** button on the right side of the row **(2)** to remove the assi
 :::
 
 <img
-src="/img/settings/HotkeysConfigPage.png"
+src="/img-2.8/settings/HotkeysConfigPage.png"
 alt="vacs Hotkeys Config, with the binding field and its clear button marked"
 style={{
     width: "45%",
@@ -107,7 +107,7 @@ Binding a button works exactly like binding a key:
 Only **buttons** can be bound. Axes, hats and triggers that report as an axis (common for gamepad triggers) cannot be used as a binding.
 
 <img
-src="/img/settings/HotkeysConfigPage-joystick.png"
+src="/img-2.8/settings/HotkeysConfigPage-joystick.png"
 alt="vacs Hotkeys Config with an action bound to a joystick button"
 style={{
     width: "45%",
@@ -131,7 +131,7 @@ Some devices, in particular flight sim throttles and button boxes, have **latche
 The **Joystick Devices** button in the header of the Hotkeys Config and Transmit Config dialogs opens a list of your devices where you can tick the ones vacs should **ignore while capturing**.
 
 <img
-src="/img/settings/JoystickDevices.png"
+src="/img-2.8/settings/JoystickDevices.png"
 alt="The Joystick Devices dialog with one device ignored"
 style={{
     width: "45%",
@@ -176,7 +176,7 @@ Joystick buttons are not affected by this restriction and are captured directly 
 This is what the Hotkeys Config looks like on a Wayland session: the keys come from the desktop environment and are shown in grey, and the **System Shortcuts** button sits next to **Joystick Devices**.
 
 <img
-src="/img/settings/HotkeysConfigPage-wayland.png"
+src="/img-2.8/settings/HotkeysConfigPage-wayland.png"
 alt="vacs Hotkeys Config on Wayland, with desktop-managed keys and the System Shortcuts button"
 style={{
     width: "45%",
@@ -190,7 +190,7 @@ style={{
 On a Wayland desktop without a global shortcuts portal, the page says so instead, and the fields only accept joystick buttons:
 
 <img
-src="/img/settings/HotkeysConfigPage-wayland-no-portal.png"
+src="/img-2.8/settings/HotkeysConfigPage-wayland-no-portal.png"
 alt="vacs Hotkeys Config on a Wayland desktop without a global shortcuts portal"
 style={{
     width: "45%",

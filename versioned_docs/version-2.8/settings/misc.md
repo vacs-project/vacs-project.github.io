@@ -8,7 +8,7 @@ The **Miscellaneous** section contains general application controls and system-l
 These options are located in the lower-right area of the **Settings** window.
 
 <img
-src="/img/settings/misc.png"
+src="/img-2.8/settings/misc.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",

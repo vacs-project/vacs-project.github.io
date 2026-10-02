@@ -17,7 +17,7 @@ A profile can now ask vacs to show the radio page next to your direct access key
 
 In the **split** view, the **Radio** and **Phone** buttons in the bottom control bar become two tabs. **Phone** gives the phone page the whole main area, **Radio** puts the radio page on the left and the direct access keys on the right. In the **cycle** view, both buttons become one **Page** button with the cells **R**, **P** and **M** that steps through the radio page, the phone page and the mixed view of the two.
 
-<img src="/img/interface/split_view_mixed.png" alt="A split view profile in the mixed view, the radio page next to the direct access keys" className="screenshot" style={{ width: "80%" }} />
+<img src="/img-2.8/interface/split_view_mixed.png" alt="A split view profile in the mixed view, the radio page next to the direct access keys" className="screenshot" style={{ width: "80%" }} />
 
 In the mixed view you can drag the divider between the two pages to give the keys more or less room, and double-click it to go back to the default of four key columns. vacs remembers the width for each profile, including after a restart.
 
@@ -60,7 +60,7 @@ A complete list of changes is available in the [v2.7.0 release notes](https://gi
 
 The upper function key row has a new **SAY AGAIN** key, to the right of **PLAY BACK**. Pressing it replays the most recent radio transmission vacs recorded, from the start, without opening the Playback page. Press it again to stop the replay.
 
-<img src="/img/playback/say-again-button.png" alt="The upper function key row with the SAY AGAIN key" className="screenshot" style={{ width: "80%" }} />
+<img src="/img-2.8/playback/say-again-button.png" alt="The upper function key row with the SAY AGAIN key" className="screenshot" style={{ width: "80%" }} />
 
 The key is available under the same conditions as the [Playback page](/interface/playback): a [radio integration](/settings/transmit#radio-integration) is configured, **Enable radio playback** is on in the [Advanced Settings](/settings/advanced#enable-radio-playback), and the radio is connected. It stays blue while the replay is playing and turns back when the clip ends. If the Playback page is open at the same time, it shows the replayed clip as the selected one, so the stop, pause and seek controls there apply to it.
 
@@ -100,7 +100,7 @@ To bind one, click a binding field as usual and press a button on your device in
 
 This means a HOTAS throttle, a yoke, a button box or a handset can drive your calls directly, without mapping the device to a keyboard key through third party software first.
 
-<img src="/img/settings/HotkeysConfigPage-joystick.png" alt="vacs Hotkeys Config with an action bound to a joystick button" className="screenshot" style={{ width: "45%" }} />
+<img src="/img-2.8/settings/HotkeysConfigPage-joystick.png" alt="vacs Hotkeys Config with an action bound to a joystick button" className="screenshot" style={{ width: "45%" }} />
 
 Bindings are tied to the device itself rather than to the port it is plugged into, so they survive unplugging the device, a reboot, or moving it to a different USB port.
 
@@ -118,7 +118,7 @@ vacs now detects this. When a connected call stops receiving audio for a few sec
 
 Both controllers need to be on v2.6.0 or later for this to work. If the other side is on an older version, or if the call is already relayed and audio still is not arriving, vacs marks the call as **degraded** instead: the status indicator stays orange and a muted speaker icon appears on the affected call in the call sequence, so you can tell the difference between a quiet colleague and a broken call.
 
-<img src="/img/troubleshooting/degraded-call.png" alt="A degraded call, with the muted speaker icon in the call sequence" className="screenshot" style={{ width: "80%" }} />
+<img src="/img-2.8/troubleshooting/degraded-call.png" alt="A degraded call, with the muted speaker icon in the call sequence" className="screenshot" style={{ width: "80%" }} />
 
 There is also a new **Always relay calls** option in the [Call Settings](/settings/call#always-relay-calls), off by default. It skips the direct connection entirely and relays every call from the start. Only turn it on if you regularly have trouble hearing other controllers and cannot turn the VPN off or exclude vacs from it, since relaying adds a small amount of latency.
 
@@ -180,7 +180,7 @@ Previously, using a radio integration (TrackAudio or Audio for VATSIM) required 
 
 The **Transmit Config** dialog has been reworked to lift this restriction. The top dropdown, now called **Call Mic Mode**, controls only how your call microphone behaves (Voice Activation, Push-to-Talk, or Push-to-Mute). The **Radio Integration** dropdown at the bottom is always available, independent of the Call Mic Mode chosen above - so you can, for example, use Voice Activation for calls while still triggering radio transmissions through TrackAudio.
 
-<img src="/img/settings/Transmit-VoiceActivation-TrackAudio.png" alt="vacs Transmit Config with Voice Activation and TrackAudio combined" className="screenshot" style={{ width: "80%" }} />
+<img src="/img-2.8/settings/Transmit-VoiceActivation-TrackAudio.png" alt="vacs Transmit Config with Voice Activation and TrackAudio combined" className="screenshot" style={{ width: "80%" }} />
 
 The behavior of the radio PTT key and the **RADIO PRIO** button now depends on the combination of Call Mic Mode and Radio Integration you choose. See the [Transmit Modes](/settings/transmit#how-call-mic-mode-and-radio-integration-interact) documentation for a full breakdown of every combination.
 
@@ -215,7 +215,7 @@ A complete list of changes is available in the [v2.4.0 release notes](https://gi
 
 vacs now lets you **replay recent TrackAudio radio transmissions** directly from the [Playback page](/interface/playback). Once enabled in the [Advanced Settings](/settings/advanced), vacs records incoming radio transmissions while TrackAudio is running and connected. You can then play them back at any time using the full set of playback controls — play/pause, skip, rewind, and continuous playback mode.
 
-<img src="/img/playback/playback_controls.gif" alt="Playback Controls Demo" className="screenshot" style={{ width: "80%" }} />
+<img src="/img-2.8/playback/playback_controls.gif" alt="Playback Controls Demo" className="screenshot" style={{ width: "80%" }} />
 
 
 Exported recordings are saved to `%LOCALAPPDATA%\app.vacs.vacs-client\playback\saved` on Windows and `$XDG_DATA_HOME/app.vacs.vacs-client/playback/saved` (or `$HOME/.local/share/app.vacs.vacs-client/playback/saved`) on Linux.
@@ -255,7 +255,7 @@ A complete list of changes is available in the [v2.3.0 release notes](https://gi
 
 vacs now includes a dedicated **[Radio page](/interface/radio)** that connects to [TrackAudio](https://github.com/pierr3/TrackAudio) and lets you manage your radio stack without leaving the vacs window. From the Radio page you can see all currently tuned frequencies, toggle receive and transmit on individual frequencies, and manage your station list - all in one place.
 
-<img src="/img/radio/radio_overview.png" alt="vacs Radio Page" className="screenshot" style={{ width: "80%" }} />
+<img src="/img-2.8/radio/radio_overview.png" alt="vacs Radio Page" className="screenshot" style={{ width: "80%" }} />
 
 The Radio page is only available when TrackAudio is running and connected. If you are using Audio for VATSIM (AFV) or another transmit mode, the page remains inactive.
 
@@ -296,7 +296,7 @@ A complete list of changes is available in the [v2.2.0 release notes](https://gi
 
 Station buttons on both the [GEO](/interface/phone/geo) and [Tabbed](/interface/phone/tabbed) layouts can now display **custom background colors**. Dataset maintainers for your FIR can assign colors from a curated palette to individual buttons, making it easier to visually group or distinguish stations at a glance.
 
-<img src="/img/button_colors.png" alt="vacs Call Source Selection" className="screenshot" style={{ width: "90%" }} />
+<img src="/img-2.8/button_colors.png" alt="vacs Call Source Selection" className="screenshot" style={{ width: "90%" }} />
 
 ---
 
@@ -399,8 +399,8 @@ Additionally, you can now select the station you are calling **from**. This give
 
 You can have both a temporary and a default source selected at the same time. The temporary source takes priority for the next call and then reverts to the default.
 
-<img src="/img/tabbed/tabbed_call_source.png" alt="vacs Call Source Selection" className="screenshot" style={{ width: "80%" }} />
-<img src="/img/tabbed/tabbed_active_call.png" alt="vacs Call Source Selection" className="screenshot" style={{ width: "80%" }} />
+<img src="/img-2.8/tabbed/tabbed_call_source.png" alt="vacs Call Source Selection" className="screenshot" style={{ width: "80%" }} />
+<img src="/img-2.8/tabbed/tabbed_active_call.png" alt="vacs Call Source Selection" className="screenshot" style={{ width: "80%" }} />
 
 1. Button that does not reference a station (disabled button with grey text)
 2. Station that is online and callable (enabled button with black text)
@@ -420,13 +420,13 @@ Two main layouts are currently supported:
 
 - **GEO layout**: stations are arranged geographically, giving you a spatial overview of neighbouring units and making it quick and intuitive to find the station you want to call. See the [GEO layout documentation](/interface/phone/geo) for more details.
 
-<img src="/img/geo/geo.png" alt="vacs Geo Layout" className="screenshot" style={{ width: "80%" }} />
+<img src="/img-2.8/geo/geo.png" alt="vacs Geo Layout" className="screenshot" style={{ width: "80%" }} />
 
-<img src="/img/geo/geo_page.png" alt="vacs Geo Page" className="screenshot" style={{ width: "80%" }} />
+<img src="/img-2.8/geo/geo_page.png" alt="vacs Geo Page" className="screenshot" style={{ width: "80%" }} />
 
 - **Tabbed layout**: stations are organised into named tabs, allowing them to be grouped logically. See the [Tabbed layout documentation](/interface/phone/tabbed) for more details.
 
-<img src="/img/tabbed/tabbed.png" alt="vacs Tabbed Layout" className="screenshot" style={{ width: "80%" }} />
+<img src="/img-2.8/tabbed/tabbed.png" alt="vacs Tabbed Layout" className="screenshot" style={{ width: "80%" }} />
 
 ---
 
@@ -443,7 +443,7 @@ These sounds can be toggled individually on the [Call](/settings/call) subpage o
 You can now mark calls as **priority** when coordination is urgent. Priority calls appear visually distinct on the receiving end and trigger a more attention-grabbing ringtone to ensure they don't go unnoticed.  
 See the [Making a call](/using-vacs/making-a-call#prio-calls) section for details on how to initiate a priority call.
 
-<img src="/img/tabbed/tabbed_incoming_call_prio.gif" alt="vacs Incoming Priority Call" className="screenshot" style={{ width: "80%" }} />
+<img src="/img-2.8/tabbed/tabbed_incoming_call_prio.gif" alt="vacs Incoming Priority Call" className="screenshot" style={{ width: "80%" }} />
 
 Priority calls can be disabled locally on the [Call](/settings/call) subpage of the [Settings](/settings/overview) page. When disabled, all incoming priority calls will be treated as normal calls.
 
@@ -453,7 +453,7 @@ Priority calls can be disabled locally on the [Call](/settings/call) subpage of 
 
 You can now adjust the zoom level of the vacs window using the familiar `Ctrl +` and `Ctrl -` keyboard shortcuts. This is especially useful if you've resized the window and want to ensure the best readability and layout. `Ctrl 0` resets the zoom level to its default.
 
-<img src="/img/zoom_controls.gif" alt="vacs Window Zoom" className="screenshot" style={{ width: "80%" }} />
+<img src="/img-2.8/zoom_controls.gif" alt="vacs Window Zoom" className="screenshot" style={{ width: "80%" }} />
 
 ---
 

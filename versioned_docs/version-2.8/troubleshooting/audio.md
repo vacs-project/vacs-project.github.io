@@ -30,7 +30,7 @@ A degraded call is one that is still connected but is not delivering audio to yo
 2. a **muted speaker icon** appears in the top-left corner of the call in the call sequence
 
 <img
-src="/img/troubleshooting/degraded-call-annotated.png"
+src="/img-2.8/troubleshooting/degraded-call-annotated.png"
 alt="A degraded call, with the muted speaker icon in the call sequence and the status indicator orange"
 style={{
     width: "80%",

@@ -15,7 +15,7 @@ When another controller initiates a call to a sector you are covering, vacs will
 When another controller calls you, the relevant sector button (of the caller (=call source)) will start indicating the incoming call.
 
 <img
-src="/img/using-vacs/tabbed_incoming_call.gif"
+src="/img-2.8/using-vacs/tabbed_incoming_call.gif"
 alt="Incoming Call"
 style={{
     width: "80%",
@@ -42,7 +42,7 @@ This happens, for example, when a sector is called not using a correctly defined
 In this case, the incoming call is indicated without highlighting a specific sector.
 
 <img
-src="/img/using-vacs/tabbed_incoming_call_no_target_highlight.gif"
+src="/img-2.8/using-vacs/tabbed_incoming_call_no_target_highlight.gif"
 alt="Incoming Call Without Target"
 style={{
     width: "80%",
@@ -62,7 +62,7 @@ You can still accept the call normally.
 If several controllers attempt to contact you at the same time, vacs will display multiple incoming call indicators.
 
 <img
-src="/img/using-vacs/tabbed_incoming_call_multiple.gif"
+src="/img-2.8/using-vacs/tabbed_incoming_call_multiple.gif"
 alt="Multiple Incoming Calls"
 style={{
     width: "80%",
@@ -82,7 +82,7 @@ You can decide which call to accept first.
 Incoming **PRIO calls** indicate urgent coordination.
 
 <img
-src="/img/using-vacs/tabbed_incoming_call_prio.gif"
+src="/img-2.8/using-vacs/tabbed_incoming_call_prio.gif"
 alt="Incoming Priority Call"
 style={{
     width: "80%",
@@ -104,7 +104,7 @@ To accept an incoming call, press one of the flashing green call indicators.
 Once connected (call status indicator on the top left turns from orange to green and/or audible signal), the active call will be indicated in the interface.
 
 <img
-src="/img/using-vacs/tabbed_active_call.png"
+src="/img-2.8/using-vacs/tabbed_active_call.png"
 alt="Active Call"
 style={{
     width: "80%",
@@ -118,7 +118,7 @@ style={{
 If the call was initiated as a **PRIO call**, the active call will also indicate the priority status (yellow border).
 
 <img
-src="/img/using-vacs/tabbed_active_call_prio.png"
+src="/img-2.8/using-vacs/tabbed_active_call_prio.png"
 alt="Active Priority Call"
 style={{
     width: "80%",

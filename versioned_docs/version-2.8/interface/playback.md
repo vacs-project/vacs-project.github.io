@@ -15,7 +15,7 @@ Recordings made via Audio for VATSIM are limited: since AFV does not expose per-
 :::
 
 <img
-src="/img/playback/playback_overview.png"
+src="/img-2.8/playback/playback_overview.png"
 alt="Playback Page"
 class="screenshot"
 style={{
@@ -47,7 +47,7 @@ The filter panel currently has no functionality.
 ## Controls
 
 <img
-src="/img/playback/playback_controls.png"
+src="/img-2.8/playback/playback_controls.png"
 alt="Playback Controls"
 class="screenshot"
 style={{
@@ -72,7 +72,7 @@ style={{
 The following demonstrates controls 1–8 in use:
 
 <img
-src="/img/playback/playback_controls.gif"
+src="/img-2.8/playback/playback_controls.gif"
 alt="Playback Controls Demo"
 class="screenshot"
 style={{
@@ -87,7 +87,7 @@ style={{
 **SAY AGAIN** is a button in the upper function button row, to the right of **PLAY BACK**. It replays the most recent recorded transmission immediately, so you can hear a readback again without opening the Playback page.
 
 <img
-src="/img/playback/say-again-button.png"
+src="/img-2.8/playback/say-again-button.png"
 alt="The upper function button row with the SAY AGAIN button"
 class="screenshot"
 style={{

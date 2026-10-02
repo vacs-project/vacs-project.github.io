@@ -20,7 +20,7 @@ If your vACC decided to use the Tabbed Layout in their configuration, it will be
 Tabs are located in the **bottom-right area** of the interface.
 
 <img
-src="/img/interface/tabs.png"
+src="/img-2.8/interface/tabs.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -45,7 +45,7 @@ Some datasets contain more Direct Access Pages (Tabs) than the 4 Tabs visible in
 In this case, a Direct Access Page selector is displayed.
 
 <img
-src="/img/interface/dasel.png"
+src="/img-2.8/interface/dasel.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -64,7 +64,7 @@ This control allows you to cycle between multiple Tabs, for example:
 Selecting the control switches to the next set of Direct Access Keys.
 
 <img
-src="/img/interface/da56.png"
+src="/img-2.8/interface/da56.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -82,7 +82,7 @@ style={{
 The main part of the Tabbed Layout contains one of the selectable **Tabs (= Direct Access Pages)**.
 
 <img
-src="/img/interface/tabbed_annot.png"
+src="/img-2.8/interface/tabbed_annot.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -112,7 +112,7 @@ The available stations, layout, and optional **custom background colors** for in
 An incoming call in the Tabbed-Layout is visible as indicated below:
 
 <img
-src="/img/interface/tabbed_incoming_call.gif"
+src="/img-2.8/interface/tabbed_incoming_call.gif"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -149,7 +149,7 @@ Two types of call sources exist:
 The selected call source is visually indicated on the relevant Direct Access Page.
 
 <img
-src="/img/interface/tabbed_call_source.png"
+src="/img-2.8/interface/tabbed_call_source.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",

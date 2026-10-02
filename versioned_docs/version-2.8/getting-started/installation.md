@@ -30,7 +30,7 @@ If you don’t see your file, click **Show all assets** to display the complete 
 :::
 
 <img
-src="/img/getting-started/Download_Windows.png"
+src="/img-2.8/getting-started/Download_Windows.png"
 alt="Annotated GitHub Release Page"
 style={{
     width: "80%",
@@ -80,7 +80,7 @@ If you don’t see your file, click **Show all assets** to display the complete 
 :::
 
 <img
-src="/img/getting-started/Download_Linux.png"
+src="/img-2.8/getting-started/Download_Linux.png"
 alt="Annotated GitHub Release Page"
 style={{
     width: "80%",
@@ -171,7 +171,7 @@ If you don’t see your file, click **Show all assets** to display the complete 
 :::
 
 <img
-src="/img/getting-started/Download_mac.png"
+src="/img-2.8/getting-started/Download_mac.png"
 alt="Annotated GitHub Release Page"
 style={{
     width: "80%",

@@ -14,7 +14,7 @@ From here, you can adjust audio devices, volume levels, transmit behavior, key b
 ## Settings Interface
 
 <img
-src="/img/settings/overview.png"
+src="/img-2.8/settings/overview.png"
 alt="vacs Settings Page"
 style={{
       width: "80%",

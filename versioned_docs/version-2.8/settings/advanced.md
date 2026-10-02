@@ -13,7 +13,7 @@ The **Advanced Settings** Menu allows you to change various settings that are no
 The **Advanced Settings** Menu can be accessed from the settings page, by clicking the **Advanced** button.
 
 <img
-src="/img/settings/AdvancedConfig.png"
+src="/img-2.8/settings/AdvancedConfig.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -27,7 +27,7 @@ style={{
 ---
 
 <img
-src="/img/settings/AdvancedConfigPage.png"
+src="/img-2.8/settings/AdvancedConfigPage.png"
 alt="vacs Settings Page"
 style={{
     width: "40%",

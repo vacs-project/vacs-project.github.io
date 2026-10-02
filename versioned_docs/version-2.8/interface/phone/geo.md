@@ -33,7 +33,7 @@ For more information about these buttons, see the **Interface Overview** section
 The "top-level" of the GEO Page displays large buttons representing sector groups in a geographical layout. 
 
 <img
-src="/img/interface/geo.png"
+src="/img-2.8/interface/geo.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -51,7 +51,7 @@ Selecting one of the buttons on the "top-level" of the GEO-Page opens a sub-page
 In the example from above, if we click on the **E / APP** button, we open a page, which allows us to choose which sector within the category we want to call exactly (e.g. the ACC-Sector E3, which is a sector that falls into the selected ACC-E / APP group, represented by the **350 E3 PLC** button), and then call this sector by clicking on the relevant Direct Access Key.
 
 <img
-src="/img/interface/geo_page.png"
+src="/img-2.8/interface/geo_page.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -74,7 +74,7 @@ As described in the [Interface Overview](/interface/overview), you can select on
 An incoming call in the GEO-Page layout is visible as indicated below:
 
 <img
-src="/img/interface/geo_incoming_call.gif"
+src="/img-2.8/interface/geo_incoming_call.gif"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -94,7 +94,7 @@ When a sector calls you:
 Further details about an incoming call can be found by clicking onto the relevant buttons on the "top-level" of the GEO Page. There, the recipient and caller of an incoming call can be detected in the same way as decribed above:
 
 <img
-src="/img/interface/geo_page_incoming_call.gif"
+src="/img-2.8/interface/geo_page_incoming_call.gif"
 alt="vacs Settings Page"
 style={{
     width: "80%",
@@ -125,7 +125,7 @@ The selected call source is visually indicated in the grid.
 These call sources can be selected by opening a Sector-Page from the "top-level" of the GEO-Page, which consists of sectors, that your station is covering. Clicking on the relevant (active) grey-buttons selects the call source. If you would like to set a **Fixed Call Source** (dark orange) click the relevant button twice, if you would like to select a **Temporary Call Source** (light orange) click the button once.
 
 <img
-src="/img/interface/geo_page_call_source.png"
+src="/img-2.8/interface/geo_page_call_source.png"
 alt="vacs Settings Page"
 style={{
     width: "80%",
