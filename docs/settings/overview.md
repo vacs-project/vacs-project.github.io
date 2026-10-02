@@ -49,7 +49,7 @@ Configure:
 - Output and input volume levels
 - Notification (chime) and click sounds
 
-→ See [Audio Settings](/settings/audio)
+→ See [Audio Settings](./audio.mdx)
 
 ---
 
@@ -62,7 +62,7 @@ Define how vacs handles the transmission behavior:
 - Push-to-mute
 - Radio Integration
 
-→ See [Transmit Modes](/settings/transmit)
+→ See [Transmit Modes](./transmit.md)
 
 ---
 
@@ -76,7 +76,7 @@ Customize:
 - Other operational hotkeys
 - Joystick and gamepad buttons, and which devices to ignore while binding
 
-→ See [Key Bindings](/settings/hotkeys)
+→ See [Key Bindings](./hotkeys.md)
 
 ---
 
@@ -90,7 +90,7 @@ Defines various call related behaviour and preferences, such as:
 - Call sounds
 - Always relaying call audio, for setups where a direct connection does not work
 
-→ See [Call Settings](/settings/call)
+→ See [Call Settings](./call.md)
 
 ---
 
@@ -98,10 +98,10 @@ Defines various call related behaviour and preferences, such as:
 
 Allows you to configure more advanced application behavior:
 
-- Remote control (see [Remote Control](/using-vacs/remote-control))
+- Remote control (see [Remote Control](../using-vacs/remote-control.md))
 - Audio backend
 
-→ See [Advanced Settings](/settings/advanced)
+→ See [Advanced Settings](./advanced.md)
 
 ---
 
@@ -115,7 +115,7 @@ Control additional application behavior:
 - Window behavior
 - Interface scaling
 
-→ See [Miscellaneous Settings](/settings/misc)
+→ See [Miscellaneous Settings](./misc.md)
 
 ---
 

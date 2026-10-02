@@ -103,11 +103,11 @@ Controllers can perform several actions:
 
 ### Conference calls in the Call List
 
-A [conference call](/using-vacs/conference-calls) keeps a single entry in the Call List. Once a call has more than one other party, its name changes to **CONF**, and the number column lists the CIDs of the other controllers in the call, separated by commas.
+A [conference call](../using-vacs/conference-calls.md) keeps a single entry in the Call List. Once a call has more than one other party, its name changes to **CONF**, and the number column lists the CIDs of the other controllers in the call, separated by commas.
 
 Since such an entry has no single number, **Call** and **Ignore CID** are not available for it. Select one of the controllers on another entry, or use the Dial Pad, to call them again.
 
-While you are on a call, **Call** only adds the selected entry to it while **CONF** is blinking. See [Conference calls](/using-vacs/conference-calls#adding-a-sector-to-a-running-call).
+While you are on a call, **Call** only adds the selected entry to it while **CONF** is blinking. See [Conference calls](../using-vacs/conference-calls.md#adding-a-sector-to-a-running-call).
 
 ---
 

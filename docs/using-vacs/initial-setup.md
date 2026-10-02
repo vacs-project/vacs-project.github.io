@@ -18,8 +18,8 @@ Before initial useage, you should configure the relevant settings of the softwar
 
 These settings are all explained in detail in the **Settings section** of the manual:
 
-- [Audio Settings](/settings/audio)
-- [Transmit Settings](/settings/transmit)
+- [Audio Settings](../settings/audio.mdx)
+- [Transmit Settings](../settings/transmit.md)
 
 It is strongly recommended to review these settings before using vacs operationally.
 
@@ -46,7 +46,7 @@ style={{
 In this case, update the software before continuing.
 
 Detailed instructions can be found here:
-See [Updating VACS](/getting-started/updating) for detailed instructions.
+See [Updating VACS](../getting-started/updating.md) for detailed instructions.
 
 ---
 

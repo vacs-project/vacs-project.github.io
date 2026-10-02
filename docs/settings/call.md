@@ -56,7 +56,7 @@ When enabled, a notification sound is played when a call ends. This confirms tha
 ### Play participant joined sound
 Available from **vacs 3.0.0**.
 
-When enabled, a short sound is played when another controller joins a call you are already on. This only applies to [conference calls](/using-vacs/conference-calls): the first controller joining a call is its start, and is announced by the call start sound instead. The same goes for you joining a conference that is already running: you hear the call start sound once, not a joined sound for everyone who was already in it.
+When enabled, a short sound is played when another controller joins a call you are already on. This only applies to [conference calls](../using-vacs/conference-calls.md): the first controller joining a call is its start, and is announced by the call start sound instead. The same goes for you joining a conference that is already running: you hear the call start sound once, not a joined sound for everyone who was already in it.
 
 Turning the setting on plays the sound once, so you know what to listen for.
 
@@ -91,7 +91,7 @@ When enabled, call audio is always sent through one of our relay servers instead
 
 Normally vacs sends call audio **directly** between the two controllers, which keeps latency as low as possible. A relay server is only used when a direct connection cannot be established. Turning this setting on skips the direct attempt entirely and always uses the relay.
 
-You should only enable this if you regularly have trouble hearing the other controller. See [One-way audio](/troubleshooting/audio#one-way-audio-you-cannot-hear-the-other-controller) for when that applies and what vacs already does about it on its own.
+You should only enable this if you regularly have trouble hearing the other controller. See [One-way audio](../troubleshooting/audio.md#one-way-audio-you-cannot-hear-the-other-controller) for when that applies and what vacs already does about it on its own.
 
 This setting only affects **your** client. It does not require anything of the controller you are calling, and it works regardless of which version they are running.
 
@@ -99,14 +99,14 @@ This setting only affects **your** client. It does not require anything of the c
 Relaying adds a detour through our server, so calls connect and carry audio slightly slower than a direct connection. The difference is small and usually not noticeable in conversation, but there is no reason to leave this on if your calls work fine without it.
 :::
 
-The relay servers are run by the vacs core maintainers, and relayed audio is not recorded or stored. See [About the relay servers](/troubleshooting/audio#about-the-relay-servers), our [Privacy Policy](/legal/privacy-policy#34-audio-data) and our [Terms of Use](/legal/disclaimer).
+The relay servers are run by the vacs core maintainers, and relayed audio is not recorded or stored. See [About the relay servers](../troubleshooting/audio.md#about-the-relay-servers), our [Privacy Policy](../legal/privacy-policy.md#34-audio-data) and our [Terms of Use](../legal/disclaimer.md).
 
 ---
 
 ## Ring sounds
 Available from **vacs 2.8.0**.
 
-By default, an incoming call plays a short built-in chime, and a [priority call](/using-vacs/making-a-call#prio-calls) plays a more urgent one. The **Ring sounds** section at the bottom of the Call Config page lets you replace either of them with a sound file of your own, for example the ringing tone you are used to from the real system at your unit.
+By default, an incoming call plays a short built-in chime, and a [priority call](../using-vacs/making-a-call.md#prio-calls) plays a more urgent one. The **Ring sounds** section at the bottom of the Call Config page lets you replace either of them with a sound file of your own, for example the ringing tone you are used to from the real system at your unit.
 
 <img
 src="/img/settings/CallConfigRingSounds.png"
@@ -120,7 +120,7 @@ style={{
   }}
 />
 
-Each ring has a field that reads **Built-in chime** or the name of the chosen file, with an **X** next to it, the same controls as a [hotkey](/settings/hotkeys).
+Each ring has a field that reads **Built-in chime** or the name of the chosen file, with an **X** next to it, the same controls as a [hotkey](./hotkeys.md).
 
 - Click the field to open a file dialog and pick a `.wav` file. vacs plays it once so you can check it.
 - Click the **X** to go back to the built-in chime for that ring. It plays once as confirmation.
@@ -130,12 +130,12 @@ The **Priority ring** field is only available while **Enable priority calls** is
 
 The file has to be a **WAV** file between **0.1 and 30 seconds** long. Other formats such as MP3 are not supported. Mono or stereo, and any common sample rate, are fine: vacs converts the file to what your output device needs. If a file cannot be used, vacs tells you why and keeps the previous sound.
 
-The sound plays once per incoming call, through the [speaker device](/settings/audio#audio-device-configuration) when one is configured and otherwise through your headset, and it stops as soon as you pick up. vacs levels every custom file to the loudness of the built-in chime, so the [Chime Volume](/settings/audio#chime-volume) slider means the same thing whichever sound is set, and releasing that slider plays the current ring sound as well.
+The sound plays once per incoming call, through the [speaker device](./audio.mdx#audio-device-configuration) when one is configured and otherwise through your headset, and it stops as soon as you pick up. vacs levels every custom file to the loudness of the built-in chime, so the [Chime Volume](./audio.mdx#chime-volume) slider means the same thing whichever sound is set, and releasing that slider plays the current ring sound as well.
 
 :::note[Keep the file in place]
 vacs remembers the path of the file, not its contents. If you move or delete the file, vacs plays the built-in chime from the next start on, and the Call Config page shows the file name in red until you pick a file again or press the **X**.
 :::
 
 :::info[Remote control]
-Choosing a file is only possible in the desktop client, because the file dialog opens there. A [remote control](/using-vacs/remote-control) session shows the current sounds and can reset them to the built-in chime.
+Choosing a file is only possible in the desktop client, because the file dialog opens there. A [remote control](../using-vacs/remote-control.md) session shows the current sounds and can reset them to the built-in chime.
 :::

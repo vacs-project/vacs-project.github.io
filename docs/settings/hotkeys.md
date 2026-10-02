@@ -64,7 +64,7 @@ This action accepts the first incoming call in the queue. If there are no incomi
 
 This action ends the currently active call. If there is no active call, pressing this keybind has no effect.
 
-In a [conference call](/using-vacs/conference-calls) it works like the **END** button: it takes you out of the call, and only ends it for everyone if you are the conference leader.
+In a [conference call](../using-vacs/conference-calls.md) it works like the **END** button: it takes you out of the call, and only ends it for everyone if you are the conference leader.
 
 :::tip[Combined call control keybinds]
 By assigning the same key to both **Accept first call** and **End active call**, you can use a single key to manage your calls: press it once to accept an incoming call, press it again to end the call when you're done coordinating.
@@ -74,7 +74,7 @@ If you receive another call while already on one, simply press the key twice to 
 
 ### Toggle RADIO PRIO
 
-This action toggles the [RADIO PRIO](/using-vacs/making-a-call#radio-prio) button.
+This action toggles the [RADIO PRIO](../using-vacs/making-a-call.md#radio-prio) button.
 
 :::info[RADIO PRIO Button]
 The **RADIO PRIO** function is designed to operate together with the **Radio Integration** transmission mode.
@@ -86,7 +86,7 @@ Its behavior and operational context are explained in detail in the **Interface 
 
 Available from **vacs 2.8.0**.
 
-This action presses the [SAY AGAIN](/interface/playback#say-again) button: it replays the most recent recorded radio transmission, and pressing it again while that replay is running stops it. The key does nothing while the button is greyed out or inactive, for example without a radio integration, while **Enable radio playback** is off, or while the radio is disconnected.
+This action presses the [SAY AGAIN](../interface/playback.md#say-again) button: it replays the most recent recorded radio transmission, and pressing it again while that replay is running stops it. The key does nothing while the button is greyed out or inactive, for example without a radio integration, while **Enable radio playback** is off, or while the radio is disconnected.
 
 ---
 
@@ -94,7 +94,7 @@ This action presses the [SAY AGAIN](/interface/playback#say-again) button: it re
 
 Available from **vacs 2.6.0**.
 
-Any binding in vacs can be a **joystick or gamepad button** instead of a keyboard key. This works for the actions on this page as well as for Push-to-Talk, Push-to-Mute and the Radio PTT key in the [Transmit Config](/settings/transmit).
+Any binding in vacs can be a **joystick or gamepad button** instead of a keyboard key. This works for the actions on this page as well as for Push-to-Talk, Push-to-Mute and the Radio PTT key in the [Transmit Config](./transmit.md).
 
 Typical devices for this are HOTAS throttles and yokes, flight sim button boxes, handsets and gamepads. No driver or configuration is required: connect the device before starting vacs, or plug it in while vacs is running, and its buttons become available immediately.
 
@@ -159,7 +159,7 @@ Global bindings, meaning bindings that work while another application is focused
 | Platform | Keyboard keys | Joystick buttons |
 |---|---|---|
 | Windows | Bound in vacs. | Bound in vacs. |
-| macOS | Bound in vacs. Requires input monitoring and accessibility permissions, see [Requirements](/getting-started/requirements#macos). | Bound in vacs. |
+| macOS | Bound in vacs. Requires input monitoring and accessibility permissions, see [Requirements](../getting-started/requirements.md#macos). | Bound in vacs. |
 | Linux (X11) | Bound in vacs, from **vacs 2.6.0**. | Bound in vacs. |
 | Linux (Wayland) | Managed by your desktop environment, not by vacs. | Bound in vacs. |
 

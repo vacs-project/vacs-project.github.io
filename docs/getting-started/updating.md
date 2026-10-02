@@ -26,7 +26,7 @@ style={{
   }}
 />
 
-Clicking the update notification will take you to the [Settings](/settings/misc) page, where you can start the update process. It will also automatically open the changelog for the new version so you can see what's changed and decide whether you want to update right away or continue using the current version.
+Clicking the update notification will take you to the [Settings](../settings/misc.md) page, where you can start the update process. It will also automatically open the changelog for the new version so you can see what's changed and decide whether you want to update right away or continue using the current version.
 
 Clicking the current version will take you to the release notes of the currently installed version, letting you easily review the changes introduced since your last update.
 
@@ -81,11 +81,11 @@ vacs cannot be used until you update. If the update fails, the dialog comes back
 :::warning[Version 1.x No Longer Supported]
 vacs version 1.x is no longer supported.
 
-Users running v1 will have to update to the latest available version before continuing to use vacs. This is due to significant changes in the underlying protocol and call routing made in v2.0.0. You can find more details about these changes in the [What's New](/whats-new) page.
+Users running v1 will have to update to the latest available version before continuing to use vacs. This is due to significant changes in the underlying protocol and call routing made in v2.0.0. You can find more details about these changes in the [What's New](../whats-new.mdx) page.
 :::
 
 :::warning[Version 2.x No Longer Supported]
 vacs version 2.x is no longer supported.
 
-Users running v2 will have to update to v3.0.0 or later before continuing to use vacs. v3.0.0 adds [conference calls](/using-vacs/conference-calls), which changed how vacs talks to our server, so older versions can no longer connect. A 2.x client shows the mandatory update dialog described above when it starts. If it gets past it, for example because the update check could not reach our server, logging in fails with "Login failed: Incompatible protocol version. Please check your client version." See [Migrating from v2.x to v3.0.0](/whats-new#migrating-from-v2x-to-v300) for details.
+Users running v2 will have to update to v3.0.0 or later before continuing to use vacs. v3.0.0 adds [conference calls](../using-vacs/conference-calls.md), which changed how vacs talks to our server, so older versions can no longer connect. A 2.x client shows the mandatory update dialog described above when it starts. If it gets past it, for example because the update check could not reach our server, logging in fails with "Login failed: Incompatible protocol version. Please check your client version." See [Migrating from v2.x to v3.0.0](../whats-new.mdx#migrating-from-v2x-to-v300) for details.
 :::

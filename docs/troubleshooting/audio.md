@@ -8,7 +8,7 @@ sidebar_position: 2
 
 In this situation the call connects normally and the other controller can hear you, but no audio arrives from them. It is almost always caused by something on your network changing the path audio takes, most commonly a **VPN**.
 
-Call audio in vacs travels directly between the controllers in a call rather than through our servers. In a [conference call](/using-vacs/conference-calls), every participant is connected directly to every other one. Some VPNs route that traffic in a way that only works in one direction, so your audio reaches the other controller while theirs never reaches you. Products known to cause this include **Cloudflare WARP** and **Tailscale**, but any VPN or "internet security" tool that intercepts traffic can have the same effect.
+Call audio in vacs travels directly between the controllers in a call rather than through our servers. In a [conference call](../using-vacs/conference-calls.md), every participant is connected directly to every other one. Some VPNs route that traffic in a way that only works in one direction, so your audio reaches the other controller while theirs never reaches you. Products known to cause this include **Cloudflare WARP** and **Tailscale**, but any VPN or "internet security" tool that intercepts traffic can have the same effect.
 
 ### What vacs does automatically
 
@@ -45,7 +45,7 @@ If you see this, tell the other controller on another channel and place the call
 
 1. **Turn the VPN off.** If you do not need it while controlling, disabling it resolves the problem outright and keeps your calls on the faster direct path.
 2. **Exclude vacs from the VPN.** Most VPN clients can leave selected applications outside the tunnel, often called split tunneling. This keeps the VPN available for everything else.
-3. **Enable [Always relay calls](/settings/call#always-relay-calls).** This makes every call use a relay server from the start rather than waiting for vacs to detect a problem and repair the call. Use this if the first two options are not practical for you, and only then, since relaying adds a small amount of latency.
+3. **Enable [Always relay calls](../settings/call.md#always-relay-calls).** This makes every call use a relay server from the start rather than waiting for vacs to detect a problem and repair the call. Use this if the first two options are not practical for you, and only then, since relaying adds a small amount of latency.
 
 :::note
 Enabling **Always relay calls** only changes how *your* client connects. If the other controller is the one behind a problematic VPN, they need to change their setting, not you.
@@ -55,4 +55,4 @@ Enabling **Always relay calls** only changes how *your* client connects. If the 
 
 The relay servers are operated by the vacs core maintainers on infrastructure we control, and no third party is involved. Relayed audio passes through them encrypted in transit and is **not recorded or stored**, exactly like a direct call. Because the audio takes a detour through our server rather than going straight to the other controller, relaying can also reduce how much of your IP address is exposed to the person you are calling.
 
-For the details, see [Audio Data](/legal/privacy-policy#34-audio-data) and [IP Addresses](/legal/privacy-policy#33-ip-addresses) in our Privacy Policy. As with the rest of our infrastructure, we give [no guarantee of availability](/legal/disclaimer#4-no-guarantee-of-availability-or-uptime) for the relay servers; see our [Terms of Use](/legal/disclaimer). If you would rather not use them, you can point vacs at your own STUN and TURN servers in the WebRTC config file.
+For the details, see [Audio Data](../legal/privacy-policy.md#34-audio-data) and [IP Addresses](../legal/privacy-policy.md#33-ip-addresses) in our Privacy Policy. As with the rest of our infrastructure, we give [no guarantee of availability](../legal/disclaimer.md#4-no-guarantee-of-availability-or-uptime) for the relay servers; see our [Terms of Use](../legal/disclaimer.md). If you would rather not use them, you can point vacs at your own STUN and TURN servers in the WebRTC config file.

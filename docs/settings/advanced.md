@@ -42,13 +42,13 @@ style={{
 
 ## Remote Control
 
-The **Remote Control** section allows you to enable and configure the [remote control feature](/using-vacs/remote-control), which provides the ability to control vacs remotely via a web interface.
+The **Remote Control** section allows you to enable and configure the [remote control feature](../using-vacs/remote-control.md), which provides the ability to control vacs remotely via a web interface.
 
 ### Enable Remote Control
 
 When checked, the remote control feature is activated and vacs starts listening for incoming connections on the address and port configured below.
 
-vacs does not change your firewall. If other devices cannot connect, allow the port on the machine running vacs, see [Troubleshooting](/using-vacs/remote-control#the-browser-cannot-connect).
+vacs does not change your firewall. If other devices cannot connect, allow the port on the machine running vacs, see [Troubleshooting](../using-vacs/remote-control.md#the-browser-cannot-connect).
 
 ### Listen address
 
@@ -56,7 +56,7 @@ The IP and port vacs should listen on for incoming remote control connections. B
 
 For sake of convenience, you can also just specify the IP (without port) and vacs will use the default port 9600.
 
-See [Changing the listen address and port](/using-vacs/remote-control#changing-the-listen-address-or-port) for more details and examples.
+See [Changing the listen address and port](../using-vacs/remote-control.md#changing-the-listen-address-or-port) for more details and examples.
 
 ## Audio backend
 
@@ -66,7 +66,7 @@ The **Audio Backend** section allows you to configure the audio backend (by defa
 
 ### Enable radio playback
 
-When checked, vacs will record incoming radio transmissions - via TrackAudio or Audio for VATSIM, depending on your [Radio Integration](/settings/transmit#radio-integration) - and make them available for playback. Disabling this setting stops all future recordings, stops a replay that is playing, and deletes all existing (non-exported) recordings.
+When checked, vacs will record incoming radio transmissions - via TrackAudio or Audio for VATSIM, depending on your [Radio Integration](./transmit.md#radio-integration) - and make them available for playback. Disabling this setting stops all future recordings, stops a replay that is playing, and deletes all existing (non-exported) recordings.
 
 ## Couple Mode
 

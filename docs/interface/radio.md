@@ -7,7 +7,7 @@ sidebar_position: 3
 The **Radio page** integrates with [TrackAudio](https://github.com/pierr3/TrackAudio) and lets you manage your radio stack without leaving the vacs window. It is available whenever the TrackAudio radio integration is selected, whether or not TrackAudio is currently connected.
 
 :::warning
-The Radio page is currently only available if the TrackAudio radio integration is selected in the transmit configuration. See [Transmit Modes](/settings/transmit) for more information.
+The Radio page is currently only available if the TrackAudio radio integration is selected in the transmit configuration. See [Transmit Modes](../settings/transmit.md) for more information.
 
 The page remains inactive if you use the Audio for Vatsim radio integration.
 :::
@@ -49,7 +49,7 @@ style={{
   }}
 />
 
-The **Radio** button in the bottom control bar stays available in this state as well: clicking it opens the Radio page and retries the connection at the same time. The button is only disabled in the "Radio Integration not configured" state, see [Radio](/interface/overview#radio).
+The **Radio** button in the bottom control bar stays available in this state as well: clicking it opens the Radio page and retries the connection at the same time. The button is only disabled in the "Radio Integration not configured" state, see [Radio](./overview.md#radio).
 
 ---
 
@@ -156,7 +156,7 @@ The headset and speaker devices playing the radio transmissions are **separate**
 
 ## Cross Coupling
 
-Two coupling modes are available, configurable in the [Advanced Settings](/settings/advanced).
+Two coupling modes are available, configurable in the [Advanced Settings](../settings/advanced.md).
 
 **Original mode** — Click **CPL** to enter Couple Mode, then click the desired frequency objects one by one. Click **CPL** again to exit Couple Mode. You can also **double-click CPL** outside of Couple Mode to immediately couple all TX-enabled frequencies at once.
 

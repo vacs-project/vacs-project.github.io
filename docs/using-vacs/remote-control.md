@@ -32,13 +32,13 @@ Your remote device's microphone and speakers are not used for calls and no sound
 
 ## Enabling remote control
 
-Remote control is disabled by default. To enable it, head to the [Advanced Settings page](/settings/advanced) and enable the **Remote Control** option.
+Remote control is disabled by default. To enable it, head to the [Advanced Settings page](../settings/advanced.md) and enable the **Remote Control** option.
 
 That's it - vacs will start the remote control server on port **9600**, accepting connections from any device on the network by default.
 
 ### Changing the listen address or port
 
-You can change the listen address on the [Advanced Settings page](/settings/advanced) using the address input field. The format is `IP:PORT`, using `0.0.0.0:9600` as the default.
+You can change the listen address on the [Advanced Settings page](../settings/advanced.md) using the address input field. The format is `IP:PORT`, using `0.0.0.0:9600` as the default.
 
 - To **change the port**, replace the number after the colon. For example, `0.0.0.0:8080` will listen on port 8080 instead of 9600.
 - To **restrict access to only the local machine**, change the IP part to `127.0.0.1` (e.g. `127.0.0.1:9600`). This prevents other devices on the network from connecting.

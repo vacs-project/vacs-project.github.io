@@ -21,7 +21,7 @@ To add a sector:
 
 Instead of a Direct Access Key you can also use any other way of placing a call: a key on a client page, a CID entered on the **Dial Pad**, or the **Call** button in the **Telephone Directory** or the **Call List**. While **CONF** is not blinking, none of these do anything during a call, so you cannot add a sector by accident.
 
-If you press [**PRIO**](/using-vacs/making-a-call#prio-calls) before adding a sector, its invitation rings as a priority call, exactly like a normal call would.
+If you press [**PRIO**](./making-a-call.md#prio-calls) before adding a sector, its invitation rings as a priority call, exactly like a normal call would.
 
 <img
   src="/img/using-vacs/conference-call.png"
@@ -130,7 +130,7 @@ If you try to go past it, vacs tells you so before the invitation is even sent, 
 
 ## Sounds
 
-While a call is running, a controller joining or leaving is announced with its own short sound instead of the usual call start and call end sounds. Both can be turned off separately in the [Call Settings](/settings/call).
+While a call is running, a controller joining or leaving is announced with its own short sound instead of the usual call start and call end sounds. Both can be turned off separately in the [Call Settings](../settings/call.md).
 
 When you join a conference that is already running, you hear the call start sound once. You do not hear a joined sound for each controller who was already in it.
 
@@ -154,6 +154,6 @@ You do not have to do anything while this runs. If a participant disappears from
 
 ## Receiving an invitation into a conference
 
-Nothing about answering changes: press the flashing answer key. See [Receiving a call](/using-vacs/receiving-a-call#being-invited-into-a-conference) for what an incoming conference invitation looks like.
+Nothing about answering changes: press the flashing answer key. See [Receiving a call](./receiving-a-call.md#being-invited-into-a-conference) for what an incoming conference invitation looks like.
 
 As with any call, you cannot accept a second call while one is running. Incoming calls keep ringing, but you have to leave the conference first.

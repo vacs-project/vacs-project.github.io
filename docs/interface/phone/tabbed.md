@@ -137,7 +137,7 @@ Priority calls are indicated specially (visually and audibly).
 
 ## Selecting a Call Source
 
-As described in the [Interface/Overview](/interface/overview), it is possible to select a call source, so that the recipient of your call is aware of the precise sector calling him.
+As described in the [Interface/Overview](../overview.md), it is possible to select a call source, so that the recipient of your call is aware of the precise sector calling him.
 
 Two types of call sources exist:
 

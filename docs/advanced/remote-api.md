@@ -5,7 +5,7 @@ sidebar_position: 2
 # Remote Control API
 
 :::info
-This page documents the technical details of the vacs remote control WebSocket API. If you're just looking to use vacs from a browser or different device, see [Remote Control](/using-vacs/remote-control) instead.
+This page documents the technical details of the vacs remote control WebSocket API. If you're just looking to use vacs from a browser or different device, see [Remote Control](../using-vacs/remote-control.md) instead.
 :::
 
 vacs exposes a WebSocket-based remote control API for programmatic interaction by external clients. The built-in browser frontend communicates through the same API - there is no separate internal protocol.
@@ -26,7 +26,7 @@ As of now, there are no guarantees of backward compatibility for this API. If yo
 ws://<host>:<port>/ws
 ```
 
-The default port is **9600**. The remote control server must be explicitly enabled in the vacs configuration - see [Remote Control - Enabling remote control](/using-vacs/remote-control#enabling-remote-control).
+The default port is **9600**. The remote control server must be explicitly enabled in the vacs configuration - see [Remote Control - Enabling remote control](../using-vacs/remote-control.md#enabling-remote-control).
 
 ### Transport
 
@@ -461,7 +461,7 @@ Subscribe to events to receive real-time updates. Event names use a `domain:name
 
 The four state events are per **peer connection**, not per call: each carries the call and the client on the other end of one leg. A call between two parties has one leg and therefore one event per state change; a conference has one leg per other participant, and each reports its own state. Track them per `peerId` and derive the call's overall state from the worst leg.
 
-`webrtc:call-reconnecting` and `webrtc:call-degraded` describe the same underlying condition, a leg that stopped receiving audio, and differ only in whether vacs can do something about it. The desktop UI treats `webrtc:call-reconnecting` exactly like `connecting` and `webrtc:call-degraded` as its own state. A reconnect attempt ends in either `webrtc:call-connected` or `webrtc:call-error`, so a client that only cares about the final result can ignore both events. Both events were added in **vacs 2.6.0**; older clients never emit them. Their per-peer payload arrived with **vacs 3.0.0**. See [One-way audio](/troubleshooting/audio#one-way-audio-you-cannot-hear-the-other-controller) for the behavior they report on.
+`webrtc:call-reconnecting` and `webrtc:call-degraded` describe the same underlying condition, a leg that stopped receiving audio, and differ only in whether vacs can do something about it. The desktop UI treats `webrtc:call-reconnecting` exactly like `connecting` and `webrtc:call-degraded` as its own state. A reconnect attempt ends in either `webrtc:call-connected` or `webrtc:call-error`, so a client that only cares about the final result can ignore both events. Both events were added in **vacs 2.6.0**; older clients never emit them. Their per-peer payload arrived with **vacs 3.0.0**. See [One-way audio](../troubleshooting/audio.md#one-way-audio-you-cannot-hear-the-other-controller) for the behavior they report on.
 
 ### Store Sync Events
 

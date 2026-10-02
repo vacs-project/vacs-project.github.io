@@ -62,7 +62,7 @@ A successful connection is indicated by:
 - the **green connection indicator** in the top status bar
 - optionally an **audible sound**, if enabled
 
-See [Top Status Bar](/interface/overview#top-status-bar) for more information about the status indicator.
+See [Top Status Bar](../interface/overview.md#top-status-bar) for more information about the status indicator.
 
 There may be a **short delay (approximately 150–200 ms)** before audio transmission becomes active while the call connection is established.
 
@@ -100,7 +100,7 @@ If necessary, you can temporarily change the call source for individual calls by
 If **no call source is explicitly selected**, vacs will use a **default identifier** for your station when placing calls. This identifier will be visible to the receiving controller instead of a specific sector.
 
 :::tip[Automatic Default Call Source]
-vacs can automatically set your default call source based on the position you are logged in with. This means you will typically not need to manually select a call source at the start of your session if your FIR's dataset is configured accordingly. If needed, this can be disabled in the [Call Settings](/settings/call).
+vacs can automatically set your default call source based on the position you are logged in with. This means you will typically not need to manually select a call source at the start of your session if your FIR's dataset is configured accordingly. If needed, this can be disabled in the [Call Settings](../settings/call.md).
 :::
 
 :::
@@ -142,7 +142,7 @@ style={{
 
 The recieving controller can detect a PRIO call using visual and audible aids. A PRIO call is highlighted by a yellow border around the caller indication. Also, PRIO calls are indicated by a special sound for the recipient.
 
-PRIO calls can be disabled in the [settings](/settings/call).
+PRIO calls can be disabled in the [settings](../settings/call.md).
 
 It is suggested to only use PRIO calls when coordinate is **time-critical or operationally urgent**.
 
@@ -150,7 +150,7 @@ It is suggested to only use PRIO calls when coordinate is **time-critical or ope
 
 ## Transmission during a Call
 
-How audio transmissions (frequency & coordination via vacs) behaves during a coordination call depends on your configured [**Transmit Mode**](/settings/transmit).
+How audio transmissions (frequency & coordination via vacs) behaves during a coordination call depends on your configured [**Transmit Mode**](../settings/transmit.md).
 
 Typical options include:
 
@@ -158,7 +158,7 @@ Typical options include:
 - **Shared transmission key** (Radio Integration) for both communication channels.
 - **Voice Activation**.
 
-These settings and their configuration are explained in [Audio Settings](/settings/audio).
+These settings and their configuration are explained in [Audio Settings](../settings/audio.mdx).
 
 Your chosen configuration determines how you speak during coordination calls.
 
@@ -166,7 +166,7 @@ Your chosen configuration determines how you speak during coordination calls.
 
 ## RADIO PRIO
 
-During calls, the **RADIO PRIO** button is also relevant, if you decide to use the **Radio Integration** [Transmit Mode](/settings/transmit). It allows you to prioritize **radio transmissions over coordination calls**.
+During calls, the **RADIO PRIO** button is also relevant, if you decide to use the **Radio Integration** [Transmit Mode](../settings/transmit.md). It allows you to prioritize **radio transmissions over coordination calls**.
 
 <img
 src="/img/using-vacs/radio_prio.png"
@@ -237,10 +237,10 @@ To terminate an active call:
 
 This will immediately terminate the call and return the interface to its normal state.
 
-In a [conference call](/using-vacs/conference-calls#removing-a-participant-and-leaving), **END** only takes you out of the call and the other controllers keep talking. If you are the conference leader, it ends the call for everyone.
+In a [conference call](./conference-calls.md#removing-a-participant-and-leaving), **END** only takes you out of the call and the other controllers keep talking. If you are the conference leader, it ends the call for everyone.
 
 ---
 
 ## Adding Further Sectors
 
-An established call can be extended to further sectors, so that three or more controllers coordinate together. This is done with the **CONF** button and is described in [Conference calls](/using-vacs/conference-calls).
+An established call can be extended to further sectors, so that three or more controllers coordinate together. This is done with the **CONF** button and is described in [Conference calls](./conference-calls.md).

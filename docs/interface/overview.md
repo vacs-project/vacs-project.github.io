@@ -24,11 +24,11 @@ The small status indicator in the top-left corner shows call state:
 - 🟠 Orange → Connecting, reconnecting, or connected without incoming audio
 - ⚫ Gray → Idle / Not connected
 
-This can also be supplemented by an audible indication. For futher information, see [Call Settings](/settings/call).
+This can also be supplemented by an audible indication. For futher information, see [Call Settings](../settings/call.md).
 
-If the indicator stays orange on a call that is otherwise established, the call is not delivering audio to you. A muted speaker icon on the call in the call sequence marks which call is affected. See [One-way audio](/troubleshooting/audio#one-way-audio-you-cannot-hear-the-other-controller).
+If the indicator stays orange on a call that is otherwise established, the call is not delivering audio to you. A muted speaker icon on the call in the call sequence marks which call is affected. See [One-way audio](../troubleshooting/audio.md#one-way-audio-you-cannot-hear-the-other-controller).
 
-In a [conference call](/using-vacs/conference-calls) the indicator reports the worst connection in the call, not the call as a whole. It is green only while every participant is connected, so a single participant whose connection has dropped turns it orange even though everyone else is fine. The call display shows the same thing with its icons, and a disconnected participant takes precedence over one that is merely not sending audio: you see the disconnected icon, not the muted speaker.
+In a [conference call](../using-vacs/conference-calls.md) the indicator reports the worst connection in the call, not the call as a whole. It is green only while every participant is connected, so a single participant whose connection has dropped turns it orange even though everyone else is fine. The call display shows the same thing with its icons, and a disconnected participant takes precedence over one that is merely not sending audio: you see the disconnected icon, not the muted speaker.
 
 <img
 src="/img/interface/topbar.png"
@@ -57,9 +57,9 @@ The upper button row contains operational controls such aus:
 
 Of these buttons, PRIO, CONF, PLAYBACK and SAY AGAIN are functional; the rest are not simulated yet.
 
-**CONF** turns a running call into a conference: press it, then the key of the sector you want to add. It is only available while a call is established, and lights up while the call is a conference. See [Conference calls](/using-vacs/conference-calls) for how it works and who may use it.
+**CONF** turns a running call into a conference: press it, then the key of the sector you want to add. It is only available while a call is established, and lights up while the call is a conference. See [Conference calls](../using-vacs/conference-calls.md) for how it works and who may use it.
 
-**SAY AGAIN** replays the most recent recorded radio transmission without leaving the page you are on. See [Say Again](/interface/playback#say-again) for what it does and when it is available.
+**SAY AGAIN** replays the most recent recorded radio transmission without leaving the page you are on. See [Say Again](./playback.md#say-again) for what it does and when it is available.
 
 A PRIO Call indicates to the reciever of the call, that the caller considers this call to be urgent. It is highlighted with a yellow border in the recievers vacs, and uses a special sound, to gain attention.
 
@@ -75,7 +75,7 @@ style={{
   }}
 />
 
-PRIO-Calls can be disabled, see [Call Settings](/settings/call).
+PRIO-Calls can be disabled, see [Call Settings](../settings/call.md).
 
 --- 
 
@@ -131,26 +131,26 @@ style={{
 />
 
 #### Radio 
-The Radio button indicates the current state of the [Radio Integration](/settings/transmit#radio-integration) and allows reconnecting when necessary. The button color and state reflect the current radio status.
+The Radio button indicates the current state of the [Radio Integration](../settings/transmit.md#radio-integration) and allows reconnecting when necessary. The button color and state reflect the current radio status.
 
 | Button Color    | Text Color | Enabled  | State                            | Description                                                                                                                                                                              |
 | --------------- | ---------- | -------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Gray            | Gray       | Disabled | Radio Integration not configured | Radio Integration is set to **None**, or the required Radio PTT key is missing (e.g., no key captured for Voice Activation, or no pseudo-PTT key configured for Audio for VATSIM). |
-| Gray            | Black      | Enabled  | Not connected                    | Radio integration is configured, but no connection to TrackAudio exists. Click the button to retry the connection; with TrackAudio it also opens the [Radio page](/interface/radio), which then offers a Retry link. *(In Audio for VATSIM this state usually does not occur.)* |
+| Gray            | Black      | Enabled  | Not connected                    | Radio integration is configured, but no connection to TrackAudio exists. Click the button to retry the connection; with TrackAudio it also opens the [Radio page](./radio.md), which then offers a Retry link. *(In Audio for VATSIM this state usually does not occur.)* |
 | Gray            | Black      | Enabled  | Connected, no RX                 | A connection to the radio client exists, but no frequency is currently being received. *(In Audio for VATSIM this state usually does not occur.)*                                        |
 | Emerald         | Black      | Enabled  | Idle                             | At least one frequency is tuned and ready, but nobody is currently transmitting and you are not transmitting.                                                                            |
 | Cornflower Blue | Black      | Enabled  | Active transmission              | Either you or someone else (pilot, other station in general) is currently transmitting on the tuned frequency.                                                                                                       |
-| Red             | Black      | Enabled  | Error                            | The connection to TrackAudio was lost, or several transmit attempts in a row got no response from it. Click the button to reconnect, see [Troubleshooting](/interface/radio#troubleshooting). |
+| Red             | Black      | Enabled  | Error                            | The connection to TrackAudio was lost, or several transmit attempts in a row got no response from it. Click the button to reconnect, see [Troubleshooting](./radio.md#troubleshooting). |
 
 
 #### CPL 
 
-The CPL button is used to [cross couple](/interface/radio#cross-coupling) radio frequencies. See the [Radio page documentation](/interface/radio#cross-coupling) for a full explanation of how coupling works and the available modes.
+The CPL button is used to [cross couple](./radio.md#cross-coupling) radio frequencies. See the [Radio page documentation](./radio.md#cross-coupling) for a full explanation of how coupling works and the available modes.
 
 The functionality is only available if TrackAudio radio integration is used and a connection to TrackAudio is established.
 
 #### RADIO PRIO 
-This button always affects your call microphone according to your chosen [Call Mic Mode](/settings/transmit#call-mic-mode), and additionally couples with your [Radio Integration](/settings/transmit#radio-integration) if one is configured. For a full breakdown of every combination, please refer to [Transmit Modes](/settings/transmit#how-call-mic-mode-and-radio-integration-interact).
+This button always affects your call microphone according to your chosen [Call Mic Mode](../settings/transmit.md#call-mic-mode), and additionally couples with your [Radio Integration](../settings/transmit.md#radio-integration) if one is configured. For a full breakdown of every combination, please refer to [Transmit Modes](../settings/transmit.md#how-call-mic-mode-and-radio-integration-interact).
 
 #### Phone
 The Phone button provides quick navigation back to the main phone interface and indicates active phone communication.
@@ -200,7 +200,7 @@ If you are using the Tabbed-Layout, the pre-configured tabs will be visible in t
 
 Most profiles show the radio page and the phone page one at a time, and you switch between them with the **Radio** and **Phone** buttons. A profile can instead ask for one of two views that let you keep both in sight. Which view you get is part of the profile your FIR publishes, so there is nothing to configure in vacs, and neither view has anything to do with the unimplemented **SPLIT** key in the upper function key row.
 
-Both views require the TrackAudio [Radio Integration](/settings/transmit#radio-integration) and a tabbed profile. With Audio for VATSIM, or without a radio integration, such a profile behaves like any other and keeps the Radio and Phone buttons.
+Both views require the TrackAudio [Radio Integration](../settings/transmit.md#radio-integration) and a tabbed profile. With Audio for VATSIM, or without a radio integration, such a profile behaves like any other and keeps the Radio and Phone buttons.
 
 **Split view** replaces the Radio and Phone buttons with two tabs:
 

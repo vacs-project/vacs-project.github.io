@@ -26,7 +26,7 @@ The following options are available:
 ### Check for Updates
 Checks whether a newer version of vacs is available. 
 
-For more information, see the [Updating](/getting-started/updating) section.
+For more information, see the [Updating](../getting-started/updating.md) section.
 
 ### Open Config
 Opens the local configuration directory used by vacs.

@@ -49,7 +49,7 @@ If urgent coordination is required, you may activate the **PRIO** button before 
 This marks the call as a **priority call** for the receiving controller.
 
 For detailed information, see:  
-[Making a Call](/using-vacs/making-a-call)
+[Making a Call](./making-a-call.md)
 
 ---
 
@@ -78,7 +78,7 @@ When another controller calls you:
 You can accept the incoming call by pressing the highlighted Direct Access Key of the caller.
 
 For detailed behaviour and examples, see:  
-[Receiving a Call](/using-vacs/receiving-a-call)
+[Receiving a Call](./receiving-a-call.md)
 
 ---
 
@@ -94,8 +94,8 @@ Possible configurations include:
 
 These settings are explained in:
 
-- [Audio Settings](/settings/audio)  
-- [Transmit Settings](/settings/transmit)
+- [Audio Settings](../settings/audio.mdx)  
+- [Transmit Settings](../settings/transmit.md)
 
 ---
 
@@ -103,7 +103,7 @@ These settings are explained in:
 
 During high workload situations, radio communication often remain the highest priority.
 
-What the **RADIO PRIO** button does depends on your [Call Mic Mode and Radio Integration](/settings/transmit#how-call-mic-mode-and-radio-integration-interact).
+What the **RADIO PRIO** button does depends on your [Call Mic Mode and Radio Integration](../settings/transmit.md#how-call-mic-mode-and-radio-integration-interact).
 
 With a radio integration configured, it lets you prioritize radio communication while a call is active: instead of transmitting into the vacs call, your push-to-talk transmits on frequency. Your call microphone is muted for as long as RADIO PRIO is on, whichever Call Mic Mode you use, and it resets to off when you leave the call.
 

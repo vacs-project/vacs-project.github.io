@@ -23,27 +23,27 @@ Whoever grows the call to a third party becomes the **conference leader**:
 - If the leader hangs up or loses their connection, the conference ends for everyone. If anybody else hangs up, only they leave.
 - If the call shrinks back to two controllers, it is an ordinary call again, and either of you can grow it once more.
 
-A conference currently holds up to eight controllers, you included, and sectors that are still ringing count towards that. While a conference runs, the call display and the [Call List](/interface/telephone#conference-calls-in-the-call-list) label it **CONF**, and the Call List shows the CIDs of everyone in it. While **CONF** blinks, the Dial Pad, the Telephone Directory and the Call List add a sector to the call as well.
+A conference currently holds up to eight controllers, you included, and sectors that are still ringing count towards that. While a conference runs, the call display and the [Call List](./interface/telephone.md#conference-calls-in-the-call-list) label it **CONF**, and the Call List shows the CIDs of everyone in it. While **CONF** blinks, the Dial Pad, the Telephone Directory and the Call List add a sector to the call as well.
 
-See [Conference calls](/using-vacs/conference-calls) for the full picture, including what happens when a sector cannot be added or one connection in the conference fails.
+See [Conference calls](./using-vacs/conference-calls.md) for the full picture, including what happens when a sector cannot be added or one connection in the conference fails.
 
 ---
 
 ### Being invited into a conference
 
-An incoming call that is already a conference shows **CONF** on its answer key instead of a caller's name, and every sector in the call lights up on your Direct Access Pages, not just the caller. You answer it like any other call. See [Being invited into a Conference](/using-vacs/receiving-a-call#being-invited-into-a-conference).
+An incoming call that is already a conference shows **CONF** on its answer key instead of a caller's name, and every sector in the call lights up on your Direct Access Pages, not just the caller. You answer it like any other call. See [Being invited into a Conference](./using-vacs/receiving-a-call.md#being-invited-into-a-conference).
 
 ---
 
 ### Sounds for joining and leaving
 
-A controller joining or leaving a running conference is announced with its own short sound, so the call start and call end sounds keep meaning that your call started or ended. Both sounds are on by default and can be turned off separately in the [Call Settings](/settings/call#play-participant-joined-sound). Turning one on plays it once so you know what to listen for.
+A controller joining or leaving a running conference is announced with its own short sound, so the call start and call end sounds keep meaning that your call started or ended. Both sounds are on by default and can be turned off separately in the [Call Settings](./settings/call.md#play-participant-joined-sound). Turning one on plays it once so you know what to listen for.
 
 ---
 
 ### Remote API changes
 
-The [Remote API](/advanced/remote-api) changed in ways that break existing remote clients:
+The [Remote API](./advanced/remote-api.md) changed in ways that break existing remote clients:
 
 - `signaling_start_call` is replaced by `signaling_invite_to_call`, which takes a `targets` array of call targets instead of a single target and also adds targets to a running call. The new `signaling_drop_target` cancels an invitation or removes a participant.
 - `signaling:call-invite` is renamed to `signaling:call-invitation`, and `signaling:outgoing-call-accepted` is gone. The new `signaling:outgoing-call` and `signaling:call-update` events report your own invitations and every change to the call's participants.
@@ -51,13 +51,13 @@ The [Remote API](/advanced/remote-api) changed in ways that break existing remot
 - The session state snapshot no longer contains `incomingCalls` and `outgoingCall`. Call state arrives with the store sync that follows it.
 - `signaling:call-reject` carries a `CallReject` object with the `callId` and the rejecting `targets` instead of a bare call ID, and `signaling_end_call` leaves a conference rather than ending it, unless you are its leader.
 
-The input level meter is now shared between the desktop and remote clients, and `CallConfig` has two new fields for the participant sounds. See the [Remote API](/advanced/remote-api) reference for the details.
+The input level meter is now shared between the desktop and remote clients, and `CallConfig` has two new fields for the participant sounds. See the [Remote API](./advanced/remote-api.md) reference for the details.
 
 ---
 
 ### Bug fixes
 
-- **Input level meter in remote control sessions** - Opening the audio settings in a [remote control](/using-vacs/remote-control) session while the desktop showed them, or the other way round, reported an error, and closing them on one side stopped the meter on the other. The meter is now shared and only stops once no window shows it any more.
+- **Input level meter in remote control sessions** - Opening the audio settings in a [remote control](./using-vacs/remote-control.md) session while the desktop showed them, or the other way round, reported an error, and closing them on one side stopped the meter on the other. The meter is now shared and only stops once no window shows it any more.
 
 ---
 
@@ -65,11 +65,11 @@ The input level meter is now shared between the desktop and remote clients, and 
 
 v3.0.0 changes how clients communicate with the server, which conference calls need. The protocol version moved from 2.0.0 to 3.0.0. **You must update before you can connect** - 2.x clients are not compatible with the v3.0.0 server.
 
-Your client will prompt you with a **Mandatory update** dialog and will refuse to connect until you update. If a 2.x client tries to log in anyway, the login fails with "Login failed: Incompatible protocol version. Please check your client version." See the [Updating](/getting-started/updating#mandatory-updates) guide for instructions.
+Your client will prompt you with a **Mandatory update** dialog and will refuse to connect until you update. If a 2.x client tries to log in anyway, the login fails with "Login failed: Incompatible protocol version. Please check your client version." See the [Updating](./getting-started/updating.md#mandatory-updates) guide for instructions.
 
 Because everybody has to update, every controller you can call runs v3.0.0 or later, which every participant of a conference needs.
 
-Your local settings and [Configuration](/advanced/configuration) will be preserved during the update and continue to work as before. The two new participant sounds start out enabled.
+Your local settings and [Configuration](./advanced/configuration.md) will be preserved during the update and continue to work as before. The two new participant sounds start out enabled.
 
 ---
 
@@ -89,25 +89,25 @@ In the **split** view, the **Radio** and **Phone** buttons in the bottom control
 
 In the mixed view you can drag the divider between the two pages to give the keys more or less room, and double-click it to go back to the default of four key columns. vacs remembers the width for each profile, including after a restart.
 
-Both views need the TrackAudio [Radio Integration](/settings/transmit#radio-integration). With Audio for VATSIM, or without a radio integration, the profile keeps the familiar Radio and Phone buttons. See [Split and Cycle Views](/interface/overview#split-and-cycle-views).
+Both views need the TrackAudio [Radio Integration](./settings/transmit.md#radio-integration). With Audio for VATSIM, or without a radio integration, the profile keeps the familiar Radio and Phone buttons. See [Split and Cycle Views](./interface/overview.md#split-and-cycle-views).
 
 ---
 
 ### Radio page without a connection
 
-The [Radio page](/interface/radio) no longer stays out of reach while TrackAudio is disconnected. It opens and tells you what is wrong, either "No TrackAudio radio connection." or "TrackAudio radio connection failed." after a lost connection, with a **Retry** link to try again. The **Radio** button in the bottom control bar is therefore no longer disabled while TrackAudio is not connected: clicking it opens the page and retries the connection in one go.
+The [Radio page](./interface/radio.md) no longer stays out of reach while TrackAudio is disconnected. It opens and tells you what is wrong, either "No TrackAudio radio connection." or "TrackAudio radio connection failed." after a lost connection, with a **Retry** link to try again. The **Radio** button in the bottom control bar is therefore no longer disabled while TrackAudio is not connected: clicking it opens the page and retries the connection in one go.
 
 ---
 
 ### Custom ring sounds
 
-The chime for incoming calls, and the more urgent one for priority calls, can now each be replaced with a WAV file of your own, for example the ringing tone you know from the real system at your unit. The new **Ring sounds** section at the bottom of the [Call Settings](/settings/call#ring-sounds) has a field per ring: click it to pick a file, which then plays once, or click the **X** next to it to go back to the built-in chime. Files can be up to 30 seconds long, and vacs levels them to the built-in chime so the Chime Volume slider keeps its meaning.
+The chime for incoming calls, and the more urgent one for priority calls, can now each be replaced with a WAV file of your own, for example the ringing tone you know from the real system at your unit. The new **Ring sounds** section at the bottom of the [Call Settings](./settings/call.md#ring-sounds) has a field per ring: click it to pick a file, which then plays once, or click the **X** next to it to go back to the built-in chime. Files can be up to 30 seconds long, and vacs levels them to the built-in chime so the Chime Volume slider keeps its meaning.
 
 ---
 
 ### A key for SAY AGAIN
 
-The **SAY AGAIN** button from 2.7.0 now has a binding of its own in the [Hotkeys Config](/settings/hotkeys#say-again), so you can replay the last radio transmission from a key or a joystick button without reaching for the mouse. A second press stops the replay, just like the button. On Wayland desktops the new shortcut appears in your desktop's shortcut settings next to the existing vacs actions: expect your desktop to ask once more whether vacs may register its shortcuts when you first start this version, and allow it, or every vacs hotkey stays inactive until the next start.
+The **SAY AGAIN** button from 2.7.0 now has a binding of its own in the [Hotkeys Config](./settings/hotkeys.md#say-again), so you can replay the last radio transmission from a key or a joystick button without reaching for the mouse. A second press stops the replay, just like the button. On Wayland desktops the new shortcut appears in your desktop's shortcut settings next to the existing vacs actions: expect your desktop to ask once more whether vacs may register its shortcuts when you first start this version, and allow it, or every vacs hotkey stays inactive until the next start.
 
 ---
 
@@ -130,9 +130,9 @@ The upper function key row has a new **SAY AGAIN** key, to the right of **PLAY B
 
 <img src="/img/playback/say-again-button.png" alt="The upper function key row with the SAY AGAIN key" className="screenshot" style={{ width: "80%" }} />
 
-The key is available under the same conditions as the [Playback page](/interface/playback): a [radio integration](/settings/transmit#radio-integration) is configured, **Enable radio playback** is on in the [Advanced Settings](/settings/advanced#enable-radio-playback), and the radio is connected. It stays blue while the replay is playing and turns back when the clip ends. If the Playback page is open at the same time, it shows the replayed clip as the selected one, so the stop, pause and seek controls there apply to it.
+The key is available under the same conditions as the [Playback page](./interface/playback.md): a [radio integration](./settings/transmit.md#radio-integration) is configured, **Enable radio playback** is on in the [Advanced Settings](./settings/advanced.md#enable-radio-playback), and the radio is connected. It stays blue while the replay is playing and turns back when the clip ends. If the Playback page is open at the same time, it shows the replayed clip as the selected one, so the stop, pause and seek controls there apply to it.
 
-See [Say Again](/interface/playback#say-again) for the details.
+See [Say Again](./interface/playback.md#say-again) for the details.
 
 ---
 
@@ -140,17 +140,17 @@ See [Say Again](/interface/playback#say-again) for the details.
 
 Besides the `.deb` and `.rpm` packages, every release now also comes as an **AppImage**: a single file that runs on most Linux distributions without installing anything. Make it executable and start it.
 
-Prefer the `.deb` or `.rpm` if one fits your distribution, since they are much smaller and put vacs in your application menu. The AppImage is for everything else. See [Installation](/getting-started/installation#linux) for the details, including a note on starting the AppImage on Wayland desktops.
+Prefer the `.deb` or `.rpm` if one fits your distribution, since they are much smaller and put vacs in your application menu. The AppImage is for everything else. See [Installation](./getting-started/installation.md#linux) for the details, including a note on starting the AppImage on Wayland desktops.
 
 ---
 
 ### Bug fixes
 
-- **vacs not starting on Ubuntu 24.04 and other Wayland desktops without a shortcuts portal** - On Wayland desktops whose portal offers no global shortcuts, for example GNOME before version 47, vacs 2.6.0 refused to start with a "Failed to register keybinds" error. It now starts normally. Keyboard shortcuts are unavailable on such desktops, and the [Hotkeys](/settings/hotkeys#platform-support) and Transmit pages say so, while joystick buttons and voice activation work as usual.
+- **vacs not starting on Ubuntu 24.04 and other Wayland desktops without a shortcuts portal** - On Wayland desktops whose portal offers no global shortcuts, for example GNOME before version 47, vacs 2.6.0 refused to start with a "Failed to register keybinds" error. It now starts normally. Keyboard shortcuts are unavailable on such desktops, and the [Hotkeys](./settings/hotkeys.md#platform-support) and Transmit pages say so, while joystick buttons and voice activation work as usual.
 - **Browser login not reaching vacs on Linux** - After logging in through VATSIM Connect in the browser, the `vacs://` link the browser hands back was sometimes not delivered to a vacs installed from the `.deb` or `.rpm` package, for example with a Flatpak browser, and vacs stayed on the login page. The link is now passed through the desktop entry, so the login completes.
-- **Radio stations failing to add** - Adding a station on the [radio page](/interface/radio) could fail while TrackAudio was still looking it up. vacs now gives the lookup twice as long before giving up.
+- **Radio stations failing to add** - Adding a station on the [radio page](./interface/radio.md) could fail while TrackAudio was still looking it up. vacs now gives the lookup twice as long before giving up.
 - **Silent failures right after start** - An audio device error or a login link arriving in the first moments after starting vacs could reach a part of the app that was not ready yet and fail without any visible error. vacs now skips them until startup has finished.
-- **Playback selection jumping** - On the [Playback page](/interface/playback), a new recording arriving no longer shifts the highlight to a different clip than the one you selected.
+- **Playback selection jumping** - On the [Playback page](./interface/playback.md), a new recording arriving no longer shifts the highlight to a different clip than the one you selected.
 
 ---
 
@@ -162,7 +162,7 @@ A complete list of changes is available in the [v2.6.0 release notes](https://gi
 
 ### Joystick and gamepad buttons as key bindings
 
-Every binding field in vacs now accepts a **joystick or gamepad button** as well as a keyboard key. That covers Push-to-Talk, Push-to-Mute and the Radio PTT key in the [Transmit Config](/settings/transmit), and accepting calls, ending calls and toggling RADIO PRIO in the [Hotkeys Config](/settings/hotkeys).
+Every binding field in vacs now accepts a **joystick or gamepad button** as well as a keyboard key. That covers Push-to-Talk, Push-to-Mute and the Radio PTT key in the [Transmit Config](./settings/transmit.md), and accepting calls, ending calls and toggling RADIO PRIO in the [Hotkeys Config](./settings/hotkeys.md).
 
 To bind one, click a binding field as usual and press a button on your device instead of a key. The field then shows the button and the device it belongs to, for example **Button 3 (VPC Throttle)**. Nothing needs to be installed or configured first, and devices can be plugged in while vacs is running.
 
@@ -173,7 +173,7 @@ This means a HOTAS throttle, a yoke, a button box or a handset can drive your ca
 Bindings are tied to the device itself rather than to the port it is plugged into, so they survive unplugging the device, a reboot, or moving it to a different USB port.
 
 :::tip[Devices that block binding]
-Throttles and button boxes often have latched switches that report as permanently pressed. Such a device instantly wins any binding you try to make, and you would never get to press the button you actually wanted. The new **Joystick Devices** dialog, reachable from the Hotkeys Config and Transmit Config dialogs, lets you exclude those devices from binding capture while keeping any bindings you already made on them. See [Joystick Devices](/settings/hotkeys#joystick-devices).
+Throttles and button boxes often have latched switches that report as permanently pressed. Such a device instantly wins any binding you try to make, and you would never get to press the button you actually wanted. The new **Joystick Devices** dialog, reachable from the Hotkeys Config and Transmit Config dialogs, lets you exclude those devices from binding capture while keeping any bindings you already made on them. See [Joystick Devices](./settings/hotkeys.md#joystick-devices).
 :::
 
 ---
@@ -188,9 +188,9 @@ Both controllers need to be on v2.6.0 or later for this to work. If the other si
 
 <img src="/img/troubleshooting/degraded-call.png" alt="A degraded call, with the muted speaker icon in the call sequence" className="screenshot" style={{ width: "80%" }} />
 
-There is also a new **Always relay calls** option in the [Call Settings](/settings/call#always-relay-calls), off by default. It skips the direct connection entirely and relays every call from the start. Only turn it on if you regularly have trouble hearing other controllers and cannot turn the VPN off or exclude vacs from it, since relaying adds a small amount of latency.
+There is also a new **Always relay calls** option in the [Call Settings](./settings/call.md#always-relay-calls), off by default. It skips the direct connection entirely and relays every call from the start. Only turn it on if you regularly have trouble hearing other controllers and cannot turn the VPN off or exclude vacs from it, since relaying adds a small amount of latency.
 
-See [One-way audio](/troubleshooting/audio#one-way-audio-you-cannot-hear-the-other-controller) for the full picture, including what the relay servers are and what happens to audio passing through them.
+See [One-way audio](./troubleshooting/audio.md#one-way-audio-you-cannot-hear-the-other-controller) for the full picture, including what the relay servers are and what happens to audio passing through them.
 
 ---
 
@@ -203,18 +203,18 @@ Linux systems running an **X11** session previously had no global key bindings a
 
 Nothing needs to be installed or granted for this, it works out of the box on an X11 session.
 
-Wayland sessions are unchanged: keyboard shortcuts are still managed by your desktop environment and Audio for VATSIM remains unavailable there, because Wayland does not permit either. Joystick buttons, however, work on Wayland too, and binding one replaces the desktop-managed shortcut for that action. See [Platform support](/settings/hotkeys#platform-support) for the complete breakdown.
+Wayland sessions are unchanged: keyboard shortcuts are still managed by your desktop environment and Audio for VATSIM remains unavailable there, because Wayland does not permit either. Joystick buttons, however, work on Wayland too, and binding one replaces the desktop-managed shortcut for that action. See [Platform support](./settings/hotkeys.md#platform-support) for the complete breakdown.
 
 ---
 
 ### Bug fixes
 
-- **Silently broken radio transmissions** - The radio button now turns red when your transmissions repeatedly fail to reach TrackAudio, instead of everything looking normal while your Radio PTT does nothing. Clicking it reconnects to TrackAudio and clears the transmission state. See [Troubleshooting](/interface/radio#troubleshooting) on the radio page.
-- **Radio page freezing** - A burst of activity from TrackAudio no longer leaves the frequency and transmission indicators on the [radio page](/interface/radio) stuck on old values until vacs is restarted.
-- **Radio left transmitting after a settings change** - Changing your [Transmit](/settings/transmit) or [Hotkeys](/settings/hotkeys) settings while holding your Radio PTT key no longer leaves the radio transmitting, with no key left to release it.
+- **Silently broken radio transmissions** - The radio button now turns red when your transmissions repeatedly fail to reach TrackAudio, instead of everything looking normal while your Radio PTT does nothing. Clicking it reconnects to TrackAudio and clears the transmission state. See [Troubleshooting](./interface/radio.md#troubleshooting) on the radio page.
+- **Radio page freezing** - A burst of activity from TrackAudio no longer leaves the frequency and transmission indicators on the [radio page](./interface/radio.md) stuck on old values until vacs is restarted.
+- **Radio left transmitting after a settings change** - Changing your [Transmit](./settings/transmit.md) or [Hotkeys](./settings/hotkeys.md) settings while holding your Radio PTT key no longer leaves the radio transmitting, with no key left to release it.
 - **Dead hotkeys on KDE Plasma 6.7.4** - Every vacs shortcut stopped working on Wayland after updating to Plasma 6.7.4, and reassigning the keys or restarting vacs did not bring them back. vacs now registers its shortcuts with your desktop on every start, so they work again without downgrading.
 - **Key changes needing a restart** - On Wayland, assigning or clearing the **Radio Push-to-talk** shortcut in your desktop settings now takes effect immediately instead of at the next start of vacs.
-- **Radio PTT ignored on GNOME** - On GNOME, a Radio PTT shortcut was ignored and the radio always followed your call PTT key. It now works as documented in the [Transmit Config](/settings/transmit#the-radio-ptt-key-field).
+- **Radio PTT ignored on GNOME** - On GNOME, a Radio PTT shortcut was ignored and the radio always followed your call PTT key. It now works as documented in the [Transmit Config](./settings/transmit.md#the-radio-ptt-key-field).
 
 ---
 
@@ -228,7 +228,7 @@ A complete list of changes is available in the [v2.5.1 release notes](https://gi
 
 - **vacs not starting on Windows** - Fixed vacs failing to start when your audio device reports more than two channels, which affected setups using SteelSeries Sonar and similar virtual audio devices. This only affected v2.5.0.
 - **Audio stopping after a device change** - Changing your default audio device in Windows no longer leaves vacs without audio. The affected audio stream is now rebuilt automatically, including when the default device changes several times in quick succession. Previously this could show an error and require a restart of vacs.
-- **Speaker problems ending calls** - A problem with your separate [speaker device](/settings/audio) no longer ends an active call. Only your main output device failing does.
+- **Speaker problems ending calls** - A problem with your separate [speaker device](./settings/audio.mdx) no longer ends an active call. Only your main output device failing does.
 
 :::note
 Changing your **output device** in Windows settings while a call is active still ends that call. This is why vacs does not let you change audio devices in the settings during a call. If your system default output device changes on its own mid-call, for example because you unplug a headset, the call ends and you will need to place it again.
@@ -238,7 +238,7 @@ Changing your **output device** in Windows settings while a call is active still
 
 ## v2.5.0
 
-[v2.5.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.5.0) decouples radio integration from your call microphone mode, letting you combine any [Call Mic Mode](/settings/transmit#call-mic-mode) with any [Radio Integration](/settings/transmit#radio-integration), and extends radio transmission playback to Audio for VATSIM.
+[v2.5.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.5.0) decouples radio integration from your call microphone mode, letting you combine any [Call Mic Mode](./settings/transmit.md#call-mic-mode) with any [Radio Integration](./settings/transmit.md#radio-integration), and extends radio transmission playback to Audio for VATSIM.
 
 A complete list of changes is available in the [v2.5.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.5.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
 
@@ -250,7 +250,7 @@ The **Transmit Config** dialog has been reworked to lift this restriction. The t
 
 <img src="/img/settings/Transmit-VoiceActivation-TrackAudio.png" alt="vacs Transmit Config with Voice Activation and TrackAudio combined" className="screenshot" style={{ width: "80%" }} />
 
-The behavior of the radio PTT key and the **RADIO PRIO** button now depends on the combination of Call Mic Mode and Radio Integration you choose. See the [Transmit Modes](/settings/transmit#how-call-mic-mode-and-radio-integration-interact) documentation for a full breakdown of every combination.
+The behavior of the radio PTT key and the **RADIO PRIO** button now depends on the combination of Call Mic Mode and Radio Integration you choose. See the [Transmit Modes](./settings/transmit.md#how-call-mic-mode-and-radio-integration-interact) documentation for a full breakdown of every combination.
 
 Your existing configuration is automatically migrated to the new format on update. This should carry your previous setup over correctly, but given the scope of this change, we recommend **checking your Transmit Config** after updating to make sure it still reflects the setup you expect.
 
@@ -258,7 +258,7 @@ Your existing configuration is automatically migrated to the new format on updat
 
 ### AudioForVatsim radio playback
 
-[Radio transmission playback](/interface/playback), introduced in v2.4.0 for TrackAudio, is now also available when using the **Audio for VATSIM** radio integration. Enable it the same way, in the [Advanced Settings](/settings/advanced#playback).
+[Radio transmission playback](./interface/playback.md), introduced in v2.4.0 for TrackAudio, is now also available when using the **Audio for VATSIM** radio integration. Enable it the same way, in the [Advanced Settings](./settings/advanced.md#playback).
 
 :::note
 Only **RX** (received) transmissions are recorded, and support is limited: since AFV does not expose per-transmission metadata, recorded clips won't show a callsign or frequency. AudioForVatsim playback recording is also only available on **Windows**.
@@ -281,7 +281,7 @@ A complete list of changes is available in the [v2.4.0 release notes](https://gi
 
 ### Radio transmission playback
 
-vacs now lets you **replay recent TrackAudio radio transmissions** directly from the [Playback page](/interface/playback). Once enabled in the [Advanced Settings](/settings/advanced), vacs records incoming radio transmissions while TrackAudio is running and connected. You can then play them back at any time using the full set of playback controls — play/pause, skip, rewind, and continuous playback mode.
+vacs now lets you **replay recent TrackAudio radio transmissions** directly from the [Playback page](./interface/playback.md). Once enabled in the [Advanced Settings](./settings/advanced.md), vacs records incoming radio transmissions while TrackAudio is running and connected. You can then play them back at any time using the full set of playback controls — play/pause, skip, rewind, and continuous playback mode.
 
 <img src="/img/playback/playback_controls.gif" alt="Playback Controls Demo" className="screenshot" style={{ width: "80%" }} />
 
@@ -296,7 +296,7 @@ Playback functionality is only available on Windows and Linux systems using Pipe
 
 ### Fast CPL
 
-The CPL button now supports a **Fast CPL** mode, configurable in the [Advanced Settings](/settings/advanced). Clicking **FAST CPL** immediately couples all TX-enabled frequencies at once, without entering Couple Mode first. The button label changes from **CPL** to **FAST CPL** when this mode is active.
+The CPL button now supports a **Fast CPL** mode, configurable in the [Advanced Settings](./settings/advanced.md). Clicking **FAST CPL** immediately couples all TX-enabled frequencies at once, without entering Couple Mode first. The button label changes from **CPL** to **FAST CPL** when this mode is active.
 
 In addition, the default **Original** mode gains a new shortcut: **double-clicking CPL** while outside Couple Mode now also couples all TX-enabled frequencies at once.
 
@@ -321,7 +321,7 @@ A complete list of changes is available in the [v2.3.0 release notes](https://gi
 
 ### TrackAudio radio integration
 
-vacs now includes a dedicated **[Radio page](/interface/radio)** that connects to [TrackAudio](https://github.com/pierr3/TrackAudio) and lets you manage your radio stack without leaving the vacs window. From the Radio page you can see all currently tuned frequencies, toggle receive and transmit on individual frequencies, and manage your station list - all in one place.
+vacs now includes a dedicated **[Radio page](./interface/radio.md)** that connects to [TrackAudio](https://github.com/pierr3/TrackAudio) and lets you manage your radio stack without leaving the vacs window. From the Radio page you can see all currently tuned frequencies, toggle receive and transmit on individual frequencies, and manage your station list - all in one place.
 
 <img src="/img/radio/radio_overview.png" alt="vacs Radio Page" className="screenshot" style={{ width: "80%" }} />
 
@@ -362,7 +362,7 @@ A complete list of changes is available in the [v2.2.0 release notes](https://gi
 
 ### Custom button colors
 
-Station buttons on both the [GEO](/interface/phone/geo) and [Tabbed](/interface/phone/tabbed) layouts can now display **custom background colors**. Dataset maintainers for your FIR can assign colors from a curated palette to individual buttons, making it easier to visually group or distinguish stations at a glance.
+Station buttons on both the [GEO](./interface/phone/geo.md) and [Tabbed](./interface/phone/tabbed.md) layouts can now display **custom background colors**. Dataset maintainers for your FIR can assign colors from a curated palette to individual buttons, making it easier to visually group or distinguish stations at a glance.
 
 <img src="/img/button_colors.png" alt="vacs Call Source Selection" className="screenshot" style={{ width: "90%" }} />
 
@@ -372,13 +372,13 @@ Station buttons on both the [GEO](/interface/phone/geo) and [Tabbed](/interface/
 
 You can now select a **separate audio output device** for ringtones/chimes and UI click sounds, allowing you to separate coordination audio from notifications.
 
-The new speaker device can be configured in the [Audio Settings](/settings/audio). If no separate speaker device is selected, all sounds will continue to play through your main headset output as before.
+The new speaker device can be configured in the [Audio Settings](./settings/audio.mdx). If no separate speaker device is selected, all sounds will continue to play through your main headset output as before.
 
 ---
 
 ### Improved list scrolling
 
-Scrollable lists throughout vacs, such as the [Telephone Directory](/interface/telephone#telephone-directory) and the call history, now feature significantly improved scrolling. Holding a scroll button triggers **continuous scrolling** instead of requiring repeated clicks, and a visible **scrollbar** shows your current position within the list. You can also **drag the scrollbar** to quickly navigate through long lists.
+Scrollable lists throughout vacs, such as the [Telephone Directory](./interface/telephone.md#telephone-directory) and the call history, now feature significantly improved scrolling. Holding a scroll button triggers **continuous scrolling** instead of requiring repeated clicks, and a visible **scrollbar** shows your current position within the list. You can also **drag the scrollbar** to quickly navigate through long lists.
 
 ---
 
@@ -400,9 +400,9 @@ A complete list of changes is available in the [v2.1.0 release notes](https://gi
 
 The headline feature of v2.1.0: you can now **control vacs from a browser on any device**. Open the remote control URL on a tablet, a second monitor, or even your phone, and you get the full vacs interface - make and receive calls, change your settings and interact with the application - all without touching the main window.
 
-This is especially useful if you don't want to use your primary screen for coordination and want a dedicated panel on a separate screen or tablet. See the [Remote Control](/using-vacs/remote-control) guide to get started.
+This is especially useful if you don't want to use your primary screen for coordination and want a dedicated panel on a separate screen or tablet. See the [Remote Control](./using-vacs/remote-control.md) guide to get started.
 
-Additionally, v2.1.0 exposes a **WebSocket-based remote control API** that third-party tools and developers can use to interact with vacs programmatically. A detailed spec of the [Remote Control API](/advanced/remote-api) is available for developers.
+Additionally, v2.1.0 exposes a **WebSocket-based remote control API** that third-party tools and developers can use to interact with vacs programmatically. A detailed spec of the [Remote Control API](./advanced/remote-api.md) is available for developers.
 
 ---
 
@@ -410,7 +410,7 @@ Additionally, v2.1.0 exposes a **WebSocket-based remote control API** that third
 
 When connecting to a position, vacs can now **automatically set your default call source** based on the position you are logged in with. This is configured in the dataset by your vACC and means you no longer need to manually select a call source at the beginning of each session in most cases.
 
-If the automatic selection doesn't match your preference, you can still override it at any time by manually [selecting a different call source](/using-vacs/making-a-call#selecting-a-call-source). The feature can also be disabled entirely in the [Call Settings](/settings/call).
+If the automatic selection doesn't match your preference, you can still override it at any time by manually [selecting a different call source](./using-vacs/making-a-call.md#selecting-a-call-source). The feature can also be disabled entirely in the [Call Settings](./settings/call.md).
 
 ---
 
@@ -429,7 +429,7 @@ Developers can now authenticate against the vacs signaling server using **VATSIM
 ### Other improvements
 
 - **Clock now shows seconds** - The clock in the top status bar now displays seconds for more precise time tracking. Clicking the clock toggles between realtime updates (every second), a "zen" mode that only updates every 10 seconds, and the previous current day display.
-- **Sorted telephone directory** - The [Telephone Directory](/interface/telephone#telephone-directory) is now sorted by position ID, making it easier to find specific stations.
+- **Sorted telephone directory** - The [Telephone Directory](./interface/telephone.md#telephone-directory) is now sorted by position ID, making it easier to find specific stations.
 - **Persisted zoom level** - Your window zoom level is now saved and restored across restarts. Previously, adjusting the zoom with `Ctrl +` / `Ctrl -` would reset when you closed and reopened vacs.
 
 ---
@@ -439,7 +439,7 @@ Developers can now authenticate against the vacs signaling server using **VATSIM
 - **Automatic session recovery on connection loss** - If your internet connection drops briefly, vacs now automatically terminates the old session and reconnects cleanly. Previously, a flakey connection could result in an "already logged in" error that required manual intervention.
 - **Fixed station handoffs** - When a controller changes position or goes offline, all other controllers should now see consistent updates to station coverage. No more relogs required for others to correctly appear as online or offline on vacs.
 - **Consistent phone button state during calls** - Fixed an issue where a phone button could blink in an inconsistent state when an outgoing and incoming call overlapped. Outgoing call state now correctly takes priority.
-- **Duplicate clients after VATSIM sync** - Fixed a bug where clients could appear multiple times on the [client page](/interface/phone/clients) if they changed position of primary frequency.
+- **Duplicate clients after VATSIM sync** - Fixed a bug where clients could appear multiple times on the [client page](./interface/phone/clients.md) if they changed position of primary frequency.
 
 ---
 
@@ -486,13 +486,13 @@ To properly support station-based calling, the interface has been redesigned fro
 
 Two main layouts are currently supported:
 
-- **GEO layout**: stations are arranged geographically, giving you a spatial overview of neighbouring units and making it quick and intuitive to find the station you want to call. See the [GEO layout documentation](/interface/phone/geo) for more details.
+- **GEO layout**: stations are arranged geographically, giving you a spatial overview of neighbouring units and making it quick and intuitive to find the station you want to call. See the [GEO layout documentation](./interface/phone/geo.md) for more details.
 
 <img src="/img/geo/geo.png" alt="vacs Geo Layout" className="screenshot" style={{ width: "80%" }} />
 
 <img src="/img/geo/geo_page.png" alt="vacs Geo Page" className="screenshot" style={{ width: "80%" }} />
 
-- **Tabbed layout**: stations are organised into named tabs, allowing them to be grouped logically. See the [Tabbed layout documentation](/interface/phone/tabbed) for more details.
+- **Tabbed layout**: stations are organised into named tabs, allowing them to be grouped logically. See the [Tabbed layout documentation](./interface/phone/tabbed.md) for more details.
 
 <img src="/img/tabbed/tabbed.png" alt="vacs Tabbed Layout" className="screenshot" style={{ width: "80%" }} />
 
@@ -502,18 +502,18 @@ Two main layouts are currently supported:
 
 v2.0.0 adds subtle audio cues when a call connects or ends. No more watching the connection status indicator to know when your call has been answered - you'll hear it right away.
 
-These sounds can be toggled individually on the [Call](/settings/call) subpage of the [Settings](/settings/overview) page.
+These sounds can be toggled individually on the [Call](./settings/call.md) subpage of the [Settings](./settings/overview.md) page.
 
 ---
 
 ### Priority calls
 
 You can now mark calls as **priority** when coordination is urgent. Priority calls appear visually distinct on the receiving end and trigger a more attention-grabbing ringtone to ensure they don't go unnoticed.  
-See the [Making a call](/using-vacs/making-a-call#prio-calls) section for details on how to initiate a priority call.
+See the [Making a call](./using-vacs/making-a-call.md#prio-calls) section for details on how to initiate a priority call.
 
 <img src="/img/tabbed/tabbed_incoming_call_prio.gif" alt="vacs Incoming Priority Call" className="screenshot" style={{ width: "80%" }} />
 
-Priority calls can be disabled locally on the [Call](/settings/call) subpage of the [Settings](/settings/overview) page. When disabled, all incoming priority calls will be treated as normal calls.
+Priority calls can be disabled locally on the [Call](./settings/call.md) subpage of the [Settings](./settings/overview.md) page. When disabled, all incoming priority calls will be treated as normal calls.
 
 ---
 
@@ -529,8 +529,8 @@ You can now adjust the zoom level of the vacs window using the familiar `Ctrl +`
 
 v2.0.0 introduces breaking changes that affect how clients communicate with the server. **You must update before you can connect** - older clients are not compatible with the v2.0.0 server.
 
-Your client will automatically prompt you to update and will refuse to connect until you do. See the [Updating](/getting-started/updating) guide for instructions.
+Your client will automatically prompt you to update and will refuse to connect until you do. See the [Updating](./getting-started/updating.md) guide for instructions.
 
-Your local settings and [Configuration](/advanced/configuration) will be preserved during the update and will largely continue to work as expected. However, the previous `stations.toml` and its associated custom stations configuration have been removed in favour of the new [interface](/interface/overview). Refer to our [Clients page](/interface/phone/clients) for details on the latest UI and how to configure it.
+Your local settings and [Configuration](./advanced/configuration.md) will be preserved during the update and will largely continue to work as expected. However, the previous `stations.toml` and its associated custom stations configuration have been removed in favour of the new [interface](./interface/overview.md). Refer to our [Clients page](./interface/phone/clients.md) for details on the latest UI and how to configure it.
 
 You can find a migration guide for the new client page configuration in our [GitHub repository](https://github.com/vacs-project/vacs/blob/main/vacs-client/docs/config/client_page.md#migrating-from-vacs-1x-stations-config).

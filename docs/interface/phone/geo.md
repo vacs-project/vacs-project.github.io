@@ -65,7 +65,7 @@ style={{
 :::note Call Source Selection
 If a sector displayed on the GEO sector sub-page is **covered by you**, it can be selected here as a **call source**.
 
-As described in the [Interface Overview](/interface/overview), you can select one of these sectors as your **fixed** or **temporary call source** before placing a call.
+As described in the [Interface Overview](../overview.md), you can select one of these sectors as your **fixed** or **temporary call source** before placing a call.
 :::
 
 ---
@@ -111,7 +111,7 @@ Here, we have opened the **E / APP** sub-page of the GEO-Page. Here, we can see 
 
 ## Selecting a Call Source
 
-As described in the [Interface/Overview](/interface/overview), it is possible to select a call source, so that the recipient of your call is aware of the precise sector calling him.
+As described in the [Interface/Overview](../overview.md), it is possible to select a call source, so that the recipient of your call is aware of the precise sector calling him.
 
 Two types of call sources exist:
 
