@@ -101,6 +101,14 @@ Controllers can perform several actions:
 | **Delete List** | Clear the entire call list                    |
 | **Ignore CID**  | Add the selected caller ID to the ignore list |
 
+### Conference calls in the Call List
+
+A [conference call](/using-vacs/conference-calls) keeps a single entry in the Call List. Once a call has more than one other party, its name changes to **CONF**, and the number column lists the CIDs of the other controllers in the call, separated by commas.
+
+Since such an entry has no single number, **Call** and **Ignore CID** are not available for it. Select one of the controllers on another entry, or use the Dial Pad, to call them again.
+
+While you are on a call, **Call** only adds the selected entry to it while **CONF** is blinking. See [Conference calls](/using-vacs/conference-calls#adding-a-sector-to-a-running-call).
+
 ---
 
 ## Dial Pad
@@ -133,6 +141,8 @@ Available functions include:
 | **Clear All** | Deletes the entire entered number      |
 | **←**         | Deletes the last entered digit         |
 | **Redial**    | Calls the previously dialed number     |
+
+**Redial** skips conference calls and calls the last number you dialed for a call with a single other controller.
 
 The other available buttons (**IA** and **ATS MFC**) are currently not simulated.
 
