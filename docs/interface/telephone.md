@@ -44,7 +44,7 @@ The **Telephone Directory** contains a list of available stations that can be ca
 
 <img
 src="/img/interface/telephone_dir.png"
-alt="vacs Settings Page"
+alt="The Telephone Directory"
 style={{
     width: "80%",
     display: "block",
@@ -56,8 +56,8 @@ style={{
 
 Each entry includes:
 
-- **Position** – the controller position
-- **Client** – the connected station and its telephone number (= VATSIM CID)
+- **Position**: the controller position
+- **Client**: the connected station and its telephone number (= VATSIM CID)
 
 Controllers can:
 
@@ -75,7 +75,7 @@ The **Call List** displays the **recent call history**.
 
 <img
 src="/img/interface/telephone_call_list.png"
-alt="vacs Settings Page"
+alt="The Call List"
 style={{
     width: "80%",
     display: "block",
@@ -117,7 +117,7 @@ The **Dial Pad** alows manual dialing of telephone numbers (= VATSIM CID).
 
 <img
 src="/img/interface/telephone_dial_pad.png"
-alt="vacs Settings Page"
+alt="The Dial Pad"
 style={{
     width: "80%",
     display: "block",
@@ -154,7 +154,7 @@ The **Ignore List** contains telephone numbers (= VATSIM CIDs) that should **not
 
 <img
 src="/img/interface/telephone_ignore.png"
-alt="vacs Settings Page"
+alt="The Ignore List"
 style={{
     width: "80%",
     display: "block",

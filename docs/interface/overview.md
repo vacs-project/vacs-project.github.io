@@ -13,13 +13,15 @@ The interface is divided into several functional areas:
 ### Top Status Bar
 The top bar displays:
 
-- The current time
-- The VATSIM CID used for your vacs connection
-- The active station (e.g., 'LOWW_APP')
-- The running vacs version
-- (If you are not using the latest version, that an update is available.)
+1. The current time
+2. The VATSIM CID used for your vacs connection
+3. The active station (e.g., 'LOWW_APP')
+4. The running vacs version
+5. (If you are not using the latest version, that an update is available.)
+6. The call status indicator, see below
+7. (If a call fails, the reason, here REMOTE TARGET DID NOT ANSWER.)
 
-The small status indicator in the top-left corner shows call state:
+The small status indicator (6) in the top-left corner shows call state:
 - 🟢 Green → Ready / Connected
 - 🟠 Orange → Connecting, reconnecting, or connected without incoming audio
 - ⚫ Gray → Idle / Not connected
@@ -32,7 +34,7 @@ In a [conference call](../using-vacs/conference-calls.md) the indicator reports 
 
 <img
 src="/img/interface/topbar.png"
-alt="vacs Settings Page"
+alt="The top status bar with its contents numbered 1 to 7"
 style={{
     width: "80%",
     display: "block",
@@ -85,24 +87,24 @@ PRIO-Calls can be disabled, see [Call Settings](../settings/call.md).
 
 For clarity within this documentation, the following terms are used:
 
-- **Direct Access Page** → The central station grid containing all available coordination positions.
-- **Direct Access Key** → An individual station button within the Direct Access Page used to initiate or receive calls.
+- **Direct Access Page** → The central station grid containing all available coordination positions (outlined in blue in the image below).
+- **Direct Access Key** → An individual station button within the Direct Access Page used to initiate or receive calls (one of them outlined in violet in the image below).
 
 These terms are used consistently throughout the documentation.
 :::
 
 The direct access page contains all available coordination stations.
 
-Each title represents one station and my appear in different states:
+Each key represents one station and may appear in different states:
 
-1. Button that does not reference a station (disabled button with grey text).
-2. Station that is online and callable (enabled button with blank text).
-3. Button referencing a station not currently online on vacs (disabled button with black text).
-4. Station currently controlled by your position (enabled button with grey text).
+1. Key that does not reference a station (flat disabled key, any label in grey; the key marked here has no label).
+2. Station that is online and callable (raised enabled key with black text).
+3. Key referencing a station not currently online on vacs (flat disabled key with black text).
+4. Station currently controlled by your position (raised enabled key with grey text).
 
 <img
 src="/img/interface/directaccesspage.png"
-alt="vacs Settings Page"
+alt="The direct access page with the four key states numbered 1 to 4"
 style={{
     width: "80%",
     display: "block",
@@ -268,15 +270,15 @@ style={{
   }}
 />
 
-In the shown example, the sector **ACC N1 EC** (Caller) calls **APP-VB EC** (Recipient).
+In the shown example, the sector **ACC N1 EC** (Caller) calls **APP VB-EC** (Recipient).
 
-### Outgoing Call (No Call Source)
+### Outgoing Call
 
-In the simplest terms initating a call in vacs (which is without selecting a specific source, for that, see below) can be done as follows:
+In the simplest terms, initiating a call in vacs (without choosing a call source yourself, for that, see below) works as follows:
 
 - Click the Station you intend to call.
 - This corresponding button will be displayed in green with a grey border, until the recipient of the call has picked up. The button will then turn green without a grey border.
-- As no recipient was selected in this case, a generic sector identifier is displayed as call origin on the recipients end. Here this would be LOWW APP.
+- The recipient sees your call source as the caller. If your FIR's dataset defines one for your position, vacs selects it automatically when you connect (see [Automatic default call source](../settings/call.md#automatic-default-call-source)). Without any call source, a generic identifier of your position is displayed on the recipient's end instead, here LOWW APP.
 
 <img
 src="/img/interface/tabbed_outgoing_call.png"
@@ -290,7 +292,7 @@ style={{
   }}
 />
 
-In the shown example, the sector **ACC E1 EC** (Recipient) is being called without manually selecting a source.
+In the shown example, the sector **ACC E1 EC** (Recipient) is being called and has not picked up yet. No source was selected manually: **APP VB-EC** (dark orange) is the call source vacs selected automatically for the position, so the recipient sees the call coming from APP VB-EC.
 
 ---
 

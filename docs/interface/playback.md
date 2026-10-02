@@ -32,7 +32,7 @@ The recording list shows all captured transmissions in reverse chronological ord
 - Whether the transmission was received (**Rx**) or transmitted (**Tx**), supported in the future
 - The **time** of the transmission
 - The **duration** in seconds
-- The **callsign(s) and frequency** — if multiple callsigns were transmitting during a clip they are separated by pipes (e.g. `AUA123|AUA88\122.125`). Clips recorded via Audio for VATSIM show `<UNKNOWN>` instead, since callsign and frequency information isn't available for that integration.
+- The **callsign(s) and frequency**: if multiple callsigns were transmitting during a clip they are separated by pipes (e.g. `AUA123|AUA88\122.125`). Clips recorded via Audio for VATSIM show `<UNKNOWN>` instead, since callsign and frequency information isn't available for that integration.
 
 Clicking an entry selects it for playback, export or deletion.
 
@@ -69,7 +69,7 @@ style={{
 | 10 | **Delete** | Deletes the selected recording. |
 | 11 | **Delete all** | Deletes all recordings. |
 
-The following demonstrates controls 1–8 in use:
+The following demonstrates controls 1-8 in use:
 
 <img
 src="/img/playback/playback_controls.gif"
