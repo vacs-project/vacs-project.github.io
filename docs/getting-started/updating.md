@@ -36,8 +36,8 @@ Clicking the current version will take you to the release notes of the currently
 
 To update vacs:
 
-- Open the **Settings** by clicking the relevant button in the top right corner or clicking the update notification.
-- Locate the **Update & Restart** Button and click it.
+- Open the **Settings** by clicking the settings button (1) in the top right corner or clicking the update notification.
+- Locate the **Update & Restart** Button (2), which takes the place of **Check for Updates** while an update is available, and click it.
 
 <img
 src="/img/getting-started/update_available_settings.png"

@@ -14,7 +14,7 @@ Note, that most of the content on this page has already been mentioned before. T
 
 ## Selecting a Call Source
 
-At the beginning of a session, it is recommended to select a **fixed call source** (double click onto your relevant sector (active button with grey text), then turns dark orange) representing the sector from which you will primarily initiate calls.
+At the beginning of a session, it is recommended to select a **fixed call source** (double click onto your relevant sector (active button with grey text), then turns dark orange; if vacs already picked one automatically, click that one once to clear it first) representing the sector from which you will primarily initiate calls.
 
 <img
 src="/img/using-vacs/tabbed_call_source.png"
@@ -27,6 +27,8 @@ style={{
     boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
   }}
 />
+
+In the screenshot above, **APP VB-EC** is the fixed call source (dark orange), which vacs selected automatically when connecting because the dataset defines it for the position (see [Automatic default call source](../settings/call.md#automatic-default-call-source)). **APP VN-EC** has been selected as temporary call source (light orange) with a single click.
 
 Setting a call source ensures that other controllers immediately recognize **which sector is calling them**.
 

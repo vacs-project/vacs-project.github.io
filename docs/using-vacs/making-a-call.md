@@ -21,7 +21,7 @@ If the button is active (clickable) and the text appears in black color, this se
 
 <img
 src="/img/using-vacs/tabbed_outgoing_call.png"
-alt="vacs Settings Page"
+alt="An outgoing call to ACC E1 EC that has not been answered yet"
 style={{
     width: "80%",
     display: "block",
@@ -30,6 +30,8 @@ style={{
     boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
   }}
 />
+
+In the example above, **ACC E1 EC** is being called from the call source **APP VB-EC** (dark orange), which vacs selected automatically for the position (see [Selecting a Call Source](#selecting-a-call-source)).
 
 During the call setup phase (until the recipient accepts the call):
 
@@ -43,11 +45,11 @@ Once the receiving controller accepts the call, the connection will be establish
 
 ## Call Establishment
 
-After the recieving controller accepts the call, vacs establishes audio connection.
+After the recieving controller accepts the call, vacs establishes audio connection. While it does, the connection indicator in the top-left corner shows orange.
 
 <img
 src="/img/using-vacs/connection_indicator.png"
-alt="vacs Settings Page"
+alt="An established call with ACC E1 EC and the green connection indicator in the top-left corner"
 style={{
     width: "80%",
     display: "block",
@@ -62,9 +64,11 @@ A successful connection is indicated by:
 - the **green connection indicator** in the top status bar
 - optionally an **audible sound**, if enabled
 
+The image above shows such an established call with **ACC E1 EC**: the connection indicator is green, and the Direct Access Key, the call display on the right and the **Phone** button are solid green.
+
 See [Top Status Bar](../interface/overview.md#top-status-bar) for more information about the status indicator.
 
-There may be a **short delay (approximately 150–200 ms)** before audio transmission becomes active while the call connection is established.
+There may be a **short delay (approximately 150-200 ms)** before audio transmission becomes active while the call connection is established.
 
 ---
 
@@ -74,7 +78,7 @@ If you are covering multiple sectors simultaneously (as is often the case), vacs
 
 <img
 src="/img/using-vacs/tabbed_call_source.png"
-alt="vacs Settings Page"
+alt="A fixed and a temporary call source on the Direct Access Page"
 style={{
     width: "80%",
     display: "block",
@@ -87,7 +91,7 @@ style={{
 The call source can be selected on the relevant Direct Access Page. The sectors, which you are covering, from the position you are logged in with, are indicated by active buttons in grey color. By clicking one of these, you define your call source:
 
 - A single click sets this sector as the **Temporary Call Source** (light orange). It is then used as the call source for the next call only.
-- A double click sets this sector as the **Fixed Call Source** (dark orange). It is then used as the call source for all calls in your session, except, if you defined a relevant **Temporary Call Source**.
+- A double click sets this sector as the **Fixed Call Source** (dark orange), as long as no fixed call source is set. If vacs already picked one automatically, click it once to clear it first. The fixed call source is then used as the call source for all calls in your session, except, if you defined a relevant **Temporary Call Source**.
 
 The **call source** determines which **sector name** is shown to the recieving controller of your call. It is particularly useful, as the recipient of your call can directly identify, which precisely sector is calling.
 
@@ -113,7 +117,7 @@ A **PRIO call** indicates an urgent call.
 
 <img
 src="/img/using-vacs/prio_call.png"
-alt="vacs Settings Page"
+alt="The PRIO button activated"
 style={{
     width: "80%",
     display: "block",
@@ -130,7 +134,7 @@ To place a PRIO call:
 
 <img
 src="/img/using-vacs/tabbed_outgoing_call_prio.gif"
-alt="vacs Settings Page"
+alt="An outgoing PRIO call"
 style={{
     width: "80%",
     display: "block",
@@ -170,7 +174,7 @@ During calls, the **RADIO PRIO** button is also relevant, if you decide to use t
 
 <img
 src="/img/using-vacs/radio_prio.png"
-alt="vacs Settings Page"
+alt="The RADIO PRIO button activated during a call"
 style={{
     width: "80%",
     display: "block",
@@ -195,7 +199,7 @@ In some situations, a call cannot be established.
 
 <img
 src="/img/using-vacs/call_error.gif"
-alt="vacs Settings Page"
+alt="A call to ACC N1 EC that was not answered, with the key blinking red and the reason in the top status bar"
 style={{
     width: "80%",
     display: "block",
@@ -211,9 +215,11 @@ Common reasons include:
 - The call was **rejected**.
 - A technical issue occured during call establishment.
 
+In the first example above, **ACC N1 EC** did not answer: its key, the call display and the **Phone** button blink red, and the reason (REMOTE TARGET DID NOT ANSWER) is shown at the right end of the top status bar. In the example below, **ACC E1 EC** rejected the call, so its key, the call display and the **Phone** button stay green and blink their grey border instead.
+
 <img
 src="/img/using-vacs/call_error_rejected.gif"
-alt="vacs Settings Page"
+alt="A call to ACC E1 EC that was rejected, with the green key blinking its grey border"
 style={{
     width: "80%",
     display: "block",
@@ -223,7 +229,7 @@ style={{
   }}
 />
 
-In these cases, vacs will display a **call error indication** and the corresponding sector button will change its colour.
+In these cases, vacs will display a **call error indication** and the corresponding sector button will change its color.
 
 You may simply attempt the call again if coordination is still required.
 

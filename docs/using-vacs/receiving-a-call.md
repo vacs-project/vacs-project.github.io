@@ -28,7 +28,7 @@ style={{
 
 In the interface, you can see:
 
-- **Who is calling**: Dark Green, flashing, button. Here: ``ACC E1 EC``. (Only visible as call source was selected by the caller.)
+- **Who is calling**: Dark Green, flashing, button. Here: ``ACC N1 EC``. (Only visible as call source was selected by the caller.)
 - **Which sector is being called**: Light Green, static, button. Here: ``APP VB-EC``. 
 
 ---
