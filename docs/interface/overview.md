@@ -47,7 +47,7 @@ The upper button row contains operational controls such aus:
 
 - **PRIO**: Initiate PRIO Calls, see below.
 - **HOLD**
-- **PICKUP**
+- **CONF**: Add further sectors to a running call, see below.
 - **SUITE PICKUP**
 - **TRANS**
 - **DIV**
@@ -55,7 +55,9 @@ The upper button row contains operational controls such aus:
 - **SAY AGAIN**
 - **SPLIT**
 
-Of these buttons, PRIO, PLAYBACK and SAY AGAIN are functional; the rest are not simulated yet.
+Of these buttons, PRIO, CONF, PLAYBACK and SAY AGAIN are functional; the rest are not simulated yet.
+
+**CONF** turns a running call into a conference: press it, then the key of the sector you want to add. It is only available while a call is established, and lights up while the call is a conference. See [Conference calls](/using-vacs/conference-calls) for how it works and who may use it.
 
 **SAY AGAIN** replays the most recent recorded radio transmission without leaving the page you are on. See [Say Again](/interface/playback#say-again) for what it does and when it is available.
 
