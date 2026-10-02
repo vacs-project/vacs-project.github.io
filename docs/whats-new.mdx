@@ -5,6 +5,74 @@ sidebar_label: What's New
 
 # What's New
 
+## v3.0.0
+
+[v3.0.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v3.0.0) is a major release that brings conference calls: a running call can now grow to up to eight controllers with the new **CONF** button. It is a **mandatory update**, because conferences changed how vacs talks to our server. Every controller has to update before they can connect again, see [Migrating from v2.x to v3.0.0](#migrating-from-v2x-to-v300).
+
+A complete list of changes is available in the [v3.0.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v3.0.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
+
+### Conference calls
+
+The **PICKUP** button in the top button row has made way for **CONF**, which lets you add further sectors to a call that is already running. Call the first sector as usual, wait for it to answer, then press **CONF** and the key of the next sector. It starts ringing there like a normal call, and once it answers, everybody hears everybody else. Repeat for every further sector.
+
+<img src="/img/using-vacs/conference-call.png" alt="A three-way conference call, with the CONF button lit and both other sectors in the call" className="screenshot" style={{ width: "80%" }} />
+
+Whoever grows the call to a third party becomes the **conference leader**:
+
+- Only the leader can add sectors and remove participants, the latter by pressing their key. For everyone else **CONF** stays greyed out.
+- If the leader hangs up or loses their connection, the conference ends for everyone. If anybody else hangs up, only they leave.
+- If the call shrinks back to two controllers, it is an ordinary call again, and either of you can grow it once more.
+
+A conference currently holds up to eight controllers, you included, and sectors that are still ringing count towards that. While a conference runs, the call display and the [Call List](/interface/telephone#conference-calls-in-the-call-list) label it **CONF**, and the Call List shows the CIDs of everyone in it. While **CONF** blinks, the Dial Pad, the Telephone Directory and the Call List add a sector to the call as well.
+
+See [Conference calls](/using-vacs/conference-calls) for the full picture, including what happens when a sector cannot be added or one connection in the conference fails.
+
+---
+
+### Being invited into a conference
+
+An incoming call that is already a conference shows **CONF** on its answer key instead of a caller's name, and every sector in the call lights up on your Direct Access Pages, not just the caller. You answer it like any other call. See [Being invited into a Conference](/using-vacs/receiving-a-call#being-invited-into-a-conference).
+
+---
+
+### Sounds for joining and leaving
+
+A controller joining or leaving a running conference is announced with its own short sound, so the call start and call end sounds keep meaning that your call started or ended. Both sounds are on by default and can be turned off separately in the [Call Settings](/settings/call#play-participant-joined-sound). Turning one on plays it once so you know what to listen for.
+
+---
+
+### Remote API changes
+
+The [Remote API](/advanced/remote-api) changed in ways that break existing remote clients:
+
+- `signaling_start_call` is replaced by `signaling_invite_to_call`, which takes a `targets` array of call targets instead of a single target and also adds targets to a running call. The new `signaling_drop_target` cancels an invitation or removes a participant.
+- `signaling:call-invite` is renamed to `signaling:call-invitation`, and `signaling:outgoing-call-accepted` is gone. The new `signaling:outgoing-call` and `signaling:call-update` events report your own invitations and every change to the call's participants.
+- The `webrtc:call-*` state events are sent per participant and carry the call ID and the peer's CID instead of a bare call ID. `webrtc:call-error` says whether the error concerns the whole call, one participant or some invited targets.
+- The session state snapshot no longer contains `incomingCalls` and `outgoingCall`. Call state arrives with the store sync that follows it.
+- `signaling:call-reject` carries a `CallReject` object with the `callId` and the rejecting `targets` instead of a bare call ID, and `signaling_end_call` leaves a conference rather than ending it, unless you are its leader.
+
+The input level meter is now shared between the desktop and remote clients, and `CallConfig` has two new fields for the participant sounds. See the [Remote API](/advanced/remote-api) reference for the details.
+
+---
+
+### Bug fixes
+
+- **Input level meter in remote control sessions** - Opening the audio settings in a [remote control](/using-vacs/remote-control) session while the desktop showed them, or the other way round, reported an error, and closing them on one side stopped the meter on the other. The meter is now shared and only stops once no window shows it any more.
+
+---
+
+## Migrating from v2.x to v3.0.0
+
+v3.0.0 changes how clients communicate with the server, which conference calls need. The protocol version moved from 2.0.0 to 3.0.0. **You must update before you can connect** - 2.x clients are not compatible with the v3.0.0 server.
+
+Your client will prompt you with a **Mandatory update** dialog and will refuse to connect until you update. If a 2.x client tries to log in anyway, the login fails with "Login failed: Incompatible protocol version. Please check your client version." See the [Updating](/getting-started/updating#mandatory-updates) guide for instructions.
+
+Because everybody has to update, every controller you can call runs v3.0.0 or later, which every participant of a conference needs.
+
+Your local settings and [Configuration](/advanced/configuration) will be preserved during the update and continue to work as before. The two new participant sounds start out enabled.
+
+---
+
 ## v2.8.0
 
 [v2.8.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v2.8.0) lets a profile show the radio page and the phone page side by side, opens the Radio page even while TrackAudio is not connected, lets you replace the built-in ring chimes with your own sound files, and adds a key binding for SAY AGAIN.
