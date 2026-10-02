@@ -8,19 +8,17 @@ sidebar_position: 2
 
 In this situation the call connects normally and the other controller can hear you, but no audio arrives from them. It is almost always caused by something on your network changing the path audio takes, most commonly a **VPN**.
 
-Call audio in vacs travels directly between the two controllers rather than through our servers. Some VPNs route that traffic in a way that only works in one direction, so your audio reaches the other controller while theirs never reaches you. Products known to cause this include **Cloudflare WARP** and **Tailscale**, but any VPN or "internet security" tool that intercepts traffic can have the same effect.
+Call audio in vacs travels directly between the controllers in a call rather than through our servers. In a [conference call](/using-vacs/conference-calls), every participant is connected directly to every other one. Some VPNs route that traffic in a way that only works in one direction, so your audio reaches the other controller while theirs never reaches you. Products known to cause this include **Cloudflare WARP** and **Tailscale**, but any VPN or "internet security" tool that intercepts traffic can have the same effect.
 
 ### What vacs does automatically
 
 You do not need to do anything for most cases. When a connected call stops receiving audio for a few seconds, vacs re-establishes it through one of our relay servers, which works even when the direct path does not. The call stays up while this happens. You may notice a short gap and the status indicator briefly returning to orange, and then audio resumes.
 
-:::info[Requires vacs 2.6.0 or later]
-Automatic relay recovery was introduced in **vacs 2.6.0**, and **both** controllers need to be on that version or later for it to work. vacs only attempts the repair towards a controller whose client announced support for it, so a call with someone on an older version is never disrupted by it, but it also cannot be repaired.
-
-If you are on an older version yourself, see [Updating vacs](/getting-started/updating).
+:::info[Available on every call]
+Automatic relay recovery was introduced in **vacs 2.6.0**. Since every controller has to run **vacs 3.0.0** or later to connect at all, every call you can place supports it. In a conference, each of your connections to the other participants is watched and repaired on its own.
 :::
 
-If the other controller is on an older version, or if the call is already being relayed and audio still is not arriving, vacs cannot fix it on its own and marks the call as degraded instead.
+If the call is already being relayed and audio still is not arriving, or the repair of one connection in a conference fails, vacs cannot fix it on its own and marks the call as degraded instead.
 
 ### Recognizing a degraded call
 
