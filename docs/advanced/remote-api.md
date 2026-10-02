@@ -277,9 +277,11 @@ Some commands are marked as **desktop only**[^desktop-only] and are unavailable 
 | `audio_pick_ring_sound` [^desktop-only] | -                                                       | `string` \| `null`              | Open a native file dialog and return the chosen WAV path without applying it.     |
 | `audio_set_ring_sound`          | `ringType`: [`RingSoundType`](#ringsoundtype), `path`: string?  | [`RingSounds`](#ringsounds)     | Use the WAV file at `path` for that ring, or the built-in chime when `path` is `null`. Plays it once. |
 | `audio_play_ui_click`           | -                                                               | `null`                          | Play the UI click sound.                                                           |
-| `audio_start_input_level_meter` | -                                                               | `null`                          | Start input level monitoring. Subscribe to `audio:input-level` to receive updates. |
-| `audio_stop_input_level_meter`  | -                                                               | `null`                          | Stop input level monitoring.                                                       |
+| `audio_start_input_level_meter` | -                                                               | `null`                          | Start input level monitoring, or join it if another frontend already runs it. Subscribe to `audio:input-level` to receive updates. |
+| `audio_stop_input_level_meter`  | -                                                               | `null`                          | Release this client's use of the meter. It only stops once no frontend uses it any more. |
 | `audio_set_radio_prio`          | `prio`: boolean                                                 | `null`                          | Set the radio priority flag.                                                       |
+
+The input level meter is shared between the desktop window and every remote client. Each `audio_start_input_level_meter` counts as one use and each `audio_stop_input_level_meter` releases one, so a remote client closing its settings page does not stop the meter the desktop is still showing. When the last use is released, the meter stops and `audio:stop-input-level-meter` is emitted. A remote client that disconnects while it uses the meter is released automatically. While a call is running, the microphone belongs to the call: starting the meter then succeeds but does nothing.
 
 ### Authentication
 
@@ -395,7 +397,7 @@ Subscribe to events to receive real-time updates. Event names use a `domain:name
 | `audio:implicit-radio-prio`    | `boolean` | Radio priority was implicitly changed (e.g. by an incoming priority call).                               |
 | `audio:input-level`            | `number`  | Input audio level sample (0.0 to 1.0). Emitted at a regular interval while the input level meter is active. |
 | `audio:radio-prio`             | `boolean` | Radio priority state changed.                                                                            |
-| `audio:stop-input-level-meter` | `null`    | The input level meter was stopped.                                                                       |
+| `audio:stop-input-level-meter` | `null`    | The input level meter stopped: its last user released it, a call took over the microphone, or it failed and could not restart. |
 
 ### Authentication Events
 
@@ -1165,7 +1167,7 @@ Emitted with the `signaling:connected` event and included in the session state s
 | `profile`           | `object`                    | Profile state. `{ "type": "unchanged" }` when the profile was not modified, or `{ "type": "changed", "activeProfile": ... }` when it was. `activeProfile` is `{ "type": "specific", "profile": ... }` with a [`Profile`](#profile), or `{ "type": "custom" }` or `{ "type": "none" }`. |
 | `splitProfileWidth` | `number` &#124; absent      | Width in pixels stored for the phone side of the profile's mixed view, set through [`app_set_split_profile_width`](#application). Present only when a specific profile is active and a width has been stored for it. |
 | `defaultCallSources` | `string[]`                  | Station IDs configured as default call sources for the position.                                                                          |
-| `maxConfSize`        | `number` (optional)         | Maximum number of parties in a conference the server allows. Absent when the server does not enforce one.                                |
+| `maxConfSize`        | `number` (optional)         | Maximum number of parties in a conference the server allows, counting this client, joined participants and ringing targets. Absent when the server does not enforce one. |
 
 ### Profile
 
