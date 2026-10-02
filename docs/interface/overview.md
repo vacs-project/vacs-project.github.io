@@ -185,7 +185,7 @@ Clicking the **END** button performs two actions depending on the current interf
 | Current Situation | Result |
 |-------------------|--------|
 | Active outgoing call | The outgoing call is cancelled. |
-| Active call | The call is terminated. |
+| Active call | The call is terminated. In a conference you leave it, and it ends for everyone only if you are the leader. |
 | Rejected / error call display | The call entry is cleared from the display. |
 | Inside any menu (e.g. settings page, sub-settings page, mission page, telephone directory) | The interface exits the current menu. |
 | Inside a tabbed profile | The interface navigates one page level upward within the tab structure. |

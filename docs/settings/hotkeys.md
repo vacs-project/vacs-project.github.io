@@ -58,11 +58,13 @@ style={{
 
 ### Accept first call
 
-This action accepts the first incoming call in the queue. If there are no incoming calls, pressing this keybind has no effect.
+This action accepts the first incoming call in the queue. If there are no incoming calls, or you are already on a call, pressing this keybind has no effect.
 
 ### End active call
 
 This action ends the currently active call. If there is no active call, pressing this keybind has no effect.
+
+In a [conference call](/using-vacs/conference-calls) it works like the **END** button: it takes you out of the call, and only ends it for everyone if you are the conference leader.
 
 :::tip[Combined call control keybinds]
 By assigning the same key to both **Accept first call** and **End active call**, you can use a single key to manage your calls: press it once to accept an incoming call, press it again to end the call when you're done coordinating.

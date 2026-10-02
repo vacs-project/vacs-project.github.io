@@ -237,6 +237,8 @@ To terminate an active call:
 
 This will immediately terminate the call and return the interface to its normal state.
 
+In a [conference call](/using-vacs/conference-calls#removing-a-participant-and-leaving), **END** only takes you out of the call and the other controllers keep talking. If you are the conference leader, it ends the call for everyone.
+
 ---
 
 ## Adding Further Sectors
