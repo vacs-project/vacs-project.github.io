@@ -1,0 +1,122 @@
+---
+sidebar_position: 1
+sidebar_label: "Overview"
+---
+
+# Overview of the Settings Page
+
+The **Settings** page allows you to configure vacs according to your hardware setup and operational preferences.
+
+From here, you can adjust audio devices, volume levels, transmit behavior, key bindings, and various application preferences.
+
+---
+
+## Settings Interface
+
+<img
+src="/img/settings/overview.png"
+alt="vacs Settings Page"
+style={{
+      width: "80%",
+      display: "block",
+      margin: "1.5rem auto",
+      borderRadius: "8px",
+      boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+    }}
+/>
+
+The Settings interface can be accessed via the button marked in yellow in the screenshot above.
+
+It is divided into logical sections that group related configuration options.
+
+:::tip[Best Practice]
+It is recommended to configure audio devices and key bindings before starting operational use of vacs to avoid communication issues during live sessions.
+:::
+
+---
+
+## Configuration Sections
+
+The following subsections provide detailed explanations of each configuration area:
+
+### Audio Settings
+
+Configure:
+
+- Headset / output device
+- Microphone / input device
+- Speaker / notification device (optional, for ringtone and UI sounds)
+- Output and input volume levels
+- Notification (chime) and click sounds
+
+→ See [Audio Settings](/settings/audio)
+
+---
+
+### Transmit Modes
+
+Define how vacs handles the transmission behavior:
+
+- Voice Activation
+- Push-to-talk
+- Push-to-mute
+- Radio Integration
+
+→ See [Transmit Modes](/settings/transmit)
+
+---
+
+### Hotkeys
+
+Customize:
+
+- Push-to-talk keys
+- Transmit priorities
+- Call-related shortcuts
+- Other operational hotkeys
+- Joystick and gamepad buttons, and which devices to ignore while binding
+
+→ See [Key Bindings](/settings/hotkeys)
+
+---
+
+### Call Settings
+
+Defines various call related behaviour and preferences, such as:
+
+- Visual highlights for incoming calls
+- Priority calls
+- Automatic default call source selection based on current position
+- Call sounds
+- Always relaying call audio, for setups where a direct connection does not work
+
+→ See [Call Settings](/settings/call)
+
+---
+
+### Advanced Settings
+
+Allows you to configure more advanced application behavior:
+
+- Remote control (see [Remote Control](/using-vacs/remote-control))
+- Audio backend
+
+→ See [Advanced Settings](/settings/advanced)
+
+---
+
+### Miscellaneous Settings
+
+Control additional application behavior:
+
+- Update checks
+  -Configuration files access
+- Log access
+- Window behavior
+- Interface scaling
+
+→ See [Miscellaneous Settings](/settings/misc)
+
+---
+
+The following pages describe each section in detail.

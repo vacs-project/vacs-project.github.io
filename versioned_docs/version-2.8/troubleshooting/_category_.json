@@ -1,0 +1,9 @@
+{
+  "label": "Troubleshooting",
+  "position": 8,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "troubleshooting/index"
+  }
+}
