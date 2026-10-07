@@ -7,9 +7,9 @@ sidebar_label: What's New
 
 ## v3.0.0
 
-[v3.0.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v3.0.0) is a major release that brings conference calls: a running call can now grow to up to eight controllers with the new **CONF** button. It is a **mandatory update**, because conferences changed how vacs talks to our server. Every controller has to update before they can connect again, see [Migrating from v2.x to v3.0.0](#migrating-from-v2x-to-v300).
+[v3.0.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v3.0.0-rc.3) is a major release that brings conference calls: a running call can now grow to up to eight controllers with the new **CONF** button. It is a **mandatory update**, because conferences changed how vacs talks to our server. Every controller has to update before they can connect again, see [Migrating from v2.x to v3.0.0](#migrating-from-v2x-to-v300).
 
-A complete list of changes is available in the [v3.0.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v3.0.0) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
+A complete list of changes is available in the [v3.0.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v3.0.0-rc.3) on our [GitHub repository](https://github.com/vacs-project/vacs). Below is a summary of the most important changes.
 
 ### Conference calls
 
@@ -58,6 +58,7 @@ The input level meter is now shared between the desktop and remote clients, and 
 ### Bug fixes
 
 - **Input level meter in remote control sessions** - Opening the audio settings in a [remote control](./using-vacs/remote-control.md) session while the desktop showed them, or the other way round, reported an error, and closing them on one side stopped the meter on the other. The meter is now shared and only stops once no window shows it any more.
+- **Radio page not showing station changes** - A station added or removed in TrackAudio, or a change to a station's state such as RX or TX, did not appear on the [radio page](./interface/radio.md) until something else made the page redraw. The page now updates right away.
 
 ---
 
