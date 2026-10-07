@@ -7,7 +7,7 @@ sidebar_position: 2
 vacs is available for **Windows, Linux and macOS**.
 
 :::info
-Before installing vacs, verify that your system meets the requirements described in the [Requirements](/getting-started/requirements) section.
+Before installing vacs, verify that your system meets the requirements described in the [Requirements](./requirements.md) section.
 :::
 
 Follow the steps below to download and install the latest version.
@@ -50,7 +50,7 @@ Once you have downloaded the Installer, the installation process is straight-for
 - Launch vacs after the installation completes.
 
 :::info
-You can update vacs later using the built-in updater. See the [Updating](/getting-started/updating) section for details.
+You can update vacs later using the built-in updater. See the [Updating](./updating.md) section for details.
 :::
 
 ---
@@ -150,7 +150,7 @@ or run it once with `./vacs_<version>_amd64.AppImage --appimage-extract-and-run`
 :::
 
 :::info
-You can update vacs later using the built-in updater. See the [Updating](/getting-started/updating) section for details.
+You can update vacs later using the built-in updater. See the [Updating](./updating.md) section for details.
 :::
 
 ---
@@ -198,5 +198,5 @@ sudo xattr -rd com.apple.quarantine /Applications/vacs.app
 :::
 
 :::info
-You can update vacs later using the built-in updater. See the [Updating](/getting-started/updating) section for details.
+You can update vacs later using the built-in updater. See the [Updating](./updating.md) section for details.
 :::

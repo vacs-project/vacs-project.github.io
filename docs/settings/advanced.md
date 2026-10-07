@@ -10,11 +10,11 @@ The **Advanced Settings** Menu allows you to change various settings that are no
 
 ## Opening Advanced Settings
 
-The **Advanced Settings** Menu can be accessed from the settings page, by clicking the **Advanced** button.
+The **Advanced Settings** Menu can be accessed from the settings page (1), by clicking the **Advanced** button (2).
 
 <img
 src="/img/settings/AdvancedConfig.png"
-alt="vacs Settings Page"
+alt="vacs Settings Page with the settings button and the Advanced button numbered 1 and 2"
 style={{
     width: "80%",
     display: "block",
@@ -28,7 +28,7 @@ style={{
 
 <img
 src="/img/settings/AdvancedConfigPage.png"
-alt="vacs Settings Page"
+alt="The Advanced settings dialog"
 style={{
     width: "40%",
     display: "block",
@@ -42,13 +42,13 @@ style={{
 
 ## Remote Control
 
-The **Remote Control** section allows you to enable and configure the [remote control feature](/using-vacs/remote-control), which provides the ability to control vacs remotely via a web interface.
+The **Remote Control** section allows you to enable and configure the [remote control feature](../using-vacs/remote-control.md), which provides the ability to control vacs remotely via a web interface.
 
 ### Enable Remote Control
 
 When checked, the remote control feature is activated and vacs starts listening for incoming connections on the address and port configured below.
 
-vacs does not change your firewall. If other devices cannot connect, allow the port on the machine running vacs, see [Troubleshooting](/using-vacs/remote-control#the-browser-cannot-connect).
+vacs does not change your firewall. If other devices cannot connect, allow the port on the machine running vacs, see [Troubleshooting](../using-vacs/remote-control.md#the-browser-cannot-connect).
 
 ### Listen address
 
@@ -56,7 +56,7 @@ The IP and port vacs should listen on for incoming remote control connections. B
 
 For sake of convenience, you can also just specify the IP (without port) and vacs will use the default port 9600.
 
-See [Changing the listen address and port](/using-vacs/remote-control#changing-the-listen-address-or-port) for more details and examples.
+See [Changing the listen address and port](../using-vacs/remote-control.md#changing-the-listen-address-or-port) for more details and examples.
 
 ## Audio backend
 
@@ -66,11 +66,11 @@ The **Audio Backend** section allows you to configure the audio backend (by defa
 
 ### Enable radio playback
 
-When checked, vacs will record incoming radio transmissions - via TrackAudio or Audio for VATSIM, depending on your [Radio Integration](/settings/transmit#radio-integration) - and make them available for playback. Disabling this setting stops all future recordings, stops a replay that is playing, and deletes all existing (non-exported) recordings.
+When checked, vacs will record incoming radio transmissions - via TrackAudio or Audio for VATSIM, depending on your [Radio Integration](./transmit.md#radio-integration) - and make them available for playback. Disabling this setting stops all future recordings, stops a replay that is playing, and deletes all existing (non-exported) recordings.
 
 ## Couple Mode
 
 Controls how the **CPL** button behaves when coupling frequencies.
 
-- **Original** — Click **CPL** to enter Couple Mode, then click an individual frequency to couple it. Click **CPL** again to exit Couple Mode. Double-clicking **CPL** while outside Couple Mode couples all TX-enabled frequencies at once.
-- **Fast** — Click **FAST CPL** to immediately couple all TX-enabled frequencies at once, without entering Couple Mode. The button label changes from **CPL** to **FAST CPL** to reflect this behavior.
+- **Original**: Click **CPL** to enter Couple Mode, then click an individual frequency to couple it. Click **CPL** again to exit Couple Mode. Double-clicking **CPL** while outside Couple Mode couples all TX-enabled frequencies at once.
+- **Fast**: Click **FAST CPL** to immediately couple all TX-enabled frequencies at once, without entering Couple Mode. The button label changes from **CPL** to **FAST CPL** to reflect this behavior.

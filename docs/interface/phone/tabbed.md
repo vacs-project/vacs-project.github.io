@@ -17,11 +17,11 @@ If your vACC decided to use the Tabbed Layout in their configuration, it will be
 ---
 
 ## Navigation
-Tabs are located in the **bottom-right area** of the interface.
+Tabs are located in the **bottom-right area** of the interface (outlined in red below).
 
 <img
 src="/img/interface/tabs.png"
-alt="vacs Settings Page"
+alt="The tabs EC, PLC, TFI and CWP in the bottom-right area"
 style={{
     width: "80%",
     display: "block",
@@ -42,11 +42,11 @@ Navigation works as follows:
 ### Cycling Direct Access Pages
 Some datasets contain more Direct Access Pages (Tabs) than the 4 Tabs visible in the bottom control bar.
 
-In this case, a Direct Access Page selector is displayed.
+In this case, a Direct Access Page selector is displayed to the left of the tabs (outlined in red below).
 
 <img
 src="/img/interface/dasel.png"
-alt="vacs Settings Page"
+alt="The Direct Access Page selector labeled DA 5-6 next to the tabs"
 style={{
     width: "80%",
     display: "block",
@@ -58,14 +58,14 @@ style={{
 
 This control allows you to cycle between multiple Tabs, for example:
 
-- **DA 1–4**
-- **DA 5–6**
+- **DA 1-4**
+- **DA 5-6**
 
 Selecting the control switches to the next set of Direct Access Keys.
 
 <img
 src="/img/interface/da56.png"
-alt="vacs Settings Page"
+alt="The tabs DA 5 and DA 6 after switching, with the selector now labeled DA 1-4"
 style={{
     width: "80%",
     display: "block",
@@ -83,7 +83,7 @@ The main part of the Tabbed Layout contains one of the selectable **Tabs (= Dire
 
 <img
 src="/img/interface/tabbed_annot.png"
-alt="vacs Settings Page"
+alt="The tabbed layout with a direct access key, the direct access page and the tabs numbered 1 to 3"
 style={{
     width: "80%",
     display: "block",
@@ -93,14 +93,11 @@ style={{
   }}
 />
 
-Each button on the Direct Access Page represents a **Direct Access Key** corresponding to a specific station.
+In the figure above:
 
-In the figure above, examples are:
-
-- `ACC N1 EC`
-- `ACC E1 EC`
-- `APP VN-EC 118775`
-- `BRA APP EC`
+1. A **Direct Access Key**, here `ACC E1 EC`. Each button on the Direct Access Page represents a Direct Access Key corresponding to a specific station, such as `ACC N1 EC`, `APP VN-EC 118775` or `BRA APP EC`.
+2. The selected **Direct Access Page**, showing the Direct Access Keys of the selected tab.
+3. The **Tabs**, one per Direct Access Page. The selected tab, here **EC**, is joined to the page above it.
 
 Depending on the type of button (refer to Interface/Overview/Direct Access Page), clicking a button will initiate different actions.
 
@@ -137,7 +134,7 @@ Priority calls are indicated specially (visually and audibly).
 
 ## Selecting a Call Source
 
-As described in the [Interface/Overview](/interface/overview), it is possible to select a call source, so that the recipient of your call is aware of the precise sector calling him.
+As described in the [Interface/Overview](../overview.md), it is possible to select a call source, so that the recipient of your call is aware of the precise sector calling him.
 
 Two types of call sources exist:
 

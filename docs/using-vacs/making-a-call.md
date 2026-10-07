@@ -21,7 +21,7 @@ If the button is active (clickable) and the text appears in black color, this se
 
 <img
 src="/img/using-vacs/tabbed_outgoing_call.png"
-alt="vacs Settings Page"
+alt="An outgoing call to ACC E1 EC that has not been answered yet"
 style={{
     width: "80%",
     display: "block",
@@ -30,6 +30,8 @@ style={{
     boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
   }}
 />
+
+In the example above, **ACC E1 EC** is being called from the call source **APP VB-EC** (dark orange), which vacs selected automatically for the position (see [Selecting a Call Source](#selecting-a-call-source)).
 
 During the call setup phase (until the recipient accepts the call):
 
@@ -43,11 +45,11 @@ Once the receiving controller accepts the call, the connection will be establish
 
 ## Call Establishment
 
-After the recieving controller accepts the call, vacs establishes audio connection.
+After the recieving controller accepts the call, vacs establishes audio connection. While it does, the connection indicator in the top-left corner shows orange.
 
 <img
 src="/img/using-vacs/connection_indicator.png"
-alt="vacs Settings Page"
+alt="An established call with ACC E1 EC and the green connection indicator in the top-left corner"
 style={{
     width: "80%",
     display: "block",
@@ -62,9 +64,11 @@ A successful connection is indicated by:
 - the **green connection indicator** in the top status bar
 - optionally an **audible sound**, if enabled
 
-See [Top Status Bar](/interface/overview#top-status-bar) for more information about the status indicator.
+The image above shows such an established call with **ACC E1 EC**: the connection indicator is green, and the Direct Access Key, the call display on the right and the **Phone** button are solid green.
 
-There may be a **short delay (approximately 150–200 ms)** before audio transmission becomes active while the call connection is established.
+See [Top Status Bar](../interface/overview.md#top-status-bar) for more information about the status indicator.
+
+There may be a **short delay (approximately 150-200 ms)** before audio transmission becomes active while the call connection is established.
 
 ---
 
@@ -74,7 +78,7 @@ If you are covering multiple sectors simultaneously (as is often the case), vacs
 
 <img
 src="/img/using-vacs/tabbed_call_source.png"
-alt="vacs Settings Page"
+alt="A fixed and a temporary call source on the Direct Access Page"
 style={{
     width: "80%",
     display: "block",
@@ -87,7 +91,7 @@ style={{
 The call source can be selected on the relevant Direct Access Page. The sectors, which you are covering, from the position you are logged in with, are indicated by active buttons in grey color. By clicking one of these, you define your call source:
 
 - A single click sets this sector as the **Temporary Call Source** (light orange). It is then used as the call source for the next call only.
-- A double click sets this sector as the **Fixed Call Source** (dark orange). It is then used as the call source for all calls in your session, except, if you defined a relevant **Temporary Call Source**.
+- A double click sets this sector as the **Fixed Call Source** (dark orange), as long as no fixed call source is set. If vacs already picked one automatically, click it once to clear it first. The fixed call source is then used as the call source for all calls in your session, except, if you defined a relevant **Temporary Call Source**.
 
 The **call source** determines which **sector name** is shown to the recieving controller of your call. It is particularly useful, as the recipient of your call can directly identify, which precisely sector is calling.
 
@@ -100,7 +104,7 @@ If necessary, you can temporarily change the call source for individual calls by
 If **no call source is explicitly selected**, vacs will use a **default identifier** for your station when placing calls. This identifier will be visible to the receiving controller instead of a specific sector.
 
 :::tip[Automatic Default Call Source]
-vacs can automatically set your default call source based on the position you are logged in with. This means you will typically not need to manually select a call source at the start of your session if your FIR's dataset is configured accordingly. If needed, this can be disabled in the [Call Settings](/settings/call).
+vacs can automatically set your default call source based on the position you are logged in with. This means you will typically not need to manually select a call source at the start of your session if your FIR's dataset is configured accordingly. If needed, this can be disabled in the [Call Settings](../settings/call.md).
 :::
 
 :::
@@ -113,7 +117,7 @@ A **PRIO call** indicates an urgent call.
 
 <img
 src="/img/using-vacs/prio_call.png"
-alt="vacs Settings Page"
+alt="The PRIO button activated"
 style={{
     width: "80%",
     display: "block",
@@ -130,7 +134,7 @@ To place a PRIO call:
 
 <img
 src="/img/using-vacs/tabbed_outgoing_call_prio.gif"
-alt="vacs Settings Page"
+alt="An outgoing PRIO call"
 style={{
     width: "80%",
     display: "block",
@@ -142,7 +146,7 @@ style={{
 
 The recieving controller can detect a PRIO call using visual and audible aids. A PRIO call is highlighted by a yellow border around the caller indication. Also, PRIO calls are indicated by a special sound for the recipient.
 
-PRIO calls can be disabled in the [settings](/settings/call).
+PRIO calls can be disabled in the [settings](../settings/call.md).
 
 It is suggested to only use PRIO calls when coordinate is **time-critical or operationally urgent**.
 
@@ -150,7 +154,7 @@ It is suggested to only use PRIO calls when coordinate is **time-critical or ope
 
 ## Transmission during a Call
 
-How audio transmissions (frequency & coordination via vacs) behaves during a coordination call depends on your configured [**Transmit Mode**](/settings/transmit).
+How audio transmissions (frequency & coordination via vacs) behaves during a coordination call depends on your configured [**Transmit Mode**](../settings/transmit.md).
 
 Typical options include:
 
@@ -158,7 +162,7 @@ Typical options include:
 - **Shared transmission key** (Radio Integration) for both communication channels.
 - **Voice Activation**.
 
-These settings and their configuration are explained in [Audio Settings](/settings/audio).
+These settings and their configuration are explained in [Audio Settings](../settings/audio.mdx).
 
 Your chosen configuration determines how you speak during coordination calls.
 
@@ -166,11 +170,11 @@ Your chosen configuration determines how you speak during coordination calls.
 
 ## RADIO PRIO
 
-During calls, the **RADIO PRIO** button is also relevant, if you decide to use the **Radio Integration** [Transmit Mode](/settings/transmit). It allows you to prioritize **radio transmissions over coordination calls**.
+During calls, the **RADIO PRIO** button is also relevant, if you decide to use the **Radio Integration** [Transmit Mode](../settings/transmit.md). It allows you to prioritize **radio transmissions over coordination calls**.
 
 <img
 src="/img/using-vacs/radio_prio.png"
-alt="vacs Settings Page"
+alt="The RADIO PRIO button activated during a call"
 style={{
     width: "80%",
     display: "block",
@@ -195,7 +199,7 @@ In some situations, a call cannot be established.
 
 <img
 src="/img/using-vacs/call_error.gif"
-alt="vacs Settings Page"
+alt="A call to ACC N1 EC that was not answered, with the key blinking red and the reason in the top status bar"
 style={{
     width: "80%",
     display: "block",
@@ -211,9 +215,11 @@ Common reasons include:
 - The call was **rejected**.
 - A technical issue occured during call establishment.
 
+In the first example above, **ACC N1 EC** did not answer: its key, the call display and the **Phone** button blink red, and the reason (REMOTE TARGET DID NOT ANSWER) is shown at the right end of the top status bar. In the example below, **ACC E1 EC** rejected the call, so its key, the call display and the **Phone** button stay green and blink their grey border instead.
+
 <img
 src="/img/using-vacs/call_error_rejected.gif"
-alt="vacs Settings Page"
+alt="A call to ACC E1 EC that was rejected, with the green key blinking its grey border"
 style={{
     width: "80%",
     display: "block",
@@ -223,7 +229,7 @@ style={{
   }}
 />
 
-In these cases, vacs will display a **call error indication** and the corresponding sector button will change its colour.
+In these cases, vacs will display a **call error indication** and the corresponding sector button will change its color.
 
 You may simply attempt the call again if coordination is still required.
 
@@ -236,3 +242,11 @@ To terminate an active call:
 - Press the **END** button in the bottom control bar.
 
 This will immediately terminate the call and return the interface to its normal state.
+
+In a [conference call](./conference-calls.md#removing-a-participant-and-leaving), **END** only takes you out of the call and the other controllers keep talking. If you are the conference leader, it ends the call for everyone.
+
+---
+
+## Adding Further Sectors
+
+An established call can be extended to further sectors, so that three or more controllers coordinate together. This is done with the **CONF** button and is described in [Conference calls](./conference-calls.md).

@@ -12,11 +12,11 @@ As of **vacs 2.6.0**, every binding field also accepts a **joystick or gamepad b
 
 ## Opening Hotkeys Config
 
-The **Hotkeys Config** Menu can be accessed from the settings page, by clicking the **Hotkeys** button.
+The **Hotkeys Config** Menu can be accessed from the settings page (1), by clicking the **Hotkeys** button (2).
 
 <img
 src="/img/settings/HotkeysConfig.png"
-alt="vacs Settings Page"
+alt="vacs Settings Page with the settings button and the Hotkeys button numbered 1 and 2"
 style={{
     width: "80%",
     display: "block",
@@ -37,7 +37,7 @@ To bind a key to an action:
 - The field will update to display the selected binding.
 
 :::info[Clearing a Key Binding]
-Click the **✕** button on the right side of the row **(2)** to remove the assigned key binding.
+Click the **X** button on the right side of the row **(2)** to remove the assigned key binding.
 :::
 
 <img
@@ -58,11 +58,13 @@ style={{
 
 ### Accept first call
 
-This action accepts the first incoming call in the queue. If there are no incoming calls, pressing this keybind has no effect.
+This action accepts the first incoming call in the queue. If there are no incoming calls, or you are already on a call, pressing this keybind has no effect.
 
 ### End active call
 
 This action ends the currently active call. If there is no active call, pressing this keybind has no effect.
+
+In a [conference call](../using-vacs/conference-calls.md) it works like the **END** button: it takes you out of the call, and only ends it for everyone if you are the conference leader.
 
 :::tip[Combined call control keybinds]
 By assigning the same key to both **Accept first call** and **End active call**, you can use a single key to manage your calls: press it once to accept an incoming call, press it again to end the call when you're done coordinating.
@@ -72,7 +74,7 @@ If you receive another call while already on one, simply press the key twice to 
 
 ### Toggle RADIO PRIO
 
-This action toggles the [RADIO PRIO](/using-vacs/making-a-call#radio-prio) button.
+This action toggles the [RADIO PRIO](../using-vacs/making-a-call.md#radio-prio) button.
 
 :::info[RADIO PRIO Button]
 The **RADIO PRIO** function is designed to operate together with the **Radio Integration** transmission mode.
@@ -84,7 +86,7 @@ Its behavior and operational context are explained in detail in the **Interface 
 
 Available from **vacs 2.8.0**.
 
-This action presses the [SAY AGAIN](/interface/playback#say-again) button: it replays the most recent recorded radio transmission, and pressing it again while that replay is running stops it. The key does nothing while the button is greyed out or inactive, for example without a radio integration, while **Enable radio playback** is off, or while the radio is disconnected.
+This action presses the [SAY AGAIN](../interface/playback.md#say-again) button: it replays the most recent recorded radio transmission, and pressing it again while that replay is running stops it. The key does nothing while the button is greyed out or inactive, for example without a radio integration, while **Enable radio playback** is off, or while the radio is disconnected.
 
 ---
 
@@ -92,7 +94,7 @@ This action presses the [SAY AGAIN](/interface/playback#say-again) button: it re
 
 Available from **vacs 2.6.0**.
 
-Any binding in vacs can be a **joystick or gamepad button** instead of a keyboard key. This works for the actions on this page as well as for Push-to-Talk, Push-to-Mute and the Radio PTT key in the [Transmit Config](/settings/transmit).
+Any binding in vacs can be a **joystick or gamepad button** instead of a keyboard key. This works for the actions on this page as well as for Push-to-Talk, Push-to-Mute and the Radio PTT key in the [Transmit Config](./transmit.md).
 
 Typical devices for this are HOTAS throttles and yokes, flight sim button boxes, handsets and gamepads. No driver or configuration is required: connect the device before starting vacs, or plug it in while vacs is running, and its buttons become available immediately.
 
@@ -128,7 +130,7 @@ The flip side is that two **identical** devices (the same model twice) cannot be
 
 Some devices, in particular flight sim throttles and button boxes, have **latched switches** rather than momentary buttons, or report a resting position as a permanently pressed button. Such a device reports "pressed" without you touching anything, which means it instantly wins any binding capture you start and makes it impossible to bind anything else.
 
-The **Joystick Devices** button in the header of the Hotkeys Config and Transmit Config dialogs opens a list of your devices where you can tick the ones vacs should **ignore while capturing**.
+The **Joystick Devices** button in the bottom-left corner of the Hotkeys Config and Transmit Config dialogs opens a list of your devices where you can tick the ones vacs should **ignore while capturing**.
 
 <img
 src="/img/settings/JoystickDevices.png"
@@ -157,7 +159,7 @@ Global bindings, meaning bindings that work while another application is focused
 | Platform | Keyboard keys | Joystick buttons |
 |---|---|---|
 | Windows | Bound in vacs. | Bound in vacs. |
-| macOS | Bound in vacs. Requires input monitoring and accessibility permissions, see [Requirements](/getting-started/requirements#macos). | Bound in vacs. |
+| macOS | Bound in vacs. Requires input monitoring and accessibility permissions, see [Requirements](../getting-started/requirements.md#macos). | Bound in vacs. |
 | Linux (X11) | Bound in vacs, from **vacs 2.6.0**. | Bound in vacs. |
 | Linux (Wayland) | Managed by your desktop environment, not by vacs. | Bound in vacs. |
 

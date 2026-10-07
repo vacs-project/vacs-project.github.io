@@ -34,7 +34,7 @@ The "top-level" of the GEO Page displays large buttons representing sector group
 
 <img
 src="/img/interface/geo.png"
-alt="vacs Settings Page"
+alt="The top level of the GEO Page with its sector groups"
 style={{
     width: "80%",
     display: "block",
@@ -48,11 +48,13 @@ In this example, all sectors matching the description **E / APP** (standing for 
 
 Selecting one of the buttons on the "top-level" of the GEO-Page opens a sub-page containing the specific sectors that can be called and fall within the selected region. 
 
-In the example from above, if we click on the **E / APP** button, we open a page, which allows us to choose which sector within the category we want to call exactly (e.g. the ACC-Sector E3, which is a sector that falls into the selected ACC-E / APP group, represented by the **350 E3 PLC** button), and then call this sector by clicking on the relevant Direct Access Key.
+In the example from above, if we click on the **E / APP** button, we open a page, which allows us to choose which sector within the category we want to call exactly (e.g. the approach sector VB, which falls into the selected ACC-E / APP group, represented by the **APP VB PLN** button), and then call this sector by clicking on the relevant Direct Access Key.
+
+In this example you are logged in as LOVV_E_CTR, so the E sectors on the left (**310- E1 PLC** to **390+ E7 PLC**) are covered by you and shown with grey text. They cannot be called, but can be selected as call source (see below). **310- E1 PLC** is shown in dark orange because vacs selected it automatically as the call source for the position.
 
 <img
 src="/img/interface/geo_page.png"
-alt="vacs Settings Page"
+alt="The E / APP sub-page of the GEO Page"
 style={{
     width: "80%",
     display: "block",
@@ -65,7 +67,7 @@ style={{
 :::note Call Source Selection
 If a sector displayed on the GEO sector sub-page is **covered by you**, it can be selected here as a **call source**.
 
-As described in the [Interface Overview](/interface/overview), you can select one of these sectors as your **fixed** or **temporary call source** before placing a call.
+As described in the [Interface Overview](../overview.md), you can select one of these sectors as your **fixed** or **temporary call source** before placing a call.
 :::
 
 ---
@@ -75,7 +77,7 @@ An incoming call in the GEO-Page layout is visible as indicated below:
 
 <img
 src="/img/interface/geo_incoming_call.gif"
-alt="vacs Settings Page"
+alt="An incoming call on the top level of the GEO Page"
 style={{
     width: "80%",
     display: "block",
@@ -95,7 +97,7 @@ Further details about an incoming call can be found by clicking onto the relevan
 
 <img
 src="/img/interface/geo_page_incoming_call.gif"
-alt="vacs Settings Page"
+alt="An incoming call on the E / APP sub-page of the GEO Page"
 style={{
     width: "80%",
     display: "block",
@@ -111,7 +113,7 @@ Here, we have opened the **E / APP** sub-page of the GEO-Page. Here, we can see 
 
 ## Selecting a Call Source
 
-As described in the [Interface/Overview](/interface/overview), it is possible to select a call source, so that the recipient of your call is aware of the precise sector calling him.
+As described in the [Interface/Overview](../overview.md), it is possible to select a call source, so that the recipient of your call is aware of the precise sector calling him.
 
 Two types of call sources exist:
 
@@ -120,13 +122,13 @@ Two types of call sources exist:
 | **Fixed Call Source** | The default station used for outgoing calls. |
 | **Temporary Call Source** | Used only for the **next call**, after which the fixed call source is used again. |
 
-The selected call source is visually indicated in the grid.
+The selected call source is visually indicated in the grid. In the screenshot below, **310- E1 PLC** is the fixed call source (dark orange) and **320-340 E2 PLC** the temporary call source (light orange).
 
 These call sources can be selected by opening a Sector-Page from the "top-level" of the GEO-Page, which consists of sectors, that your station is covering. Clicking on the relevant (active) grey-buttons selects the call source. If you would like to set a **Fixed Call Source** (dark orange) click the relevant button twice, if you would like to select a **Temporary Call Source** (light orange) click the button once.
 
 <img
 src="/img/interface/geo_page_call_source.png"
-alt="vacs Settings Page"
+alt="A fixed and a temporary call source on the E / APP sub-page"
 style={{
     width: "80%",
     display: "block",

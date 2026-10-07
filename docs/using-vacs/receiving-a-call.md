@@ -28,7 +28,7 @@ style={{
 
 In the interface, you can see:
 
-- **Who is calling**: Dark Green, flashing, button. Here: ``ACC E1 EC``. (Only visible as call source was selected by the caller.)
+- **Who is calling**: Dark Green, flashing, button. Here: ``ACC N1 EC``. (Only visible as call source was selected by the caller.)
 - **Which sector is being called**: Light Green, static, button. Here: ``APP VB-EC``. 
 
 ---
@@ -131,9 +131,27 @@ style={{
 
 ---
 
+## Being invited into a Conference
+
+You can also be called into a coordination that already has more than two controllers in it, or one that grows into that while you are on it.
+
+An incoming invitation into a call that already has two or more parties in it is shown differently:
+
+- The **answer key** reads **CONF** instead of naming the caller. A conference is not one sector, so there is no single name to show.
+- Every sector in the call is highlighted, not just the caller. If a controller in the call is covering a sector on one of your Direct Access Pages, that key and the page it sits on light up.
+- This also happens when the caller has not selected a call source, in which case the caller itself cannot be highlighted but the other participants still are.
+
+Accept it exactly like any other call, by pressing the flashing answer key. Once you are in, you hear and are heard by everybody in the call.
+
+While the call runs, joining and leaving controllers are announced by their own short sounds, which can be turned off in the [Call Settings](../settings/call.md).
+
+For what you can and cannot do inside a conference, and who is allowed to add or remove participants, see [Conference calls](./conference-calls.md).
+
+---
+
 ## Speaking during a Call
 
-How audio transmission works during a call depends on your configured [**Transmit Mode**](/settings/transmit).
+How audio transmission works during a call depends on your configured [**Transmit Mode**](../settings/transmit.md).
 
 Possible behaviors include:
 
@@ -141,7 +159,7 @@ Possible behaviors include:
 - **Shared transmission key** (Radio Integration) for both communication channels.
 - **Voice Activation**.
 
-These settings are explained in [**Transmit Mode**](/settings/transmit).
+These settings are explained in [**Transmit Mode**](../settings/transmit.md).
 
 Depending on your selected Transmit Mode, the RADIO PRIO button, has a different functionality.
 
@@ -154,6 +172,8 @@ To terminate the call:
 - Press the **END** button in the bottom control bar.
 
 This will immediately terminate the call and return the interface to its normal state.
+
+In a [conference call](./conference-calls.md#removing-a-participant-and-leaving), **END** only takes you out of the call and the other controllers keep talking. If you are the conference leader, it ends the call for everyone.
 
 
 ---

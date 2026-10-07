@@ -16,10 +16,10 @@ Typically the connection becomes active after **150-200 milliseconds**.
 You can verify that the call is established in two ways:
 
 - The **green status indicator** in the top status bar  
-  (see [Top Status Bar](/interface/overview#top-status-bar)).
+  (see [Top Status Bar](./interface/overview.md#top-status-bar)).
 
 - An **audible call start sound**, if enabled  
-  (see [Play Call Start Sound](/settings/call#play-call-start-sound)).
+  (see [Play Call Start Sound](./settings/call.md#play-call-start-sound)).
 
 Until the connection is fully established, audio may not be transmitted. 
 
@@ -66,6 +66,6 @@ If the relevant position is not yet configured in your vACC's dataset, the corre
 
 This situation can also occur if a neighbouring vACC has not yet configured their dataset and thus, the sector is not yet defined on their end, to be used by your vACC.
 
-In such cases, the controller may still be connected to vacs, but the sector cannot be reached via the predefined interface buttons. Instead, we recommend using the [Telephone Directory](/interface/telephone#telephone-directory) to call this station.
+In such cases, the controller may still be connected to vacs, but the sector cannot be reached via the predefined interface buttons. Instead, we recommend using the [Telephone Directory](./interface/telephone.md#telephone-directory) to call this station.
 
 </details>

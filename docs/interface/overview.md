@@ -13,24 +13,28 @@ The interface is divided into several functional areas:
 ### Top Status Bar
 The top bar displays:
 
-- The current time
-- The VATSIM CID used for your vacs connection
-- The active station (e.g., 'LOWW_APP')
-- The running vacs version
-- (If you are not using the latest version, that an update is available.)
+1. The current time
+2. The VATSIM CID used for your vacs connection
+3. The active station (e.g., 'LOWW_APP')
+4. The running vacs version
+5. (If you are not using the latest version, that an update is available.)
+6. The call status indicator, see below
+7. (If a call fails, the reason, here REMOTE TARGET DID NOT ANSWER.)
 
-The small status indicator in the top-left corner shows call state:
+The small status indicator (6) in the top-left corner shows call state:
 - 🟢 Green → Ready / Connected
 - 🟠 Orange → Connecting, reconnecting, or connected without incoming audio
 - ⚫ Gray → Idle / Not connected
 
-This can also be supplemented by an audible indication. For futher information, see [Call Settings](/settings/call).
+This can also be supplemented by an audible indication. For futher information, see [Call Settings](../settings/call.md).
 
-If the indicator stays orange on a call that is otherwise established, the call is not delivering audio to you. A muted speaker icon on the call in the call sequence marks which call is affected. See [One-way audio](/troubleshooting/audio#one-way-audio-you-cannot-hear-the-other-controller).
+If the indicator stays orange on a call that is otherwise established, the call is not delivering audio to you. A muted speaker icon on the call in the call sequence marks which call is affected. See [One-way audio](../troubleshooting/audio.md#one-way-audio-you-cannot-hear-the-other-controller).
+
+In a [conference call](../using-vacs/conference-calls.md) the indicator reports the worst connection in the call, not the call as a whole. It is green only while every participant is connected, so a single participant whose connection has dropped turns it orange even though everyone else is fine. The call display shows the same thing with its icons, and a disconnected participant takes precedence over one that is merely not sending audio: you see the disconnected icon, not the muted speaker.
 
 <img
 src="/img/interface/topbar.png"
-alt="vacs Settings Page"
+alt="The top status bar with its contents numbered 1 to 7"
 style={{
     width: "80%",
     display: "block",
@@ -45,7 +49,7 @@ The upper button row contains operational controls such aus:
 
 - **PRIO**: Initiate PRIO Calls, see below.
 - **HOLD**
-- **PICKUP**
+- **CONF**: Add further sectors to a running call, see below.
 - **SUITE PICKUP**
 - **TRANS**
 - **DIV**
@@ -53,9 +57,11 @@ The upper button row contains operational controls such aus:
 - **SAY AGAIN**
 - **SPLIT**
 
-Of these buttons, PRIO, PLAYBACK and SAY AGAIN are functional; the rest are not simulated yet.
+Of these buttons, PRIO, CONF, PLAYBACK and SAY AGAIN are functional; the rest are not simulated yet.
 
-**SAY AGAIN** replays the most recent recorded radio transmission without leaving the page you are on. See [Say Again](/interface/playback#say-again) for what it does and when it is available.
+**CONF** turns a running call into a conference: press it, then the key of the sector you want to add. It is only available while a call is established, and lights up while the call is a conference. See [Conference calls](../using-vacs/conference-calls.md) for how it works and who may use it.
+
+**SAY AGAIN** replays the most recent recorded radio transmission without leaving the page you are on. See [Say Again](./playback.md#say-again) for what it does and when it is available.
 
 A PRIO Call indicates to the reciever of the call, that the caller considers this call to be urgent. It is highlighted with a yellow border in the recievers vacs, and uses a special sound, to gain attention.
 
@@ -71,7 +77,7 @@ style={{
   }}
 />
 
-PRIO-Calls can be disabled, see [Call Settings](/settings/call).
+PRIO-Calls can be disabled, see [Call Settings](../settings/call.md).
 
 --- 
 
@@ -81,24 +87,24 @@ PRIO-Calls can be disabled, see [Call Settings](/settings/call).
 
 For clarity within this documentation, the following terms are used:
 
-- **Direct Access Page** → The central station grid containing all available coordination positions.
-- **Direct Access Key** → An individual station button within the Direct Access Page used to initiate or receive calls.
+- **Direct Access Page** → The central station grid containing all available coordination positions (outlined in blue in the image below).
+- **Direct Access Key** → An individual station button within the Direct Access Page used to initiate or receive calls (one of them outlined in violet in the image below).
 
 These terms are used consistently throughout the documentation.
 :::
 
 The direct access page contains all available coordination stations.
 
-Each title represents one station and my appear in different states:
+Each key represents one station and may appear in different states:
 
-1. Button that does not reference a station (disabled button with grey text).
-2. Station that is online and callable (enabled button with blank text).
-3. Button referencing a station not currently online on vacs (disabled button with black text).
-4. Station currently controlled by your position (enabled button with grey text).
+1. Key that does not reference a station (flat disabled key, any label in grey; the key marked here has no label).
+2. Station that is online and callable (raised enabled key with black text).
+3. Key referencing a station not currently online on vacs (flat disabled key with black text).
+4. Station currently controlled by your position (raised enabled key with grey text).
 
 <img
 src="/img/interface/directaccesspage.png"
-alt="vacs Settings Page"
+alt="The direct access page with the four key states numbered 1 to 4"
 style={{
     width: "80%",
     display: "block",
@@ -127,26 +133,26 @@ style={{
 />
 
 #### Radio 
-The Radio button indicates the current state of the [Radio Integration](/settings/transmit#radio-integration) and allows reconnecting when necessary. The button color and state reflect the current radio status.
+The Radio button indicates the current state of the [Radio Integration](../settings/transmit.md#radio-integration) and allows reconnecting when necessary. The button color and state reflect the current radio status.
 
 | Button Color    | Text Color | Enabled  | State                            | Description                                                                                                                                                                              |
 | --------------- | ---------- | -------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Gray            | Gray       | Disabled | Radio Integration not configured | Radio Integration is set to **None**, or the required Radio PTT key is missing (e.g., no key captured for Voice Activation, or no pseudo-PTT key configured for Audio for VATSIM). |
-| Gray            | Black      | Enabled  | Not connected                    | Radio integration is configured, but no connection to TrackAudio exists. Click the button to retry the connection; with TrackAudio it also opens the [Radio page](/interface/radio), which then offers a Retry link. *(In Audio for VATSIM this state usually does not occur.)* |
+| Gray            | Black      | Enabled  | Not connected                    | Radio integration is configured, but no connection to TrackAudio exists. Click the button to retry the connection; with TrackAudio it also opens the [Radio page](./radio.md), which then offers a Retry link. *(In Audio for VATSIM this state usually does not occur.)* |
 | Gray            | Black      | Enabled  | Connected, no RX                 | A connection to the radio client exists, but no frequency is currently being received. *(In Audio for VATSIM this state usually does not occur.)*                                        |
 | Emerald         | Black      | Enabled  | Idle                             | At least one frequency is tuned and ready, but nobody is currently transmitting and you are not transmitting.                                                                            |
 | Cornflower Blue | Black      | Enabled  | Active transmission              | Either you or someone else (pilot, other station in general) is currently transmitting on the tuned frequency.                                                                                                       |
-| Red             | Black      | Enabled  | Error                            | The connection to TrackAudio was lost, or several transmit attempts in a row got no response from it. Click the button to reconnect, see [Troubleshooting](/interface/radio#troubleshooting). |
+| Red             | Black      | Enabled  | Error                            | The connection to TrackAudio was lost, or several transmit attempts in a row got no response from it. Click the button to reconnect, see [Troubleshooting](./radio.md#troubleshooting). |
 
 
 #### CPL 
 
-The CPL button is used to [cross couple](/interface/radio#cross-coupling) radio frequencies. See the [Radio page documentation](/interface/radio#cross-coupling) for a full explanation of how coupling works and the available modes.
+The CPL button is used to [cross couple](./radio.md#cross-coupling) radio frequencies. See the [Radio page documentation](./radio.md#cross-coupling) for a full explanation of how coupling works and the available modes.
 
 The functionality is only available if TrackAudio radio integration is used and a connection to TrackAudio is established.
 
 #### RADIO PRIO 
-This button always affects your call microphone according to your chosen [Call Mic Mode](/settings/transmit#call-mic-mode), and additionally couples with your [Radio Integration](/settings/transmit#radio-integration) if one is configured. For a full breakdown of every combination, please refer to [Transmit Modes](/settings/transmit#how-call-mic-mode-and-radio-integration-interact).
+This button always affects your call microphone according to your chosen [Call Mic Mode](../settings/transmit.md#call-mic-mode), and additionally couples with your [Radio Integration](../settings/transmit.md#radio-integration) if one is configured. For a full breakdown of every combination, please refer to [Transmit Modes](../settings/transmit.md#how-call-mic-mode-and-radio-integration-interact).
 
 #### Phone
 The Phone button provides quick navigation back to the main phone interface and indicates active phone communication.
@@ -181,7 +187,7 @@ Clicking the **END** button performs two actions depending on the current interf
 | Current Situation | Result |
 |-------------------|--------|
 | Active outgoing call | The outgoing call is cancelled. |
-| Active call | The call is terminated. |
+| Active call | The call is terminated. In a conference you leave it, and it ends for everyone only if you are the leader. |
 | Rejected / error call display | The call entry is cleared from the display. |
 | Inside any menu (e.g. settings page, sub-settings page, mission page, telephone directory) | The interface exits the current menu. |
 | Inside a tabbed profile | The interface navigates one page level upward within the tab structure. |
@@ -196,7 +202,7 @@ If you are using the Tabbed-Layout, the pre-configured tabs will be visible in t
 
 Most profiles show the radio page and the phone page one at a time, and you switch between them with the **Radio** and **Phone** buttons. A profile can instead ask for one of two views that let you keep both in sight. Which view you get is part of the profile your FIR publishes, so there is nothing to configure in vacs, and neither view has anything to do with the unimplemented **SPLIT** key in the upper function key row.
 
-Both views require the TrackAudio [Radio Integration](/settings/transmit#radio-integration) and a tabbed profile. With Audio for VATSIM, or without a radio integration, such a profile behaves like any other and keeps the Radio and Phone buttons.
+Both views require the TrackAudio [Radio Integration](../settings/transmit.md#radio-integration) and a tabbed profile. With Audio for VATSIM, or without a radio integration, such a profile behaves like any other and keeps the Radio and Phone buttons.
 
 **Split view** replaces the Radio and Phone buttons with two tabs:
 
@@ -264,15 +270,15 @@ style={{
   }}
 />
 
-In the shown example, the sector **ACC N1 EC** (Caller) calls **APP-VB EC** (Recipient).
+In the shown example, the sector **ACC N1 EC** (Caller) calls **APP VB-EC** (Recipient).
 
-### Outgoing Call (No Call Source)
+### Outgoing Call
 
-In the simplest terms initating a call in vacs (which is without selecting a specific source, for that, see below) can be done as follows:
+In the simplest terms, initiating a call in vacs (without choosing a call source yourself, for that, see below) works as follows:
 
 - Click the Station you intend to call.
 - This corresponding button will be displayed in green with a grey border, until the recipient of the call has picked up. The button will then turn green without a grey border.
-- As no recipient was selected in this case, a generic sector identifier is displayed as call origin on the recipients end. Here this would be LOWW APP.
+- The recipient sees your call source as the caller. If your FIR's dataset defines one for your position, vacs selects it automatically when you connect (see [Automatic default call source](../settings/call.md#automatic-default-call-source)). Without any call source, a generic identifier of your position is displayed on the recipient's end instead, here LOWW APP.
 
 <img
 src="/img/interface/tabbed_outgoing_call.png"
@@ -286,7 +292,7 @@ style={{
   }}
 />
 
-In the shown example, the sector **ACC E1 EC** (Recipient) is being called without manually selecting a source.
+In the shown example, the sector **ACC E1 EC** (Recipient) is being called and has not picked up yet. No source was selected manually: **APP VB-EC** (dark orange) is the call source vacs selected automatically for the position, so the recipient sees the call coming from APP VB-EC.
 
 ---
 

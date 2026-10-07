@@ -16,11 +16,11 @@ Previously, "Radio Integration" was one of the options in the **Call Mic Mode** 
 ---
 
 ## Opening Transmit Config
-The **Transmit Config** can be accessed from the settings page, by clicking the **Transmit** button.
+The **Transmit Config** can be accessed from the settings page (1), by clicking the **Transmit** button (2).
 
 <img
 src="/img/settings/TransmitConfig.png"
-alt="vacs Settings Page"
+alt="vacs Settings Page with the settings button and the Transmit button numbered 1 and 2"
 class="screenshot"
 style={{
     width: "80%",
@@ -64,7 +64,7 @@ Voice activation may transmit unintended background noise if your microphone isn
 While filtering of background noises is performed using this mode, the corresponding input-gate is very low, accordingly, background noises can be transmitted. Therefore, consider your microphone to be **permanently unmuted**.
 :::
 
-No key-binding is available or required in the **CALL MIC MODE** part of the dialog for this mode. However, you can assign a key to toggle the RADIO PRIO button, as described in the [hotkeys settings](/settings/hotkeys#toggle-radio-prio).
+No key-binding is available or required in the **CALL MIC MODE** part of the dialog for this mode. However, you can assign a key to toggle the RADIO PRIO button, as described in the [hotkeys settings](./hotkeys.md#toggle-radio-prio).
 
 ### Push-to-Talk (PTT)
 **Behavior during calls:**
@@ -74,7 +74,7 @@ No key-binding is available or required in the **CALL MIC MODE** part of the dia
 Audio is transmitted only while the corresponding key is pressed. Assign a key by clicking into the field next to the mode dropdown and pressing your desired key once. Clear a binding with the **✕** button.
 
 :::tip[Joystick and gamepad buttons]
-From **vacs 2.6.0**, you can press a button on a connected joystick, HOTAS throttle or handset instead of a key, and vacs binds that button. This works for every binding field in this dialog. See [Joystick and gamepad buttons](/settings/hotkeys#joystick-and-gamepad-buttons).
+From **vacs 2.6.0**, you can press a button on a connected joystick, HOTAS throttle or handset instead of a key, and vacs binds that button. This works for every binding field in this dialog. See [Joystick and gamepad buttons](./hotkeys.md#joystick-and-gamepad-buttons).
 :::
 
 ### Push-to-Mute
@@ -102,8 +102,8 @@ The **RADIO INTEGRATION** section (bottom part of the dialog) is now always enab
 There are three options:
 
 - **None**: No radio integration is configured. You can use vacs completely on its own.
-- **TrackAudio**: vacs can connect to your TrackAudio client to trigger transmissions, manage radio & frequency state and play back radio transmissions. If transmissions stop working mid-session, see [Troubleshooting](/interface/radio#troubleshooting) on the radio page.
-- **Audio for VATSIM**: vacs simulates a key press for you to trigger a radio transmission in AFV. The [radio page](/interface/radio) is not available. [Radio transmission playback](/interface/playback) is supported, but limited without callsign or frequency info, and only on Windows.
+- **TrackAudio**: vacs can connect to your TrackAudio client to trigger transmissions, manage radio & frequency state and play back radio transmissions. If transmissions stop working mid-session, see [Troubleshooting](../interface/radio.md#troubleshooting) on the radio page.
+- **Audio for VATSIM**: vacs simulates a key press for you to trigger a radio transmission in AFV. The [radio page](../interface/radio.md) is not available. [Radio transmission playback](../interface/playback.md) is supported, but limited without callsign or frequency info, and only on Windows.
 
 :::warning[Audio for VATSIM is not available on Wayland]
 The **Audio for VATSIM** integration relies on simulating a key press into the standalone AFV client, which is not possible on Wayland-based Linux desktops. There, only **None** and **TrackAudio** are available. On X11 desktops, Audio for VATSIM works normally as of **vacs 2.6.0**; before that it was unavailable on Linux entirely.
@@ -119,7 +119,7 @@ Next to the Radio Integration dropdown is a key-capture field for your **Radio P
 | Push-to-Mute | **Disabled**, forced to the call key | Always shows (and uses) the same key as your call Push-to-Mute key. A distinct PTM for calls vs. radio is not supported, so the capture field is locked. |
 
 :::note[On Wayland, the key comes from your desktop settings]
-Keyboard keys are assigned in your desktop environment rather than captured in vacs, so "leave it empty" means leaving the **Radio Push-to-talk** system shortcut unassigned. Everything else in this table works the same way. If you change the shortcut while this dialog is open, reopen it to see the new key. See [Platform support](/settings/hotkeys#platform-support) on the Hotkeys page.
+Keyboard keys are assigned in your desktop environment rather than captured in vacs, so "leave it empty" means leaving the **Radio Push-to-talk** system shortcut unassigned. Everything else in this table works the same way. If you change the shortcut while this dialog is open, reopen it to see the new key. See [Platform support](./hotkeys.md#platform-support) on the Hotkeys page.
 
 <img
 src="/img/settings/Transmit-DifferentPTT-TrackAudio-wayland.png"

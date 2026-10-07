@@ -18,8 +18,8 @@ Before initial useage, you should configure the relevant settings of the softwar
 
 These settings are all explained in detail in the **Settings section** of the manual:
 
-- [Audio Settings](/settings/audio)
-- [Transmit Settings](/settings/transmit)
+- [Audio Settings](../settings/audio.mdx)
+- [Transmit Settings](../settings/transmit.md)
 
 It is strongly recommended to review these settings before using vacs operationally.
 
@@ -29,11 +29,11 @@ It is strongly recommended to review these settings before using vacs operationa
 
 Before starting a session, ensure that vacs is running **the most current version**.
 
-If your version is outdated, an **update notification** will appear in the upper part of the interface.
+If your version is outdated, an **update notification** will appear in the top status bar, below the version (marked in red below).
 
 <img
 src="/img/using-vacs/update_not.png"
-alt="vacs Settings Page"
+alt="The UPDATE AVAILABLE notification in the top status bar"
 style={{
     width: "80%",
     display: "block",
@@ -46,7 +46,7 @@ style={{
 In this case, update the software before continuing.
 
 Detailed instructions can be found here:
-See [Updating VACS](/getting-started/updating) for detailed instructions.
+See [Updating VACS](../getting-started/updating.md) for detailed instructions.
 
 ---
 
@@ -56,7 +56,7 @@ After launching vacs, the **login screen** will appear.
 
 <img
 src="/img/using-vacs/login.png"
-alt="vacs Settings Page"
+alt="The login screen with the Login via VATSIM button"
 style={{
     width: "80%",
     display: "block",
@@ -78,7 +78,7 @@ After logging in, vacs will display the **connection screen**.
 
 <img
 src="/img/using-vacs/connect.png"
-alt="vacs Settings Page"
+alt="The connection screen with the Connect button"
 style={{
     width: "80%",
     display: "block",
@@ -103,10 +103,10 @@ Once connected, vacs will load the interface layout configured by your vACC data
 
 Depending on the dataset configuration, this may be:
 
-**Tabed Layout**
+**Tabbed Layout**
 <img
 src="/img/using-vacs/tabbed.png"
-alt="vacs Settings Page"
+alt="The Tabbed Layout"
 style={{
     width: "80%",
     display: "block",
@@ -119,7 +119,7 @@ style={{
 **GEO Layout**
 <img
 src="/img/using-vacs/geo.png"
-alt="vacs Settings Page"
+alt="The GEO Layout"
 style={{
     width: "80%",
     display: "block",

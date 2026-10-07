@@ -44,7 +44,7 @@ The **Telephone Directory** contains a list of available stations that can be ca
 
 <img
 src="/img/interface/telephone_dir.png"
-alt="vacs Settings Page"
+alt="The Telephone Directory"
 style={{
     width: "80%",
     display: "block",
@@ -56,8 +56,8 @@ style={{
 
 Each entry includes:
 
-- **Position** – the controller position
-- **Client** – the connected station and its telephone number (= VATSIM CID)
+- **Position**: the controller position
+- **Client**: the connected station and its telephone number (= VATSIM CID)
 
 Controllers can:
 
@@ -75,7 +75,7 @@ The **Call List** displays the **recent call history**.
 
 <img
 src="/img/interface/telephone_call_list.png"
-alt="vacs Settings Page"
+alt="The Call List"
 style={{
     width: "80%",
     display: "block",
@@ -101,6 +101,14 @@ Controllers can perform several actions:
 | **Delete List** | Clear the entire call list                    |
 | **Ignore CID**  | Add the selected caller ID to the ignore list |
 
+### Conference calls in the Call List
+
+A [conference call](../using-vacs/conference-calls.md) keeps a single entry in the Call List. Once a call has more than one other party, its name changes to **CONF**, and the number column lists the CIDs of the other controllers in the call, separated by commas.
+
+Since such an entry has no single number, **Call** and **Ignore CID** are not available for it. Select one of the controllers on another entry, or use the Dial Pad, to call them again.
+
+While you are on a call, **Call** only adds the selected entry to it while **CONF** is blinking. See [Conference calls](../using-vacs/conference-calls.md#adding-a-sector-to-a-running-call).
+
 ---
 
 ## Dial Pad
@@ -109,7 +117,7 @@ The **Dial Pad** alows manual dialing of telephone numbers (= VATSIM CID).
 
 <img
 src="/img/interface/telephone_dial_pad.png"
-alt="vacs Settings Page"
+alt="The Dial Pad"
 style={{
     width: "80%",
     display: "block",
@@ -134,6 +142,8 @@ Available functions include:
 | **←**         | Deletes the last entered digit         |
 | **Redial**    | Calls the previously dialed number     |
 
+**Redial** skips conference calls and calls the last number you dialed for a call with a single other controller.
+
 The other available buttons (**IA** and **ATS MFC**) are currently not simulated.
 
 ---
@@ -144,7 +154,7 @@ The **Ignore List** contains telephone numbers (= VATSIM CIDs) that should **not
 
 <img
 src="/img/interface/telephone_ignore.png"
-alt="vacs Settings Page"
+alt="The Ignore List"
 style={{
     width: "80%",
     display: "block",

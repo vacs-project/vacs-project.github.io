@@ -42,7 +42,7 @@ vacs is a **personal, non-commercial open-source project**. There is no legal en
 
 ## Applicable Law
 
-Austrian law applies. For privacy-related matters, see our [Privacy & Data Handling Policy](/legal/privacy-policy). For warranty and liability disclaimers, see the [Disclaimer & Terms of Use](/legal/disclaimer).
+Austrian law applies. For privacy-related matters, see our [Privacy & Data Handling Policy](./privacy-policy.md). For warranty and liability disclaimers, see the [Disclaimer & Terms of Use](./disclaimer.md).
 
 ## Dispute Resolution
 
