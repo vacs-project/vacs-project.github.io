@@ -41,6 +41,16 @@ A controller joining or leaving a running conference is announced with its own s
 
 ---
 
+### The vacs program is now called `vacs`
+
+The program file itself used to be called `vacs-client`. It is now `vacs` on every system, or `vacs.exe` on Windows. The update takes care of the switch, but shortcuts and scripts you set up yourself may still point at the old name:
+
+- **Windows** - The Start menu and desktop shortcuts move to the new file on their own. A vacs icon you pinned to the taskbar still points at the old file and no longer starts vacs: unpin it, start vacs from the Start menu and pin it again. Windows may also ask once more whether vacs may use the network. Allow it as before, otherwise calls may connect less reliably.
+- **Linux** (`.deb` and `.rpm`) - The `vacs-client` command keeps working, so your scripts and autostart entries still start vacs. New ones should use `vacs`.
+- **Linux** (AppImage) - Nothing to do. Your global shortcuts stay as they were. On KDE Plasma with Wayland, the window title bar shows the vacs icon only if you added the AppImage to your application menu with [Gear Lever](./getting-started/installation.md#appimage). Started directly from a file manager, or added with AppImageLauncher, it shows a generic Wayland icon instead.
+
+---
+
 ### Remote API changes
 
 The [Remote API](./advanced/remote-api.md) changed in ways that break existing remote clients:
@@ -71,6 +81,8 @@ Your client will prompt you with a **Mandatory update** dialog and will refuse t
 Because everybody has to update, every controller you can call runs v3.0.0 or later, which every participant of a conference needs.
 
 Your local settings and [Configuration](./advanced/configuration.md) will be preserved during the update and continue to work as before. The two new participant sounds start out enabled.
+
+On Linux with a Wayland desktop, a window size you set yourself is not carried over: vacs opens at its default size once after the update. Resize it again and vacs remembers the new size as before.
 
 ---
 
