@@ -185,7 +185,7 @@ The Radio PTT key (whether inherited from your call key or explicitly bound) mus
 ### Setting up TrackAudio
 Select **TrackAudio** in the Radio Integration dropdown and configure your Radio PTT key as described above. This key must **not** also be assigned as push-to-talk inside the TrackAudio client itself - vacs triggers the radio transmission directly, so a push-to-talk key configured in TrackAudio would trigger independently of vacs and conflict with it.
 
-Connection status to TrackAudio is shown by the color of the endpoint indicator dot next to the **Endpoint** field, and by the color of the **Radio** status button shown in the explanatory text: green (idle, ready to receive), blue (receiving or transmitting), red (error/not connected), or grey (radio not ready).
+Connection status to TrackAudio is shown by the color of the endpoint indicator dot next to the **Endpoint** field, and by the color of the **Radio** status button shown in the explanatory text: green (idle, ready to receive), blue (receiving or transmitting), red (error/not connected), or grey (radio not ready). The endpoint dot additionally turns yellow while vacs is connected to TrackAudio but TrackAudio is not connected to VATSIM voice; press **Connect** in TrackAudio to fix that.
 
 ### Setting up Audio for VATSIM
 Select **Audio for VATSIM** in the Radio Integration dropdown. This option is slightly more involved: assign a pseudo-push-to-talk[^pseudo] key in the Radio PTT field - choose a key you don't use frequently while controlling, e.g. `ScrollLock` - and then set that **same** key as your push-to-talk key inside the Audio for VATSIM standalone client.

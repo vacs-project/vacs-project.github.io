@@ -69,6 +69,7 @@ The input level meter is now shared between the desktop and remote clients, and 
 
 - **Input level meter in remote control sessions** - Opening the audio settings in a [remote control](./using-vacs/remote-control.md) session while the desktop showed them, or the other way round, reported an error, and closing them on one side stopped the meter on the other. The meter is now shared and only stops once no window shows it any more.
 - **Radio page not showing station changes** - A station added or removed in TrackAudio, or a change to a station's state such as RX or TX, did not appear on the [radio page](./interface/radio.md) until something else made the page redraw. The page now updates right away.
+- **Radio page empty while TrackAudio had no voice connection** - When TrackAudio was running but not connected to VATSIM voice, for example after you reconnected to the network, the [radio page](./interface/radio.md) showed an empty frequency list that looked connected. It now says "TrackAudio is not connected to VATSIM voice.", and the TrackAudio indicator in the [Transmit Config](./settings/transmit.md#setting-up-trackaudio) turns yellow.
 
 ---
 
