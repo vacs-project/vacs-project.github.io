@@ -28,14 +28,15 @@ style={{
 
 ## When TrackAudio is not connected
 
-You can open the Radio page even while vacs has no connection to TrackAudio. Instead of your radio stack, the page then shows one of two messages, with a **Retry** link below it:
+You can open the Radio page even while vacs has no connection to TrackAudio, or while TrackAudio itself is not connected to VATSIM voice. Instead of your radio stack, the page then shows one of these messages:
 
 | Message | Meaning |
 |---------|---------|
-| No TrackAudio radio connection. | vacs is not connected to TrackAudio, for example because TrackAudio is not running yet. |
-| TrackAudio radio connection failed. | The connection was lost, or several transmit attempts in a row got no response. This is the same state that turns the Radio button red, see [Troubleshooting](#the-radio-button-turned-red). |
+| No TrackAudio radio connection. | vacs is not connected to TrackAudio, for example because TrackAudio is not running yet. A **Retry** link is shown below it. |
+| TrackAudio radio connection failed. | The connection was lost, or several transmit attempts in a row got no response. This is the same state that turns the Radio button red, see [Troubleshooting](#the-radio-button-turned-red). A **Retry** link is shown below it. |
+| TrackAudio is not connected to VATSIM voice. | vacs is connected to TrackAudio, but TrackAudio has no voice connection, so it has no frequencies to show. This happens before you press **Connect** in TrackAudio, and can happen after you reconnect to the VATSIM network, because TrackAudio drops its voice connection when you disconnect. Press **Connect** in TrackAudio, and your frequencies appear here as soon as it is connected. |
 
-Click **Retry** to attempt the connection again. Start TrackAudio and connect it to the network first, otherwise the attempt fails again and the same message stays on the page.
+Click **Retry** to attempt the connection again. Start TrackAudio and connect it to the network first, otherwise the attempt fails again and the same message stays on the page. The voice message has no **Retry** link, because reconnecting vacs to TrackAudio does not connect TrackAudio to voice.
 
 <img
 src="/img/radio/radio_no_connection.png"
