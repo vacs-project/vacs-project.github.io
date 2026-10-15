@@ -144,22 +144,31 @@ style={{
   }}
 />
 
-Each ring has a field that reads **Built-in chime** or the name of the chosen file, with an **X** next to it, the same controls as a [hotkey](./hotkeys.md).
+Each ring has a field that reads **Built-in chime** or the name of the chosen file, followed by a **loop** button and an **X**.
 
 - Click the field to open a file dialog and pick a `.wav` file. vacs plays it once so you can check it.
 - Click the **X** to go back to the built-in chime for that ring. It plays once as confirmation.
+- Click the **loop** button (two circling arrows) to repeat your custom sound until you pick up. It turns blue while it is on. Click it again to play the sound only once.
 - Hover the field to see the full path.
 
 The **Priority ring** field is only available while **Enable priority calls** is on, since a priority call is the only thing that plays it.
 
 The file has to be a **WAV** file between **0.1 and 30 seconds** long. Other formats such as MP3 are not supported. Mono or stereo, and any common sample rate, are fine: vacs converts the file to what your output device needs. If a file cannot be used, vacs tells you why and keeps the previous sound.
 
-The sound plays once per incoming call, through the [speaker device](./audio.mdx#audio-device-configuration) when one is configured and otherwise through your headset, and it stops as soon as you pick up. vacs levels every custom file to the loudness of the built-in chime, so the [Chime Volume](./audio.mdx#chime-volume) slider means the same thing whichever sound is set, and releasing that slider plays the current ring sound as well.
+Unless the loop button is on, the sound plays once per incoming call, through the [speaker device](./audio.mdx#audio-device-configuration) when one is configured and otherwise through your headset, and it stops as soon as you pick up. vacs levels every custom file to the loudness of the built-in chime, so the [Chime Volume](./audio.mdx#chime-volume) slider means the same thing whichever sound is set, and releasing that slider plays the current ring sound as well.
+
+:::tip[Looping a ring sound]
+Available from **vacs 3.0.0**.
+
+A looping ring sound starts again **3 seconds** after it finished, until no incoming call is ringing any more, for example because you picked up the last one or the caller hung up. Only custom sounds can loop: the button is greyed out while a ring uses the built-in chime or its file cannot be loaded. vacs remembers the loop setting when you clear or replace the file.
+
+To change the pause, set `ring_sound_loop_pause_seconds` in the `[audio]` section of `audio.toml`, for example `ring_sound_loop_pause_seconds = 1.5`, and restart vacs. **Open Config** in the [Miscellaneous settings](./misc.md#open-config) opens the folder. `0` repeats the sound without a pause.
+:::
 
 :::note[Keep the file in place]
 vacs remembers the path of the file, not its contents. If you move or delete the file, vacs plays the built-in chime from the next start on, and the Call Config page shows the file name in red until you pick a file again or press the **X**.
 :::
 
 :::info[Remote control]
-Choosing a file is only possible in the desktop client, because the file dialog opens there. A [remote control](../using-vacs/remote-control.md) session shows the current sounds and can reset them to the built-in chime.
+Choosing a file is only possible in the desktop client, because the file dialog opens there. A [remote control](../using-vacs/remote-control.md) session shows the current sounds, can turn looping on or off, and can reset them to the built-in chime.
 :::
