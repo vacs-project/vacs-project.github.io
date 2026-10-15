@@ -276,6 +276,7 @@ Some commands are marked as **desktop only**[^desktop-only] and are unavailable 
 | `audio_get_ring_sounds`         | -                                                               | [`RingSounds`](#ringsounds)     | Get the custom ring sound files, if any.                                           |
 | `audio_pick_ring_sound` [^desktop-only] | -                                                       | `string` \| `null`              | Open a native file dialog and return the chosen WAV path without applying it.     |
 | `audio_set_ring_sound`          | `ringType`: [`RingSoundType`](#ringsoundtype), `path`: string?  | [`RingSounds`](#ringsounds)     | Use the WAV file at `path` for that ring, or the built-in chime when `path` is `null`. Plays it once. |
+| `audio_set_ring_sound_loop`     | `ringType`: [`RingSoundType`](#ringsoundtype), `enabled`: boolean | [`RingSounds`](#ringsounds)   | Repeat that ring's custom sound until no incoming call is ringing, or play it once. Stored even while the ring uses the built-in chime, which never loops. |
 | `audio_play_ui_click`           | -                                                               | `null`                          | Play the UI click sound.                                                           |
 | `audio_start_input_level_meter` | -                                                               | `{ userAdded: boolean }`        | Start input level monitoring, or join it if another frontend already runs it. Subscribe to `audio:input-level` to receive updates. `userAdded` says whether this call counts as a use that must be released. |
 | `audio_stop_input_level_meter`  | -                                                               | `null`                          | Release this client's use of the meter. It only stops once no frontend uses it any more. |
@@ -761,12 +762,12 @@ Used as the `deviceType` argument for `audio_get_devices` and `audio_set_device`
 
 ### RingSounds
 
-Returned by `audio_get_ring_sounds` and `audio_set_ring_sound`. A field is absent when that ring uses the built-in chime.
+Returned by `audio_get_ring_sounds`, `audio_set_ring_sound` and `audio_set_ring_sound_loop`. A field is absent when that ring uses the built-in chime.
 
 ```json
 {
-  "ring": {"path": "C:\\Users\\me\\Sounds\\ring.wav", "available": true},
-  "priorityRing": {"path": "C:\\Users\\me\\Sounds\\urgent.wav", "available": false}
+  "ring": {"path": "C:\\Users\\me\\Sounds\\ring.wav", "available": true, "loop": true},
+  "priorityRing": {"path": "C:\\Users\\me\\Sounds\\urgent.wav", "available": false, "loop": false}
 }
 ```
 
@@ -781,12 +782,13 @@ Returned by `audio_get_ring_sounds` and `audio_set_ring_sound`. A field is absen
 | ----------- | --------- | ---------------------------------------------------------------------------------------------------- |
 | `path`      | `string`  | Absolute path of the WAV file on the desktop machine.                                                |
 | `available` | `boolean` | `false` when the file could not be loaded at startup, in which case the built-in chime plays instead. |
+| `loop`      | `boolean` | Whether the sound repeats until no incoming call is ringing. Has no effect while `available` is `false`. |
 
 `audio_set_ring_sound` fails, and keeps the previous sound, if the file is not readable as WAV, is shorter than 100 milliseconds, longer than 30 seconds, or silent. The path must be readable by the desktop client, not by the remote browser.
 
 #### RingSoundType
 
-Used as the `ringType` argument for `audio_set_ring_sound`:
+Used as the `ringType` argument for `audio_set_ring_sound` and `audio_set_ring_sound_loop`:
 
 ```
 "ring" | "priorityRing"

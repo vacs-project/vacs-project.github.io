@@ -49,6 +49,12 @@ If you are leading a conference, accepting an incoming call this way ends the co
 
 ---
 
+### Looping ring sounds
+
+A custom ring sound can now repeat until you pick up. Off by default, turn it on with the loop button next to the sound in the [Call Settings](./settings/call.md#ring-sounds).
+
+---
+
 ### The vacs program is now called `vacs`
 
 The program file itself used to be called `vacs-client`. It is now `vacs` on every system, or `vacs.exe` on Windows. The update takes care of the switch, but shortcuts and scripts you set up yourself may still point at the old name:
@@ -69,7 +75,7 @@ The [Remote API](./advanced/remote-api.md) changed in ways that break existing r
 - The session state snapshot no longer contains `incomingCalls` and `outgoingCall`. Call state arrives with the store sync that follows it.
 - `signaling:call-reject` carries a `CallReject` object with the `callId` and the rejecting `targets` instead of a bare call ID, and `signaling_end_call` leaves a conference rather than ending it, unless you are its leader.
 
-The input level meter is now shared between the desktop and remote clients, and `CallConfig` has three new fields: two for the participant sounds and `endActiveCallOnAccept`. See the [Remote API](./advanced/remote-api.md) reference for the details.
+The input level meter is now shared between the desktop and remote clients, and `CallConfig` has three new fields: two for the participant sounds and `endActiveCallOnAccept`. The new `audio_set_ring_sound_loop` command turns looping of a custom ring sound on or off. See the [Remote API](./advanced/remote-api.md) reference for the details.
 
 ---
 
