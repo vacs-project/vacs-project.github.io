@@ -278,7 +278,7 @@ In the simplest terms, initiating a call in vacs (without choosing a call source
 
 - Click the Station you intend to call.
 - This corresponding button will be displayed in green with a grey border, until the recipient of the call has picked up. The button will then turn green without a grey border.
-- The recipient sees your call source as the caller. If your FIR's dataset defines one for your position, vacs selects it automatically when you connect (see [Automatic default call source](../settings/call.md#automatic-default-call-source)). Without any call source, a generic identifier of your position is displayed on the recipient's end instead, here LOWW APP.
+- The recipient sees your call source as the caller. If your FIR's dataset defines one for your position, vacs selects it automatically when you connect (see [Use default call sources](../settings/call.md#use-default-call-sources)). Without any call source, a generic identifier of your position is displayed on the recipient's end instead, here LOWW APP.
 
 <img
 src="/img/interface/tabbed_outgoing_call.png"

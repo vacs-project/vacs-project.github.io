@@ -370,7 +370,7 @@ All `radio_*` commands except `radio_get_config`, `radio_set_config` and `radio_
 | `signaling_terminate`             | -                                                                                                | `null`     | Terminate the signaling session.                                                                                                                     |
 | `signaling_invite_to_call`        | `targets`: [`CallTarget[]`](#calltarget), `source`: [`CallSource`](#callsource), `prio`: boolean | `string`   | Invite one or more targets. With no call in progress this starts one; with a call in progress it adds the targets to it. Returns the call ID (UUID). |
 | `signaling_drop_target`           | `callId`: string, `target`: [`CallTarget`](#calltarget)                                          | `null`     | Cancel a ringing invitation this client sent, or remove a joined participant from a conference.                                                      |
-| `signaling_accept_call`           | `callId`: string                                                                                 | `null`     | Accept an incoming call.                                                                                                                             |
+| `signaling_accept_call`           | `callId`: string                                                                                 | `null`     | Accept a ringing call; no-op once it stopped ringing. While in a call it fails, unless `endActiveCallOnAccept` lets it end that call first.          |
 | `signaling_end_call`              | `callId`: string                                                                                 | `null`     | End an active or pending call. Leaves the call; if this client leads the conference, it ends for everyone.                                           |
 | `signaling_get_ignored_clients`   | -                                                                                                | `string[]` | Get the ignore list. Returns an array of CIDs.                                                                                                       |
 | `signaling_add_ignored_client`    | `clientId`: string                                                                               | `boolean`  | Add a CID to the ignore list. Returns whether the CID was newly added.                                                                               |
@@ -529,7 +529,8 @@ Returned by [`remote_get_session_state`](#remote). Provides a complete snapshot 
     "enableParticipantJoinedSound": true,
     "enableParticipantLeftSound": true,
     "useDefaultCallSources": true,
-    "forceRelay": false
+    "forceRelay": false,
+    "endActiveCallOnAccept": true
   },
   "clientPageSettings": {
     "selected": null,
@@ -621,7 +622,8 @@ Returned by `app_get_call_config`. Accepted by `app_set_call_config`.
   "enableParticipantJoinedSound": true,
   "enableParticipantLeftSound": true,
   "useDefaultCallSources": true,
-  "forceRelay": false
+  "forceRelay": false,
+  "endActiveCallOnAccept": true
 }
 ```
 
@@ -635,6 +637,7 @@ Returned by `app_get_call_config`. Accepted by `app_set_call_config`.
 | `enableParticipantLeftSound`   | `boolean` | Play a sound when a participant leaves a call that carries on without them.                                      |
 | `useDefaultCallSources`        | `boolean` | Place calls from the position's default source station instead of asking each time.                              |
 | `forceRelay`                   | `boolean` | Always route call audio through a relay server instead of trying a direct connection first. Defaults to `false`. |
+| `endActiveCallOnAccept`        | `boolean` | Let `signaling_accept_call` end the active call, unless it is an unanswered outgoing call. Defaults to `true`.   |
 
 Switching one of the four sound settings from `false` to `true` through `app_set_call_config` plays that sound once on the desktop as a preview. If one call switches on several of them, only the first in the order of the table plays.
 

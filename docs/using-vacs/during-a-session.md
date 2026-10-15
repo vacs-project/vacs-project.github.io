@@ -28,7 +28,7 @@ style={{
   }}
 />
 
-In the screenshot above, **APP VB-EC** is the fixed call source (dark orange), which vacs selected automatically when connecting because the dataset defines it for the position (see [Automatic default call source](../settings/call.md#automatic-default-call-source)). **APP VN-EC** has been selected as temporary call source (light orange) with a single click.
+In the screenshot above, **APP VB-EC** is the fixed call source (dark orange), which vacs selected automatically when connecting because the dataset defines it for the position (see [Use default call sources](../settings/call.md#use-default-call-sources)). **APP VN-EC** has been selected as temporary call source (light orange) with a single click.
 
 Setting a call source ensures that other controllers immediately recognize **which sector is calling them**.
 

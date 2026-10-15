@@ -19,7 +19,7 @@ You can verify that the call is established in two ways:
   (see [Top Status Bar](./interface/overview.md#top-status-bar)).
 
 - An **audible call start sound**, if enabled  
-  (see [Play Call Start Sound](./settings/call.md#play-call-start-sound)).
+  (see [Call start](./settings/call.md#call-start)).
 
 Until the connection is fully established, audio may not be transmitted. 
 
