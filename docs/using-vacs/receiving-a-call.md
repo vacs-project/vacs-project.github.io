@@ -73,7 +73,7 @@ style={{
   }}
 />
 
-You can decide which call to accept first.
+You can decide which call to accept. Once you are in it, the others keep ringing, see [When you are already in a call](#when-you-are-already-in-a-call).
 
 ---
 
@@ -128,6 +128,18 @@ style={{
     boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
   }}
 />
+
+### When you are already in a call
+
+You are only ever in one call at a time. If another call rings while you are in one, clicking it ends the call you are in and accepts the new one in one step.
+
+:::warning[Leading a conference]
+This also applies while you are in a [conference](./conference-calls.md): accepting a ringing call takes you out of it. If you are the conference leader, the conference ends for everyone in it.
+:::
+
+If you prefer to finish each call yourself, turn off [End active call on accept](../settings/call.md#end-active-call-on-accept) in the Call Settings. A ringing call then cannot be accepted while you are in a call: it keeps ringing, and clicking it does nothing. Press **END** to finish your current call, then pick up the new one.
+
+A call you placed yourself that has not been answered yet always has to be ended with **END** before you can accept a ringing call, whether the setting is on or not.
 
 ---
 

@@ -60,6 +60,8 @@ style={{
 
 This action accepts the first incoming call in the queue. If there are no incoming calls, or you are already on a call, pressing this keybind has no effect.
 
+This holds even though [End active call on accept](./call.md#end-active-call-on-accept) is on by default: that setting only applies to clicking an incoming call, never to this hotkey.
+
 ### End active call
 
 This action ends the currently active call. If there is no active call, pressing this keybind has no effect.

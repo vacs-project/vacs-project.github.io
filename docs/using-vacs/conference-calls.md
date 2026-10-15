@@ -156,4 +156,4 @@ You do not have to do anything while this runs. If a participant disappears from
 
 Nothing about answering changes: press the flashing answer key. See [Receiving a call](./receiving-a-call.md#being-invited-into-a-conference) for what an incoming conference invitation looks like.
 
-As with any call, you cannot accept a second call while one is running. Incoming calls keep ringing, but you have to leave the conference first.
+As with any call, you are only ever in one call at a time. Incoming calls keep ringing while you are in the conference, and clicking one takes you out of the conference and accepts the new call in one step. If you are the conference leader, leaving ends the conference for everyone. To stay in the conference until you leave it with **END**, turn off [End active call on accept](../settings/call.md#end-active-call-on-accept).
