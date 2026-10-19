@@ -37,7 +37,15 @@ An incoming call that is already a conference shows **CONF** on its answer key i
 
 ### Sounds for joining and leaving
 
-A controller joining or leaving a running conference is announced with its own short sound, so the call start and call end sounds keep meaning that your call started or ended. Both sounds are on by default and can be turned off separately in the [Call Settings](./settings/call.md#play-participant-joined-sound). Turning one on plays it once so you know what to listen for.
+A controller joining or leaving a running conference is announced with its own short sound, so the call start and call end sounds keep meaning that your call started or ended. Both sounds are on by default and can be turned off separately in the [Call Settings](./settings/call.md#participant-joined). Turning one on plays it once so you know what to listen for.
+
+---
+
+### Switching calls with one click
+
+While you are in a call, clicking an incoming call now ends your current call and accepts the incoming one in one step. This is enabled by default, but can be turned off with **End active call on accept** in the [Call Settings](./settings/call.md#end-active-call-on-accept).
+
+If you are leading a conference, accepting an incoming call this way ends the conference for everyone in it. The **Accept first call** hotkey is not affected.
 
 ---
 
@@ -61,7 +69,7 @@ The [Remote API](./advanced/remote-api.md) changed in ways that break existing r
 - The session state snapshot no longer contains `incomingCalls` and `outgoingCall`. Call state arrives with the store sync that follows it.
 - `signaling:call-reject` carries a `CallReject` object with the `callId` and the rejecting `targets` instead of a bare call ID, and `signaling_end_call` leaves a conference rather than ending it, unless you are its leader.
 
-The input level meter is now shared between the desktop and remote clients, and `CallConfig` has two new fields for the participant sounds. See the [Remote API](./advanced/remote-api.md) reference for the details.
+The input level meter is now shared between the desktop and remote clients, and `CallConfig` has three new fields: two for the participant sounds and `endActiveCallOnAccept`. See the [Remote API](./advanced/remote-api.md) reference for the details.
 
 ---
 

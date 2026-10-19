@@ -24,12 +24,12 @@ style={{
   }}
 />
 
-The Call Config page will display the available options, which can be enabled or disabled by the checkbox next to the options. All of them are enabled by default, except **Always relay calls**. Below the checkboxes, the **Ring sounds** section lets you replace the built-in chimes with your own sound files.
+The Call Config page lists its options in two columns, each switched on or off by the checkbox next to it. **General** on the left covers how calls behave, **Sounds** on the right the notification sounds of a call. All of them are enabled by default, except **Always relay calls**. Below both columns, the **Ring sounds** section lets you replace the built-in chimes with your own sound files.
 
 ---
 
-## Available Settings
-The following settings are available:
+## General
+The left column of the page holds these settings:
 
 ### Highlight incoming target
 When enabled, the target of an incoming call will be visually highlighted (light green).
@@ -39,47 +39,7 @@ When enabled, priority calls are accepted.
 
 Priority calls can be distinguished from normal calls by a yellow border visible in the call-sequence, as well as a special sound.  They can be initiated by clicking the **PRIO** button before commencing a call.
 
-### Play call start sound
-When enabled, a notification sound is played when a call is successfully initiaed. This provide audible confirmation that the call has been successfully established.
-
-:::info[Call Establishment Delay]
-When initiating or receiving a call, there is a short delay of approximately **50-200 milliseconds** before the call is fully established.
-
-This delay is visually indicated by the **orange circle** in the top-left corner, which turns **green** once the connection is active.
-
-If **Play Call Start Sound** is enabled, this state change is also confirmed audibly.
-:::
-
-### Play call end sound
-When enabled, a notification sound is played when a call ends. This confirms that the call has been terminated.
-
-### Play participant joined sound
-Available from **vacs 3.0.0**.
-
-When enabled, a short sound is played when another controller joins a call you are already on. This only applies to [conference calls](../using-vacs/conference-calls.md): the first controller joining a call is its start, and is announced by the call start sound instead. The same goes for you joining a conference that is already running: you hear the call start sound once, not a joined sound for everyone who was already in it.
-
-Turning the setting on plays the sound once, so you know what to listen for.
-
-<img
-  src="/img/settings/CallConfigPage.png"
-  alt="The Call Config page with the two participant sounds marked"
-  className="screenshot"
-  style={{ width: "45%" }}
-/>
-
-The two conference sounds are marked in the screenshot above:
-
-1. **Play participant joined sound**
-2. **Play participant left sound**
-
-### Play participant left sound
-Available from **vacs 3.0.0**.
-
-When enabled, a short sound is played when a controller leaves a call that carries on without them. When the last other controller leaves, the call is over and the call end sound is played instead.
-
-Turning the setting on plays the sound once, so you know what to listen for.
-
-### Automatic default call source
+### Use default call sources
 When enabled, vacs automatically sets your default call source based on the position you are logged in with. The first matching station defined in the dataset by your vACC and currently controlled by you is selected. You can still override this manually at any time.
 
 If disabled, no default call source is set automatically and you will need to select one yourself.
@@ -101,6 +61,70 @@ Relaying adds a detour through our server, so calls connect and carry audio slig
 
 The relay servers are run by the vacs core maintainers, and relayed audio is not recorded or stored. See [About the relay servers](../troubleshooting/audio.md#about-the-relay-servers), our [Privacy Policy](../legal/privacy-policy.md#34-audio-data) and our [Terms of Use](../legal/disclaimer.md).
 
+### End active call on accept
+Available from **vacs 3.0.0**.
+
+When enabled, clicking a ringing call while you are in a call ends the call you are in and accepts the new one in one step. You are only ever in one call at a time. This setting is **enabled** by default.
+
+If you prefer to finish each call yourself, turn the setting off. A ringing call then cannot be accepted while you are in a call, and clicking it does nothing: end your current call with **END** first, then pick up. See [Receiving a call](../using-vacs/receiving-a-call.md#when-you-are-already-in-a-call).
+
+The setting applies wherever you click an incoming call: the flashing key of the caller, or its answer key in the call queue on the right. Even with the setting on, a few things keep you from picking up:
+
+- **A call you placed is still ringing.** As long as the other controller has not answered, a ringing incoming call cannot be accepted. End your outgoing call with **END** first.
+- **A rejected or failed call is still shown in the call display.** Clear it first by clicking it, as without this setting.
+- **The [Accept first call](./hotkeys.md#accept-first-call) hotkey** is not affected. It still does nothing while you are in a call.
+
+:::warning[Conference calls]
+If the call you are in is a [conference](../using-vacs/conference-calls.md), accepting a new call takes you out of the conference, exactly like pressing **END**. If you are the **conference leader**, that ends the conference for everyone in it.
+
+Because this setting is on by default, a single click on a ringing call can end a conference for all its participants. Keep that in mind while you lead one, or turn the setting off if you would rather end calls only with **END**.
+:::
+
+---
+
+## Sounds
+The right column of the page turns the notification sounds of a call on or off:
+
+### Call start
+When enabled, a notification sound is played when a call is successfully initiated. This provides audible confirmation that the call has been successfully established.
+
+:::info[Call Establishment Delay]
+When initiating or receiving a call, there is a short delay of approximately **50-200 milliseconds** before the call is fully established.
+
+This delay is visually indicated by the **orange circle** in the top-left corner, which turns **green** once the connection is active.
+
+If **Call start** is enabled, this state change is also confirmed audibly.
+:::
+
+### Call end
+When enabled, a notification sound is played when a call ends. This confirms that the call has been terminated.
+
+### Participant joined
+Available from **vacs 3.0.0**.
+
+When enabled, a short sound is played when another controller joins a call you are already on. This only applies to [conference calls](../using-vacs/conference-calls.md): the first controller joining a call is its start, and is announced by the call start sound instead. The same goes for you joining a conference that is already running: you hear the call start sound once, not a joined sound for everyone who was already in it.
+
+Turning the setting on plays the sound once, so you know what to listen for.
+
+<img
+  src="/img/settings/CallConfigPage.png"
+  alt="The Call Config page with the Participant joined and Participant left sounds marked"
+  className="screenshot"
+  style={{ width: "75%" }}
+/>
+
+The two conference sounds are marked in the screenshot above:
+
+1. **Participant joined**
+2. **Participant left**
+
+### Participant left
+Available from **vacs 3.0.0**.
+
+When enabled, a short sound is played when a controller leaves a call that carries on without them. When the last other controller leaves, the call is over and the call end sound is played instead.
+
+Turning the setting on plays the sound once, so you know what to listen for.
+
 ---
 
 ## Ring sounds
@@ -112,7 +136,7 @@ By default, an incoming call plays a short built-in chime, and a [priority call]
 src="/img/settings/CallConfigRingSounds.png"
 alt="The Ring sounds section of the Call Config with a custom ring sound selected"
 style={{
-    width: "45%",
+    width: "75%",
     display: "block",
     margin: "1.5rem auto",
     borderRadius: "8px",
