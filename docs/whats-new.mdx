@@ -85,6 +85,7 @@ The input level meter is now shared between the desktop and remote clients, and 
 - **Radio page not showing station changes** - A station added or removed in TrackAudio, or a change to a station's state such as RX or TX, did not appear on the [radio page](./interface/radio.md) until something else made the page redraw. The page now updates right away.
 - **Radio page empty while TrackAudio had no voice connection** - When TrackAudio was running but not connected to VATSIM voice, for example after you reconnected to the network, the [radio page](./interface/radio.md) showed an empty frequency list that looked connected. It now says "TrackAudio is not connected to VATSIM voice.", and the TrackAudio indicator in the [Transmit Config](./settings/transmit.md#setting-up-trackaudio) turns yellow.
 - **Split view handle shown over other pages** - In a [split view](./interface/overview.md#split-and-cycle-views), the faint handle for resizing the two halves showed through pages opened on top of them, such as Playback. Those pages now cover it.
+- **Not hearing another controller in a call** - If your microphone took a moment to open when a call connected, for example with a virtual audio device, you could sometimes not hear the other controller, or one participant of a conference, for the whole call while they heard you fine. vacs now picks up their audio however long your microphone takes to open.
 
 ---
 
