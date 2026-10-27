@@ -6,7 +6,7 @@ title: Privacy & Data Handling Policy
 # Privacy & Data Handling Policy
 
 **Effective date:** March 15, 2026  
-**Last updated:** May 29, 2026
+**Last updated:** October 27, 2026
 
 ## 1. Introduction and Scope
 
@@ -62,7 +62,7 @@ We follow the principle of **data minimisation** (Article 5(1)(c) GDPR). We only
 When you log in to vacs, you authenticate via **VATSIM Connect** (OAuth 2.0). Through this process, we receive your **VATSIM Certificate Identification ("CID")** - a numeric identifier assigned to you by VATSIM.
 
 - **Purpose:** Your CID is required for call routing, session management, and to identify you to other controllers on the network. It is the sole user identifier within vacs.
-- **How it is processed:** Your CID is held in server memory for the duration of your session and is included in server log files. It is not written to any persistent database.
+- **How it is processed:** Your CID is held in server memory for the duration of your session. It also appears in server log files, together with connection and call events (see [Section 3.5](#35-server-logs)). It is not written to any persistent database.
 - **What we do NOT receive:** We do **not** request or receive your VATSIM password. The OAuth 2.0 flow ensures your credentials are exchanged only with VATSIM's authorization server. The temporary OAuth access token we receive is used exactly once to retrieve your CID, and is then **immediately discarded** - it is not stored, cached, or logged.
 
 ### 3.2 Session Data
@@ -77,12 +77,12 @@ When you authenticate, a server-side session is created and stored in **Redis** 
 
 Your **IP address** is processed in the following contexts:
 
-| Context               | Purpose                                           | Retention                                  |
-| --------------------- | ------------------------------------------------- | ------------------------------------------ |
-| Server access logs    | Service operation, debugging, abuse prevention    | 14 days                                    |
-| WebSocket connections | Maintaining your real-time connection             | In-memory only (duration of connection)    |
-| coturn TURN relay     | NAT traversal for WebRTC audio calls              | In-memory only (duration of relay session) |
-| WebRTC peer-to-peer   | Direct audio connection between call participants | Not stored (transient, in-flight only)     |
+| Context               | Purpose                                           | Retention                                    |
+| --------------------- | ------------------------------------------------- | -------------------------------------------- |
+| Server logs           | Service operation, debugging, abuse prevention    | 14 days, IP shortened (see [3.5](#35-server-logs)) |
+| WebSocket connections | Maintaining your real-time connection             | In-memory only (duration of connection)      |
+| coturn TURN relay     | NAT traversal for WebRTC audio calls              | In-memory only (duration of relay session)   |
+| WebRTC peer-to-peer   | Direct audio connection between call participants | Not stored (transient, in-flight only)       |
 
 :::warning[Important: IP Visibility in Peer-to-Peer Calls]
 Due to the nature of **WebRTC** peer-to-peer technology, your IP address may be visible to the other participant(s) in a call. This is an inherent property of direct peer-to-peer communication and cannot be prevented by vacs. When a TURN relay is used (as a fallback when all other direct connection attempts fail), audio traffic is relayed through our TURN server, which may reduce direct IP exposure between peers. The TURN server is operated by the vacs core maintainers on Hetzner infrastructure we control - your IP address is not exposed to any third party as a result of TURN relay usage.
@@ -96,6 +96,19 @@ If you prefer to use different STUN/TURN servers, you may configure custom ones 
 
 When a direct peer-to-peer connection cannot be established, audio traffic may be **relayed through a TURN server** operated by the vacs core maintainers (a self-hosted [coturn](https://github.com/coturn/coturn) instance running on Hetzner infrastructure). In this case, the audio data passes through the TURN server encrypted in transit but is not recorded or stored.
 
+### 3.5 Server Logs
+
+The Server logs operational events so we can investigate problems you report to us, keep the service secure, and prevent abuse. Each log entry contains a timestamp and, where relevant:
+
+- your CID, the station position you were matched to, and the version and protocol version of your vacs client
+- **connection events:** when you connected and disconnected, whether your login succeeded or why it was rejected, and the reason for a disconnect
+- **call events:** a random call identifier, the CIDs of the controllers involved (the caller, everyone the call rang, and everyone who joined), and when a call was placed, accepted, rejected, joined, left or ended, with the reason and the call duration
+- **messages between your Client and the Server:** their type, size and timing, but not their content beyond the identifiers listed here
+- **requests to the Server:** the method, path, result and duration of each request, and your CID if you are logged in, but not the request's content or query string, apart from the client version and release channel of an update check
+- a **shortened form of your IP address**, once per connection and once per HTTP request. Only the network part is kept: the first three blocks of an IPv4 address (for example `203.0.113.x`) or the first three groups of an IPv6 address.
+
+Log entries never contain audio, your full IP address, the connection details exchanged between call participants, authentication tokens, or passwords. Server logs are kept for **14 days** and are accessible only to the [core maintainers](https://github.com/vacs-project/vacs#core-maintainers).
+
 ---
 
 ## 4. Legal Bases for Processing
@@ -107,7 +120,7 @@ Under Article 6(1) GDPR, every processing activity requires a legal basis. The f
 | VATSIM CID (authentication and session) | **Contract performance** (Art. 6(1)(b)) | Processing your CID is necessary to provide the service you have requested by logging in and accepting the [Terms of Use](./disclaimer.md). Your CID is the sole identifier used for authentication, call routing, and session management. |
 | Session data (Redis)                    | **Contract performance** (Art. 6(1)(b)) | Technically necessary to maintain your authenticated session. Without session data, the service cannot function.                                                                                                                             |
 | Session cookie                          | **Contract performance** (Art. 6(1)(b)) | Strictly necessary for session management. Exempt from consent requirements under the ePrivacy Directive (see [Section 9](#9-cookies)).                                                                                                      |
-| IP addresses in server logs             | **Legitimate interest** (Art. 6(1)(f))  | Necessary for server security, abuse prevention, and debugging. Our interest in maintaining a secure and operational service outweighs the minimal intrusion, especially given the 14-day retention limit.                                   |
+| Server logs (CID, shortened IP address, connection and call events) | **Legitimate interest** (Art. 6(1)(f))  | Necessary for debugging problems you report, server security, and abuse prevention. Our interest in maintaining a secure and operational service outweighs the minimal intrusion, given that IP addresses are shortened, log entries contain no audio or message content, and the 14-day retention limit. |
 | IP visibility via WebRTC                | **Contract performance** (Art. 6(1)(b)) | Inherent to the peer-to-peer technology that enables low-latency voice communication, which is the core purpose of the service.                                                                                                              |
 | Self-hosted TURN relay                  | **Contract performance** (Art. 6(1)(b)) | Provides fallback connectivity when direct peer-to-peer connections are not possible. The TURN server is operated by the vacs core maintainers on infrastructure we control; no data is shared with any third party as a result of TURN relay usage.       |
 
@@ -117,7 +130,7 @@ Where we rely on legitimate interest, we have conducted a balancing assessment a
 
 - **Our interest:** Providing a functional, secure, and reliable voice communication service to the VATSIM controller community.
 - **Your rights and freedoms:** We process only minimal, mostly technical data. We do not build user profiles, serve advertisements, or share data with third parties for commercial purposes.
-- **Safeguards:** Short retention periods (14 days for logs, 7 days for sessions), no persistent user database, data minimisation by design, and full transparency through open-source code.
+- **Safeguards:** Short retention periods (14 days for logs, 7 days for sessions), shortened IP addresses in logs, no persistent user database, data minimisation by design, and full transparency through open-source code.
 
 We believe our legitimate interests do not override your fundamental rights and freedoms, given the minimal nature of the data processed and the safeguards in place.
 
@@ -129,7 +142,7 @@ We adhere to the principle of **storage limitation** (Article 5(1)(e) GDPR). Per
 
 | Data Category                                       | Retention Period                                     |
 | --------------------------------------------------- | ---------------------------------------------------- |
-| Server log files (containing CIDs and IP addresses) | **14 days**, then automatically purged               |
+| Server log files (CIDs, shortened IP addresses, connection and call events) | **14 days**, then automatically purged |
 | Redis session data                                  | **7 days** of inactivity, then automatically expired |
 | Audio data (WebRTC peer-to-peer and TURN relay)     | Not stored at all; transient in-flight only          |
 
@@ -147,7 +160,7 @@ You have the right to obtain confirmation as to whether we are processing your p
 
 Given the minimal data we process, a response to an access request will typically confirm:
 
-- Whether your CID appears in our current log files (retained for 14 days)
+- Whether your CID appears in our current log files (retained for 14 days), and which connection and call events those entries record
 - Whether you have an active session
 
 ### 6.2 Right to Rectification (Article 16)
@@ -175,7 +188,7 @@ You have the right to receive your personal data in a structured, commonly used,
 
 You have the right to object to the processing of your personal data where we rely on legitimate interest as the legal basis. Upon receiving an objection, we will cease processing unless we can demonstrate compelling legitimate grounds that override your interests, rights, and freedoms.
 
-If you object to the processing of your IP address in log files, we will anonymize or delete relevant log entries within a reasonable timeframe.
+If you object to the processing of your IP address in log files, we will delete the relevant log entries within a reasonable timeframe.
 
 ### 6.7 Right Not to Be Subject to Automated Decision-Making (Article 22)
 

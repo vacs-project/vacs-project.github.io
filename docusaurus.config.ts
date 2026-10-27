@@ -36,15 +36,10 @@ const config: Config = {
                     routeBasePath: "/",
                     editUrl:
                         "https://github.com/vacs-project/vacs-project.github.io/tree/main/",
-                    lastVersion: "2.8",
+                    lastVersion: "current",
                     versions: {
                         current: {
-                            label: "3.0 (pre-release)",
-                            path: "next",
-                            banner: "unreleased",
-                        },
-                        "2.8": {
-                            label: "2.8",
+                            label: "Latest",
                         },
                     },
                 },
