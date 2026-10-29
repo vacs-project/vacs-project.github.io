@@ -5,6 +5,18 @@ sidebar_label: What's New
 
 # What's New
 
+## v3.0.1
+
+[v3.0.1](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v3.0.1) is a patch release that fixes the update to v3.0.0 ignoring the folder you installed vacs into on Windows.
+
+A complete list of changes is available in the [v3.0.1 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v3.0.1) on our [GitHub repository](https://github.com/vacs-project/vacs).
+
+### Bug fixes
+
+- **Update installed a second copy on Windows** - If you had installed vacs into a folder of your own, the update to v3.0.0 installed it into `C:\Program Files\vacs` instead and left the old version behind. Your shortcuts then kept starting the old version, which offered the update again. v3.0.1 installs into your folder again, removes the extra copy and points your Start menu entry, desktop shortcut and taskbar pin at it. If you reinstalled v3.0.0 to work around the problem, v3.0.1 stays in the folder you reinstalled into.
+
+---
+
 ## v3.0.0
 
 [v3.0.0](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v3.0.0) is a major release that brings conference calls: a running call can now grow to up to eight controllers with the new **CONF** button. It is a **mandatory update**, because conferences changed how vacs talks to our server. Every controller has to update before they can connect again, see [Migrating from v2.x to v3.0.0](#migrating-from-v2x-to-v300).
