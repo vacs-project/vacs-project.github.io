@@ -12,16 +12,14 @@ Before installing vacs, verify that your system meets the requirements described
 
 Follow the steps below to download and install the latest version.
 
----
-
 ## Windows
 
 ### Downloading vacs
 
 To install vacs on Windows, follow the instructions below:
 
-- Visit the [GitHub Releases page](https://github.com/MorpheusXAUT/vacs/releases) of vacs.
-- To download the latest stable version of vacs, find the release marked [**Latest**](https://github.com/MorpheusXAUT/vacs/releases/latest).
+- Visit the [GitHub Releases page](https://github.com/vacs-project/vacs/releases) of vacs.
+- To download the latest stable version of vacs, find the release marked [**Latest**](https://github.com/vacs-project/vacs/releases/latest).
 - If not already done, expand the **Assets** Tab.
 - Download the correct installer for your system. For **Windows**, this file has the ending `_x64-setup.exe`.
 
@@ -61,8 +59,8 @@ You can update vacs later using the built-in updater. See the [Updating](./updat
 
 To install vacs on Linux, follow the instructions below:
 
-- Visit the [GitHub Releases page](https://github.com/MorpheusXAUT/vacs/releases) of vacs.
-- To download the latest stable version of vacs, find the release marked [**Latest**](https://github.com/MorpheusXAUT/vacs/releases/latest).
+- Visit the [GitHub Releases page](https://github.com/vacs-project/vacs/releases) of vacs.
+- To download the latest stable version of vacs, find the release marked [**Latest**](https://github.com/vacs-project/vacs/releases/latest).
 - If not already done, expand the **Assets** Tab.
 - Download the correct file for your system. For **Linux**, there are three options:
   - `_amd64.deb` - for Debian, Ubuntu, Linux Mint and other Debian-based distributions
@@ -161,8 +159,8 @@ You can update vacs later using the built-in updater. See the [Updating](./updat
 
 To install vacs on macOS, follow the instructions below:
 
-- Visit the [GitHub Releases page](https://github.com/MorpheusXAUT/vacs/releases) of vacs.
-- To download the latest stable version of vacs, find the release marked [**Latest**](https://github.com/MorpheusXAUT/vacs/releases/latest).
+- Visit the [GitHub Releases page](https://github.com/vacs-project/vacs/releases) of vacs.
+- To download the latest stable version of vacs, find the release marked [**Latest**](https://github.com/vacs-project/vacs/releases/latest).
 - If not already done, expand the **Assets** Tab.
 - Download the correct installer for your system. For **macOS**, this file has the ending `_x64.dmg` (Apple Intel) or `_aarch64.dmg` (Apple Silicon).
 
@@ -182,6 +180,14 @@ style={{
   }}
 />
 
+### Installing with Homebrew
+
+If you use [Homebrew](https://brew.sh/), you can install vacs from our [Homebrew tap](https://github.com/vacs-project/homebrew-tap) instead of downloading the `.dmg`:
+
+```bash
+brew install --cask vacs-project/tap/vacs
+```
+
 ### Installing vacs
 
 In Progress.
@@ -200,3 +206,9 @@ sudo xattr -rd com.apple.quarantine /Applications/vacs.app
 :::info
 You can update vacs later using the built-in updater. See the [Updating](./updating.md) section for details.
 :::
+
+---
+
+## Verifying a download
+
+Every release is signed, so you can check that a file really comes from the vacs project and was not modified on the way. This is optional and needs a few command-line tools; the steps are described in the [release verification guide](https://github.com/vacs-project/vacs/blob/main/docs/release-verification.md) on GitHub.

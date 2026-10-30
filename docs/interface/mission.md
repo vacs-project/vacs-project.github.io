@@ -56,11 +56,11 @@ style={{
 
 These configurations are read from your local configuration file.
 
-For a detailed technical reference, see:  
-[Client Page Configuration Reference](https://github.com/vacs-project/vacs/blob/main/vacs-client/docs/config/client_page.md)
+For a detailed technical reference, see [Client page configs](../advanced/configuration.md#client-page-configs).
 
-> [!NOTE]
-> These settings are purely **client-side** and only affect how stations are displayed to you.
+:::note
+These settings are purely **client-side** and only affect how stations are displayed to you.
+:::
 
 ---
 
