@@ -35,6 +35,22 @@ Put each setting in the file listed for its section. A `[client]` setting placed
 
 Any text editor works. An editor with TOML support, such as [Visual Studio Code](https://code.visualstudio.com/) with the [Even Better TOML](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) extension, will point out syntax errors before vacs refuses to start because of one.
 
+### Editor validation and completion
+
+vacs publishes a [JSON Schema](https://json-schema.org/) of all its settings, generated from the code, at:
+
+```
+https://raw.githubusercontent.com/vacs-project/vacs/main/vacs-client/config.schema.json
+```
+
+With the schema, a supporting editor completes setting names, describes each setting, and marks misspelled names and wrong values. In Even Better TOML, add this line at the top of a file:
+
+```toml
+#:schema https://raw.githubusercontent.com/vacs-project/vacs/main/vacs-client/config.schema.json
+```
+
+The schema follows the latest development version, so it may list a setting before it is released.
+
 ---
 
 ## Client page configs
