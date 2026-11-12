@@ -6,7 +6,7 @@ sidebar_position: 4
 
 Sometimes a coordination needs more than two controllers on the line. **vacs** lets you add further sectors to a call that is already running, so everyone hears everyone else. This article explains how to build such a conference, who is allowed to change it, and what you see while it runs.
 
-A conference always grows out of an existing call. There is no way to call three sectors at once from a cold start: call the first sector, wait for it to answer, and then add the others.
+Usually a conference grows out of an existing call: call the first sector, wait for it to answer, and then add the others. If your FIR has set up a [conference key](#conference-keys) for the sectors you need, one press calls all of them at once.
 
 ---
 
@@ -98,6 +98,54 @@ The **END** button always applies to you: it takes you out of the call, and ends
 
 ---
 
+## Conference keys
+
+A **conference key** is a single key that stands for several sectors, for example all approach sectors around an airport. It sits on a Direct Access Page or on the GEO page like any other key, and it carries the label your FIR gave it. Which conference keys exist, and which sectors each one calls, is set up by your FIR.
+
+{/* TODO(screenshot): /img/using-vacs/conference-key.png - Direct Access Page right after
+    pressing a conference key that lists two online sectors of other controllers, with the
+    sectors' own keys on the same page. One sector has answered, the other is still ringing;
+    CONF is lit and the call display reads CONF. The conference key keeps its normal color.
+    Callouts: 1 the conference key, not lit; 2 the key of the sector that answered, in the
+    call; 3 the key of the sector still ringing; 4 the call display. Needs a dataset fixture
+    with a station_ids key, which no e2e fixture has yet. */}
+
+A conference key only starts calls. It never shows the state of a call and never changes color: whether its sectors ring, answer, reject or cannot be reached is shown on their own keys, on the pages that contain those keys and on the call display, as for any other call. A call with just one of its sectors does not light it either.
+
+When none of its sectors is online, apart from sectors you cover yourself, the key is shown flat and cannot be pressed, just like the key of a sector that is offline.
+
+### Calling with a conference key
+
+When you are not in a call, press the conference key. vacs calls every sector of the key that is online, all at once:
+
+- Sectors you cover yourself are left out.
+- Sectors that are offline are not called.
+- If one controller covers several of the sectors, they are rung only once.
+- If the sectors do not all fit into a conference, nobody is called. See [Conference size](#conference-size).
+
+Each controller who answers joins the call. As soon as two of them have answered, the call is a conference with you as its leader, and everything in [Who may change the conference](#who-may-change-the-conference-the-leader) applies.
+
+If you press [**PRIO**](./making-a-call.md#prio-calls) before the conference key, every sector of the key rings as a priority call.
+
+Calls coming **in** are never shown on a conference key. When a sector of the key calls you, its own key flashes, as described in [Receiving a call](./receiving-a-call.md#incoming-call-indication).
+
+### Using a conference key during a call
+
+During a call, a conference key adds its sectors to the call, exactly as if you added them one by one with **CONF**:
+
+1. Press **CONF**. It starts blinking.
+2. Press the conference key. Every sector of the key that is online and not yet in the call or ringing is invited. When several sectors are invited at once, those whose controller is already in the call are left out without an error. If only one sector is left and its controller is already in the call, vacs marks that sector's own key and the top status bar reads **REMOTE TARGET PARTICIPATING**, as when you [add a single sector](#when-a-sector-cannot-be-added).
+
+This only works when you may grow the call: you are the conference leader, or only two controllers are in the call.
+
+While **CONF** is not blinking, pressing a conference key during a call does nothing. The key never ends, leaves or cancels a call, not even one you started with it. Use **END** for that, or the sectors' own keys to remove participants or take back an invitation.
+
+### Older vacs versions
+
+vacs v3.0.x does not know conference keys yet. It still shows the key with its label, but you cannot use it to call anyone. If a conference key does not call anyone for you, [update vacs](../getting-started/updating.md).
+
+---
+
 ## When a sector cannot be added
 
 Not every invitation succeeds. If the sector rejects the call, does not answer, or the call cannot be extended to it, its key is marked and the call carries on without it. For an error, the reason also appears at the right-hand end of the top status bar.
@@ -117,14 +165,14 @@ In the screenshot above:
 Press the marked key to clear the marking. It stays until you do, so a refusal cannot go unnoticed while you are talking.
 
 :::note[Sectors covered by the same controller]
-Sectors are routed to whoever currently covers them, and one controller often covers several. If you add a sector that is already covered by somebody in the call, vacs marks the key and the top status bar reads **REMOTE TARGET PARTICIPATING**, as in the screenshot above. Nobody is called twice.
+Sectors are routed to whoever currently covers them, and one controller often covers several. If you add a sector that is already covered by somebody in the call, vacs marks the key and the top status bar reads **REMOTE TARGET PARTICIPATING**, as in the screenshot above. Nobody is called twice. A [conference key](#conference-keys) that lists several sectors of one controller rings that controller once, without an error.
 :::
 
 ### Conference size
 
 A conference currently holds up to **eight** controllers, you included. Sectors that are still ringing count as well: with seven controllers talking and one more sector ringing, the conference is full. The limit is set by the vacs server rather than by your client and may change.
 
-If you try to go past it, vacs tells you so before the invitation is even sent, with a message naming the limit. If the server refuses the invitation itself, the sector's key is marked and the top status bar reads **REMOTE MAX CONF SIZE**.
+If you try to go past it, vacs tells you so before the invitation is even sent, with a message naming the limit. A [conference key](#conference-keys) whose sectors do not all fit calls none of them. If the server refuses the invitation itself, the sector's key is marked and the top status bar reads **REMOTE MAX CONF SIZE**.
 
 ---
 

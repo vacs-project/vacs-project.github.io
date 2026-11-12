@@ -48,6 +48,8 @@ In this example, all sectors matching the description **E / APP** (standing for 
 
 Selecting one of the buttons on the "top-level" of the GEO-Page opens a sub-page containing the specific sectors that can be called and fall within the selected region. 
 
+A GEO-Page can also contain [conference keys](../../using-vacs/conference-calls.md#conference-keys). Pressing one calls several sectors at once instead of opening a sub-page.
+
 In the example from above, if we click on the **E / APP** button, we open a page, which allows us to choose which sector within the category we want to call exactly (e.g. the approach sector VB, which falls into the selected ACC-E / APP group, represented by the **APP VB PLN** button), and then call this sector by clicking on the relevant Direct Access Key.
 
 In this example you are logged in as LOVV_E_CTR, so the E sectors on the left (**310- E1 PLC** to **390+ E7 PLC**) are covered by you and shown with grey text. They cannot be called, but can be selected as call source (see below). **310- E1 PLC** is shown in dark orange because vacs selected it automatically as the call source for the position.
