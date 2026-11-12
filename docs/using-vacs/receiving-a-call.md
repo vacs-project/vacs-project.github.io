@@ -153,6 +153,8 @@ An incoming invitation into a call that already has two or more parties in it is
 - Every sector in the call is highlighted, not just the caller. If a controller in the call is covering a sector on one of your Direct Access Pages, that key and the page it sits on light up.
 - This also happens when the caller has not selected a call source, in which case the caller itself cannot be highlighted but the other participants still are.
 
+It is different when the caller used a [conference key](./conference-calls.md#conference-keys) that rings you together with other sectors. The answer key also reads **CONF**, but only the caller's key flashes. The other sectors called with you light up once they have joined.
+
 Accept it exactly like any other call, by pressing the flashing answer key. Once you are in, you hear and are heard by everybody in the call.
 
 While the call runs, joining and leaving controllers are announced by their own short sounds, which can be turned off in the [Call Settings](../settings/call.md).
