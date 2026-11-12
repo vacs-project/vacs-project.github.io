@@ -191,6 +191,7 @@ Clicking the **END** button performs two actions depending on the current interf
 | Active outgoing call | The outgoing call is cancelled. |
 | Active call | The call is terminated. In a conference you leave it, and it ends for everyone only if you are the leader. |
 | Rejected / error call display | The call entry is cleared from the display. |
+| Radio playback running | The replay is stopped, whether it was started on the Playback page or with **SAY AGAIN**. |
 | Inside any menu (e.g. settings page, sub-settings page, mission page, telephone directory) | The interface exits the current menu. |
 | Inside a tabbed profile | The interface navigates one page level upward within the tab structure. |
 | Inside a non-tabbed profile | The interface navigates directly to the top-level page. |
