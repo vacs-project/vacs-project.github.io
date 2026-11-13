@@ -102,16 +102,21 @@ The **END** button always applies to you: it takes you out of the call, and ends
 
 A **conference key** is a single key that stands for several sectors, for example all approach sectors around an airport. It sits on a Direct Access Page or on the GEO page like any other key, and it carries the label your FIR gave it. Which conference keys exist, and which sectors each one calls, is set up by your FIR.
 
-{/* TODO(screenshot): /img/using-vacs/conference-key.png - Direct Access Page right after
-    pressing a conference key that lists two online sectors of other controllers, with the
-    sectors' own keys on the same page. One sector has answered, the other is still ringing;
-    CONF is lit and the call display reads CONF. The conference key has a green frame, since
-    both sectors are ringing or in the call.
-    Callouts: 1 the conference key, framed; 2 the key of the sector that answered, in the
-    call; 3 the key of the sector still ringing; 4 the call display. Needs a dataset fixture
-    with a station_ids key, which no e2e fixture has yet. */}
+<img
+  src="/img/using-vacs/conference-key.png"
+  alt="A call started with a conference key, with one of its sectors in the call and the other still ringing"
+  className="screenshot"
+  style={{ width: "80%" }}
+/>
 
-A conference key lights up only when **every** one of its sectors is ringing or in the call, whether or not the call was started with the key. It gets a green frame while at least one of them is still ringing and turns green once all of them have answered. A call with just some of its sectors does not light it. Whether a sector rings, answers, rejects or cannot be reached is shown on its own key, on the pages that contain that key and on the call display, as for any other call.
+In the screenshot above, the conference key **S1 LOWG CONF** was just pressed:
+
+1. the conference key, lit because both of its sectors are ringing or in the call
+2. the sector that answered, now in the call
+3. the sector that is still ringing, shown in green with a gray border
+4. the call display, labeled **CONF**
+
+A conference key lights up only when **every** one of its sectors is ringing or in the call, whether or not the call was started with the key. While at least one of them is still ringing, it is shown in green with a gray border, like the key of a sector you are calling. Once all of them have answered, it turns fully green. A call with just some of its sectors does not light it. Whether a sector rings, answers, rejects or cannot be reached is shown on its own key, on the pages that contain that key and on the call display, as for any other call.
 
 When none of its sectors is online, apart from sectors you cover yourself, the key is shown flat and cannot be pressed, just like the key of a sector that is offline.
 
