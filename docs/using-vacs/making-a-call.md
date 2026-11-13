@@ -250,3 +250,5 @@ In a [conference call](./conference-calls.md#removing-a-participant-and-leaving)
 ## Adding Further Sectors
 
 An established call can be extended to further sectors, so that three or more controllers coordinate together. This is done with the **CONF** button and is described in [Conference calls](./conference-calls.md).
+
+If your FIR has set up a [conference key](./conference-calls.md#conference-keys), a single press calls several sectors at once.
