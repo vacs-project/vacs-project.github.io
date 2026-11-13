@@ -105,12 +105,13 @@ A **conference key** is a single key that stands for several sectors, for exampl
 {/* TODO(screenshot): /img/using-vacs/conference-key.png - Direct Access Page right after
     pressing a conference key that lists two online sectors of other controllers, with the
     sectors' own keys on the same page. One sector has answered, the other is still ringing;
-    CONF is lit and the call display reads CONF. The conference key keeps its normal color.
-    Callouts: 1 the conference key, not lit; 2 the key of the sector that answered, in the
+    CONF is lit and the call display reads CONF. The conference key has a green frame, since
+    both sectors are ringing or in the call.
+    Callouts: 1 the conference key, framed; 2 the key of the sector that answered, in the
     call; 3 the key of the sector still ringing; 4 the call display. Needs a dataset fixture
     with a station_ids key, which no e2e fixture has yet. */}
 
-A conference key only starts calls. It never shows the state of a call and never changes color: whether its sectors ring, answer, reject or cannot be reached is shown on their own keys, on the pages that contain those keys and on the call display, as for any other call. A call with just one of its sectors does not light it either.
+A conference key lights up only when **every** one of its sectors is ringing or in the call, whether or not the call was started with the key. It gets a green frame while at least one of them is still ringing and turns green once all of them have answered. A call with just some of its sectors does not light it. Whether a sector rings, answers, rejects or cannot be reached is shown on its own key, on the pages that contain that key and on the call display, as for any other call.
 
 When none of its sectors is online, apart from sectors you cover yourself, the key is shown flat and cannot be pressed, just like the key of a sector that is offline.
 

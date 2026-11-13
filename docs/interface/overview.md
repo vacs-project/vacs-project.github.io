@@ -102,7 +102,7 @@ Each key represents one station and may appear in different states:
 3. Key referencing a station not currently online on vacs (flat disabled key with black text).
 4. Station currently controlled by your position (raised enabled key with grey text).
 
-Some FIRs also set up [conference keys](../using-vacs/conference-calls.md#conference-keys), which call several stations with one press. They look like a regular station key, but keep their color during a call: the call state shows on the stations' own keys.
+Some FIRs also set up [conference keys](../using-vacs/conference-calls.md#conference-keys), which call several stations with one press. They look like a regular station key and light up only while all of their stations are ringing or in the call.
 
 <img
 src="/img/interface/directaccesspage.png"
