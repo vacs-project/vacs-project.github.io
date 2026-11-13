@@ -97,10 +97,10 @@ The direct access page contains all available coordination stations.
 
 Each key represents one station and may appear in different states:
 
-1. Key that does not reference a station (flat disabled key, any label in grey; the key marked here has no label).
+1. Key that does not reference a station (flat disabled key, any label in gray; the key marked here has no label).
 2. Station that is online and callable (raised enabled key with black text).
 3. Key referencing a station not currently online on vacs (flat disabled key with black text).
-4. Station currently controlled by your position (raised enabled key with grey text).
+4. Station currently controlled by your position (raised enabled key with gray text).
 
 Some FIRs also set up [conference keys](../using-vacs/conference-calls.md#conference-keys), which call several stations with one press. They look like a regular station key and light up only while all of their stations are ringing or in the call.
 
@@ -161,7 +161,7 @@ The Phone button provides quick navigation back to the main phone interface and 
 
 | Button Behavior | Description |
 |-----------------|-------------|
-| Grey | When no phone call is active, the button remains unchanged (grey). |
+| Gray | When no phone call is active, the button remains unchanged (gray). |
 | Solid green | When a phone call is active, the Phone button lights up continuously in green, matching the call display. |
 
 _On click behavior_
@@ -280,7 +280,7 @@ In the shown example, the sector **ACC N1 EC** (Caller) calls **APP VB-EC** (Rec
 In the simplest terms, initiating a call in vacs (without choosing a call source yourself, for that, see below) works as follows:
 
 - Click the Station you intend to call.
-- This corresponding button will be displayed in green with a grey border, until the recipient of the call has picked up. The button will then turn green without a grey border.
+- This corresponding button will be displayed in green with a gray border, until the recipient of the call has picked up. The button will then turn green without a gray border.
 - The recipient sees your call source as the caller. If your FIR's dataset defines one for your position, vacs selects it automatically when you connect (see [Use default call sources](../settings/call.md#use-default-call-sources)). Without any call source, a generic identifier of your position is displayed on the recipient's end instead, here LOWW APP.
 
 <img
