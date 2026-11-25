@@ -18,12 +18,21 @@ Your FIR can now set up conference keys: one key that calls several sectors at o
 - A conference key lights up when all of its sectors are ringing or in the call, and turns green once all of them have answered.
 - A controller who covers several of the key's sectors is rung only once.
 
+### Mixed view sizing
+
+Your FIR can now choose how wide the phone page starts in the mixed view, either as a number of key columns or as a number of frequency columns on the radio page. Your own divider position still wins. See [Split and cycle views](./interface/overview.md#split-and-cycle-views).
+
+### Hidden content cues
+
+The radio page and the direct access page now show a small tab at the edge where content is hidden, and the direct access page scrolls sideways with the mouse wheel. See [Hidden content](./interface/overview.md#hidden-content).
+
 ### Bug fixes
 
 - **END did not stop radio playback** - Pressing **END** while a recording was replaying, whether started on the Playback page or with **SAY AGAIN**, left it playing. **END** now stops the replay. See [Playback](./interface/playback.md).
 
 ### Remote API changes
 
+- `Profile` gains the optional `mixedViewPhoneColumns` and `mixedViewRadioColumns` fields. See [Profile](./advanced/remote-api.md#profile).
 - The new `signaling:call-target-covered` event reports a target of your own multi-target invite, such as a conference key press, that is left out because its controller is already rung or in the call under another target. See [CallTargetCovered](./advanced/remote-api.md#calltargetcovered).
 
 ---

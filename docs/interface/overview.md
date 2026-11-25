@@ -246,9 +246,15 @@ _The divider_
 
 In the mixed view, the two pages are separated by a divider you can move. It stays invisible until you point at the gap between the pages, where it shows up as a gray bar and the cursor changes to a left-right arrow. Drag it with the mouse or your finger to give the direct access keys more or less room; the radio page takes whatever is left. The keys can be narrowed down to a single column, and the radio page always keeps enough space for one frequency object.
 
-Double-click the divider to put it back to the default width of four key columns. vacs remembers the width you set for each profile separately, including after a restart.
+Double-click the divider to put it back to the default width. vacs remembers the width you set for each profile separately, including after a restart.
 
-In these profiles the direct access keys are slightly narrower than usual, so more of them fit next to the radio page. If a tab still has more key columns than fit, the page scrolls sideways.
+By default the direct access keys get room for four columns. Your FIR can set a different starting width, either as a number of key columns or as a number of frequency columns on the radio page, with the keys taking the rest. Dragging the divider always overrides that, and the double-click returns to the width your FIR chose.
+
+In these profiles the direct access keys are slightly narrower than usual, so more of them fit next to the radio page.
+
+### Hidden content
+
+When a page has more content than fits, a small gray tab with an arrow and a soft shadow appears at the edge where the rest is hidden. This applies to the radio page, to the direct access page and to the client page you see without a profile, and the tab disappears once you have scrolled to the end. If a direct access page has more key columns than fit, it scrolls sideways, and you can use the mouse wheel for that without holding Shift.
 
 ---
 

@@ -1183,16 +1183,19 @@ The layout the FIR's dataset defines for the session, carried inside [`SessionIn
 {
   "id": "LOVV",
   "view": "split",
+  "mixedViewPhoneColumns": 5,
   "tabbed": [{ "label": ["S"], "page": { "rows": 4, "keys": [] } }]
 }
 ```
 
-| Field    | Type     | Description                                                                                                                                                       |
-| -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`     | `string` | Unique profile identifier, also the key used by [`app_set_split_profile_width`](#application).                                                                    |
-| `view`   | `string` | How the client arranges the radio and phone pages: `"page"` (default), `"split"` or `"cycle"`. Only `tabbed` profiles use a value other than `"page"`.             |
-| `tabbed` | `array`  | Present on tabbed profiles. One entry per tab, with a `label` of one to three lines and a `page` of direct access keys.                                            |
-| `geo`    | `object` | Present on geo profiles instead of `tabbed`. Container-based layout tree.                                                                                         |
+| Field                   | Type                   | Description                                                                                                                                                                                                                                  |
+| ----------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                    | `string`               | Unique profile identifier, also the key used by [`app_set_split_profile_width`](#application).                                                                                                                                               |
+| `view`                  | `string`               | How the client arranges the radio and phone pages: `"page"` (default), `"split"` or `"cycle"`. Only `tabbed` profiles use a value other than `"page"`.                                                                                       |
+| `mixedViewPhoneColumns` | `number` &#124; absent | Number of direct access key columns the phone page is sized for in the mixed view (`"split"` and `"cycle"`). Absent unless the profile sets it. Never present together with `mixedViewRadioColumns`.                                         |
+| `mixedViewRadioColumns` | `number` &#124; absent | Number of frequency columns the radio page is sized for in the mixed view (`"split"` and `"cycle"`), with the phone page taking the remaining width. Absent unless the profile sets it. Never present together with `mixedViewPhoneColumns`. |
+| `tabbed`                | `array`                | Present on tabbed profiles. One entry per tab, with a `label` of one to three lines and a `page` of direct access keys.                                                                                                                      |
+| `geo`                   | `object`               | Present on geo profiles instead of `tabbed`. Container-based layout tree.                                                                                                                                                                    |
 
 The full page and key structure is defined by the dataset, not by this API.
 
