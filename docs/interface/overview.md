@@ -250,15 +250,15 @@ Double-click the divider to put it back to the default width. vacs remembers the
 
 By default the direct access keys get room for four columns. Your FIR can set a different starting width, either as a number of key columns or as a number of frequency columns on the radio page, with the keys taking the rest. Dragging the divider always overrides that, and the double-click returns to the width your FIR chose.
 
-{/* TODO(screenshot): /img/interface/split_view_columns.png - Mixed view of the E2E_MIXED_COLUMNS test profile (mixed_view_phone_columns = 5) with the "5 COLUMNS" tab selected and three radio stations shown. The phone page must show exactly five key columns next to the radio page. Captured by the e2e docs run, interface.e2e.ts. */}
+<img src="/img/interface/split_view_columns.png" alt="The mixed view of a profile that sets five key columns for the phone page" className="screenshot" style={{ width: "80%" }} />
 
-In these profiles the direct access keys are slightly narrower than usual, so more of them fit next to the radio page.
+In the mixed view the direct access keys are slightly narrower than usual, so more of them fit next to the radio page.
 
 ### Hidden content
 
 When a page has more content than fits, a small gray tab with an arrow and a soft shadow appears at the edge where the rest is hidden. This applies to the radio page, to the direct access page and to the client page you see without a profile, and the tab disappears once you have scrolled to the end. If a direct access page has more key columns than fit, it scrolls sideways, and you can use the mouse wheel for that without holding Shift.
 
-{/* TODO(screenshot): /img/interface/hidden_content.png - Mixed view of the E2E_OVERFLOW test profile with the WIDE tab selected and fourteen radio stations. The radio page must show its gray edge tab with arrow at the top, and the direct access page its tab at the right edge. Captured by the e2e docs run, interface.e2e.ts. */}
+<img src="/img/interface/hidden_content.png" alt="The radio page with a tab at its top edge and the direct access page with a tab at its right edge" className="screenshot" style={{ width: "80%" }} />
 
 ---
 
