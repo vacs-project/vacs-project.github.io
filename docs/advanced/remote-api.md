@@ -435,6 +435,7 @@ Subscribe to events to receive real-time updates. Event names use a `domain:name
 | `signaling:call-end`                  | `string`                                          | A call ended. Payload is the CallId.                                                                                         |
 | `signaling:call-invitation`           | [`CallInvitation`](#callinvitation)               | This client was invited into a call, either a new one or one that is already running.                                        |
 | `signaling:call-reject`               | [`CallReject`](#callreject)                       | One or more invited targets rejected the call.                                                                               |
+| `signaling:call-target-covered`       | [`CallTargetCovered`](#calltargetcovered)         | A target of this client's multi-target invite is covered by another target's controller. No call-update follows.             |
 | `signaling:call-update`               | [`CallUpdate`](#callupdate)                       | The roster of a call this client is part of changed: someone joined, left, was invited or stopped ringing.                   |
 | `signaling:client-connected`          | [`ClientInfo`](#clientinfo)                       | A client connected to the signaling server.                                                                                  |
 | `signaling:client-disconnected`       | `string`                                          | A client disconnected from the signaling server. Payload is the CID.                                                         |
@@ -1182,16 +1183,19 @@ The layout the FIR's dataset defines for the session, carried inside [`SessionIn
 {
   "id": "LOVV",
   "view": "split",
+  "mixedViewPhoneColumns": 5,
   "tabbed": [{ "label": ["S"], "page": { "rows": 4, "keys": [] } }]
 }
 ```
 
-| Field    | Type     | Description                                                                                                                                                       |
-| -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`     | `string` | Unique profile identifier, also the key used by [`app_set_split_profile_width`](#application).                                                                    |
-| `view`   | `string` | How the client arranges the radio and phone pages: `"page"` (default), `"split"` or `"cycle"`. Only `tabbed` profiles use a value other than `"page"`.             |
-| `tabbed` | `array`  | Present on tabbed profiles. One entry per tab, with a `label` of one to three lines and a `page` of direct access keys.                                            |
-| `geo`    | `object` | Present on geo profiles instead of `tabbed`. Container-based layout tree.                                                                                         |
+| Field                   | Type                   | Description                                                                                                                                                                                                                                  |
+| ----------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                    | `string`               | Unique profile identifier, also the key used by [`app_set_split_profile_width`](#application).                                                                                                                                               |
+| `view`                  | `string`               | How the client arranges the radio and phone pages: `"page"` (default), `"split"` or `"cycle"`. Only `tabbed` profiles use a value other than `"page"`.                                                                                       |
+| `mixedViewPhoneColumns` | `number` &#124; absent | Number of direct access key columns the phone page is sized for in the mixed view (`"split"` and `"cycle"`). Absent unless the profile sets it. Never present together with `mixedViewRadioColumns`.                                         |
+| `mixedViewRadioColumns` | `number` &#124; absent | Number of frequency columns the radio page is sized for in the mixed view (`"split"` and `"cycle"`), with the phone page taking the remaining width. Absent unless the profile sets it. Never present together with `mixedViewPhoneColumns`. |
+| `tabbed`                | `array`                | Present on tabbed profiles. One entry per tab, with a `label` of one to three lines and a `page` of direct access keys.                                                                                                                      |
+| `geo`                   | `object`               | Present on geo profiles instead of `tabbed`. Container-based layout tree.                                                                                                                                                                    |
 
 The full page and key structure is defined by the dataset, not by this API.
 
@@ -1306,6 +1310,22 @@ Emitted with `signaling:call-reject`.
 | --------- | ----------------------------- | ---------------------------------------------------------------------------------- |
 | `callId`  | `string`                      | The call the targets were invited to.                                              |
 | `targets` | [`CallTarget[]`](#calltarget) | The targets that rejected. The call itself may continue for the remaining parties. |
+
+### CallTargetCovered
+
+Emitted with `signaling:call-target-covered` when a target of this client's own multi-target invite is left out because the controller covering it is already rung or joined under another target of the call. One controller is rung only once, so this is not an error and comes with no `webrtc:call-error`. No `signaling:call-update` follows: remove the target from the call's ringing targets yourself when you receive this event. If no other target is left, the call ends with `signaling:force-call-end` instead.
+
+```json
+{
+  "callId": "01916f6a-7b3c-7d4e-8f1a-2b3c4d5e6f70",
+  "target": { "station": "LOWW_F_APP" }
+}
+```
+
+| Field    | Type                        | Description                         |
+| -------- | --------------------------- | ----------------------------------- |
+| `callId` | `string`                    | The call the target was invited to. |
+| `target` | [`CallTarget`](#calltarget) | The target that was left out.       |
 
 ### OutgoingCall
 

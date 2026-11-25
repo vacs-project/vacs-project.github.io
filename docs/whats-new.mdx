@@ -5,6 +5,40 @@ sidebar_label: What's New
 
 # What's New
 
+## v3.1.0
+
+A complete list of changes is available in the [v3.1.0 release notes](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v3.1.0) on our [GitHub repository](https://github.com/vacs-project/vacs).
+
+### Conference keys
+
+Your FIR can now set up conference keys: one key that calls several sectors at once. Controllers on v3.0.x see the key but cannot use it. See [Conference keys](./using-vacs/conference-calls.md#conference-keys).
+
+### Conference key behavior
+
+- A conference key lights up when all of its sectors are ringing or in the call, and turns green once all of them have answered.
+- A controller who covers several of the key's sectors is rung only once.
+
+### Hidden content cues
+
+The radio page and the direct access page now show a small tab at the edge where content is hidden, and the direct access page scrolls sideways with the mouse wheel. See [Hidden content](./interface/overview.md#hidden-content).
+
+<img src="/img/interface/hidden_content.png" alt="The radio page with a tab at its top edge and the direct access page with a tab at its right edge" className="screenshot" style={{ width: "80%" }} />
+
+### Mixed view sizing
+
+Your FIR can now choose how wide the phone page starts in the mixed view, either as a number of key columns or as a number of frequency columns on the radio page. Your own divider position still wins. See [Split and cycle views](./interface/overview.md#split-and-cycle-views).
+
+### Bug fixes
+
+- **END did not stop radio playback** - Pressing **END** while a recording was replaying, whether started on the Playback page or with **SAY AGAIN**, left it playing. **END** now stops the replay. See [Playback](./interface/playback.md).
+
+### Remote API changes
+
+- `Profile` gains the optional `mixedViewPhoneColumns` and `mixedViewRadioColumns` fields. See [Profile](./advanced/remote-api.md#profile).
+- The new `signaling:call-target-covered` event reports a target of your own multi-target invite, such as a conference key press, that is left out because its controller is already rung or in the call under another target. See [CallTargetCovered](./advanced/remote-api.md#calltargetcovered).
+
+---
+
 ## v3.0.1
 
 [v3.0.1](https://github.com/vacs-project/vacs/releases/tag/vacs-client-v3.0.1) is a patch release that fixes the update to v3.0.0 ignoring the folder you installed vacs into on Windows.
